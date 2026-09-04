@@ -1,5 +1,14 @@
 [
   {
+    "nombre": "OuterTune",
+    "peso": "17 MB",
+    "categoria": "Música Streaming",
+    "descripcion": "Reproductor Streaming de música sin anuncios.",
+    "tipo": "github",
+    "url": "https://github.com/OuterTune/OuterTune/releases",
+    "icono": "https://avatars.githubusercontent.com/u/197739581?v=4"
+  },
+  {
     "nombre": "Loopy",
     "peso": "74 MB",
     "categoria": "Música Streaming",
