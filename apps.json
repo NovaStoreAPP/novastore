@@ -5,6 +5,16 @@
   ],
   "apps": [
     {
+      "nombre": "Musicall",
+      "peso": "15",
+      "categoria": "Música Streaming",
+      "descripcion": "Musica streaming sin publicidad.",
+      "tipo": "web",
+      "url": "https://musicall.nivelapp.com/",
+      "icono": "https://www.google.com/s2/favicons?domain=musicall.nivelapp.com&sz=128",
+      "estado": "ok"
+    },
+    {
       "nombre": "OuterTune",
       "peso": "17",
       "categoria": "Música Streaming",
