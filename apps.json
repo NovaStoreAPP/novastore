@@ -13,16 +13,6 @@
       "url": "https://play.google.com/store/apps/details?id=app.loopy.music&hl=es",
       "icono": null,
       "estado": "ok"
-    },
-    {
-      "nombre": "TaskFlow",
-      "peso": "2.4 MB",
-      "categoria": "Productividad",
-      "descripcion": "Organiza tus tareas diarias en segundos, con recordatorios y listas compartidas.",
-      "tipo": "github",
-      "url": "https://github.com/torvalds/linux",
-      "icono": null,
-      "estado": "ok"
     }
   ]
 }
