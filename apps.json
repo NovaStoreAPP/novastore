@@ -1,18 +1,11 @@
 [
   {
-    "nombre": "OuterTune",
-    "peso": "27.3 MB",
-    "categoria": "Música Streaming",
+    "nombre": "TaskFlow",
+    "peso": "2.4 MB",
+    "categoria": "Productividad",
+    "descripcion": "Organiza tus tareas diarias en segundos, con recordatorios y listas compartidas.",
     "tipo": "github",
-    "url": "https://github.com/OuterTune/OuterTune",
-    "icono": "https://avatars.githubusercontent.com/u/197739581?v=4"
-  },
-  {
-    "nombre": "Loopy",
-    "peso": "73.48 MB",
-    "categoria": "Musica Streaming",
-    "tipo": "play",
-    "url": "https://play.google.com/store/apps/details?id=app.loopy.music&hl=es",
+    "url": "https://github.com/torvalds/linux",
     "icono": null
   }
 ]
