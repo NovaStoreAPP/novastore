@@ -3,41 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis Apps</title>
+<title>NovaStore</title>
+<script>
+(function(){
+  try{
+    var saved=localStorage.getItem('novastore_theme');
+    var theme=(saved==='light'||saved==='dark')?saved:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    document.documentElement.setAttribute('data-theme',theme);
+  }catch(e){}
+})();
+</script>
 <style>
   :root{
     --green:#01875f;--green-dark:#016a4b;--bg:#f6f8f7;--card:#ffffff;
     --border:#e3e7e5;--text:#1a1c1e;--text-secondary:#5f6368;
+    --shadow:0 1px 3px rgba(16,24,22,.07);--overlay:rgba(0,0,0,.4);
+    --badge-github-bg:#eef2ff;--badge-github-text:#3730a3;
+    --badge-web-bg:#e8f0fe;--badge-web-text:#1a56c4;
+    --badge-play-bg:#e6f7f4;--badge-play-text:#00806c;
+    --badge-external-bg:#f1f0fe;--badge-external-text:#5b3fd6;
+    --status-ok-bg:#e6f7ee;--status-ok-text:#0a8a4c;
+    --status-down-bg:#fdeaea;--status-down-text:#c0392b;
+  }
+  [data-theme="dark"]{
+    --bg:#111315;--card:#1c1f22;--border:#2b2f33;
+    --text:#f1f3f4;--text-secondary:#9aa0a6;
+    --green:#15b381;--green-dark:#0f9068;
+    --shadow:0 1px 3px rgba(0,0,0,.4);--overlay:rgba(0,0,0,.6);
+    --badge-github-bg:#242850;--badge-github-text:#b7bdff;
+    --badge-web-bg:#16324e;--badge-web-text:#8fc7ff;
+    --badge-play-bg:#0f3a33;--badge-play-text:#7fe7cf;
+    --badge-external-bg:#2a2450;--badge-external-text:#c6b8ff;
+    --status-ok-bg:#123423;--status-ok-text:#4fd88b;
+    --status-down-bg:#3a1717;--status-down-text:#ff8a8a;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);transition:background .2s,color .2s}
   header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
-  .header-inner{max-width:900px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:10px}
-  .logo{display:flex;align-items:center;gap:10px}
+  .header-inner{max-width:900px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .logo{display:flex;align-items:center;gap:10px;min-width:0}
   .logo-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 30%,#c04cff 60%,#ff5f8f 100%);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;box-shadow:0 3px 10px rgba(123,92,255,.35)}
-  .logo-text{font-weight:800;font-size:20px;letter-spacing:-.3px;background:linear-gradient(135deg,#4f7cff,#c04cff 60%,#ff5f8f);-webkit-background-clip:text;background-clip:text;color:transparent}
-  main{max-width:900px;margin:0 auto;padding:20px}
-  .searchbar{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:10px 18px;margin-bottom:20px}
-  .searchbar input{border:none;outline:none;background:transparent;flex:1;font-size:15px;font-family:inherit;color:var(--text)}
+  .logo-text{font-weight:800;font-size:20px;letter-spacing:-.3px;background:linear-gradient(135deg,#4f7cff,#c04cff 60%,#ff5f8f);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+  .icon-btn{background:none;border:none;padding:9px;border-radius:50%;cursor:pointer;color:var(--text-secondary);display:flex;flex-shrink:0}
+  .icon-btn:active{background:var(--bg)}
+  main{max-width:900px;margin:0 auto;padding:18px 16px 40px}
+
+  .searchbar{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:10px 18px;margin-bottom:12px}
+  .searchbar input{border:none;outline:none;background:transparent;flex:1;font-size:15px;font-family:inherit;color:var(--text);min-width:0}
   .searchbar svg{flex-shrink:0;color:var(--text-secondary)}
-  .app-row{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:12px}
-  .app-icon{width:56px;height:56px;border-radius:14px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px}
-  .app-info{flex:1;min-width:0}
-  .app-name{font-weight:600;font-size:15px;margin:0 0 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .app-meta{font-size:13px;color:var(--text-secondary);margin:0 0 4px}
-  .app-desc{font-size:12.5px;color:var(--text-secondary);margin:0 0 6px;line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+
+  .filter-row{position:relative;margin-bottom:18px}
+  .cat-select{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;max-width:100%}
+  .cat-select svg{flex-shrink:0;transition:transform .15s}
+  .cat-select[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .cat-select span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cat-menu{position:absolute;left:0;top:calc(100% + 6px);min-width:220px;max-width:90vw;max-height:260px;overflow-y:auto;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,.15);z-index:15;display:none;padding:6px}
+  .cat-menu.open{display:block}
+  .cat-menu-item{padding:10px 12px;font-size:14px;border-radius:9px;cursor:pointer;color:var(--text)}
+  .cat-menu-item:hover{background:var(--bg)}
+  .cat-menu-item.active{background:var(--badge-play-bg);color:var(--badge-play-text);font-weight:600}
+
+  .app-row{display:flex;flex-wrap:wrap;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+  .app-main{display:flex;gap:14px;flex:1;min-width:220px}
+  .app-icon{width:52px;height:52px;border-radius:14px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;overflow:hidden}
+  .app-body{flex:1;min-width:0;display:flex;flex-direction:column}
+  .app-name{font-weight:700;font-size:15px;margin:0 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .app-meta{font-size:12.5px;color:var(--text-secondary);margin:0 0 4px}
+  .app-desc{font-size:12.5px;color:var(--text-secondary);margin:0 0 8px;line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .app-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:auto}
   .badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
-  .badge-github{background:#eef2ff;color:#3730a3}
-  .badge-web{background:#e8f0fe;color:#1a56c4}
-  .badge-play{background:#fbe9e7;color:#c2410c}
-  .btn-download{flex-shrink:0;background:var(--green);color:#fff;border:none;padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;transition:background .15s}
+  .badge-github{background:var(--badge-github-bg);color:var(--badge-github-text)}
+  .badge-web{background:var(--badge-web-bg);color:var(--badge-web-text)}
+  .badge-play{background:var(--badge-play-bg);color:var(--badge-play-text)}
+  .badge-external{background:var(--badge-external-bg);color:var(--badge-external-text)}
+  .status-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px 3px 8px;border-radius:20px}
+  .status-ok{background:var(--status-ok-bg);color:var(--status-ok-text)}
+  .status-down{background:var(--status-down-bg);color:var(--status-down-text)}
+  .status-dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+  .app-actions-col{display:flex;align-items:center;flex-shrink:0;margin-left:auto}
+  .btn-download{background:var(--green);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;transition:background .15s;white-space:nowrap}
   .btn-download:hover{background:var(--green-dark)}
+  @media (max-width:480px){
+    .app-actions-col{flex-basis:100%;margin-left:0;margin-top:4px}
+    .btn-download{width:100%;text-align:center}
+  }
+
   .empty{text-align:center;padding:60px 20px;color:var(--text-secondary)}
   .empty svg{margin-bottom:12px;opacity:.5}
   .load-panel{background:var(--card);border:1px dashed var(--border);border-radius:16px;padding:24px;text-align:center;margin-bottom:20px}
   .load-panel p{color:var(--text-secondary);font-size:13px;margin:0 0 12px}
   .btn-secondary{background:transparent;color:var(--green);border:1px solid var(--green);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
-  @media (max-width:600px){.logo-text{display:none}.app-icon{width:48px;height:48px;border-radius:12px;font-size:17px}}
+  @media (max-width:600px){.logo-text{display:none}}
 </style>
 </head>
 <body>
@@ -52,6 +108,7 @@
       </div>
       <div class="logo-text">NovaStore</div>
     </div>
+    <button class="icon-btn" id="btn-theme" aria-label="Cambiar tema"></button>
   </div>
 </header>
 
@@ -59,6 +116,14 @@
   <div class="searchbar">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
     <input id="search-input" placeholder="Buscar apps">
+  </div>
+
+  <div class="filter-row">
+    <button class="cat-select" id="cat-select-btn" aria-haspopup="listbox" aria-expanded="false">
+      <span id="cat-select-label">Todas las categorías</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="cat-menu" id="cat-menu"></div>
   </div>
 
   <div class="load-panel" id="load-panel" style="display:none">
@@ -72,6 +137,23 @@
 
 <script>
 let apps=[];
+let categorias=[];
+let selectedCategory='';
+
+// --- tema claro/oscuro ---
+const MOON_SVG='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>';
+const SUN_SVG='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+function applyThemeUI(theme){
+  document.getElementById('btn-theme').innerHTML=theme==='dark'?SUN_SVG:MOON_SVG;
+}
+let currentTheme=document.documentElement.getAttribute('data-theme')||'light';
+applyThemeUI(currentTheme);
+document.getElementById('btn-theme').addEventListener('click',()=>{
+  currentTheme=currentTheme==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',currentTheme);
+  try{localStorage.setItem('novastore_theme',currentTheme)}catch(e){}
+  applyThemeUI(currentTheme);
+});
 
 function hashColor(str){
   let hash=0;
@@ -80,42 +162,103 @@ function hashColor(str){
   return `hsl(${hue},58%,48%)`;
 }
 function initials(name){return name.trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase()}
-function badgeFor(tipo){
-  if(tipo==='github')return '<span class="badge badge-github">GitHub</span>';
-  if(tipo==='web')return '<span class="badge badge-web">Web oficial</span>';
-  return '<span class="badge badge-play">Play Store</span>';
-}
 function escapeHtml(str){
   return String(str??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-// El icono se crea siempre con el DOM (nunca insertando HTML dentro de un atributo
-// onerror como string), así evitamos que las comillas del estilo rompan el markup.
-function buildIconEl(app){
-  const name=app.nombre||'app';
-  if(app.icono){
-    const img=document.createElement('img');
-    img.className='app-icon';
-    img.src=app.icono;
-    img.alt='';
-    img.addEventListener('error',()=>{
-      img.replaceWith(buildFallbackIconEl(name));
-    },{once:true});
-    return img;
-  }
-  return buildFallbackIconEl(name);
+function badgeFor(tipo){
+  if(tipo==='github')return '<span class="badge badge-github">GitHub</span>';
+  if(tipo==='web')return '<span class="badge badge-web">Web oficial</span>';
+  if(tipo==='external')return '<span class="badge badge-external">Enlace externo</span>';
+  return '<span class="badge badge-play">Play Store</span>';
 }
-function buildFallbackIconEl(name){
+function statusPillHtml(estado){
+  const down=estado==='down';
+  return `<span class="status-pill ${down?'status-down':'status-ok'}"><span class="status-dot"></span>${down?'Caído':'Funcionando'}</span>`;
+}
+
+// --- iconos por tipo de enlace (favicon/avatar real si existe, si no un icono genérico según tipo) ---
+const ICONS={
+  globe:'<circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.6"/><path d="M3 12h18M12 3c2.4 2.5 3.7 5.8 3.7 9s-1.3 6.5-3.7 9c-2.4-2.5-3.7-5.8-3.7-9s1.3-6.5 3.7-9Z" stroke="#fff" stroke-width="1.6"/>',
+  link:'<path d="M9 15 15 9M10 6.5l.7-.7a4 4 0 0 1 5.7 5.7l-.7.7M14 17.5l-.7.7a4 4 0 0 1-5.7-5.7l.7-.7" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/>',
+  play:'<path d="M8 5.5v13l10-6.5-10-6.5Z" fill="#fff"/>',
+  github:'<path fill="#fff" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.1.39-1.99 1.03-2.7-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.71 1.03 1.6 1.03 2.7 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>'
+};
+function svgIconEl(pathHtml,bg){
+  const div=document.createElement('div');
+  div.className='app-icon';
+  div.style.background=bg;
+  div.innerHTML=`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">${pathHtml}</svg>`;
+  return div;
+}
+function buildFallbackIconEl(name,tipo){
+  if(tipo==='play')return svgIconEl(ICONS.play,'#00a389');
+  if(tipo==='web')return svgIconEl(ICONS.globe,'#1a73e8');
+  if(tipo==='external')return svgIconEl(ICONS.link,'#6b7280');
+  if(tipo==='github')return svgIconEl(ICONS.github,'#24292f');
   const div=document.createElement('div');
   div.className='app-icon';
   div.style.background=hashColor(name);
   div.textContent=initials(name||'?');
   return div;
 }
+// El icono se crea siempre con el DOM (nunca insertando HTML dentro de un atributo
+// onerror como string), así evitamos que las comillas rompan el markup.
+function buildIconEl(app){
+  const name=app.nombre||'app';
+  const tipo=app.tipo||'web';
+  if(app.icono){
+    const img=document.createElement('img');
+    img.className='app-icon';
+    img.src=app.icono;
+    img.alt='';
+    img.addEventListener('error',()=>{
+      img.replaceWith(buildFallbackIconEl(name,tipo));
+    },{once:true});
+    return img;
+  }
+  return buildFallbackIconEl(name,tipo);
+}
+
+// --- categorías ---
+function effectiveCategorias(){
+  if(categorias.length)return categorias;
+  return [...new Set(apps.map(a=>a.categoria).filter(Boolean))];
+}
+function renderCategoryMenu(){
+  const menu=document.getElementById('cat-menu');
+  const cats=effectiveCategorias();
+  const items=['',...cats];
+  menu.innerHTML=items.map(c=>`<div class="cat-menu-item ${c===selectedCategory?'active':''}" data-cat="${escapeHtml(c)}">${c?escapeHtml(c):'Todas las categorías'}</div>`).join('');
+  menu.querySelectorAll('.cat-menu-item').forEach(el=>{
+    el.addEventListener('click',()=>{
+      selectedCategory=el.dataset.cat;
+      document.getElementById('cat-select-label').textContent=selectedCategory||'Todas las categorías';
+      closeCatMenu();
+      renderCatalog();
+    });
+  });
+}
+function openCatMenu(){renderCategoryMenu();document.getElementById('cat-menu').classList.add('open');document.getElementById('cat-select-btn').setAttribute('aria-expanded','true');}
+function closeCatMenu(){document.getElementById('cat-menu').classList.remove('open');document.getElementById('cat-select-btn').setAttribute('aria-expanded','false');}
+document.getElementById('cat-select-btn').addEventListener('click',()=>{
+  document.getElementById('cat-menu').classList.contains('open')?closeCatMenu():openCatMenu();
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.filter-row'))closeCatMenu();
+});
+
+function applyFilters(){
+  const q=(document.getElementById('search-input').value||'').toLowerCase();
+  return apps.filter(a=>{
+    const matchesQ=(a.nombre||'').toLowerCase().includes(q);
+    const matchesCat=!selectedCategory||(a.categoria||'')===selectedCategory;
+    return matchesQ&&matchesCat;
+  });
+}
 
 function renderCatalog(){
   const list=document.getElementById('app-list');
-  const q=(document.getElementById('search-input').value||'').toLowerCase();
-  const filtered=apps.filter(a=>(a.nombre||'').toLowerCase().includes(q));
+  const filtered=applyFilters();
   if(filtered.length===0){
     list.innerHTML=`<div class="empty">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 9h6v6H9z"/></svg>
@@ -127,36 +270,53 @@ function renderCatalog(){
   filtered.forEach(app=>{
     const row=document.createElement('div');
     row.className='app-row';
-    row.appendChild(buildIconEl(app));
+
+    const main=document.createElement('div');
+    main.className='app-main';
+    main.appendChild(buildIconEl(app));
 
     const info=document.createElement('div');
-    info.className='app-info';
+    info.className='app-body';
     info.innerHTML=`
       <p class="app-name">${escapeHtml(app.nombre)}</p>
       <p class="app-meta">${escapeHtml(app.peso||'—')} · ${escapeHtml(app.categoria||'General')}</p>
       ${app.descripcion?`<p class="app-desc">${escapeHtml(app.descripcion)}</p>`:''}
-      ${badgeFor(app.tipo)}
+      <div class="app-tags">${badgeFor(app.tipo)}${statusPillHtml(app.estado)}</div>
     `;
-    row.appendChild(info);
+    main.appendChild(info);
+    row.appendChild(main);
 
+    const actions=document.createElement('div');
+    actions.className='app-actions-col';
     const link=document.createElement('a');
     link.className='btn-download';
     link.href=app.url;
     link.target='_blank';
     link.rel='noopener';
     link.textContent='Descargar';
-    row.appendChild(link);
+    actions.appendChild(link);
+    row.appendChild(actions);
 
     list.appendChild(row);
   });
+}
+
+function loadData(parsed){
+  if(Array.isArray(parsed)){
+    apps=parsed;
+    categorias=[...new Set(apps.map(a=>a.categoria).filter(Boolean))];
+  }else{
+    apps=parsed.apps||[];
+    categorias=parsed.categorias||[];
+  }
+  renderCatalog();
 }
 
 async function loadFromFetch(){
   try{
     const res=await fetch('apps.json',{cache:'no-store'});
     if(!res.ok)throw new Error('no ok');
-    apps=await res.json();
-    renderCatalog();
+    loadData(await res.json());
   }catch(e){
     document.getElementById('load-panel').style.display='block';
   }
@@ -168,9 +328,8 @@ document.getElementById('file-input').addEventListener('change',e=>{
   const reader=new FileReader();
   reader.onload=ev=>{
     try{
-      apps=JSON.parse(ev.target.result);
+      loadData(JSON.parse(ev.target.result));
       document.getElementById('load-panel').style.display='none';
-      renderCatalog();
     }catch(err){alert('El archivo no es un JSON válido')}
   };
   reader.readAsText(file);

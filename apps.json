@@ -1,20 +1,18 @@
-[
-  {
-    "nombre": "OuterTune",
-    "peso": "17 MB",
-    "categoria": "Música Streaming",
-    "descripcion": "Reproductor Streaming de música sin anuncios.",
-    "tipo": "github",
-    "url": "https://github.com/OuterTune/OuterTune/releases",
-    "icono": "https://avatars.githubusercontent.com/u/197739581?v=4"
-  },
-  {
-    "nombre": "Loopy",
-    "peso": "74 MB",
-    "categoria": "Música Streaming",
-    "descripcion": "Reproductor Streaming de música sin anuncios.",
-    "tipo": "play",
-    "url": "https://play.google.com/store/apps/details?id=app.loopy.music&hl=es",
-    "icono": null
-  }
-]
+{
+  "categorias": [
+    "Productividad",
+    "Música Streaming"
+  ],
+  "apps": [
+    {
+      "nombre": "TaskFlow",
+      "peso": "2.4 MB",
+      "categoria": "Productividad",
+      "descripcion": "Organiza tus tareas diarias en segundos, con recordatorios y listas compartidas.",
+      "tipo": "github",
+      "url": "https://github.com/torvalds/linux",
+      "icono": null,
+      "estado": "ok"
+    }
+  ]
+}
