@@ -1,5 +1,13 @@
 [
   {
+    "nombre": "OuterTune",
+    "peso": "27.3 MB",
+    "categoria": "Música Streaming",
+    "tipo": "github",
+    "url": "https://github.com/OuterTune/OuterTune",
+    "icono": "https://avatars.githubusercontent.com/u/197739581?v=4"
+  },
+  {
     "nombre": "Loopy",
     "peso": "73.48 MB",
     "categoria": "Musica Streaming",
