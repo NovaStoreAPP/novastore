@@ -5,6 +5,16 @@
   ],
   "apps": [
     {
+      "nombre": "OuterTune",
+      "peso": "17",
+      "categoria": "Música Streaming",
+      "descripcion": "Música en streaming sin anuncios",
+      "tipo": "github",
+      "url": "github.com/OuterTune/OuterTune/releases",
+      "icono": null,
+      "estado": "ok"
+    },
+    {
       "nombre": "Loopy",
       "peso": "73",
       "categoria": "Música Streaming",
