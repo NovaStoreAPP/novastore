@@ -54,16 +54,18 @@
   .searchbar input{border:none;outline:none;background:transparent;flex:1;font-size:15px;font-family:inherit;color:var(--text);min-width:0}
   .searchbar svg{flex-shrink:0;color:var(--text-secondary)}
 
-  .filter-row{position:relative;margin-bottom:18px}
+  .filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+  .dropdown{position:relative}
   .cat-select{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;max-width:100%}
   .cat-select svg{flex-shrink:0;transition:transform .15s}
   .cat-select[aria-expanded="true"] svg{transform:rotate(180deg)}
   .cat-select span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .cat-menu{position:absolute;left:0;top:calc(100% + 6px);min-width:220px;max-width:90vw;max-height:260px;overflow-y:auto;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,.15);z-index:15;display:none;padding:6px}
+  .cat-menu{position:absolute;left:0;top:calc(100% + 6px);min-width:200px;max-width:90vw;max-height:260px;overflow-y:auto;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,.15);z-index:15;display:none;padding:6px}
   .cat-menu.open{display:block}
   .cat-menu-item{padding:10px 12px;font-size:14px;border-radius:9px;cursor:pointer;color:var(--text)}
   .cat-menu-item:hover{background:var(--bg)}
   .cat-menu-item.active{background:var(--badge-play-bg);color:var(--badge-play-text);font-weight:600}
+  .results-count{font-size:12px;color:var(--text-secondary);margin:0 0 14px;padding:0 2px}
 
   .app-row{display:flex;flex-wrap:wrap;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
   .app-main{display:flex;gap:14px;flex:1;min-width:220px}
@@ -111,6 +113,7 @@
 
   .empty{text-align:center;padding:60px 20px;color:var(--text-secondary)}
   .empty svg{margin-bottom:12px;opacity:.5}
+  .btn-clear-filters{margin-top:16px;background:transparent;color:var(--green);border:1px solid var(--green);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
   .load-panel{background:var(--card);border:1px dashed var(--border);border-radius:16px;padding:24px;text-align:center;margin-bottom:20px}
   .load-panel p{color:var(--text-secondary);font-size:13px;margin:0 0 12px}
   .btn-secondary{background:transparent;color:var(--green);border:1px solid var(--green);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
@@ -140,12 +143,30 @@
   </div>
 
   <div class="filter-row">
-    <button class="cat-select" id="cat-select-btn" aria-haspopup="listbox" aria-expanded="false">
-      <span id="cat-select-label">Todas las categorías</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
-    </button>
-    <div class="cat-menu" id="cat-menu"></div>
+    <div class="dropdown">
+      <button class="cat-select" id="cat-select-btn" aria-haspopup="listbox" aria-expanded="false">
+        <span id="cat-select-label">Todas las categorías</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="cat-menu" id="cat-menu"></div>
+    </div>
+    <div class="dropdown">
+      <button class="cat-select" id="status-select-btn" aria-haspopup="listbox" aria-expanded="false">
+        <span id="status-select-label">Cualquier estado</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="cat-menu" id="status-menu"></div>
+    </div>
+    <div class="dropdown">
+      <button class="cat-select" id="sort-select-btn" aria-haspopup="listbox" aria-expanded="false">
+        <span id="sort-select-label">Recientes</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="cat-menu" id="sort-menu"></div>
+    </div>
   </div>
+
+  <p class="results-count" id="results-count"></p>
 
   <div class="load-panel" id="load-panel" style="display:none">
     <p>No se pudo cargar apps.json automáticamente (esto pasa si abres el archivo con doble clic en lugar de un servidor local). Selecciónalo a mano:</p>
@@ -177,6 +198,8 @@
 let apps=[];
 let categorias=[];
 let selectedCategory='';
+let selectedStatus='';
+let sortMode='recientes';
 
 // --- tema claro/oscuro ---
 const MOON_SVG='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>';
@@ -258,7 +281,7 @@ function buildIconEl(app){
   return buildFallbackIconEl(name,tipo);
 }
 
-// --- categorías ---
+// --- categorías / estado / orden (3 desplegables con el mismo patrón) ---
 function effectiveCategorias(){
   if(categorias.length)return categorias;
   return [...new Set(apps.map(a=>a.categoria).filter(Boolean))];
@@ -272,37 +295,103 @@ function renderCategoryMenu(){
     el.addEventListener('click',()=>{
       selectedCategory=el.dataset.cat;
       document.getElementById('cat-select-label').textContent=selectedCategory||'Todas las categorías';
-      closeCatMenu();
+      closeAllMenus();
       renderCatalog();
     });
   });
 }
-function openCatMenu(){renderCategoryMenu();document.getElementById('cat-menu').classList.add('open');document.getElementById('cat-select-btn').setAttribute('aria-expanded','true');}
-function closeCatMenu(){document.getElementById('cat-menu').classList.remove('open');document.getElementById('cat-select-btn').setAttribute('aria-expanded','false');}
-document.getElementById('cat-select-btn').addEventListener('click',()=>{
-  document.getElementById('cat-menu').classList.contains('open')?closeCatMenu():openCatMenu();
-});
+const STATUS_OPTIONS=[
+  {value:'',label:'Cualquier estado'},
+  {value:'ok',label:'Funcionando'},
+  {value:'regular',label:'Regular'},
+  {value:'down',label:'No funciona'}
+];
+function renderStatusMenu(){
+  const menu=document.getElementById('status-menu');
+  menu.innerHTML=STATUS_OPTIONS.map(o=>`<div class="cat-menu-item ${o.value===selectedStatus?'active':''}" data-status="${o.value}">${o.label}</div>`).join('');
+  menu.querySelectorAll('.cat-menu-item').forEach(el=>{
+    el.addEventListener('click',()=>{
+      selectedStatus=el.dataset.status;
+      document.getElementById('status-select-label').textContent=STATUS_OPTIONS.find(o=>o.value===selectedStatus).label;
+      closeAllMenus();
+      renderCatalog();
+    });
+  });
+}
+const SORT_OPTIONS=[
+  {value:'recientes',label:'Recientes'},
+  {value:'az',label:'Nombre (A-Z)'},
+  {value:'za',label:'Nombre (Z-A)'}
+];
+function renderSortMenu(){
+  const menu=document.getElementById('sort-menu');
+  menu.innerHTML=SORT_OPTIONS.map(o=>`<div class="cat-menu-item ${o.value===sortMode?'active':''}" data-sort="${o.value}">${o.label}</div>`).join('');
+  menu.querySelectorAll('.cat-menu-item').forEach(el=>{
+    el.addEventListener('click',()=>{
+      sortMode=el.dataset.sort;
+      document.getElementById('sort-select-label').textContent=SORT_OPTIONS.find(o=>o.value===sortMode).label;
+      closeAllMenus();
+      renderCatalog();
+    });
+  });
+}
+function closeAllMenus(){
+  ['cat-menu','status-menu','sort-menu'].forEach(id=>document.getElementById(id).classList.remove('open'));
+  ['cat-select-btn','status-select-btn','sort-select-btn'].forEach(id=>document.getElementById(id).setAttribute('aria-expanded','false'));
+}
+function toggleMenu(btnId,menuId,renderFn){
+  const menu=document.getElementById(menuId);
+  const isOpen=menu.classList.contains('open');
+  closeAllMenus();
+  if(!isOpen){
+    renderFn();
+    menu.classList.add('open');
+    document.getElementById(btnId).setAttribute('aria-expanded','true');
+  }
+}
+document.getElementById('cat-select-btn').addEventListener('click',()=>toggleMenu('cat-select-btn','cat-menu',renderCategoryMenu));
+document.getElementById('status-select-btn').addEventListener('click',()=>toggleMenu('status-select-btn','status-menu',renderStatusMenu));
+document.getElementById('sort-select-btn').addEventListener('click',()=>toggleMenu('sort-select-btn','sort-menu',renderSortMenu));
 document.addEventListener('click',e=>{
-  if(!e.target.closest('.filter-row'))closeCatMenu();
+  if(!e.target.closest('.filter-row'))closeAllMenus();
 });
+
+function clearAllFilters(){
+  selectedCategory='';
+  selectedStatus='';
+  document.getElementById('search-input').value='';
+  document.getElementById('cat-select-label').textContent='Todas las categorías';
+  document.getElementById('status-select-label').textContent='Cualquier estado';
+  renderCatalog();
+}
 
 function applyFilters(){
   const q=(document.getElementById('search-input').value||'').toLowerCase();
-  return apps.filter(a=>{
+  let result=apps.filter(a=>{
     const matchesQ=(a.nombre||'').toLowerCase().includes(q);
     const matchesCat=!selectedCategory||(a.categoria||'')===selectedCategory;
-    return matchesQ&&matchesCat;
+    const matchesStatus=!selectedStatus||(a.estado||'ok')===selectedStatus;
+    return matchesQ&&matchesCat&&matchesStatus;
   });
+  if(sortMode==='az')result=result.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'','es',{sensitivity:'base'}));
+  else if(sortMode==='za')result=result.slice().sort((a,b)=>(b.nombre||'').localeCompare(a.nombre||'','es',{sensitivity:'base'}));
+  return result;
 }
 
 function renderCatalog(){
   const list=document.getElementById('app-list');
   const filtered=applyFilters();
+  const countEl=document.getElementById('results-count');
+  const hasActiveFilters=!!(selectedCategory||selectedStatus||(document.getElementById('search-input').value||'').trim());
+  countEl.textContent=apps.length?`${filtered.length} ${filtered.length===1?'app':'apps'}${hasActiveFilters?` de ${apps.length}`:''}`:'';
   if(filtered.length===0){
     list.innerHTML=`<div class="empty">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 9h6v6H9z"/></svg>
-      <p>${apps.length===0?'Todavía no hay apps en apps.json.':'No hay resultados para tu búsqueda.'}</p>
+      <p>${apps.length===0?'Todavía no hay apps en apps.json.':'No hay resultados con estos filtros.'}</p>
+      ${apps.length>0&&hasActiveFilters?'<button class="btn-clear-filters" id="btn-clear-filters">Quitar filtros</button>':''}
     </div>`;
+    const clearBtn=document.getElementById('btn-clear-filters');
+    if(clearBtn)clearBtn.addEventListener('click',clearAllFilters);
     return;
   }
   list.innerHTML='';
