@@ -23,6 +23,7 @@
     --badge-play-bg:#e6f7f4;--badge-play-text:#00806c;
     --badge-external-bg:#f1f0fe;--badge-external-text:#5b3fd6;
     --status-ok-bg:#e6f7ee;--status-ok-text:#0a8a4c;
+    --status-regular-bg:#fff6e0;--status-regular-text:#a06a00;
     --status-down-bg:#fdeaea;--status-down-text:#c0392b;
   }
   [data-theme="dark"]{
@@ -35,6 +36,7 @@
     --badge-play-bg:#0f3a33;--badge-play-text:#7fe7cf;
     --badge-external-bg:#2a2450;--badge-external-text:#c6b8ff;
     --status-ok-bg:#123423;--status-ok-text:#4fd88b;
+    --status-regular-bg:#3a2e0f;--status-regular-text:#ffcf5c;
     --status-down-bg:#3a1717;--status-down-text:#ff8a8a;
   }
   *{box-sizing:border-box}
@@ -78,15 +80,34 @@
   .badge-external{background:var(--badge-external-bg);color:var(--badge-external-text)}
   .status-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px 3px 8px;border-radius:20px}
   .status-ok{background:var(--status-ok-bg);color:var(--status-ok-text)}
+  .status-regular{background:var(--status-regular-bg);color:var(--status-regular-text)}
   .status-down{background:var(--status-down-bg);color:var(--status-down-text)}
   .status-dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
-  .app-actions-col{display:flex;align-items:center;flex-shrink:0;margin-left:auto}
+  .app-actions-col{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}
   .btn-download{background:var(--green);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;transition:background .15s;white-space:nowrap}
   .btn-download:hover{background:var(--green-dark)}
+  .btn-share{background:var(--bg);border:1px solid var(--border);color:var(--text-secondary);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+  .btn-share:active{background:var(--border)}
   @media (max-width:480px){
     .app-actions-col{flex-basis:100%;margin-left:0;margin-top:4px}
-    .btn-download{width:100%;text-align:center}
+    .btn-download{flex:1;text-align:center}
   }
+
+  .sheet-overlay{position:fixed;inset:0;background:var(--overlay);z-index:30;display:none;align-items:flex-end;justify-content:center}
+  .sheet-overlay.open{display:flex}
+  .sheet{background:var(--card);width:100%;max-width:700px;border-radius:20px 20px 0 0;padding:18px 18px 26px;max-height:80vh;overflow-y:auto}
+  .sheet-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
+  .sheet h2{font-size:16px;margin:0 0 4px;font-weight:700}
+  .sheet .sheet-sub{font-size:12.5px;color:var(--text-secondary);margin:0 0 16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .share-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px}
+  .share-item{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;font-family:inherit;padding:8px 4px;border-radius:14px}
+  .share-item:active{background:var(--bg)}
+  .share-item img{width:48px;height:48px;border-radius:14px}
+  .share-item span{font-size:12px;font-weight:600;color:var(--text)}
+  .btn-ghost{background:transparent;color:var(--text-secondary);border:none;padding:12px;font-size:14px;font-weight:600;width:100%;cursor:pointer;font-family:inherit}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1c1e;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90%;text-align:center}
+  .toast.show{opacity:1}
 
   .empty{text-align:center;padding:60px 20px;color:var(--text-secondary)}
   .empty svg{margin-bottom:12px;opacity:.5}
@@ -135,6 +156,23 @@
   <div id="app-list"></div>
 </main>
 
+<div class="sheet-overlay" id="share-sheet">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h2>Compartir aplicación</h2>
+    <p class="sheet-sub" id="share-app-name"></p>
+    <div class="share-grid">
+      <button class="share-item" id="share-whatsapp"><img src="" alt="WhatsApp"><span>WhatsApp</span></button>
+      <button class="share-item" id="share-telegram"><img src="" alt="Telegram"><span>Telegram</span></button>
+      <button class="share-item" id="share-instagram"><img src="" alt="Instagram"><span>Instagram</span></button>
+      <button class="share-item" id="share-tiktok"><img src="" alt="TikTok"><span>TikTok</span></button>
+    </div>
+    <button class="btn-ghost" id="btn-cerrar-share">Cancelar</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
 let apps=[];
 let categorias=[];
@@ -172,29 +210,30 @@ function badgeFor(tipo){
   return '<span class="badge badge-play">Play Store</span>';
 }
 function statusPillHtml(estado){
-  const down=estado==='down';
-  return `<span class="status-pill ${down?'status-down':'status-ok'}"><span class="status-dot"></span>${down?'Caído':'Funcionando'}</span>`;
+  if(estado==='regular')return `<span class="status-pill status-regular"><span class="status-dot"></span>Regular</span>`;
+  if(estado==='down')return `<span class="status-pill status-down"><span class="status-dot"></span>No funciona</span>`;
+  return `<span class="status-pill status-ok"><span class="status-dot"></span>Funcionando</span>`;
 }
 
-// --- iconos por tipo de enlace (favicon/avatar real si existe, si no un icono genérico según tipo) ---
-const ICONS={
-  globe:'<circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.6"/><path d="M3 12h18M12 3c2.4 2.5 3.7 5.8 3.7 9s-1.3 6.5-3.7 9c-2.4-2.5-3.7-5.8-3.7-9s1.3-6.5 3.7-9Z" stroke="#fff" stroke-width="1.6"/>',
-  link:'<path d="M9 15 15 9M10 6.5l.7-.7a4 4 0 0 1 5.7 5.7l-.7.7M14 17.5l-.7.7a4 4 0 0 1-5.7-5.7l.7-.7" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/>',
-  play:'<path d="M8 5.5v13l10-6.5-10-6.5Z" fill="#fff"/>',
-  github:'<path fill="#fff" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.1.39-1.99 1.03-2.7-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.71 1.03 1.6 1.03 2.7 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>'
+// --- iconos oficiales (embebidos en base64, no se descargan de ninguna URL externa) ---
+const BRAND_ICONS={
+  github:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzE4MTcxNyIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAzLjVhOC41IDguNSAwIDAgMC0yLjY5IDE2LjU3Yy40MjUuMDc4LjU4LS4xODUuNTgtLjQwOSAwLS4yMDItLjAwNy0uNzM4LS4wMTEtMS40NDktMi4zNi41MTMtMi44Ni0xLjEzNy0yLjg2LTEuMTM3LS4zODYtLjk4MS0uOTQzLTEuMjQzLS45NDMtMS4yNDMtLjc3MS0uNTI3LjA1OC0uNTE2LjA1OC0uNTE2Ljg1My4wNiAxLjMwMi44NzYgMS4zMDIuODc2Ljc1OCAxLjI5OCAxLjk4OC45MjMgMi40NzIuNzA2LjA3Ny0uNTUuMjk3LS45MjMuNTQtMS4xMzUtMS44ODQtLjIxNC0zLjg2NS0uOTQzLTMuODY1LTQuMTk4IDAtLjkyNy4zMzEtMS42ODYuODc0LTIuMjgtLjA4OC0uMjE0LS4zNzktMS4wNzguMDgzLTIuMjQ4IDAgMCAuNzEzLS4yMjggMi4zMzYuODcxYTguMTMgOC4xMyAwIDAgMSA0LjI1MyAwYzEuNjIyLTEuMSAyLjMzNC0uODcxIDIuMzM0LS44NzEuNDYzIDEuMTcuMTcyIDIuMDM0LjA4NCAyLjI0OC41NDUuNTk0Ljg3MyAxLjM1My44NzMgMi4yOCAwIDMuMjY0LTEuOTg0IDMuOTgxLTMuODc1IDQuMTkuMzA1LjI2My41NzcuNzgxLjU3NyAxLjU3NCAwIDEuMTM3LS4wMSAyLjA1Mi0uMDEgMi4zMzEgMCAuMjI2LjE1Mi40OS41ODMuNDA4QTguNSA4LjUgMCAwIDAgMTIgMy41WiIvPjwvc3ZnPg==",
+  play:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iI2ZmZiIvPgo8cGF0aCBkPSJNNS4zIDMuMmMtLjM1LjM1LS41NS45LS41NSAxLjZ2MTQuNGMwIC43LjIgMS4yNS41NSAxLjZsLjEuMDhMMTQgMTIuMXYtLjJMNS40IDMuMTJsLS4xLjA4WiIgZmlsbD0iIzAwZDNmZiIvPgo8cGF0aCBkPSJNMTcgMTUuMSAxNCAxMi4xdi0uMmwzLTMgNi42IDMuNzVjLjU1LjMuNTUuOCAwIDEuMUwxNyAxNS4xWiIgZmlsbD0iI2ZmZDkwMCIvPgo8cGF0aCBkPSJNMTcgOSAxNCAxMS45IDUuNCAzLjEyYy4zLS4zLjc1LS4zNSAxLjI1LS4wN0wxNyA5WiIgZmlsbD0iI2ZmM2E0NCIvPgo8cGF0aCBkPSJNMTcgMTUuMSA2LjY1IDIwLjk1Yy0uNS4yOC0uOTUuMjMtMS4yNS0uMDdMMTQgMTIuMWwzIDNaIiBmaWxsPSIjMDBkNzYzIi8+Cjwvc3ZnPg==",
+  web:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzFhNzNlOCIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjgiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNNCAxMmgxNk0xMiA0YzIuMiAyLjIgMy40IDUuMSAzLjQgOHMtMS4yIDUuOC0zLjQgOGMtMi4yLTIuMi0zLjQtNS4xLTMuNC04czEuMi01LjggMy40LThaIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIi8+PC9zdmc+",
+  external:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzZiNzI4MCIvPjxwYXRoIGQ9Ik05IDE1IDE1IDlNMTAgNi41bC43LS43YTQgNCAwIDAgMSA1LjcgNS43bC0uNy43TTE0IDE3LjVsLS43LjdhNCA0IDAgMCAxLTUuNy01LjdsLjctLjciIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjkiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==",
+  whatsapp:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiMyNUQzNjYiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTcuNDcgNi41YTcuNTUgNy41NSAwIDAgMC0xMS45IDkuMDNMNC41IDE5LjVsNC4wOS0xLjA1YTcuNTUgNy41NSAwIDAgMCA4Ljg4LTExLjk1Wm0tNS40NiAxMS40YTYuMTMgNi4xMyAwIDAgMS0zLjEzLS44NmwtLjIyLS4xMy0yLjMyLjYuNjItMi4yNi0uMTUtLjIzYTYuMTUgNi4xNSAwIDEgMSA1LjIgMi44OFptMy4zNy00LjZjLS4xOC0uMDktMS4wOC0uNTMtMS4yNS0uNi0uMTctLjA2LS4yOS0uMDktLjQxLjA5LS4xMi4xOC0uNDcuNi0uNTguNzItLjExLjEyLS4yMS4xNC0uNC4wNS0uMTgtLjA5LS43OC0uMjktMS40OC0uOTItLjU1LS40OS0uOTItMS4wOS0xLjAzLTEuMjctLjExLS4xOC0uMDEtLjI4LjA4LS4zNy4wOC0uMDguMTgtLjIxLjI3LS4zMi4wOS0uMTEuMTItLjE4LjE4LS4zLjA2LS4xMi4wMy0uMjMtLjAyLS4zMi0uMDUtLjA5LS40MS0uOTktLjU2LTEuMzUtLjE1LS4zNi0uMy0uMzEtLjQxLS4zMWgtLjM1Yy0uMTIgMC0uMzIuMDUtLjQ4LjIzLS4xNy4xOC0uNjMuNjItLjYzIDEuNTEgMCAuODkuNjUgMS43NS43NCAxLjg3LjA5LjEyIDEuMjggMS45NiAzLjExIDIuNzQuNDMuMTkuNzcuMyAxLjA0LjM4LjQ0LjE0LjgzLjEyIDEuMTUuMDcuMzUtLjA1IDEuMDgtLjQ0IDEuMjMtLjg3LjE1LS40Mi4xNS0uNzkuMTEtLjg3LS4wNS0uMDgtLjE3LS4xMy0uMzUtLjIyWiIvPjwvc3ZnPg==",
+  telegram:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiMyOEE3RTkiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJtNS42IDExLjcgMTIuMS00LjY2Yy41Ni0uMiAxLjA1LjEzLjg3Ljk4bC0yLjA2IDkuN2MtLjE1LjctLjU3Ljg3LTEuMTUuNTRsLTMuMTgtMi4zNS0xLjUzIDEuNDhjLS4xNy4xNy0uMzEuMzEtLjYzLjMxbC4yMi0zLjIgNS44Mi01LjI2Yy4yNS0uMjItLjA1LS4zNS0uMzktLjEzbC03LjIgNC41My0zLjEtLjk3Yy0uNjctLjIxLS42OC0uNjcuMTQtLjk5WiIvPjwvc3ZnPg==",
+  instagram:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJpZ0dyYWQiIHgxPSIwIiB5MT0iMjQiIHgyPSIyNCIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZGREQ1NSIvPjxzdG9wIG9mZnNldD0iMC4zNSIgc3RvcC1jb2xvcj0iI0ZGNTQzRSIvPjxzdG9wIG9mZnNldD0iMC42NSIgc3RvcC1jb2xvcj0iI0M4MzdBQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc2MzhGQSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcng9IjciIGZpbGw9InVybCgjaWdHcmFkKSIvPjxyZWN0IHg9IjYiIHk9IjYiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgcng9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIzLjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48Y2lyY2xlIGN4PSIxNi4xIiBjeT0iNy45IiByPSIwLjkiIGZpbGw9IiNmZmYiLz48L3N2Zz4=",
+  tiktok:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNyIgZmlsbD0iIzAxMDEwMSIvPjxwYXRoIGZpbGw9IiMyNUY0RUUiIGQ9Ik0xNC41IDMuNWMuMzUgMS45IDEuNSAzLjE1IDMuNCAzLjN2Mi4zYy0xLjIuMDUtMi4yNS0uMzItMy40LTEuMDN2NS42YzAgMi43NS0yIDQuNy00LjU1IDQuNy0xLjA1IDAtMi0uMzUtMi43NS0uOTVhNC42NiA0LjY2IDAgMCAxLTEuNy0zLjc1YzAtMi41IDEuOTUtNC42IDQuNS00LjcuMyAwIC42LjAyLjkuMDh2Mi4zNWEyLjMgMi4zIDAgMCAwLS45LS4xOGMtMS4yNSAwLTIuMjUgMS0yLjI1IDIuMjUgMCAuOC40MiAxLjUgMS4wNSAxLjkuMzUuMjIuNzcuMzUgMS4yLjM1IDEuMyAwIDIuMy0xLjA1IDIuMy0yLjM1VjMuNWgyLjJaIi8+PHBhdGggZmlsbD0iI0ZFMkM1NSIgZD0iTTE0LjE1IDMuNWMuMzUgMS45IDEuNSAzLjE1IDMuNCAzLjN2Mi4zYy0xLjIuMDUtMi4yNS0uMzItMy40LTEuMDN2NS42YzAgMi43NS0yIDQuNy00LjU1IDQuNy0xLjA1IDAtMi0uMzUtMi43NS0uOTVhNC42IDQuNiAwIDAgMCAzLjY1IDEuNzhjMi41NSAwIDQuNTUtMS45NSA0LjU1LTQuN3YtNS42YzEuMTUuNzEgMi4yIDEuMDggMy40IDEuMDN2LTIuM2MtMS45LS4xNS0zLjA1LTEuNC0zLjQtMy4zaC0uOVoiIG9wYWNpdHk9Ii43NSIvPjwvc3ZnPg=="
 };
-function svgIconEl(pathHtml,bg){
-  const div=document.createElement('div');
-  div.className='app-icon';
-  div.style.background=bg;
-  div.innerHTML=`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">${pathHtml}</svg>`;
-  return div;
-}
 function buildFallbackIconEl(name,tipo){
-  if(tipo==='play')return svgIconEl(ICONS.play,'#00a389');
-  if(tipo==='web')return svgIconEl(ICONS.globe,'#1a73e8');
-  if(tipo==='external')return svgIconEl(ICONS.link,'#6b7280');
-  if(tipo==='github')return svgIconEl(ICONS.github,'#24292f');
+  if(BRAND_ICONS[tipo]){
+    const img=document.createElement('img');
+    img.className='app-icon';
+    img.src=BRAND_ICONS[tipo];
+    img.alt='';
+    return img;
+  }
   const div=document.createElement('div');
   div.className='app-icon';
   div.style.background=hashColor(name);
@@ -288,6 +327,12 @@ function renderCatalog(){
 
     const actions=document.createElement('div');
     actions.className='app-actions-col';
+    const shareBtn=document.createElement('button');
+    shareBtn.className='btn-share';
+    shareBtn.setAttribute('aria-label','Compartir');
+    shareBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>';
+    shareBtn.addEventListener('click',()=>openShareSheet(app));
+    actions.appendChild(shareBtn);
     const link=document.createElement('a');
     link.className='btn-download';
     link.href=app.url;
@@ -336,6 +381,60 @@ document.getElementById('file-input').addEventListener('change',e=>{
 });
 
 document.getElementById('search-input').addEventListener('input',renderCatalog);
+
+// --- compartir app ---
+document.getElementById('share-whatsapp').querySelector('img').src=BRAND_ICONS.whatsapp;
+document.getElementById('share-telegram').querySelector('img').src=BRAND_ICONS.telegram;
+document.getElementById('share-instagram').querySelector('img').src=BRAND_ICONS.instagram;
+document.getElementById('share-tiktok').querySelector('img').src=BRAND_ICONS.tiktok;
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.classList.remove('show'),2600);
+}
+function openSheetEl(id){document.getElementById(id).classList.add('open')}
+function closeSheetEl(id){document.getElementById(id).classList.remove('open')}
+
+let shareTarget=null;
+function openShareSheet(app){
+  shareTarget=app;
+  document.getElementById('share-app-name').textContent=app.nombre;
+  openSheetEl('share-sheet');
+}
+async function copyLinkAndNotify(app,network){
+  try{
+    await navigator.clipboard.writeText(app.url);
+    showToast(`Enlace copiado. Pégalo en ${network} para compartir "${app.nombre}".`);
+  }catch(e){
+    showToast(`Copia este enlace para compartir en ${network}: ${app.url}`);
+  }
+}
+document.getElementById('share-whatsapp').addEventListener('click',()=>{
+  if(!shareTarget)return;
+  const text=`Descarga ${shareTarget.nombre} en NovaStore: ${shareTarget.url}`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank','noopener');
+  closeSheetEl('share-sheet');
+});
+document.getElementById('share-telegram').addEventListener('click',()=>{
+  if(!shareTarget)return;
+  const text=`Descarga ${shareTarget.nombre} en NovaStore`;
+  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareTarget.url)}&text=${encodeURIComponent(text)}`,'_blank','noopener');
+  closeSheetEl('share-sheet');
+});
+document.getElementById('share-instagram').addEventListener('click',()=>{
+  if(!shareTarget)return;
+  copyLinkAndNotify(shareTarget,'Instagram');
+  closeSheetEl('share-sheet');
+});
+document.getElementById('share-tiktok').addEventListener('click',()=>{
+  if(!shareTarget)return;
+  copyLinkAndNotify(shareTarget,'TikTok');
+  closeSheetEl('share-sheet');
+});
+document.getElementById('btn-cerrar-share').addEventListener('click',()=>closeSheetEl('share-sheet'));
+document.getElementById('share-sheet').addEventListener('click',e=>{if(e.target.id==='share-sheet')closeSheetEl('share-sheet')});
 
 loadFromFetch();
 </script>
