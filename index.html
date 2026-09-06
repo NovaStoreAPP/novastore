@@ -54,9 +54,10 @@
   .searchbar input{border:none;outline:none;background:transparent;flex:1;font-size:15px;font-family:inherit;color:var(--text);min-width:0}
   .searchbar svg{flex-shrink:0;color:var(--text-secondary)}
 
-  .filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
-  .dropdown{position:relative}
-  .cat-select{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;max-width:100%}
+  .filter-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+  .filter-row .dropdown:nth-child(3){grid-column:1 / -1}
+  .dropdown{position:relative;width:100%}
+  .cat-select{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;max-width:100%}
   .cat-select svg{flex-shrink:0;transition:transform .15s}
   .cat-select[aria-expanded="true"] svg{transform:rotate(180deg)}
   .cat-select span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -117,7 +118,6 @@
   .load-panel{background:var(--card);border:1px dashed var(--border);border-radius:16px;padding:24px;text-align:center;margin-bottom:20px}
   .load-panel p{color:var(--text-secondary);font-size:13px;margin:0 0 12px}
   .btn-secondary{background:transparent;color:var(--green);border:1px solid var(--green);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
-  @media (max-width:600px){.logo-text{display:none}}
 </style>
 </head>
 <body>
@@ -486,6 +486,17 @@ function showToast(msg){
 function openSheetEl(id){document.getElementById(id).classList.add('open')}
 function closeSheetEl(id){document.getElementById(id).classList.remove('open')}
 
+// URL pública de la app (raíz del sitio: mismo dominio donde vive index.html)
+function siteBase(){
+  return location.href.split('#')[0].split('?')[0].replace(/[^/]*$/,'');
+}
+// Si el admin generó una página de vista previa (share/slug.html) para esta app,
+// compartimos esa página: así WhatsApp/Telegram muestran banner, título y descripción.
+// Si la app todavía no tiene "slug" (apps antiguas), se comparte el enlace directo.
+function shareUrlFor(app){
+  return app.slug ? `${siteBase()}share/${app.slug}.html` : app.url;
+}
+
 let shareTarget=null;
 function openShareSheet(app){
   shareTarget=app;
@@ -493,23 +504,24 @@ function openShareSheet(app){
   openSheetEl('share-sheet');
 }
 async function copyLinkAndNotify(app,network){
+  const link=shareUrlFor(app);
   try{
-    await navigator.clipboard.writeText(app.url);
+    await navigator.clipboard.writeText(link);
     showToast(`Enlace copiado. Pégalo en ${network} para compartir "${app.nombre}".`);
   }catch(e){
-    showToast(`Copia este enlace para compartir en ${network}: ${app.url}`);
+    showToast(`Copia este enlace para compartir en ${network}: ${link}`);
   }
 }
 document.getElementById('share-whatsapp').addEventListener('click',()=>{
   if(!shareTarget)return;
-  const text=`Descarga ${shareTarget.nombre} en NovaStore: ${shareTarget.url}`;
+  const text=`Descarga ${shareTarget.nombre} en NovaStore: ${shareUrlFor(shareTarget)}`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank','noopener');
   closeSheetEl('share-sheet');
 });
 document.getElementById('share-telegram').addEventListener('click',()=>{
   if(!shareTarget)return;
   const text=`Descarga ${shareTarget.nombre} en NovaStore`;
-  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareTarget.url)}&text=${encodeURIComponent(text)}`,'_blank','noopener');
+  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrlFor(shareTarget))}&text=${encodeURIComponent(text)}`,'_blank','noopener');
   closeSheetEl('share-sheet');
 });
 document.getElementById('share-instagram').addEventListener('click',()=>{
