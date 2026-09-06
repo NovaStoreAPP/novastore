@@ -21,10 +21,11 @@
       "peso": "28",
       "categoria": "Música Streaming",
       "descripcion": "Música streaming. Contiene anuncios para seguir reproduciendo música.",
+      "banner": "",
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=top.meulify.app",
-      "icono": null,
-      "estado": "ok"
+      "estado": "ok",
+      "slug": "meulify"
     },
     {
       "nombre": "Spotube",
