@@ -4,6 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NovaStore</title>
+<meta name="description" content="NovaStore - Si han inventado la app, está aquí.">
+
+<!-- Iconos / favicon -->
+<link rel="icon" href="icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="mask-icon" href="icons/icon-square-512.png" color="#7b5cff">
+
+<!-- Instalar como app (PWA) -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7b5cff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="NovaStore">
+<meta name="application-name" content="NovaStore">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Vista previa al compartir el enlace principal (WhatsApp, Telegram, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NovaStore">
+<meta property="og:title" content="NovaStore">
+<meta property="og:description" content="Si han inventado la app, está aquí.">
+<meta property="og:image" content="icons/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NovaStore">
+<meta name="twitter:description" content="Si han inventado la app, está aquí.">
+<meta name="twitter:image" content="icons/icon-512.png">
+
 <script>
 (function(){
   try{
@@ -450,6 +480,27 @@ function loadData(parsed){
     categorias=parsed.categorias||[];
   }
   renderCatalog();
+  handleDeepLink();
+}
+
+// Si venimos de una página share/{slug}.html (enlace compartido en WhatsApp/Telegram),
+// resaltamos y hacemos scroll hasta la app correspondiente.
+function handleDeepLink(){
+  const params=new URLSearchParams(location.search);
+  const slug=params.get('app');
+  if(!slug)return;
+  const app=apps.find(a=>a.slug===slug);
+  if(!app)return;
+  document.getElementById('search-input').value=app.nombre;
+  renderCatalog();
+  setTimeout(()=>{
+    const row=document.querySelector('#app-list .app-row');
+    if(row){
+      row.scrollIntoView({behavior:'smooth',block:'center'});
+      row.style.outline=`2px solid var(--green)`;
+      row.style.outlineOffset='2px';
+    }
+  },50);
 }
 
 async function loadFromFetch(){

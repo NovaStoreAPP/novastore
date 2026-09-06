@@ -34,7 +34,8 @@
       "descripcion": "Musica streaming sin publicidad.",
       "tipo": "github",
       "url": "https://github.com/krtirtho/spotube",
-      "estado": "ok"
+      "estado": "ok",
+      "slug": "spotube"
     },
     {
       "nombre": "Simpmusic",
@@ -43,7 +44,8 @@
       "descripcion": "Musica streaming sin publicidad.",
       "tipo": "web",
       "url": "https://www.simpmusic.org/",
-      "estado": "ok"
+      "estado": "ok",
+      "slug": "simpmusic"
     },
     {
       "nombre": "Musicall",
@@ -64,7 +66,8 @@
       "tipo": "github",
       "url": "github.com/OuterTune/OuterTune/releases",
       "icono": null,
-      "estado": "ok"
+      "estado": "ok",
+      "slug": "outertune"
     },
     {
       "nombre": "Loopy",
@@ -74,7 +77,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=app.loopy.music&hl=es",
       "icono": null,
-      "estado": "ok"
+      "estado": "ok",
+      "slug": "loopy"
     }
   ]
 }
