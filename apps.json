@@ -10,9 +10,11 @@
       "peso": "46",
       "categoria": "Redes",
       "descripcion": "Aplicación no oficial de ForoCoches con muchas mejoras.",
+      "banner": "",
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.foroplus.app",
-      "estado": "ok"
+      "estado": "ok",
+      "slug": "foroplus"
     },
     {
       "nombre": "Meulify",
