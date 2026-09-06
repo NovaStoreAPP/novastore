@@ -88,6 +88,10 @@
 
   .filter-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
   .filter-row .dropdown:nth-child(3){grid-column:1 / -1}
+  @media (max-width:420px){
+    .filter-row{grid-template-columns:1fr}
+    .filter-row .dropdown:nth-child(3){grid-column:auto}
+  }
   .dropdown{position:relative;width:100%}
   .cat-select{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;max-width:100%}
   .cat-select svg{flex-shrink:0;transition:transform .15s}
