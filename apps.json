@@ -97,7 +97,7 @@
     },
     {
       "nombre": "Via",
-      "peso": "",
+      "peso": "4",
       "categoria": "Navegadores Web",
       "descripcion": "Navegador muy ligero con bloqueador de publicidad. Es extremadamente rápido y no consume nada de ram.",
       "banner": "",
@@ -108,7 +108,7 @@
     },
     {
       "nombre": "Stargon",
-      "peso": "",
+      "peso": "35",
       "categoria": "Navegadores Web",
       "descripcion": "Basado en Chromium. Bloqueador de publicidad y muy personalizable. Es el que uso diariamente.",
       "banner": "",
@@ -119,7 +119,7 @@
     },
     {
       "nombre": "Brave",
-      "peso": "",
+      "peso": "120",
       "categoria": "Navegadores Web",
       "descripcion": "El más querido por todos. Basado en Chromium y con bloqueador nativo de publicidad. Tiene reproducción de fondo para YouTube Web.",
       "banner": "",
@@ -130,7 +130,7 @@
     },
     {
       "nombre": "Soul",
-      "peso": "",
+      "peso": "28",
       "categoria": "Navegadores Web",
       "descripcion": "El más personalizable de todos indiscutiblemente. Puedes cambiarle de todo. Rápido, con bloqueador de publicidad pero sin addons.",
       "banner": "",
@@ -141,7 +141,7 @@
     },
     {
       "nombre": "Samsung Browser",
-      "peso": "",
+      "peso": "85",
       "categoria": "Navegadores Web",
       "descripcion": "Excelente navegador de Samsung. De lo poco decente que hacen en aplicaciones. Tiene bloqueador de publicidad y tiene cierta personalización.",
       "banner": "",
@@ -152,7 +152,7 @@
     },
     {
       "nombre": "Cromite",
-      "peso": "",
+      "peso": "95",
       "categoria": "Navegadores Web",
       "descripcion": "Alternativa a Google Chrome pero sin telemetría y con bloqueador integrado. Open Source.",
       "banner": "",
@@ -163,7 +163,7 @@
     },
     {
       "nombre": "Firefox Nightly",
-      "peso": "",
+      "peso": "140",
       "categoria": "Navegadores Web",
       "descripcion": "Firefox para desarrolladores. Puedes añadir addons, activar cifrado de webs, acceder a contenido bloqueado, puedes entrar en las opciones de about:config y soporta addons de PC.",
       "banner": "",
@@ -174,7 +174,7 @@
     },
     {
       "nombre": "Cx File",
-      "peso": "",
+      "peso": "25",
       "categoria": "Gestión de Archivos",
       "descripcion": "Potente y versátil. Soporta nubes y redes locales sin publicidad.",
       "banner": "",
@@ -185,7 +185,7 @@
     },
     {
       "nombre": "Gestor de archivos",
-      "peso": "",
+      "peso": "12",
       "categoria": "Gestión de Archivos",
       "descripcion": "Explorador muy completo y estético para el uso diario.",
       "banner": "",
@@ -196,7 +196,7 @@
     },
     {
       "nombre": "Mixplorer",
-      "peso": "",
+      "peso": "18",
       "categoria": "Gestión de Archivos",
       "descripcion": "Considerado por muchos el mejor explorador de archivos. No le falta de nada.",
       "banner": "",
@@ -207,7 +207,7 @@
     },
     {
       "nombre": "Lawnchair",
-      "peso": "",
+      "peso": "22",
       "categoria": "Launchers y personalización",
       "descripcion": "Launcher Open Source inspirado en Pixel Launcher. Minimalista, rápido y muy recomendado como alternativa a Nova.",
       "banner": "",
@@ -218,7 +218,7 @@
     },
     {
       "nombre": "Lawnchair Github",
-      "peso": "",
+      "peso": "20",
       "categoria": "Launchers y personalización",
       "descripcion": "Proyecto Open Source oficial de Lawnchair. Muy popular entre usuarios de ROMs y Reddit.",
       "banner": "",
@@ -229,7 +229,7 @@
     },
     {
       "nombre": "Niagara Launcher",
-      "peso": "",
+      "peso": "18",
       "categoria": "Launchers y personalización",
       "descripcion": "El launcher minimalista favorito de Reddit. Diseñado para usar el móvil con una mano y reducir distracciones.",
       "banner": "",
@@ -240,7 +240,7 @@
     },
     {
       "nombre": "Kvaesitso",
-      "peso": "",
+      "peso": "15",
       "categoria": "Launchers y personalización",
       "descripcion": "Launcher Open Source extremadamente rápido basado en búsqueda global. Muy amado en Reddit por su diseño moderno.",
       "banner": "",
@@ -251,7 +251,7 @@
     },
     {
       "nombre": "Smart Launcher",
-      "peso": "",
+      "peso": "30",
       "categoria": "Launchers y personalización",
       "descripcion": "Launcher inteligente que organiza apps automáticamente. Muy recomendado tras la caída de Nova Launcher.",
       "banner": "",
@@ -262,7 +262,7 @@
     },
     {
       "nombre": "Hyperion Launcher",
-      "peso": "",
+      "peso": "28",
       "categoria": "Launchers y personalización",
       "descripcion": "Experiencia tipo Pixel con muchísima personalización y rendimiento fluido.",
       "banner": "",
@@ -273,7 +273,7 @@
     },
     {
       "nombre": "Microsoft Launcher",
-      "peso": "",
+      "peso": "45",
       "categoria": "Launchers y personalización",
       "descripcion": "Muy completo y estable. Perfecto si usas Windows o herramientas de productividad.",
       "banner": "",
@@ -284,7 +284,7 @@
     },
     {
       "nombre": "Neo Launcher",
-      "peso": "",
+      "peso": "16",
       "categoria": "Launchers y personalización",
       "descripcion": "Launcher Open Source clásico estilo Nova pero enfocado en privacidad y rendimiento ligero.",
       "banner": "",
@@ -295,7 +295,7 @@
     },
     {
       "nombre": "Total Launcher",
-      "peso": "",
+      "peso": "12",
       "categoria": "Launchers y personalización",
       "descripcion": "El launcher más extremo para personalización total. Puedes cambiar absolutamente todo.",
       "banner": "",
@@ -306,7 +306,7 @@
     },
     {
       "nombre": "OLauncher",
-      "peso": "",
+      "peso": "5",
       "categoria": "Launchers y personalización",
       "descripcion": "Launcher minimalista Open Source centrado en desintoxicación digital y cero distracciones.",
       "banner": "",
@@ -317,7 +317,7 @@
     },
     {
       "nombre": "Syft",
-      "peso": "",
+      "peso": "35",
       "categoria": "Vida más fácil",
       "descripcion": "Resúmenes de noticias por IA basados en tus temas favoritos. Pide cuenta de Google para iniciar sesión.",
       "banner": "",
@@ -328,7 +328,7 @@
     },
     {
       "nombre": "Daylio",
-      "peso": "",
+      "peso": "28",
       "categoria": "Vida más fácil",
       "descripcion": "Diario emocional interactivo con diseño elegante y simple. Una herramienta que lleva años ayudando a mucha gente a desahogarse.",
       "banner": "",
@@ -339,7 +339,7 @@
     },
     {
       "nombre": "Feeder",
-      "peso": "",
+      "peso": "8",
       "categoria": "Vida más fácil",
       "descripcion": "Lector RSS Open Source para seguir noticias, blogs y tecnología sin algoritmos invasivos.",
       "banner": "",
@@ -350,7 +350,7 @@
     },
     {
       "nombre": "FeedFlow",
-      "peso": "",
+      "peso": "7",
       "categoria": "Vida más fácil",
       "descripcion": "RSS Reader minimalista y Open Source. Ideal para leer noticias de forma limpia y rápida.",
       "banner": "",
@@ -361,7 +361,7 @@
     },
     {
       "nombre": "Joplin",
-      "peso": "",
+      "peso": "42",
       "categoria": "Vida más fácil",
       "descripcion": "Aplicación de notas y organización Open Source. Perfecta para productividad y guardar ideas.",
       "banner": "",
@@ -372,7 +372,7 @@
     },
     {
       "nombre": "Super Productivity",
-      "peso": "",
+      "peso": "18",
       "categoria": "Vida más fácil",
       "descripcion": "Gestor de tareas Open Source con temporizador, estadísticas y enfoque en productividad.",
       "banner": "",
@@ -383,7 +383,7 @@
     },
     {
       "nombre": "Loop Habit Tracker",
-      "peso": "",
+      "peso": "6",
       "categoria": "Vida más fácil",
       "descripcion": "App Open Source para crear y mantener hábitos diarios con estadísticas claras.",
       "banner": "",
@@ -394,7 +394,7 @@
     },
     {
       "nombre": "Anytype",
-      "peso": "",
+      "peso": "55",
       "categoria": "Vida más fácil",
       "descripcion": "Alternativa moderna a Notion centrada en privacidad y organización personal offline.",
       "banner": "",
@@ -405,7 +405,7 @@
     },
     {
       "nombre": "Obsidian",
-      "peso": "",
+      "peso": "38",
       "categoria": "Vida más fácil",
       "descripcion": "Sistema de notas conectado tipo \"segundo cerebro\". Muy usado para estudio y productividad.",
       "banner": "",
@@ -416,7 +416,7 @@
     },
     {
       "nombre": "Tasks.org",
-      "peso": "",
+      "peso": "10",
       "categoria": "Vida más fácil",
       "descripcion": "Gestor de tareas Open Source compatible con Google Tasks, CalDAV y Nextcloud.",
       "banner": "",
@@ -427,7 +427,7 @@
     },
     {
       "nombre": "Notally",
-      "peso": "",
+      "peso": "5",
       "categoria": "Vida más fácil",
       "descripcion": "Bloc de notas minimalista y Open Source para listas rápidas, ideas y recordatorios.",
       "banner": "",
@@ -438,7 +438,7 @@
     },
     {
       "nombre": "Weawow",
-      "peso": "",
+      "peso": "22",
       "categoria": "Tiempo y clima",
       "descripcion": "Una de las apps del tiempo más bonitas y completas. Sin anuncios invasivos y con widgets espectaculares.",
       "banner": "",
@@ -449,7 +449,7 @@
     },
     {
       "nombre": "Breezy Weather",
-      "peso": "",
+      "peso": "18",
       "categoria": "Tiempo y clima",
       "descripcion": "App Open Source moderna basada en Geometric Weather. Diseño Material You y múltiples proveedores climáticos.",
       "banner": "",
@@ -460,7 +460,7 @@
     },
     {
       "nombre": "Today Weather",
-      "peso": "",
+      "peso": "30",
       "categoria": "Tiempo y clima",
       "descripcion": "Interfaz minimalista y elegante con datos precisos y widgets muy cuidados.",
       "banner": "",
@@ -471,7 +471,7 @@
     },
     {
       "nombre": "Natural Hour",
-      "peso": "",
+      "peso": "6",
       "categoria": "Tiempo y clima",
       "descripcion": "Aplicación Open Source centrada en ciclos solares, amaneceres, atardeceres y ritmo natural del día.",
       "banner": "",
@@ -482,7 +482,7 @@
     },
     {
       "nombre": "AccuWeather",
-      "peso": "",
+      "peso": "65",
       "categoria": "Tiempo y clima",
       "descripcion": "Muy popular por sus predicciones precisas minuto a minuto y alertas meteorológicas.",
       "banner": "",
@@ -493,7 +493,7 @@
     },
     {
       "nombre": "Windy",
-      "peso": "",
+      "peso": "40",
       "categoria": "Tiempo y clima",
       "descripcion": "La favorita para mapas meteorológicos avanzados, viento, lluvia y seguimiento de tormentas.",
       "banner": "",
@@ -504,7 +504,7 @@
     },
     {
       "nombre": "Clima",
-      "peso": "",
+      "peso": "4",
       "categoria": "Tiempo y clima",
       "descripcion": "Cliente del tiempo Open Source con interfaz limpia y experiencia minimalista.",
       "banner": "",
@@ -515,7 +515,7 @@
     },
     {
       "nombre": "PSPlay",
-      "peso": "",
+      "peso": "25",
       "categoria": "Emulación y Remote Play",
       "descripcion": "La mejor alternativa a Remote Play oficial de PlayStation. Menor latencia y más opciones. Es de pago pero es mejor que la app oficial de Sony.",
       "banner": "",
@@ -526,7 +526,7 @@
     },
     {
       "nombre": "melonDS",
-      "peso": "",
+      "peso": "18",
       "categoria": "Emulación y Remote Play",
       "descripcion": "Emulador de Nintendo DS Open Source con gran compatibilidad y soporte online experimental.",
       "banner": "",
@@ -537,7 +537,7 @@
     },
     {
       "nombre": "AetherSX2",
-      "peso": "",
+      "peso": "45",
       "categoria": "Emulación y Remote Play",
       "descripcion": "El emulador de PlayStation 2 más popular en Android. Excelente rendimiento en móviles potentes.",
       "banner": "",
@@ -548,7 +548,7 @@
     },
     {
       "nombre": "Ryujinx",
-      "peso": "",
+      "peso": "50",
       "categoria": "Emulación y Remote Play",
       "descripcion": "Emulador Open Source de Nintendo Switch conocido por su compatibilidad y precisión.",
       "banner": "",
@@ -559,7 +559,7 @@
     },
     {
       "nombre": "PPSSPP",
-      "peso": "",
+      "peso": "30",
       "categoria": "Emulación y Remote Play",
       "descripcion": "Legendario emulador de PSP. Ligero, rápido y compatible con cientos de juegos.",
       "banner": "",
@@ -570,7 +570,7 @@
     },
     {
       "nombre": "SkyEmu",
-      "peso": "",
+      "peso": "10",
       "categoria": "Emulación y Remote Play",
       "descripcion": "Emulador Open Source para Game Boy Advance, Game Boy y Nintendo DS con gran rendimiento.",
       "banner": "",
@@ -581,7 +581,7 @@
     },
     {
       "nombre": "Lemuroid",
-      "peso": "",
+      "peso": "28",
       "categoria": "Emulación y Remote Play",
       "descripcion": "Frontend Open Source basado en Libretro con soporte para decenas de consolas retro.",
       "banner": "",
@@ -592,7 +592,7 @@
     },
     {
       "nombre": "Dolphin Emulator",
-      "peso": "",
+      "peso": "55",
       "categoria": "Emulación y Remote Play",
       "descripcion": "El emulador más famoso de GameCube y Wii. Compatible con mandos y mejoras gráficas HD.",
       "banner": "",
@@ -603,7 +603,7 @@
     },
     {
       "nombre": "Aves Gallery",
-      "peso": "",
+      "peso": "15",
       "categoria": "Galería de fotos",
       "descripcion": "Considerada por todos como la reina de las aplicaciones de galería. Visor por carpetas, pinch to zoom para agrandar las fotos y buen diseño. Totalmente offline.",
       "banner": "",
@@ -614,7 +614,7 @@
     },
     {
       "nombre": "Fossify Gallery",
-      "peso": "",
+      "peso": "12",
       "categoria": "Galería de fotos",
       "descripcion": "Simplicidad y velocidad sin rastreadores ni publicidad. Un diseño simple pero funcional. Totalmente offline.",
       "banner": "",
@@ -625,7 +625,7 @@
     },
     {
       "nombre": "Lespas",
-      "peso": "",
+      "peso": "14",
       "categoria": "Galería de fotos",
       "descripcion": "Alternativa a Google Photos sincronizada con Nextcloud.",
       "banner": "",
@@ -636,7 +636,7 @@
     },
     {
       "nombre": "mpvEx",
-      "peso": "",
+      "peso": "22",
       "categoria": "Reproductores de vídeo",
       "descripcion": "Reproductor de vídeo compatible con todos los códecs. Open Source y Material3. Soporta gestos de audio y brillo. Gestor integrado, PiP y reproducción de fondo.",
       "banner": "",
@@ -647,7 +647,7 @@
     },
     {
       "nombre": "VLC",
-      "peso": "",
+      "peso": "60",
       "categoria": "Reproductores de vídeo",
       "descripcion": "El clásico cono de tráfico de Windows. Reproductor de vídeo multiplataforma con soporte para una amplia gama de formatos y fuentes de contenido.",
       "banner": "",
@@ -658,7 +658,7 @@
     },
     {
       "nombre": "HeliBoard",
-      "peso": "",
+      "peso": "9",
       "categoria": "Teclados",
       "descripcion": "Privado, offline y con escritura gestual basada en AOSP. Muy personalizable y con muchos themes. Incluye español. Muchos lo consideran la alternativa a Gboard.",
       "banner": "",
@@ -669,7 +669,7 @@
     },
     {
       "nombre": "Floriboard",
-      "peso": "",
+      "peso": "12",
       "categoria": "Teclados",
       "descripcion": "Arquitectura moderna y flexibilidad máxima de personalización. No tiene tantas opciones como Heliboard pero es muy buen teclado. Totalmente offline y con idioma español.",
       "banner": "",
@@ -680,7 +680,7 @@
     },
     {
       "nombre": "APK Extractor",
-      "peso": "",
+      "peso": "6",
       "categoria": "Utilidades",
       "descripcion": "Extrae APKs de tus aplicaciones instaladas para poder compartirlas.",
       "banner": "",
@@ -691,7 +691,7 @@
     },
     {
       "nombre": "Airpush Detector",
-      "peso": "",
+      "peso": "5",
       "categoria": "Utilidades",
       "descripcion": "Detecta publicidad abusiva en notificaciones que nunca sabes quienes las está provocando.",
       "banner": "",
@@ -702,7 +702,7 @@
     },
     {
       "nombre": "Uso del Disco",
-      "peso": "",
+      "peso": "8",
       "categoria": "Utilidades",
       "descripcion": "Mapa visual del almacenamiento interno. Puedes hacer zoom para ver cuales son los archivos más \"pesados\" y borrarlos.",
       "banner": "",
@@ -713,7 +713,7 @@
     },
     {
       "nombre": "CPU-Z",
-      "peso": "",
+      "peso": "10",
       "categoria": "Utilidades",
       "descripcion": "Información técnica detallada de hardware. Tipo de procesador, ram, pantalla etc.",
       "banner": "",
@@ -724,7 +724,7 @@
     },
     {
       "nombre": "Gsam Battery",
-      "peso": "",
+      "peso": "14",
       "categoria": "Utilidades",
       "descripcion": "Monitoreo avanzado del consumo de batería.",
       "banner": "",
@@ -735,7 +735,7 @@
     },
     {
       "nombre": "Ampere",
-      "peso": "",
+      "peso": "8",
       "categoria": "Utilidades",
       "descripcion": "Mide la velocidad real de carga de tu batería y tu cargador.",
       "banner": "",
@@ -746,7 +746,7 @@
     },
     {
       "nombre": "Teamviewer",
-      "peso": "",
+      "peso": "120",
       "categoria": "Utilidades",
       "descripcion": "Control remoto entre dispositivos Android y PC o viceversa.",
       "banner": "",
@@ -757,7 +757,7 @@
     },
     {
       "nombre": "Settle Up",
-      "peso": "",
+      "peso": "18",
       "categoria": "Utilidades",
       "descripcion": "Gestión de gastos compartidos para grupos.",
       "banner": "",
@@ -768,7 +768,7 @@
     },
     {
       "nombre": "Morphhe",
-      "peso": "",
+      "peso": "16",
       "categoria": "Utilidades",
       "descripcion": "Aplicación que parche apps como Youtube , Youtube Music , Tiktok , Reddit , Gboard para añadir o quitarle funciones. Normalmente se usa para quitar la publicidad o convertirlas en \"premium\" al desbloquear esas funciones. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -779,7 +779,7 @@
     },
     {
       "nombre": "ShizuCallRecorder",
-      "peso": "",
+      "peso": "4",
       "categoria": "Power User (ADB)",
       "descripcion": "Permite mediante Shizuku (y sin ser ROOT) grabar llamadas tanto salientes como entrantes en formato ACC y Opus. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -790,7 +790,7 @@
     },
     {
       "nombre": "Shizuku 💎",
-      "peso": "",
+      "peso": "6",
       "categoria": "Power User (ADB)",
       "descripcion": "Ejecuta comandos sin Root. El rey para los que no tenemos ROOT. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -801,7 +801,7 @@
     },
     {
       "nombre": "Canta",
-      "peso": "",
+      "peso": "5",
       "categoria": "Power User (ADB)",
       "descripcion": "Desinstala bloatware sin riesgo. Usa Shizuku. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -812,7 +812,7 @@
     },
     {
       "nombre": "Hail",
-      "peso": "",
+      "peso": "7",
       "categoria": "Power User (ADB)",
       "descripcion": "Congela apps para ahorrar recursos aunque puedes volver a descongelarlas. Usa Shizuku. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -823,7 +823,7 @@
     },
     {
       "nombre": "HyperCeiler",
-      "peso": "",
+      "peso": "10",
       "categoria": "Power User (ADB)",
       "descripcion": "Optimiza el sistema HyperOS y animaciones. Permite mediante Shizuku usar los gestos en launchers de terceros. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -834,7 +834,7 @@
     },
     {
       "nombre": "App Ops",
-      "peso": "",
+      "peso": "9",
       "categoria": "Power User (ADB)",
       "descripcion": "Gestión de permisos ocultos. Que no se te escape ningún permiso que no sabías que tenía tu app. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -845,7 +845,7 @@
     },
     {
       "nombre": "Install Options",
-      "peso": "",
+      "peso": "6",
       "categoria": "Power User (ADB)",
       "descripcion": "Instalador avanzado de APKs. Permite saltarte la versión de Android o downgradear de versión una app para instalarla. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -856,7 +856,7 @@
     },
     {
       "nombre": "Namida",
-      "peso": "",
+      "peso": "35",
       "categoria": "Streaming de audio",
       "descripcion": "Reproductor Open Source con diseño \"Material You\". Viene muy equipado. Sin publicidad y buena alternativa a Spotify.",
       "banner": "",
@@ -867,7 +867,7 @@
     },
     {
       "nombre": "Kreate",
-      "peso": "",
+      "peso": "28",
       "categoria": "Streaming de audio",
       "descripcion": "Reproductor Open Source con diseño similar a Spotify. Posibilidad de descargar canciones para escucharlas offline, sin publicidad y con buen bitrate.",
       "banner": "",
@@ -878,7 +878,7 @@
     },
     {
       "nombre": "Metro",
-      "peso": "",
+      "peso": "32",
       "categoria": "Streaming de audio",
       "descripcion": "Reproductor Open Source con diseño \"Material You\". Viene muy equipado. Sin publicidad y buena alternativa a Spotify.",
       "banner": "",
@@ -889,7 +889,7 @@
     },
     {
       "nombre": "DixMax",
-      "peso": "",
+      "peso": "38",
       "categoria": "CINE Y TELEVISIÓN",
       "descripcion": "No creo que haga falta presentación. Hará unos meses renovaron el diseño haciéndolo más amigable pero conserva ese \"tinte\" de siempre. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -900,7 +900,7 @@
     },
     {
       "nombre": "TDTSpain",
-      "peso": "",
+      "peso": "26",
       "categoria": "CINE Y TELEVISIÓN",
       "descripcion": "Tienes todos los canales de televisión en vivo (gratuitos) También incluye series 24h o películas. Mi favorita de las que hay de TV en vivo.",
       "banner": "",
@@ -911,7 +911,7 @@
     },
     {
       "nombre": "Agenda Deportes",
-      "peso": "",
+      "peso": "12",
       "categoria": "Deportes",
       "descripcion": "La mejor que he encontrado. 2 años y cero problemas. Te mantiene al día de tus eventos deportivos. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -922,7 +922,7 @@
     },
     {
       "nombre": "FCTV33",
-      "peso": "",
+      "peso": "10",
       "categoria": "Deportes",
       "descripcion": "Para estar al tanto de tus eventos deportivos favoritos. ⚠️ Verifica la fuente antes de instalar.",
       "banner": "",
@@ -933,7 +933,7 @@
     },
     {
       "nombre": "Adguard",
-      "peso": "",
+      "peso": "65",
       "categoria": "Bloqueador de publicidad",
       "descripcion": "es una completa aplicación de seguridad y filtrado de contenido diseñada para bloquear publicidad, eliminar rastreadores y proteger tu dispositivo contra contenido malicioso a nivel del sistema, protegiendo tu privacidad en todo tu teléfono",
       "banner": "",
