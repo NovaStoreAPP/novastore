@@ -52,6 +52,7 @@
     --badge-web-bg:#e8f0fe;--badge-web-text:#1a56c4;
     --badge-play-bg:#e6f7f4;--badge-play-text:#00806c;
     --badge-external-bg:#f1f0fe;--badge-external-text:#5b3fd6;
+    --badge-telegram-bg:#e5f4fd;--badge-telegram-text:#0088cc;
     --status-ok-bg:#e6f7ee;--status-ok-text:#0a8a4c;
     --status-regular-bg:#fff6e0;--status-regular-text:#a06a00;
     --status-down-bg:#fdeaea;--status-down-text:#c0392b;
@@ -65,6 +66,7 @@
     --badge-web-bg:#16324e;--badge-web-text:#8fc7ff;
     --badge-play-bg:#0f3a33;--badge-play-text:#7fe7cf;
     --badge-external-bg:#2a2450;--badge-external-text:#c6b8ff;
+    --badge-telegram-bg:#0f2f42;--badge-telegram-text:#6dc6f0;
     --status-ok-bg:#123423;--status-ok-text:#4fd88b;
     --status-regular-bg:#3a2e0f;--status-regular-text:#ffcf5c;
     --status-down-bg:#3a1717;--status-down-text:#ff8a8a;
@@ -111,6 +113,7 @@
   .badge-web{background:var(--badge-web-bg);color:var(--badge-web-text)}
   .badge-play{background:var(--badge-play-bg);color:var(--badge-play-text)}
   .badge-external{background:var(--badge-external-bg);color:var(--badge-external-text)}
+  .badge-telegram{background:var(--badge-telegram-bg);color:var(--badge-telegram-text)}
   .status-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px 3px 8px;border-radius:20px}
   .status-ok{background:var(--status-ok-bg);color:var(--status-ok-text)}
   .status-regular{background:var(--status-regular-bg);color:var(--status-regular-text)}
@@ -259,6 +262,7 @@ function escapeHtml(str){
 function badgeFor(tipo){
   if(tipo==='github')return '<span class="badge badge-github">GitHub</span>';
   if(tipo==='web')return '<span class="badge badge-web">Web oficial</span>';
+  if(tipo==='telegram')return '<span class="badge badge-telegram">Telegram</span>';
   if(tipo==='external')return '<span class="badge badge-external">Enlace externo</span>';
   return '<span class="badge badge-play">Play Store</span>';
 }
@@ -573,10 +577,11 @@ async function copyLinkAndNotify(app,network){
 // El "Enlace" es siempre la página de NovaStore (share/slug.html), nunca la
 // URL directa de Play Store/GitHub, para que la persona entre primero a la web.
 function shareMessageFor(app){
-  return `Título: ${app.nombre}\n`+
-         `Peso: ${formatPeso(app.peso)}\n`+
-         `Descripción: ${app.descripcion||'—'}\n`+
-         `Enlace: ${shareUrlFor(app)}`;
+  const lineas=[`Título: ${app.nombre}`];
+  if(app.peso)lineas.push(`Peso: ${formatPeso(app.peso)}`);
+  lineas.push(`Descripción: ${app.descripcion||'—'}`);
+  lineas.push(`Enlace: ${shareUrlFor(app)}`);
+  return lineas.join('\n');
 }
 document.getElementById('share-whatsapp').addEventListener('click',()=>{
   if(!shareTarget)return;
