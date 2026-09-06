@@ -34,14 +34,14 @@
     },
     {
       "nombre": "Meulify",
-      "peso": "28",
       "categoria": "Música Streaming",
       "descripcion": "Música streaming. Contiene anuncios para seguir reproduciendo música.",
-      "banner": "",
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=top.meulify.app",
       "estado": "ok",
       "slug": "meulify",
+      "ads": true,
+      "suscripcion": true,
       "fecha": "2026-09-06"
     },
     {
