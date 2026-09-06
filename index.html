@@ -237,6 +237,12 @@ function statusPillHtml(estado){
   if(estado==='down')return `<span class="status-pill status-down"><span class="status-dot"></span>No funciona</span>`;
   return `<span class="status-pill status-ok"><span class="status-dot"></span>Funcionando</span>`;
 }
+// Si el peso es solo un número (p.ej. "46") le añade "MB" para que no se vea suelto.
+function formatPeso(peso){
+  if(!peso)return '—';
+  const p=String(peso).trim();
+  return /^\d+([.,]\d+)?$/.test(p)?`${p} MB`:p;
+}
 
 // --- iconos oficiales (embebidos en base64, no se descargan de ninguna URL externa) ---
 const BRAND_ICONS={
@@ -407,7 +413,7 @@ function renderCatalog(){
     info.className='app-body';
     info.innerHTML=`
       <p class="app-name">${escapeHtml(app.nombre)}</p>
-      <p class="app-meta">${escapeHtml(app.peso||'—')} · ${escapeHtml(app.categoria||'General')}</p>
+      <p class="app-meta">${escapeHtml(formatPeso(app.peso))} · ${escapeHtml(app.categoria||'General')}</p>
       ${app.descripcion?`<p class="app-desc">${escapeHtml(app.descripcion)}</p>`:''}
       <div class="app-tags">${badgeFor(app.tipo)}${statusPillHtml(app.estado)}</div>
     `;
