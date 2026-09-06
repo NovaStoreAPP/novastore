@@ -104,6 +104,13 @@
   .cat-menu-item.active{background:var(--badge-play-bg);color:var(--badge-play-text);font-weight:600}
   .results-count{font-size:12px;color:var(--text-secondary);margin:0 0 14px;padding:0 2px}
 
+  .category-header{margin:22px 0 12px;padding:0 2px}
+  .category-header:first-child{margin-top:0}
+  .category-title-row{display:flex;align-items:baseline;gap:8px}
+  .category-title{font-size:16px;font-weight:800;letter-spacing:-.2px;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .category-count{font-size:11.5px;font-weight:600;color:var(--text-secondary)}
+  .category-divider{height:3px;width:52px;border-radius:3px;margin-top:6px;background:linear-gradient(90deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%)}
+
   .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:var(--text-secondary);margin:0 0 14px;padding:0 2px}
   .legend summary{cursor:pointer;font-weight:600;color:var(--text-secondary);list-style:none}
   .legend summary::-webkit-details-marker{display:none}
@@ -460,6 +467,59 @@ function applyFilters(){
   return result;
 }
 
+function buildAppRowEl(app){
+  const row=document.createElement('div');
+  row.className='app-row';
+
+  const main=document.createElement('div');
+  main.className='app-main';
+  main.appendChild(buildIconEl(app));
+
+  const info=document.createElement('div');
+  info.className='app-body';
+  info.innerHTML=`
+    <p class="app-name">${escapeHtml(app.nombre)}</p>
+    <p class="app-meta">${escapeHtml(app.categoria||'General')}${app.fecha?` · Actualizado ${formatFecha(app.fecha)}`:''}</p>
+    ${app.descripcion?`<p class="app-desc">${escapeHtml(app.descripcion)}</p>`:''}
+    <div class="app-tags">${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}</div>
+  `;
+  main.appendChild(info);
+  row.appendChild(main);
+
+  const actions=document.createElement('div');
+  actions.className='app-actions-col';
+  const shareBtn=document.createElement('button');
+  shareBtn.className='btn-share';
+  shareBtn.setAttribute('aria-label','Compartir');
+  shareBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>';
+  shareBtn.addEventListener('click',()=>openShareSheet(app));
+  actions.appendChild(shareBtn);
+  const link=document.createElement('a');
+  link.className='btn-download';
+  link.href=app.url;
+  link.target='_blank';
+  link.rel='noopener';
+  link.textContent='Descargar';
+  actions.appendChild(link);
+  row.appendChild(actions);
+
+  return row;
+}
+
+// Cabecera de sección por categoría: título degradado (mismo estilo que el logo) + contador + barra degradada.
+function buildCategoryHeaderEl(cat,count){
+  const header=document.createElement('div');
+  header.className='category-header';
+  header.innerHTML=`
+    <div class="category-title-row">
+      <span class="category-title">${escapeHtml(cat)}</span>
+      <span class="category-count">${count}</span>
+    </div>
+    <div class="category-divider"></div>
+  `;
+  return header;
+}
+
 function renderCatalog(){
   const list=document.getElementById('app-list');
   const filtered=applyFilters();
@@ -477,43 +537,31 @@ function renderCatalog(){
     return;
   }
   list.innerHTML='';
+
+  // Si ya se ha filtrado por una categoría concreta, todos los resultados son de esa
+  // categoría: no hace falta repetir cabeceras, se muestra la lista plana.
+  if(selectedCategory){
+    filtered.forEach(app=>list.appendChild(buildAppRowEl(app)));
+    return;
+  }
+
+  // Sin filtro de categoría: se agrupa "a lo tienda", con un título degradado por sección.
+  const groups=new Map();
   filtered.forEach(app=>{
-    const row=document.createElement('div');
-    row.className='app-row';
+    const cat=app.categoria||'General';
+    if(!groups.has(cat))groups.set(cat,[]);
+    groups.get(cat).push(app);
+  });
+  let order=effectiveCategorias().filter(c=>groups.has(c));
+  [...groups.keys()].forEach(c=>{if(!order.includes(c))order.push(c)});
+  if(sortMode==='az')order=order.slice().sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'}));
+  else if(sortMode==='za')order=order.slice().sort((a,b)=>b.localeCompare(a,'es',{sensitivity:'base'}));
 
-    const main=document.createElement('div');
-    main.className='app-main';
-    main.appendChild(buildIconEl(app));
-
-    const info=document.createElement('div');
-    info.className='app-body';
-    info.innerHTML=`
-      <p class="app-name">${escapeHtml(app.nombre)}</p>
-      <p class="app-meta">${escapeHtml(app.categoria||'General')}${app.fecha?` · Actualizado ${formatFecha(app.fecha)}`:''}</p>
-      ${app.descripcion?`<p class="app-desc">${escapeHtml(app.descripcion)}</p>`:''}
-      <div class="app-tags">${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}</div>
-    `;
-    main.appendChild(info);
-    row.appendChild(main);
-
-    const actions=document.createElement('div');
-    actions.className='app-actions-col';
-    const shareBtn=document.createElement('button');
-    shareBtn.className='btn-share';
-    shareBtn.setAttribute('aria-label','Compartir');
-    shareBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>';
-    shareBtn.addEventListener('click',()=>openShareSheet(app));
-    actions.appendChild(shareBtn);
-    const link=document.createElement('a');
-    link.className='btn-download';
-    link.href=app.url;
-    link.target='_blank';
-    link.rel='noopener';
-    link.textContent='Descargar';
-    actions.appendChild(link);
-    row.appendChild(actions);
-
-    list.appendChild(row);
+  order.forEach(cat=>{
+    const items=groups.get(cat);
+    if(!items||!items.length)return;
+    list.appendChild(buildCategoryHeaderEl(cat,items.length));
+    items.forEach(app=>list.appendChild(buildAppRowEl(app)));
   });
 }
 
