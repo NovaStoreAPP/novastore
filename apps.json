@@ -47,10 +47,11 @@
       "peso": "15",
       "categoria": "Música Streaming",
       "descripcion": "Musica streaming sin publicidad.",
+      "banner": "",
       "tipo": "web",
       "url": "https://musicall.nivelapp.com/",
-      "icono": "https://www.google.com/s2/favicons?domain=musicall.nivelapp.com&sz=128",
-      "estado": "ok"
+      "estado": "ok",
+      "slug": "musicall"
     },
     {
       "nombre": "OuterTune",
