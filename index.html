@@ -104,6 +104,15 @@
   .cat-menu-item.active{background:var(--badge-play-bg);color:var(--badge-play-text);font-weight:600}
   .results-count{font-size:12px;color:var(--text-secondary);margin:0 0 14px;padding:0 2px}
 
+  .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:var(--text-secondary);margin:0 0 14px;padding:0 2px}
+  .legend summary{cursor:pointer;font-weight:600;color:var(--text-secondary);list-style:none}
+  .legend summary::-webkit-details-marker{display:none}
+  .legend summary::after{content:'· ¿Qué significa esto?';font-weight:400;margin-left:4px}
+  .legend[open] summary::after{content:''}
+  .legend-items{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:8px}
+  .legend-item{display:flex;align-items:center;gap:5px;white-space:nowrap}
+  .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
   .app-row{display:flex;flex-wrap:wrap;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
   .app-main{display:flex;gap:14px;flex:1;min-width:220px}
   .app-icon{width:52px;height:52px;border-radius:14px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;overflow:hidden}
@@ -123,6 +132,7 @@
   .status-regular{background:var(--status-regular-bg);color:var(--status-regular-text)}
   .status-down{background:var(--status-down-bg);color:var(--status-down-text)}
   .status-dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+  .warn-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--status-regular-bg);color:var(--status-regular-text);font-size:11px;cursor:default}
   .app-actions-col{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}
   .btn-download{background:var(--green);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;transition:background .15s;white-space:nowrap}
   .btn-download:hover{background:var(--green-dark)}
@@ -203,6 +213,17 @@
     </div>
   </div>
 
+  <details class="legend">
+    <summary>Leyenda</summary>
+    <div class="legend-items">
+      <span class="legend-item"><span class="legend-dot" style="background:var(--status-ok-text)"></span>Funcionando</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--status-regular-text)"></span>Regular</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--status-down-text)"></span>No funciona</span>
+      <span class="legend-item" id="legend-ads">Contiene publicidad</span>
+      <span class="legend-item" id="legend-sub">Requiere suscripción de pago</span>
+    </div>
+  </details>
+
   <p class="results-count" id="results-count"></p>
 
   <div class="load-panel" id="load-panel" style="display:none">
@@ -274,6 +295,23 @@ function statusPillHtml(estado){
   if(estado==='regular')return `<span class="status-pill status-regular"><span class="status-dot"></span>Regular</span>`;
   if(estado==='down')return `<span class="status-pill status-down"><span class="status-dot"></span>No funciona</span>`;
   return `<span class="status-pill status-ok"><span class="status-dot"></span>Funcionando</span>`;
+}
+// Aviso discreto (icono + tooltip) si la app tiene publicidad o requiere suscripción de pago.
+// Iconos en línea, mismo estilo (stroke, sin relleno) que el resto del sitio — nada de emoji ni CDNs externos.
+const ADS_SVG='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>';
+const SUB_SVG='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>';
+function warnIconsHtml(app){
+  let html='';
+  if(app.ads)html+=`<span class="warn-icon" title="Contiene publicidad">${ADS_SVG}</span>`;
+  if(app.suscripcion)html+=`<span class="warn-icon" title="Requiere suscripción de pago">${SUB_SVG}</span>`;
+  return html;
+}
+// La fecha se guarda como YYYY-MM-DD desde el admin; aquí se muestra como dd/mm/aaaa.
+function formatFecha(fecha){
+  if(!fecha)return '';
+  const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(fecha);
+  if(!m)return fecha;
+  return `${m[3]}/${m[2]}/${m[1]}`;
 }
 // Si el peso es solo un número (p.ej. "46") le añade "MB" para que no se vea suelto.
 function formatPeso(peso){
@@ -451,9 +489,9 @@ function renderCatalog(){
     info.className='app-body';
     info.innerHTML=`
       <p class="app-name">${escapeHtml(app.nombre)}</p>
-      <p class="app-meta">${escapeHtml(app.categoria||'General')}</p>
+      <p class="app-meta">${escapeHtml(app.categoria||'General')}${app.fecha?` · Actualizado ${formatFecha(app.fecha)}`:''}</p>
       ${app.descripcion?`<p class="app-desc">${escapeHtml(app.descripcion)}</p>`:''}
-      <div class="app-tags">${badgeFor(app.tipo)}${statusPillHtml(app.estado)}</div>
+      <div class="app-tags">${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}</div>
     `;
     main.appendChild(info);
     row.appendChild(main);
@@ -541,6 +579,10 @@ document.getElementById('share-whatsapp').querySelector('img').src=BRAND_ICONS.w
 document.getElementById('share-telegram').querySelector('img').src=BRAND_ICONS.telegram;
 document.getElementById('share-instagram').querySelector('img').src=BRAND_ICONS.instagram;
 document.getElementById('share-tiktok').querySelector('img').src=BRAND_ICONS.tiktok;
+
+// Icono + texto en la leyenda de avisos (mismo SVG que en las tarjetas)
+document.getElementById('legend-ads').innerHTML=`<span class="warn-icon">${ADS_SVG}</span> Contiene publicidad`;
+document.getElementById('legend-sub').innerHTML=`<span class="warn-icon">${SUB_SVG}</span> Requiere suscripción de pago`;
 
 function showToast(msg){
   const t=document.getElementById('toast');
