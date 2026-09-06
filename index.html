@@ -28,11 +28,11 @@
 <meta property="og:site_name" content="NovaStore">
 <meta property="og:title" content="NovaStore">
 <meta property="og:description" content="Si han inventado la app, está aquí.">
-<meta property="og:image" content="icons/icon-512.png">
+<meta property="og:image" content="https://novastore-apps.netlify.app/share/banner.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NovaStore">
 <meta name="twitter:description" content="Si han inventado la app, está aquí.">
-<meta name="twitter:image" content="icons/icon-512.png">
+<meta name="twitter:image" content="https://novastore-apps.netlify.app/share/banner.png">
 
 <script>
 (function(){
@@ -569,16 +569,24 @@ async function copyLinkAndNotify(app,network){
     showToast(`Copia este enlace para compartir en ${network}: ${link}`);
   }
 }
+// Mensaje de texto que acompaña al enlace: mismo formato en WhatsApp y Telegram.
+// El "Enlace" es siempre la página de NovaStore (share/slug.html), nunca la
+// URL directa de Play Store/GitHub, para que la persona entre primero a la web.
+function shareMessageFor(app){
+  return `Título: ${app.nombre}\n`+
+         `Peso: ${formatPeso(app.peso)}\n`+
+         `Descripción: ${app.descripcion||'—'}\n`+
+         `Enlace: ${shareUrlFor(app)}`;
+}
 document.getElementById('share-whatsapp').addEventListener('click',()=>{
   if(!shareTarget)return;
-  const text=`Descarga ${shareTarget.nombre} en NovaStore: ${shareUrlFor(shareTarget)}`;
-  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank','noopener');
+  window.open(`https://wa.me/?text=${encodeURIComponent(shareMessageFor(shareTarget))}`,'_blank','noopener');
   closeSheetEl('share-sheet');
 });
 document.getElementById('share-telegram').addEventListener('click',()=>{
   if(!shareTarget)return;
-  const text=`Descarga ${shareTarget.nombre} en NovaStore`;
-  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrlFor(shareTarget))}&text=${encodeURIComponent(text)}`,'_blank','noopener');
+  // En Telegram, "url" alimenta la vista previa (banner) y "text" es el pie de mensaje.
+  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrlFor(shareTarget))}&text=${encodeURIComponent(shareMessageFor(shareTarget))}`,'_blank','noopener');
   closeSheetEl('share-sheet');
 });
 document.getElementById('share-instagram').addEventListener('click',()=>{
