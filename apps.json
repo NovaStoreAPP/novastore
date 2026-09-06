@@ -29,7 +29,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.foroplus.app",
       "estado": "ok",
-      "slug": "foroplus"
+      "slug": "foroplus",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Meulify",
@@ -40,7 +41,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=top.meulify.app",
       "estado": "ok",
-      "slug": "meulify"
+      "slug": "meulify",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Spotube",
@@ -50,7 +52,8 @@
       "tipo": "github",
       "url": "https://github.com/krtirtho/spotube",
       "estado": "ok",
-      "slug": "spotube"
+      "slug": "spotube",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Simpmusic",
@@ -60,7 +63,8 @@
       "tipo": "web",
       "url": "https://www.simpmusic.org/",
       "estado": "ok",
-      "slug": "simpmusic"
+      "slug": "simpmusic",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Musicall",
@@ -71,7 +75,8 @@
       "tipo": "web",
       "url": "https://musicall.nivelapp.com/",
       "estado": "ok",
-      "slug": "musicall"
+      "slug": "musicall",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "OuterTune",
@@ -82,7 +87,8 @@
       "url": "github.com/OuterTune/OuterTune/releases",
       "icono": null,
       "estado": "ok",
-      "slug": "outertune"
+      "slug": "outertune",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Loopy",
@@ -93,7 +99,8 @@
       "url": "https://play.google.com/store/apps/details?id=app.loopy.music&hl=es",
       "icono": null,
       "estado": "ok",
-      "slug": "loopy"
+      "slug": "loopy",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Via",
@@ -104,7 +111,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=mark.via.gp&hl=es",
       "estado": "ok",
-      "slug": "via"
+      "slug": "via",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Stargon",
@@ -115,7 +123,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=net.onecook.browser&hl=es",
       "estado": "ok",
-      "slug": "stargon"
+      "slug": "stargon",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Brave",
@@ -126,7 +135,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.brave.browser",
       "estado": "ok",
-      "slug": "brave"
+      "slug": "brave",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Soul",
@@ -137,7 +147,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=soul%20browser&c=apps",
       "estado": "ok",
-      "slug": "soul"
+      "slug": "soul",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Samsung Browser",
@@ -148,7 +159,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=samsung%20browser&c=apps",
       "estado": "ok",
-      "slug": "samsung-browser"
+      "slug": "samsung-browser",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Cromite",
@@ -159,7 +171,8 @@
       "tipo": "github",
       "url": "https://github.com/uazo/cromite/releases",
       "estado": "ok",
-      "slug": "cromite"
+      "slug": "cromite",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Firefox Nightly",
@@ -170,7 +183,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=es",
       "estado": "ok",
-      "slug": "firefox-nightly"
+      "slug": "firefox-nightly",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Cx File",
@@ -181,7 +195,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=cx%20file&c=apps",
       "estado": "ok",
-      "slug": "cx-file"
+      "slug": "cx-file",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Gestor de archivos",
@@ -192,7 +207,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.alphainventor.filemanager",
       "estado": "ok",
-      "slug": "gestor-de-archivos"
+      "slug": "gestor-de-archivos",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Mixplorer",
@@ -203,7 +219,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Mixplorer&c=apps",
       "estado": "ok",
-      "slug": "mixplorer"
+      "slug": "mixplorer",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Lawnchair",
@@ -214,7 +231,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Lawnchair&c=apps",
       "estado": "ok",
-      "slug": "lawnchair"
+      "slug": "lawnchair",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Lawnchair Github",
@@ -225,7 +243,8 @@
       "tipo": "github",
       "url": "https://github.com/LawnchairLauncher/lawnchair",
       "estado": "ok",
-      "slug": "lawnchair-github"
+      "slug": "lawnchair-github",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Niagara Launcher",
@@ -236,7 +255,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Niagara%20Launcher&c=apps",
       "estado": "ok",
-      "slug": "niagara-launcher"
+      "slug": "niagara-launcher",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Kvaesitso",
@@ -247,7 +267,8 @@
       "tipo": "github",
       "url": "https://github.com/MM2-0/Kvaesitso",
       "estado": "ok",
-      "slug": "kvaesitso"
+      "slug": "kvaesitso",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Smart Launcher",
@@ -258,7 +279,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Smart%20Launcher&c=apps",
       "estado": "ok",
-      "slug": "smart-launcher"
+      "slug": "smart-launcher",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Hyperion Launcher",
@@ -269,7 +291,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Hyperion%20Launcher&c=apps",
       "estado": "ok",
-      "slug": "hyperion-launcher"
+      "slug": "hyperion-launcher",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Microsoft Launcher",
@@ -280,7 +303,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Microsoft%20Launcher&c=apps",
       "estado": "ok",
-      "slug": "microsoft-launcher"
+      "slug": "microsoft-launcher",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Neo Launcher",
@@ -291,7 +315,8 @@
       "tipo": "github",
       "url": "https://github.com/NeoApplications/Neo-Launcher",
       "estado": "ok",
-      "slug": "neo-launcher"
+      "slug": "neo-launcher",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Total Launcher",
@@ -302,7 +327,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Total%20Launcher&c=apps",
       "estado": "ok",
-      "slug": "total-launcher"
+      "slug": "total-launcher",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "OLauncher",
@@ -313,7 +339,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=OLauncher&c=apps",
       "estado": "ok",
-      "slug": "olauncher"
+      "slug": "olauncher",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Syft",
@@ -324,7 +351,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=syft&c=apps",
       "estado": "ok",
-      "slug": "syft"
+      "slug": "syft",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Daylio",
@@ -335,7 +363,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=daylio&c=apps",
       "estado": "ok",
-      "slug": "daylio"
+      "slug": "daylio",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Feeder",
@@ -346,7 +375,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Feeder&c=apps",
       "estado": "ok",
-      "slug": "feeder"
+      "slug": "feeder",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "FeedFlow",
@@ -357,7 +387,8 @@
       "tipo": "github",
       "url": "https://github.com/prof18/feed-flow",
       "estado": "ok",
-      "slug": "feedflow"
+      "slug": "feedflow",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Joplin",
@@ -368,7 +399,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Joplin&c=apps",
       "estado": "ok",
-      "slug": "joplin"
+      "slug": "joplin",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Super Productivity",
@@ -379,7 +411,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Super%20Productivity&c=apps",
       "estado": "ok",
-      "slug": "super-productivity"
+      "slug": "super-productivity",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Loop Habit Tracker",
@@ -390,7 +423,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Loop%20Habit%20Tracker&c=apps",
       "estado": "ok",
-      "slug": "loop-habit-tracker"
+      "slug": "loop-habit-tracker",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Anytype",
@@ -401,7 +435,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Anytype&c=apps",
       "estado": "ok",
-      "slug": "anytype"
+      "slug": "anytype",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Obsidian",
@@ -412,7 +447,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Obsidian&c=apps",
       "estado": "ok",
-      "slug": "obsidian"
+      "slug": "obsidian",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Tasks.org",
@@ -423,7 +459,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Tasks.org&c=apps",
       "estado": "ok",
-      "slug": "tasks-org"
+      "slug": "tasks-org",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Notally",
@@ -434,7 +471,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Notally&c=apps",
       "estado": "ok",
-      "slug": "notally"
+      "slug": "notally",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Weawow",
@@ -445,7 +483,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Weawow&c=apps",
       "estado": "ok",
-      "slug": "weawow"
+      "slug": "weawow",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Breezy Weather",
@@ -456,7 +495,8 @@
       "tipo": "github",
       "url": "https://github.com/breezy-weather/breezy-weather",
       "estado": "ok",
-      "slug": "breezy-weather"
+      "slug": "breezy-weather",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Today Weather",
@@ -467,7 +507,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Today%20Weather&c=apps",
       "estado": "ok",
-      "slug": "today-weather"
+      "slug": "today-weather",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Natural Hour",
@@ -478,7 +519,8 @@
       "tipo": "github",
       "url": "https://github.com/forrestguice/NaturalHour",
       "estado": "ok",
-      "slug": "natural-hour"
+      "slug": "natural-hour",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "AccuWeather",
@@ -489,7 +531,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=AccuWeather&c=apps",
       "estado": "ok",
-      "slug": "accuweather"
+      "slug": "accuweather",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Windy",
@@ -500,7 +543,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Windy.com&c=apps",
       "estado": "ok",
-      "slug": "windy"
+      "slug": "windy",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Clima",
@@ -511,7 +555,8 @@
       "tipo": "github",
       "url": "https://github.com/amanharwara/Clima",
       "estado": "ok",
-      "slug": "clima"
+      "slug": "clima",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "PSPlay",
@@ -522,7 +567,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=PSPlay&c=apps",
       "estado": "ok",
-      "slug": "psplay"
+      "slug": "psplay",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "melonDS",
@@ -533,7 +579,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=melonDS&c=apps",
       "estado": "ok",
-      "slug": "melonds"
+      "slug": "melonds",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "AetherSX2",
@@ -544,7 +591,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=AetherSX2&c=apps",
       "estado": "ok",
-      "slug": "aethersx2"
+      "slug": "aethersx2",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Ryujinx",
@@ -555,7 +603,8 @@
       "tipo": "github",
       "url": "https://github.com/Ryujinx/release-channel-master",
       "estado": "ok",
-      "slug": "ryujinx"
+      "slug": "ryujinx",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "PPSSPP",
@@ -566,7 +615,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=PPSSPP&c=apps",
       "estado": "ok",
-      "slug": "ppsspp"
+      "slug": "ppsspp",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "SkyEmu",
@@ -577,7 +627,8 @@
       "tipo": "github",
       "url": "https://github.com/SkyEmu/SkyEmu",
       "estado": "ok",
-      "slug": "skyemu"
+      "slug": "skyemu",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Lemuroid",
@@ -588,7 +639,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Lemuroid&c=apps",
       "estado": "ok",
-      "slug": "lemuroid"
+      "slug": "lemuroid",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Dolphin Emulator",
@@ -599,7 +651,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Dolphin%20Emulator&c=apps",
       "estado": "ok",
-      "slug": "dolphin-emulator"
+      "slug": "dolphin-emulator",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Aves Gallery",
@@ -610,7 +663,8 @@
       "tipo": "github",
       "url": "https://github.com/deckerst/aves/releases",
       "estado": "ok",
-      "slug": "aves-gallery"
+      "slug": "aves-gallery",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Fossify Gallery",
@@ -621,7 +675,8 @@
       "tipo": "github",
       "url": "https://github.com/FossifyOrg/Gallery/releases",
       "estado": "ok",
-      "slug": "fossify-gallery"
+      "slug": "fossify-gallery",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Lespas",
@@ -632,7 +687,8 @@
       "tipo": "github",
       "url": "https://github.com/scubajeff/lespas/releases",
       "estado": "ok",
-      "slug": "lespas"
+      "slug": "lespas",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "mpvEx",
@@ -643,7 +699,8 @@
       "tipo": "github",
       "url": "https://github.com/marlboro-advance/mpvEx/releases",
       "estado": "ok",
-      "slug": "mpvex"
+      "slug": "mpvex",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "VLC",
@@ -654,7 +711,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=org.videolan.vlc&hl=es",
       "estado": "ok",
-      "slug": "vlc"
+      "slug": "vlc",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "HeliBoard",
@@ -665,7 +723,8 @@
       "tipo": "github",
       "url": "https://github.com/HeliBorg/HeliBoard/releases",
       "estado": "ok",
-      "slug": "heliboard"
+      "slug": "heliboard",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Floriboard",
@@ -676,7 +735,8 @@
       "tipo": "github",
       "url": "https://github.com/florisboard/florisboard/releases",
       "estado": "ok",
-      "slug": "floriboard"
+      "slug": "floriboard",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "APK Extractor",
@@ -687,7 +747,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.dylan.win11.app.extractor",
       "estado": "ok",
-      "slug": "apk-extractor"
+      "slug": "apk-extractor",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Airpush Detector",
@@ -698,7 +759,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=popup.ads.detector",
       "estado": "ok",
-      "slug": "airpush-detector"
+      "slug": "airpush-detector",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Uso del Disco",
@@ -709,7 +771,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=uso%20del%20disco&c=apps",
       "estado": "ok",
-      "slug": "uso-del-disco"
+      "slug": "uso-del-disco",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "CPU-Z",
@@ -720,7 +783,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.cpuid.cpu_z",
       "estado": "ok",
-      "slug": "cpu-z"
+      "slug": "cpu-z",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Gsam Battery",
@@ -731,7 +795,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.gsamlabs.bbm",
       "estado": "ok",
-      "slug": "gsam-battery"
+      "slug": "gsam-battery",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Ampere",
@@ -742,7 +807,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=ampere&c=apps",
       "estado": "ok",
-      "slug": "ampere"
+      "slug": "ampere",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Teamviewer",
@@ -753,7 +819,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.teamviewer.teamviewer.market.mobile",
       "estado": "ok",
-      "slug": "teamviewer"
+      "slug": "teamviewer",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Settle Up",
@@ -764,7 +831,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/search?q=Settle%20Up&c=apps",
       "estado": "ok",
-      "slug": "settle-up"
+      "slug": "settle-up",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Morphhe",
@@ -775,7 +843,8 @@
       "tipo": "web",
       "url": "https://morphe.software/",
       "estado": "ok",
-      "slug": "morphhe"
+      "slug": "morphhe",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "ShizuCallRecorder",
@@ -786,7 +855,8 @@
       "tipo": "github",
       "url": "https://github.com/kitsumed/ShizuCallRecorder/releases/tag/v1.0.0",
       "estado": "ok",
-      "slug": "shizucallrecorder"
+      "slug": "shizucallrecorder",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Shizuku 💎",
@@ -797,7 +867,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api",
       "estado": "ok",
-      "slug": "shizuku"
+      "slug": "shizuku",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Canta",
@@ -808,7 +879,8 @@
       "tipo": "github",
       "url": "https://github.com/samolego/Canta/releases",
       "estado": "ok",
-      "slug": "canta"
+      "slug": "canta",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Hail",
@@ -819,7 +891,8 @@
       "tipo": "github",
       "url": "https://github.com/aistra0528/Hail/releases",
       "estado": "ok",
-      "slug": "hail"
+      "slug": "hail",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "HyperCeiler",
@@ -830,7 +903,8 @@
       "tipo": "github",
       "url": "https://github.com/aistra0528/HyperCeiler/releases",
       "estado": "ok",
-      "slug": "hyperceiler"
+      "slug": "hyperceiler",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "App Ops",
@@ -841,7 +915,8 @@
       "tipo": "github",
       "url": "https://github.com/MuntashirAkon/AppOps/releases",
       "estado": "ok",
-      "slug": "app-ops"
+      "slug": "app-ops",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Install Options",
@@ -852,7 +927,8 @@
       "tipo": "github",
       "url": "https://github.com/zacharee/InstallWithOptions",
       "estado": "ok",
-      "slug": "install-options"
+      "slug": "install-options",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Namida",
@@ -863,7 +939,8 @@
       "tipo": "github",
       "url": "https://github.com/namidaco/namida/releases",
       "estado": "ok",
-      "slug": "namida"
+      "slug": "namida",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Kreate",
@@ -874,7 +951,8 @@
       "tipo": "github",
       "url": "https://github.com/knighthat/Kreate/releases",
       "estado": "ok",
-      "slug": "kreate"
+      "slug": "kreate",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Metro",
@@ -885,7 +963,8 @@
       "tipo": "github",
       "url": "https://github.com/MetrolistGroup/Metrolist",
       "estado": "ok",
-      "slug": "metro"
+      "slug": "metro",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "DixMax",
@@ -896,7 +975,8 @@
       "tipo": "telegram",
       "url": "https://t.me/dixmaxappsoficial#",
       "estado": "ok",
-      "slug": "dixmax"
+      "slug": "dixmax",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "TDTSpain",
@@ -907,7 +987,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.tdtespanatvchanells.espanatdtchanelsmovies",
       "estado": "ok",
-      "slug": "tdtspain"
+      "slug": "tdtspain",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Agenda Deportes",
@@ -918,7 +999,8 @@
       "tipo": "telegram",
       "url": "https://t.me/agendadeportes",
       "estado": "ok",
-      "slug": "agenda-deportes"
+      "slug": "agenda-deportes",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "FCTV33",
@@ -929,7 +1011,8 @@
       "tipo": "telegram",
       "url": "https://t.me/fctv33",
       "estado": "ok",
-      "slug": "fctv33"
+      "slug": "fctv33",
+      "fecha": "2026-09-06"
     },
     {
       "nombre": "Adguard",
@@ -940,7 +1023,8 @@
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.adguard.android.contentblocker&hl=es",
       "estado": "ok",
-      "slug": "adguard"
+      "slug": "adguard",
+      "fecha": "2026-09-06"
     }
   ]
 }
