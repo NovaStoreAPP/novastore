@@ -73,7 +73,8 @@
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);transition:background .2s,color .2s}
-  header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;transition:box-shadow .2s}
+  header.scrolled{box-shadow:var(--shadow)}
   .header-inner{max-width:900px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
   .logo{display:flex;align-items:center;gap:10px;min-width:0}
   .logo-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 30%,#c04cff 60%,#ff5f8f 100%);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;box-shadow:0 3px 10px rgba(123,92,255,.35)}
@@ -107,7 +108,7 @@
   .category-header:first-child{margin-top:0}
   .category-title-row{display:flex;align-items:baseline;gap:8px}
   .category-title{font-size:16px;font-weight:800;letter-spacing:-.2px;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .category-count{font-size:11.5px;font-weight:600;color:var(--text-secondary)}
+  .category-count{font-size:11px;font-weight:700;color:#fff;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);padding:2px 9px;border-radius:20px}
   .category-divider{height:3px;width:52px;border-radius:3px;margin-top:6px;background:linear-gradient(90deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%)}
 
   .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:var(--text-secondary);margin:0 0 14px;padding:0 2px}
@@ -132,6 +133,10 @@
   .badge-web{background:var(--badge-web-bg);color:var(--badge-web-text)}
   .badge-play{background:var(--badge-play-bg);color:var(--badge-play-text)}
   .badge-external{background:var(--badge-external-bg);color:var(--badge-external-text)}
+  .badge-new{background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);color:#fff}
+  @keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .app-row{animation:cardIn .35s ease both}
+  @media (prefers-reduced-motion:reduce){.app-row{animation:none}}
   .badge-telegram{background:var(--badge-telegram-bg);color:var(--badge-telegram-text)}
   .status-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px 3px 8px;border-radius:20px}
   .status-ok{background:var(--status-ok-bg);color:var(--status-ok-text)}
@@ -267,6 +272,18 @@ let categorias=[];
 let selectedCategory='';
 let sortMode='recientes';
 
+// Los filtros (categoría + orden) sobreviven a un refresco de página, igual que el tema.
+function saveFilters(){
+  try{localStorage.setItem('novastore_filters',JSON.stringify({category:selectedCategory,sort:sortMode}))}catch(e){}
+}
+try{
+  const storedFilters=JSON.parse(localStorage.getItem('novastore_filters')||'null');
+  if(storedFilters){
+    if(typeof storedFilters.category==='string')selectedCategory=storedFilters.category;
+    if(typeof storedFilters.sort==='string')sortMode=storedFilters.sort;
+  }
+}catch(e){}
+
 // --- tema claro/oscuro ---
 const MOON_SVG='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>';
 const SUN_SVG='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
@@ -282,11 +299,26 @@ document.getElementById('btn-theme').addEventListener('click',()=>{
   applyThemeUI(currentTheme);
 });
 
-function hashColor(str){
+// Sombra en la cabecera solo cuando se ha hecho scroll, para dar sensación de profundidad.
+const headerEl=document.querySelector('header');
+window.addEventListener('scroll',()=>{
+  headerEl.classList.toggle('scrolled',window.scrollY>4);
+},{passive:true});
+
+// Variaciones del degradado de marca (mismo que el logo) para los iconos de iniciales,
+// así una app sin icono propio se siente "de la casa" en vez de un color al azar.
+const BRAND_GRADIENTS=[
+  'linear-gradient(135deg,#4f7cff,#7b5cff)',
+  'linear-gradient(135deg,#7b5cff,#c04cff)',
+  'linear-gradient(135deg,#c04cff,#ff5f8f)',
+  'linear-gradient(135deg,#4f7cff,#c04cff)',
+  'linear-gradient(135deg,#7b5cff,#ff5f8f)',
+  'linear-gradient(135deg,#4f7cff,#ff5f8f)'
+];
+function hashGradient(str){
   let hash=0;
   for(let i=0;i<str.length;i++){hash=str.charCodeAt(i)+((hash<<5)-hash);}
-  const hue=Math.abs(hash)%360;
-  return `hsl(${hue},58%,48%)`;
+  return BRAND_GRADIENTS[Math.abs(hash)%BRAND_GRADIENTS.length];
 }
 function initials(name){return name.trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase()}
 function escapeHtml(str){
@@ -315,6 +347,14 @@ function warnIconsHtml(app){
   return html;
 }
 // La fecha se guarda como YYYY-MM-DD desde el admin; aquí se muestra como dd/mm/aaaa.
+// Una app se considera "Nueva" si su fecha está dentro de los últimos 7 días.
+function isRecent(fecha){
+  if(!fecha)return false;
+  const d=new Date(fecha+'T00:00:00');
+  if(isNaN(d.getTime()))return false;
+  const diffDays=(Date.now()-d.getTime())/86400000;
+  return diffDays>=0&&diffDays<=7;
+}
 function formatFecha(fecha){
   if(!fecha)return '';
   const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(fecha);
@@ -349,7 +389,7 @@ function buildFallbackIconEl(name,tipo){
   }
   const div=document.createElement('div');
   div.className='app-icon';
-  div.style.background=hashColor(name);
+  div.style.background=hashGradient(name);
   div.textContent=initials(name||'?');
   return div;
 }
@@ -385,6 +425,7 @@ function renderCatSheetList(){
     el.addEventListener('click',()=>{
       selectedCategory=el.dataset.cat;
       updateActiveCatChip();
+      saveFilters();
       closeSheetEl('cat-sheet');
       renderCatalog();
     });
@@ -407,6 +448,7 @@ document.getElementById('cat-sheet').addEventListener('click',e=>{if(e.target.id
 document.getElementById('active-cat-clear').addEventListener('click',()=>{
   selectedCategory='';
   updateActiveCatChip();
+  saveFilters();
   renderCatalog();
 });
 
@@ -422,6 +464,7 @@ function renderSortMenu(){
     el.addEventListener('click',()=>{
       sortMode=el.dataset.sort;
       document.getElementById('sort-select-label').textContent=SORT_OPTIONS.find(o=>o.value===sortMode).label;
+      saveFilters();
       closeAllMenus();
       renderCatalog();
     });
@@ -449,6 +492,7 @@ document.addEventListener('click',e=>{
 function clearAllFilters(){
   selectedCategory='';
   updateActiveCatChip();
+  saveFilters();
   document.getElementById('search-input').value='';
   renderCatalog();
 }
@@ -482,7 +526,7 @@ function buildAppRowEl(app){
     <p class="app-name">${escapeHtml(app.nombre)}</p>
     <p class="app-meta">${escapeHtml(app.categoria||'General')}${app.fecha?` · Actualizado ${formatFecha(app.fecha)}`:''}</p>
     ${app.descripcion?`<p class="app-desc">${escapeHtml(app.descripcion)}</p>`:''}
-    <div class="app-tags">${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}</div>
+    <div class="app-tags">${isRecent(app.fecha)?'<span class="badge badge-new">Nuevo</span>':''}${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}</div>
   `;
   main.appendChild(info);
   row.appendChild(main);
@@ -538,11 +582,18 @@ function renderCatalog(){
     return;
   }
   list.innerHTML='';
+  let cardIdx=0;
+  const appendAnimated=app=>{
+    const row=buildAppRowEl(app);
+    row.style.animationDelay=`${Math.min(cardIdx,10)*25}ms`;
+    cardIdx++;
+    list.appendChild(row);
+  };
 
   // Si ya se ha filtrado por una categoría concreta, todos los resultados son de esa
   // categoría: no hace falta repetir cabeceras, se muestra la lista plana.
   if(selectedCategory){
-    filtered.forEach(app=>list.appendChild(buildAppRowEl(app)));
+    filtered.forEach(appendAnimated);
     return;
   }
 
@@ -568,7 +619,7 @@ function renderCatalog(){
     const items=groups.get(cat);
     if(!items||!items.length)return;
     list.appendChild(buildCategoryHeaderEl(cat,items.length));
-    items.forEach(app=>list.appendChild(buildAppRowEl(app)));
+    items.forEach(appendAnimated);
   });
 }
 
@@ -707,6 +758,10 @@ document.getElementById('share-tiktok').addEventListener('click',()=>{
 });
 document.getElementById('btn-cerrar-share').addEventListener('click',()=>closeSheetEl('share-sheet'));
 document.getElementById('share-sheet').addEventListener('click',e=>{if(e.target.id==='share-sheet')closeSheetEl('share-sheet')});
+
+// Reflejar en la interfaz los filtros restaurados de localStorage antes de la primera carga.
+document.getElementById('sort-select-label').textContent=(SORT_OPTIONS.find(o=>o.value===sortMode)||SORT_OPTIONS[0]).label;
+updateActiveCatChip();
 
 loadFromFetch();
 </script>
