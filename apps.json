@@ -22,6 +22,18 @@
   ],
   "apps": [
     {
+      "nombre": "PlayUs",
+      "categoria": "Juegos",
+      "descripcion": "Juega con tus amigos a retos diarios y compite por ser el mejor. Cada día un juego nuevo.",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=club.playus&hl=es",
+      "estado": "ok",
+      "slug": "playus",
+      "ads": true,
+      "suscripcion": false,
+      "fecha": "2026-09-07"
+    },
+    {
       "nombre": "Foroplus",
       "peso": "46",
       "categoria": "Redes",
