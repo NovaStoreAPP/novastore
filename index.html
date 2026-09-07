@@ -182,15 +182,16 @@
   .detail-name{font-weight:800;font-size:19px;margin:0 0 3px}
   .detail-meta{font-size:12.5px;color:var(--text-secondary);margin:0 0 8px}
   .detail-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-  .detail-section-title{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text-secondary);margin:24px 0 10px}
-  .detail-section-title.is-first{margin-top:0}
+  .detail-tabbar{border-bottom:1px solid var(--border);margin:22px 0 18px}
+  .detail-tab{display:inline-block;position:relative;font-size:14.5px;font-weight:700;color:var(--text);padding-bottom:11px}
+  .detail-tab::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:linear-gradient(90deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%)}
   .detail-desc{font-size:13.5px;line-height:1.6;color:var(--text);margin:0;white-space:pre-line}
   .detail-highlight-title{font-size:13px;font-weight:800;letter-spacing:.2px;text-transform:uppercase;margin:28px 0 6px;display:inline-block;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
   .detail-highlight-divider{height:3px;width:42px;border-radius:3px;margin-bottom:14px;background:linear-gradient(90deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%)}
-  .detail-highlights-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:4px 16px}
+  .detail-highlights-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:6px 18px}
   .detail-highlights{list-style:none;margin:0;padding:0}
-  .detail-highlights li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.5;color:var(--text);padding:12px 0;border-bottom:1px solid var(--border)}
-  .detail-highlights li:last-child{border-bottom:none}
+  .detail-highlights li{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;line-height:1.55;color:var(--text);padding:14px 0}
+  .detail-highlights li+li{border-top:1px solid var(--border)}
   .detail-highlights li svg{flex-shrink:0;margin-top:2px;color:var(--green)}
   .detail-cta-row{display:flex;gap:8px;margin:18px 0 8px}
   .detail-cta-row .btn-download{flex:1;text-align:center;padding:13px 20px;font-size:14.5px}
@@ -330,7 +331,7 @@
           </button>
           <a class="btn-download" id="detail-download" target="_blank" rel="noopener">Ir a la fuente</a>
         </div>
-        <p class="detail-section-title is-first">Descripción</p>
+        <div class="detail-tabbar"><span class="detail-tab">Descripción</span></div>
         <p class="detail-desc" id="detail-desc"></p>
         <div id="detail-highlights-wrap" style="display:none">
           <p class="detail-highlight-title">Destacado</p>
