@@ -163,6 +163,18 @@
   .share-item span{font-size:12px;font-weight:600;color:var(--text)}
   .btn-ghost{background:transparent;color:var(--text-secondary);border:none;padding:12px;font-size:14px;font-weight:600;width:100%;cursor:pointer;font-family:inherit}
 
+  .app-row{cursor:pointer}
+  .app-row a,.app-row button{cursor:pointer}
+  .detail-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+  .detail-icon{width:64px;height:64px;border-radius:16px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px;overflow:hidden}
+  .detail-info{flex:1;min-width:0}
+  .detail-name{font-weight:800;font-size:18px;margin:0 0 3px}
+  .detail-meta{font-size:12.5px;color:var(--text-secondary);margin:0 0 8px}
+  .detail-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .detail-desc{font-size:13.5px;line-height:1.55;color:var(--text);margin:0 0 20px;white-space:pre-line}
+  .detail-actions{display:flex;gap:8px}
+  .detail-actions .btn-download{flex:1;text-align:center;padding:12px 20px;font-size:14px}
+
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1c1e;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90%;text-align:center}
   .toast.show{opacity:1}
 
@@ -254,6 +266,26 @@
       <button class="share-item" id="share-tiktok"><img src="" alt="TikTok"><span>TikTok</span></button>
     </div>
     <button class="btn-ghost" id="btn-cerrar-share">Cancelar</button>
+  </div>
+</div>
+
+<div class="sheet-overlay" id="detail-sheet">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <div class="detail-head">
+      <div id="detail-icon-slot"></div>
+      <div class="detail-info">
+        <p class="detail-name" id="detail-name"></p>
+        <p class="detail-meta" id="detail-meta"></p>
+        <div class="detail-tags" id="detail-tags"></div>
+      </div>
+    </div>
+    <p class="detail-desc" id="detail-desc"></p>
+    <div class="detail-actions">
+      <button class="btn-share" id="detail-share-btn" aria-label="Compartir"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg></button>
+      <a class="btn-download" id="detail-download" target="_blank" rel="noopener">Ir a la fuente</a>
+    </div>
+    <button class="btn-ghost" id="btn-cerrar-detail">Cerrar</button>
   </div>
 </div>
 
@@ -492,7 +524,7 @@ function buildAppRowEl(app){
   shareBtn.className='btn-share';
   shareBtn.setAttribute('aria-label','Compartir');
   shareBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>';
-  shareBtn.addEventListener('click',()=>openShareSheet(app));
+  shareBtn.addEventListener('click',e=>{e.stopPropagation();openShareSheet(app)});
   actions.appendChild(shareBtn);
   const link=document.createElement('a');
   link.className='btn-download';
@@ -500,8 +532,13 @@ function buildAppRowEl(app){
   link.target='_blank';
   link.rel='noopener';
   link.textContent='Descargar';
+  link.addEventListener('click',e=>e.stopPropagation());
   actions.appendChild(link);
   row.appendChild(actions);
+
+  // Al pulsar en cualquier parte de la fila (fuera de los botones de arriba) se abre
+  // la ficha de la app con la descripción completa y el enlace a la fuente.
+  row.addEventListener('click',()=>openDetailSheet(app));
 
   return row;
 }
@@ -651,6 +688,30 @@ function siteBase(){
 function shareUrlFor(app){
   return app.slug ? `${siteBase()}share/${app.slug}.html` : app.url;
 }
+
+// --- ficha de detalle de la app (icono grande, descripción completa, ir a la fuente) ---
+let detailTarget=null;
+function openDetailSheet(app){
+  detailTarget=app;
+  document.getElementById('detail-icon-slot').innerHTML='';
+  const icon=buildIconEl(app);
+  icon.classList.remove('app-icon');
+  icon.classList.add('detail-icon');
+  document.getElementById('detail-icon-slot').appendChild(icon);
+  document.getElementById('detail-name').textContent=app.nombre;
+  document.getElementById('detail-meta').textContent=`${app.categoria||'General'}${app.fecha?` · Actualizado ${formatFecha(app.fecha)}`:''}`;
+  document.getElementById('detail-tags').innerHTML=`${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}`;
+  document.getElementById('detail-desc').textContent=app.descripcion||'Sin descripción todavía.';
+  const dl=document.getElementById('detail-download');
+  dl.href=app.url;
+  dl.textContent='Ir a la fuente';
+  openSheetEl('detail-sheet');
+}
+document.getElementById('detail-share-btn').addEventListener('click',()=>{
+  if(detailTarget)openShareSheet(detailTarget);
+});
+document.getElementById('btn-cerrar-detail').addEventListener('click',()=>closeSheetEl('detail-sheet'));
+document.getElementById('detail-sheet').addEventListener('click',e=>{if(e.target.id==='detail-sheet')closeSheetEl('detail-sheet')});
 
 let shareTarget=null;
 function openShareSheet(app){
