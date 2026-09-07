@@ -166,11 +166,16 @@
   .app-row{cursor:pointer}
   .app-row a,.app-row button{cursor:pointer}
 
-  /* --- ficha de detalle a pantalla completa --- */
+  /* --- ficha de detalle a pantalla completa (centrada en pantallas anchas) --- */
   #detail-sheet{align-items:stretch;justify-content:stretch}
   #detail-sheet .sheet{width:100%;max-width:none;height:100dvh;max-height:100dvh;border-radius:0;padding:0;display:flex;flex-direction:column}
+  @media (min-width:701px){
+    #detail-sheet{justify-content:center}
+    #detail-sheet .sheet{max-width:640px;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+  }
   .detail-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 10px;border-bottom:1px solid var(--border);flex-shrink:0}
-  .detail-scroll{flex:1;overflow-y:auto;padding:22px 20px 30px}
+  .detail-scroll{flex:1;overflow-y:auto}
+  .detail-container{padding:22px 20px 30px}
   .detail-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
   .detail-icon{width:68px;height:68px;border-radius:18px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:22px;overflow:hidden}
   .detail-info{flex:1;min-width:0}
@@ -178,10 +183,14 @@
   .detail-meta{font-size:12.5px;color:var(--text-secondary);margin:0 0 8px}
   .detail-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
   .detail-section-title{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text-secondary);margin:24px 0 10px}
-  .detail-section-title:first-of-type{margin-top:0}
+  .detail-section-title.is-first{margin-top:0}
   .detail-desc{font-size:13.5px;line-height:1.6;color:var(--text);margin:0;white-space:pre-line}
+  .detail-highlight-title{font-size:13px;font-weight:800;letter-spacing:.2px;text-transform:uppercase;margin:28px 0 6px;display:inline-block;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .detail-highlight-divider{height:3px;width:42px;border-radius:3px;margin-bottom:14px;background:linear-gradient(90deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%)}
+  .detail-highlights-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:4px 16px}
   .detail-highlights{list-style:none;margin:0;padding:0}
-  .detail-highlights li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.5;color:var(--text);margin-bottom:10px}
+  .detail-highlights li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.5;color:var(--text);padding:12px 0;border-bottom:1px solid var(--border)}
+  .detail-highlights li:last-child{border-bottom:none}
   .detail-highlights li svg{flex-shrink:0;margin-top:2px;color:var(--green)}
   .detail-actions{position:sticky;bottom:0;background:var(--card);padding:14px 18px;border-top:1px solid var(--border);flex-shrink:0}
   .detail-actions .btn-download{display:block;text-align:center;padding:13px 20px;font-size:14.5px}
@@ -308,19 +317,24 @@
       </button>
     </div>
     <div class="detail-scroll">
-      <div class="detail-head">
-        <div id="detail-icon-slot"></div>
-        <div class="detail-info">
-          <p class="detail-name" id="detail-name"></p>
-          <p class="detail-meta" id="detail-meta"></p>
-          <div class="detail-tags" id="detail-tags"></div>
+      <div class="detail-container">
+        <div class="detail-head">
+          <div id="detail-icon-slot"></div>
+          <div class="detail-info">
+            <p class="detail-name" id="detail-name"></p>
+            <p class="detail-meta" id="detail-meta"></p>
+            <div class="detail-tags" id="detail-tags"></div>
+          </div>
         </div>
-      </div>
-      <p class="detail-section-title">Descripción</p>
-      <p class="detail-desc" id="detail-desc"></p>
-      <div id="detail-highlights-wrap" style="display:none">
-        <p class="detail-section-title">Destacado</p>
-        <ul class="detail-highlights" id="detail-highlights"></ul>
+        <p class="detail-section-title is-first">Descripción</p>
+        <p class="detail-desc" id="detail-desc"></p>
+        <div id="detail-highlights-wrap" style="display:none">
+          <p class="detail-highlight-title">Destacado</p>
+          <div class="detail-highlight-divider"></div>
+          <div class="detail-highlights-card">
+            <ul class="detail-highlights" id="detail-highlights"></ul>
+          </div>
+        </div>
       </div>
     </div>
     <div class="detail-actions">
