@@ -837,14 +837,15 @@ async function copyLinkAndNotify(app,network){
     showToast(`Copia este enlace para compartir en ${network}: ${link}`);
   }
 }
-// Mensaje de texto que acompaña al enlace: mismo formato en WhatsApp y Telegram.
-// El "Enlace" es siempre la página de NovaStore (share/slug.html), nunca la
-// URL directa de Play Store/GitHub, para que la persona entre primero a la web.
-function shareMessageFor(app){
+// Mensaje de texto que acompaña al enlace.
+// includeLink=false para Telegram: ahí el enlace ya se manda aparte (parámetro
+// "url") y Telegram lo muestra solo como vista previa; si lo repetimos aquí
+// sale duplicado (una vez como preview y otra vez dentro del texto).
+function shareMessageFor(app,includeLink=true){
   const lineas=[`Título: ${app.nombre}`];
   lineas.push(`Descripción: ${app.descripcion||'—'}`);
   lineas.push(`Categoría: ${app.categoria||'General'}`);
-  lineas.push(`Enlace: ${shareUrlFor(app)}`);
+  if(includeLink)lineas.push(`Enlace: ${shareUrlFor(app)}`);
   return lineas.join('\n');
 }
 document.getElementById('share-whatsapp').addEventListener('click',()=>{
@@ -855,7 +856,8 @@ document.getElementById('share-whatsapp').addEventListener('click',()=>{
 document.getElementById('share-telegram').addEventListener('click',()=>{
   if(!shareTarget)return;
   // En Telegram, "url" alimenta la vista previa (banner) y "text" es el pie de mensaje.
-  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrlFor(shareTarget))}&text=${encodeURIComponent(shareMessageFor(shareTarget))}`,'_blank','noopener');
+  // No repetimos el enlace en el texto porque Telegram ya lo pone como primera línea.
+  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrlFor(shareTarget))}&text=${encodeURIComponent(shareMessageFor(shareTarget,false))}`,'_blank','noopener');
   closeSheetEl('share-sheet');
 });
 document.getElementById('share-instagram').addEventListener('click',()=>{
