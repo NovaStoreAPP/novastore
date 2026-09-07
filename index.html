@@ -165,15 +165,40 @@
 
   .app-row{cursor:pointer}
   .app-row a,.app-row button{cursor:pointer}
-  .detail-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
-  .detail-icon{width:64px;height:64px;border-radius:16px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px;overflow:hidden}
+
+  /* --- ficha de detalle a pantalla completa --- */
+  #detail-sheet{align-items:stretch;justify-content:stretch}
+  #detail-sheet .sheet{width:100%;max-width:none;height:100dvh;max-height:100dvh;border-radius:0;padding:0;display:flex;flex-direction:column}
+  .detail-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 10px;border-bottom:1px solid var(--border);flex-shrink:0}
+  .detail-scroll{flex:1;overflow-y:auto;padding:22px 20px 30px}
+  .detail-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+  .detail-icon{width:68px;height:68px;border-radius:18px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:22px;overflow:hidden}
   .detail-info{flex:1;min-width:0}
-  .detail-name{font-weight:800;font-size:18px;margin:0 0 3px}
+  .detail-name{font-weight:800;font-size:19px;margin:0 0 3px}
   .detail-meta{font-size:12.5px;color:var(--text-secondary);margin:0 0 8px}
   .detail-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-  .detail-desc{font-size:13.5px;line-height:1.55;color:var(--text);margin:0 0 20px;white-space:pre-line}
-  .detail-actions{display:flex;gap:8px}
-  .detail-actions .btn-download{flex:1;text-align:center;padding:12px 20px;font-size:14px}
+  .detail-section-title{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text-secondary);margin:24px 0 10px}
+  .detail-section-title:first-of-type{margin-top:0}
+  .detail-desc{font-size:13.5px;line-height:1.6;color:var(--text);margin:0;white-space:pre-line}
+  .detail-highlights{list-style:none;margin:0;padding:0}
+  .detail-highlights li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.5;color:var(--text);margin-bottom:10px}
+  .detail-highlights li svg{flex-shrink:0;margin-top:2px;color:var(--green)}
+  .detail-actions{position:sticky;bottom:0;background:var(--card);padding:14px 18px;border-top:1px solid var(--border);flex-shrink:0}
+  .detail-actions .btn-download{display:block;text-align:center;padding:13px 20px;font-size:14.5px}
+
+  /* --- menú lateral (hamburguesa) --- */
+  .drawer-overlay{position:fixed;inset:0;background:var(--overlay);z-index:40;display:none}
+  .drawer-overlay.open{display:block}
+  .drawer{position:fixed;top:0;left:0;bottom:0;width:80%;max-width:290px;background:var(--card);box-shadow:4px 0 24px rgba(0,0,0,.18);display:flex;flex-direction:column;padding:18px 12px;transform:translateX(-100%);transition:transform .2s}
+  .drawer-overlay.open .drawer{transform:translateX(0)}
+  .drawer-top{display:flex;align-items:center;gap:10px;padding:4px 8px 16px;border-bottom:1px solid var(--border);margin-bottom:10px}
+  .drawer-nav{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:1px}
+  .drawer-item{display:flex;align-items:center;gap:12px;background:none;border:none;padding:12px 10px;border-radius:12px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;text-align:left;width:100%}
+  .drawer-item:active{background:var(--bg)}
+  .drawer-item.active{background:var(--badge-play-bg);color:var(--badge-play-text)}
+  .drawer-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-secondary);padding:16px 10px 4px}
+  .drawer-footer{border-top:1px solid var(--border);padding-top:8px;margin-top:6px}
+  .drawer-version{font-size:11px;color:var(--text-secondary);text-align:center;padding:10px 0 0}
 
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1c1e;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90%;text-align:center}
   .toast.show{opacity:1}
@@ -190,6 +215,9 @@
 
 <header>
   <div class="header-inner">
+    <button class="icon-btn" id="btn-menu" aria-label="Menú">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
     <div class="logo">
       <div class="logo-mark">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -271,21 +299,61 @@
 
 <div class="sheet-overlay" id="detail-sheet">
   <div class="sheet">
-    <div class="sheet-handle"></div>
-    <div class="detail-head">
-      <div id="detail-icon-slot"></div>
-      <div class="detail-info">
-        <p class="detail-name" id="detail-name"></p>
-        <p class="detail-meta" id="detail-meta"></p>
-        <div class="detail-tags" id="detail-tags"></div>
+    <div class="detail-topbar">
+      <button class="icon-btn" id="btn-cerrar-detail" aria-label="Volver">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="icon-btn" id="detail-share-btn" aria-label="Compartir">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>
+      </button>
+    </div>
+    <div class="detail-scroll">
+      <div class="detail-head">
+        <div id="detail-icon-slot"></div>
+        <div class="detail-info">
+          <p class="detail-name" id="detail-name"></p>
+          <p class="detail-meta" id="detail-meta"></p>
+          <div class="detail-tags" id="detail-tags"></div>
+        </div>
+      </div>
+      <p class="detail-section-title">Descripción</p>
+      <p class="detail-desc" id="detail-desc"></p>
+      <div id="detail-highlights-wrap" style="display:none">
+        <p class="detail-section-title">Destacado</p>
+        <ul class="detail-highlights" id="detail-highlights"></ul>
       </div>
     </div>
-    <p class="detail-desc" id="detail-desc"></p>
     <div class="detail-actions">
-      <button class="btn-share" id="detail-share-btn" aria-label="Compartir"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg></button>
       <a class="btn-download" id="detail-download" target="_blank" rel="noopener">Ir a la fuente</a>
     </div>
-    <button class="btn-ghost" id="btn-cerrar-detail">Cerrar</button>
+  </div>
+</div>
+
+<div class="drawer-overlay" id="drawer-overlay">
+  <div class="drawer">
+    <div class="drawer-top">
+      <div class="logo-mark" style="width:32px;height:32px;border-radius:9px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 9.5 12 4l8 5.5V19a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1V9.5Z" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="logo-text" style="font-size:17px">NovaStore</div>
+    </div>
+    <nav class="drawer-nav">
+      <button class="drawer-item" id="drawer-inicio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>
+        Inicio
+      </button>
+      <p class="drawer-label">Categorías</p>
+      <div id="drawer-categories"></div>
+    </nav>
+    <div class="drawer-footer">
+      <button class="drawer-item" id="drawer-about">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        Acerca de
+      </button>
+      <p class="drawer-version">v1.0.0</p>
+    </div>
   </div>
 </div>
 
@@ -702,6 +770,15 @@ function openDetailSheet(app){
   document.getElementById('detail-meta').textContent=`${app.categoria||'General'}${app.fecha?` · Actualizado ${formatFecha(app.fecha)}`:''}`;
   document.getElementById('detail-tags').innerHTML=`${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}`;
   document.getElementById('detail-desc').textContent=app.descripcion||'Sin descripción todavía.';
+  const featWrap=document.getElementById('detail-highlights-wrap');
+  const featList=document.getElementById('detail-highlights');
+  const feats=Array.isArray(app.caracteristicas)?app.caracteristicas.filter(Boolean):[];
+  if(feats.length){
+    featList.innerHTML=feats.map(f=>`<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>${escapeHtml(f)}</span></li>`).join('');
+    featWrap.style.display='block';
+  }else{
+    featWrap.style.display='none';
+  }
   const dl=document.getElementById('detail-download');
   dl.href=app.url;
   dl.textContent='Ir a la fuente';
@@ -712,6 +789,38 @@ document.getElementById('detail-share-btn').addEventListener('click',()=>{
 });
 document.getElementById('btn-cerrar-detail').addEventListener('click',()=>closeSheetEl('detail-sheet'));
 document.getElementById('detail-sheet').addEventListener('click',e=>{if(e.target.id==='detail-sheet')closeSheetEl('detail-sheet')});
+
+// --- menú lateral (hamburguesa): Inicio, categorías y acerca de ---
+function openDrawer(){
+  renderDrawerCategories();
+  document.getElementById('drawer-overlay').classList.add('open');
+}
+function closeDrawer(){document.getElementById('drawer-overlay').classList.remove('open')}
+function renderDrawerCategories(){
+  const wrap=document.getElementById('drawer-categories');
+  const cats=effectiveCategorias();
+  wrap.innerHTML=cats.map(c=>`<button class="drawer-item ${c===selectedCategory?'active':''}" data-cat="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join('');
+  wrap.querySelectorAll('.drawer-item').forEach(el=>{
+    el.addEventListener('click',()=>{
+      selectedCategory=el.dataset.cat;
+      document.getElementById('cat-select-label').textContent=selectedCategory||'Todas las categorías';
+      closeDrawer();
+      renderCatalog();
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+}
+document.getElementById('btn-menu').addEventListener('click',openDrawer);
+document.getElementById('drawer-overlay').addEventListener('click',e=>{if(e.target.id==='drawer-overlay')closeDrawer()});
+document.getElementById('drawer-inicio').addEventListener('click',()=>{
+  clearAllFilters();
+  closeDrawer();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.getElementById('drawer-about').addEventListener('click',()=>{
+  closeDrawer();
+  showToast('NovaStore — apps verificadas, alternativas y proyectos open source.');
+});
 
 let shareTarget=null;
 function openShareSheet(app){
