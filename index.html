@@ -93,7 +93,7 @@
   .active-cat-chip{display:inline-flex;align-items:center;gap:6px;background:var(--badge-play-bg);color:var(--badge-play-text);border-radius:20px;padding:6px 8px 6px 14px;font-size:12.5px;font-weight:600;margin:0 0 12px}
   .active-cat-chip button{background:none;border:none;color:inherit;padding:4px;border-radius:50%;display:flex;cursor:pointer}
   .active-cat-chip button:active{background:rgba(0,0,0,.08)}
-  .cat-select{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;max-width:100%}
+  .cat-select{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:10px 18px;font-size:15px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;max-width:100%}
   .cat-select svg{flex-shrink:0;transition:transform .15s}
   .cat-select[aria-expanded="true"] svg{transform:rotate(180deg)}
   .cat-select span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -391,7 +391,7 @@ function badgeFor(tipo){
   if(tipo==='web')return '<span class="badge badge-web">Web oficial</span>';
   if(tipo==='telegram')return '<span class="badge badge-telegram">Telegram</span>';
   if(tipo==='external')return '<span class="badge badge-external">Enlace externo</span>';
-  return '<span class="badge badge-play">Play Store</span>';
+  return '';
 }
 function statusPillHtml(estado){
   if(estado==='regular')return `<span class="status-pill status-regular"><span class="status-dot"></span>Regular</span>`;
@@ -762,11 +762,12 @@ function closeSheetEl(id){document.getElementById(id).classList.remove('open')}
 function siteBase(){
   return location.href.split('#')[0].split('?')[0].replace(/[^/]*$/,'');
 }
-// Si el admin generó una página de vista previa (share/slug.html) para esta app,
-// compartimos esa página: así WhatsApp/Telegram muestran banner, título y descripción.
-// Si la app todavía no tiene "slug" (apps antiguas), se comparte el enlace directo.
+// Compartimos siempre el enlace principal de la web (con el nombre de la app
+// como parámetro, solo para que al abrirlo pueda resaltarse esa app).
+// Así la preview en WhatsApp/Telegram usa siempre el mismo banner de NovaStore
+// que ya está definido arriba en el <head> (og:image, og:title, og:description).
 function shareUrlFor(app){
-  return app.slug ? `${siteBase()}share/${app.slug}.html` : app.url;
+  return app.slug ? `${siteBase()}?app=${encodeURIComponent(app.slug)}` : siteBase();
 }
 
 let shareTarget=null;
@@ -842,6 +843,7 @@ async function copyLinkAndNotify(app,network){
 function shareMessageFor(app){
   const lineas=[`Título: ${app.nombre}`];
   lineas.push(`Descripción: ${app.descripcion||'—'}`);
+  lineas.push(`Categoría: ${app.categoria||'General'}`);
   lineas.push(`Enlace: ${shareUrlFor(app)}`);
   return lineas.join('\n');
 }
