@@ -41,15 +41,27 @@
     },
     {
       "nombre": "Foroplus",
-      "peso": "46",
       "categoria": "Redes",
-      "descripcion": "Aplicación no oficial de ForoCoches con muchas herramientas que no encontrarás en la versión móvil.",
-      "banner": "",
+      "descripcion": "Aplicación no oficial de ForoCoches.",
+      "descripcionCompleta": "Aplicación no oficial de Forocoches con muchísimas mejoras.",
+      "caracteristicas": [
+        "Filtro de hilos.",
+        "Filtro de palabras",
+        "Ocultar usuarios ignorados",
+        "Ocultar post de usuarios ignorados",
+        "Navegación más cómoda",
+        "Menú personalizable",
+        "Favoritos",
+        "Notificaciones en tiempo real..",
+        "¡Y mucho más!"
+      ],
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=com.foroplus.app",
       "estado": "ok",
       "slug": "foroplus",
-      "fecha": "2026-09-06"
+      "ads": false,
+      "suscripcion": false,
+      "fecha": "2026-09-07"
     },
     {
       "nombre": "Meulify",
