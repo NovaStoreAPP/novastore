@@ -25,6 +25,12 @@
       "nombre": "PlayUs",
       "categoria": "Juegos",
       "descripcion": "Juega con tus amigos a retos diarios y compite por ser el mejor. Cada día un juego nuevo.",
+      "caracteristicas": [
+        "Divertido",
+        "Cada día un reto nuevo",
+        "Varias oportunidades",
+        "Modo para probarlo antes de tomar la jugada final."
+      ],
       "tipo": "play",
       "url": "https://play.google.com/store/apps/details?id=club.playus&hl=es",
       "estado": "ok",
