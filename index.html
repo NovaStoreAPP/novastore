@@ -86,13 +86,12 @@
   .searchbar input{border:none;outline:none;background:transparent;flex:1;font-size:15px;font-family:inherit;color:var(--text);min-width:0}
   .searchbar svg{flex-shrink:0;color:var(--text-secondary)}
 
-  .filter-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-  .filter-row .dropdown:nth-child(3){grid-column:1 / -1}
-  @media (max-width:420px){
-    .filter-row{grid-template-columns:1fr}
-    .filter-row .dropdown:nth-child(3){grid-column:auto}
-  }
+  .filter-row{display:flex;margin-bottom:10px}
+  .filter-row .dropdown{width:auto;min-width:150px}
   .dropdown{position:relative;width:100%}
+  .active-cat-chip{display:inline-flex;align-items:center;gap:6px;background:var(--badge-play-bg);color:var(--badge-play-text);border-radius:20px;padding:6px 8px 6px 14px;font-size:12.5px;font-weight:600;margin:0 0 12px}
+  .active-cat-chip button{background:none;border:none;color:inherit;padding:4px;border-radius:50%;display:flex;cursor:pointer}
+  .active-cat-chip button:active{background:rgba(0,0,0,.08)}
   .cat-select{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;max-width:100%}
   .cat-select svg{flex-shrink:0;transition:transform .15s}
   .cat-select[aria-expanded="true"] svg{transform:rotate(180deg)}
@@ -125,8 +124,8 @@
   .app-icon{width:52px;height:52px;border-radius:14px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;overflow:hidden}
   .app-body{flex:1;min-width:0;display:flex;flex-direction:column}
   .app-name{font-weight:700;font-size:15px;margin:0 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .app-meta{font-size:11.5px;color:var(--text-secondary);margin:0 0 6px;letter-spacing:.1px}
-  .app-desc{font-size:12.5px;color:var(--text);font-weight:500;margin:0 0 8px;line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .app-meta{font-size:12.5px;color:var(--text-secondary);margin:0 0 4px}
+  .app-desc{font-size:12.5px;color:var(--text-secondary);margin:0 0 8px;line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
   .app-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:auto}
   .badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
   .badge-github{background:var(--badge-github-bg);color:var(--badge-github-text)}
@@ -163,54 +162,6 @@
   .share-item span{font-size:12px;font-weight:600;color:var(--text)}
   .btn-ghost{background:transparent;color:var(--text-secondary);border:none;padding:12px;font-size:14px;font-weight:600;width:100%;cursor:pointer;font-family:inherit}
 
-  .app-row{cursor:pointer}
-  .app-row a,.app-row button{cursor:pointer}
-
-  /* --- ficha de detalle a pantalla completa (centrada en pantallas anchas) --- */
-  #detail-sheet{align-items:stretch;justify-content:stretch}
-  #detail-sheet .sheet{width:100%;max-width:none;height:100dvh;max-height:100dvh;border-radius:0;padding:0;display:flex;flex-direction:column}
-  @media (min-width:701px){
-    #detail-sheet{justify-content:center}
-    #detail-sheet .sheet{max-width:640px;border-left:1px solid var(--border);border-right:1px solid var(--border)}
-  }
-  .detail-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 10px;border-bottom:1px solid var(--border);flex-shrink:0}
-  .detail-scroll{flex:1;overflow-y:auto}
-  .detail-container{padding:22px 20px 30px}
-  .detail-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
-  .detail-icon{width:68px;height:68px;border-radius:18px;flex-shrink:0;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:22px;overflow:hidden}
-  .detail-info{flex:1;min-width:0}
-  .detail-name{font-weight:800;font-size:19px;margin:0 0 3px}
-  .detail-meta{font-size:12.5px;color:var(--text-secondary);margin:0 0 8px}
-  .detail-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-  .detail-tabbar{border-bottom:1px solid var(--border);margin:22px 0 18px}
-  .detail-tab{display:inline-block;position:relative;font-size:14.5px;font-weight:700;color:var(--text);padding-bottom:11px}
-  .detail-tab::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:linear-gradient(90deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%)}
-  .detail-desc{font-size:13.5px;line-height:1.6;color:var(--text);margin:0;white-space:pre-line}
-  .detail-highlight-title{font-size:13px;font-weight:800;letter-spacing:.2px;text-transform:uppercase;margin:28px 0 6px;display:inline-block;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .detail-highlight-divider{height:3px;width:42px;border-radius:3px;margin-bottom:14px;background:linear-gradient(90deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%)}
-  .detail-highlights-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:6px 18px}
-  .detail-highlights{list-style:none;margin:0;padding:0}
-  .detail-highlights li{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;line-height:1.55;color:var(--text);padding:14px 0}
-  .detail-highlights li+li{border-top:1px solid var(--border)}
-  .detail-highlights li svg{flex-shrink:0;margin-top:2px;color:var(--green)}
-  .detail-cta-row{display:flex;gap:8px;margin:18px 0 8px}
-  .detail-cta-row .btn-download{flex:1;text-align:center;padding:13px 20px;font-size:14.5px}
-  .detail-cta-row .btn-share{width:46px;height:46px}
-
-  /* --- menú lateral (hamburguesa) --- */
-  .drawer-overlay{position:fixed;inset:0;background:var(--overlay);z-index:40;display:none}
-  .drawer-overlay.open{display:block}
-  .drawer{position:fixed;top:0;left:0;bottom:0;width:80%;max-width:290px;background:var(--card);box-shadow:4px 0 24px rgba(0,0,0,.18);display:flex;flex-direction:column;padding:18px 12px;transform:translateX(-100%);transition:transform .2s}
-  .drawer-overlay.open .drawer{transform:translateX(0)}
-  .drawer-top{display:flex;align-items:center;gap:10px;padding:4px 8px 16px;border-bottom:1px solid var(--border);margin-bottom:10px}
-  .drawer-nav{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:1px}
-  .drawer-item{display:flex;align-items:center;gap:12px;background:none;border:none;padding:12px 10px;border-radius:12px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;text-align:left;width:100%}
-  .drawer-item:active{background:var(--bg)}
-  .drawer-item.active{background:var(--badge-play-bg);color:var(--badge-play-text)}
-  .drawer-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-secondary);padding:16px 10px 4px}
-  .drawer-footer{border-top:1px solid var(--border);padding-top:8px;margin-top:6px}
-  .drawer-version{font-size:11px;color:var(--text-secondary);text-align:center;padding:10px 0 0}
-
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1c1e;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90%;text-align:center}
   .toast.show{opacity:1}
 
@@ -226,7 +177,7 @@
 
 <header>
   <div class="header-inner">
-    <button class="icon-btn" id="btn-menu" aria-label="Menú">
+    <button class="icon-btn" id="btn-menu" aria-label="Categorías">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
     <div class="logo">
@@ -249,26 +200,18 @@
 
   <div class="filter-row">
     <div class="dropdown">
-      <button class="cat-select" id="cat-select-btn" aria-haspopup="listbox" aria-expanded="false">
-        <span id="cat-select-label">Todas las categorías</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="cat-menu" id="cat-menu"></div>
-    </div>
-    <div class="dropdown">
-      <button class="cat-select" id="status-select-btn" aria-haspopup="listbox" aria-expanded="false">
-        <span id="status-select-label">Cualquier estado</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="cat-menu" id="status-menu"></div>
-    </div>
-    <div class="dropdown">
       <button class="cat-select" id="sort-select-btn" aria-haspopup="listbox" aria-expanded="false">
         <span id="sort-select-label">Recientes</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
       </button>
       <div class="cat-menu" id="sort-menu"></div>
     </div>
+  </div>
+  <div class="active-cat-chip" id="active-cat-chip" style="display:none">
+    <span id="active-cat-label"></span>
+    <button id="active-cat-clear" aria-label="Quitar filtro de categoría">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
   </div>
 
   <details class="legend">
@@ -308,68 +251,11 @@
   </div>
 </div>
 
-<div class="sheet-overlay" id="detail-sheet">
+<div class="sheet-overlay" id="cat-sheet">
   <div class="sheet">
-    <div class="detail-topbar">
-      <button class="icon-btn" id="btn-cerrar-detail" aria-label="Volver">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </button>
-    </div>
-    <div class="detail-scroll">
-      <div class="detail-container">
-        <div class="detail-head">
-          <div id="detail-icon-slot"></div>
-          <div class="detail-info">
-            <p class="detail-name" id="detail-name"></p>
-            <p class="detail-meta" id="detail-meta"></p>
-            <div class="detail-tags" id="detail-tags"></div>
-          </div>
-        </div>
-        <div class="detail-cta-row">
-          <button class="btn-share" id="detail-share-btn" aria-label="Compartir">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>
-          </button>
-          <a class="btn-download" id="detail-download" target="_blank" rel="noopener">Ir a la fuente</a>
-        </div>
-        <div class="detail-tabbar"><span class="detail-tab">Descripción</span></div>
-        <p class="detail-desc" id="detail-desc"></p>
-        <div id="detail-highlights-wrap" style="display:none">
-          <p class="detail-highlight-title">Destacado</p>
-          <div class="detail-highlight-divider"></div>
-          <div class="detail-highlights-card">
-            <ul class="detail-highlights" id="detail-highlights"></ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="drawer-overlay" id="drawer-overlay">
-  <div class="drawer">
-    <div class="drawer-top">
-      <div class="logo-mark" style="width:32px;height:32px;border-radius:9px">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 9.5 12 4l8 5.5V19a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1V9.5Z" fill="#fff"/>
-        </svg>
-      </div>
-      <div class="logo-text" style="font-size:17px">NovaStore</div>
-    </div>
-    <nav class="drawer-nav">
-      <button class="drawer-item" id="drawer-inicio">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>
-        Inicio
-      </button>
-      <p class="drawer-label">Categorías</p>
-      <div id="drawer-categories"></div>
-    </nav>
-    <div class="drawer-footer">
-      <button class="drawer-item" id="drawer-about">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        Acerca de
-      </button>
-      <p class="drawer-version">v1.0.0</p>
-    </div>
+    <div class="sheet-handle"></div>
+    <h2>Categorías</h2>
+    <div id="cat-sheet-list"></div>
   </div>
 </div>
 
@@ -379,7 +265,6 @@
 let apps=[];
 let categorias=[];
 let selectedCategory='';
-let selectedStatus='';
 let sortMode='recientes';
 
 // --- tema claro/oscuro ---
@@ -486,43 +371,45 @@ function buildIconEl(app){
   return buildFallbackIconEl(name,tipo);
 }
 
-// --- categorías / estado / orden (3 desplegables con el mismo patrón) ---
+// --- categorías (hoja inferior desde el botón hamburguesa) / orden ---
 function effectiveCategorias(){
   if(categorias.length)return categorias;
   return [...new Set(apps.map(a=>a.categoria).filter(Boolean))];
 }
-function renderCategoryMenu(){
-  const menu=document.getElementById('cat-menu');
+function renderCatSheetList(){
+  const list=document.getElementById('cat-sheet-list');
   const cats=effectiveCategorias();
   const items=['',...cats];
-  menu.innerHTML=items.map(c=>`<div class="cat-menu-item ${c===selectedCategory?'active':''}" data-cat="${escapeHtml(c)}">${c?escapeHtml(c):'Todas las categorías'}</div>`).join('');
-  menu.querySelectorAll('.cat-menu-item').forEach(el=>{
+  list.innerHTML=items.map(c=>`<div class="cat-menu-item ${c===selectedCategory?'active':''}" data-cat="${escapeHtml(c)}">${c?escapeHtml(c):'Todas las categorías'}</div>`).join('');
+  list.querySelectorAll('.cat-menu-item').forEach(el=>{
     el.addEventListener('click',()=>{
       selectedCategory=el.dataset.cat;
-      document.getElementById('cat-select-label').textContent=selectedCategory||'Todas las categorías';
-      closeAllMenus();
+      updateActiveCatChip();
+      closeSheetEl('cat-sheet');
       renderCatalog();
     });
   });
 }
-const STATUS_OPTIONS=[
-  {value:'',label:'Cualquier estado'},
-  {value:'ok',label:'Funcionando'},
-  {value:'regular',label:'Regular'},
-  {value:'down',label:'No funciona'}
-];
-function renderStatusMenu(){
-  const menu=document.getElementById('status-menu');
-  menu.innerHTML=STATUS_OPTIONS.map(o=>`<div class="cat-menu-item ${o.value===selectedStatus?'active':''}" data-status="${o.value}">${o.label}</div>`).join('');
-  menu.querySelectorAll('.cat-menu-item').forEach(el=>{
-    el.addEventListener('click',()=>{
-      selectedStatus=el.dataset.status;
-      document.getElementById('status-select-label').textContent=STATUS_OPTIONS.find(o=>o.value===selectedStatus).label;
-      closeAllMenus();
-      renderCatalog();
-    });
-  });
+function updateActiveCatChip(){
+  const chip=document.getElementById('active-cat-chip');
+  if(selectedCategory){
+    document.getElementById('active-cat-label').textContent=selectedCategory;
+    chip.style.display='inline-flex';
+  }else{
+    chip.style.display='none';
+  }
 }
+document.getElementById('btn-menu').addEventListener('click',()=>{
+  renderCatSheetList();
+  openSheetEl('cat-sheet');
+});
+document.getElementById('cat-sheet').addEventListener('click',e=>{if(e.target.id==='cat-sheet')closeSheetEl('cat-sheet')});
+document.getElementById('active-cat-clear').addEventListener('click',()=>{
+  selectedCategory='';
+  updateActiveCatChip();
+  renderCatalog();
+});
+
 const SORT_OPTIONS=[
   {value:'recientes',label:'Recientes'},
   {value:'az',label:'Nombre (A-Z)'},
@@ -541,8 +428,8 @@ function renderSortMenu(){
   });
 }
 function closeAllMenus(){
-  ['cat-menu','status-menu','sort-menu'].forEach(id=>document.getElementById(id).classList.remove('open'));
-  ['cat-select-btn','status-select-btn','sort-select-btn'].forEach(id=>document.getElementById(id).setAttribute('aria-expanded','false'));
+  document.getElementById('sort-menu').classList.remove('open');
+  document.getElementById('sort-select-btn').setAttribute('aria-expanded','false');
 }
 function toggleMenu(btnId,menuId,renderFn){
   const menu=document.getElementById(menuId);
@@ -554,8 +441,6 @@ function toggleMenu(btnId,menuId,renderFn){
     document.getElementById(btnId).setAttribute('aria-expanded','true');
   }
 }
-document.getElementById('cat-select-btn').addEventListener('click',()=>toggleMenu('cat-select-btn','cat-menu',renderCategoryMenu));
-document.getElementById('status-select-btn').addEventListener('click',()=>toggleMenu('status-select-btn','status-menu',renderStatusMenu));
 document.getElementById('sort-select-btn').addEventListener('click',()=>toggleMenu('sort-select-btn','sort-menu',renderSortMenu));
 document.addEventListener('click',e=>{
   if(!e.target.closest('.filter-row'))closeAllMenus();
@@ -563,23 +448,23 @@ document.addEventListener('click',e=>{
 
 function clearAllFilters(){
   selectedCategory='';
-  selectedStatus='';
+  updateActiveCatChip();
   document.getElementById('search-input').value='';
-  document.getElementById('cat-select-label').textContent='Todas las categorías';
-  document.getElementById('status-select-label').textContent='Cualquier estado';
   renderCatalog();
 }
 
+// "Recientes" ordena de verdad por app.fecha (YYYY-MM-DD), no por el orden bruto del JSON.
+function byFechaDesc(a,b){return (b.fecha||'').localeCompare(a.fecha||'')}
 function applyFilters(){
   const q=(document.getElementById('search-input').value||'').toLowerCase();
   let result=apps.filter(a=>{
     const matchesQ=(a.nombre||'').toLowerCase().includes(q);
     const matchesCat=!selectedCategory||(a.categoria||'')===selectedCategory;
-    const matchesStatus=!selectedStatus||(a.estado||'ok')===selectedStatus;
-    return matchesQ&&matchesCat&&matchesStatus;
+    return matchesQ&&matchesCat;
   });
   if(sortMode==='az')result=result.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'','es',{sensitivity:'base'}));
   else if(sortMode==='za')result=result.slice().sort((a,b)=>(b.nombre||'').localeCompare(a.nombre||'','es',{sensitivity:'base'}));
+  else result=result.slice().sort(byFechaDesc);
   return result;
 }
 
@@ -608,7 +493,7 @@ function buildAppRowEl(app){
   shareBtn.className='btn-share';
   shareBtn.setAttribute('aria-label','Compartir');
   shareBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>';
-  shareBtn.addEventListener('click',e=>{e.stopPropagation();openShareSheet(app)});
+  shareBtn.addEventListener('click',()=>openShareSheet(app));
   actions.appendChild(shareBtn);
   const link=document.createElement('a');
   link.className='btn-download';
@@ -616,13 +501,8 @@ function buildAppRowEl(app){
   link.target='_blank';
   link.rel='noopener';
   link.textContent='Descargar';
-  link.addEventListener('click',e=>e.stopPropagation());
   actions.appendChild(link);
   row.appendChild(actions);
-
-  // Al pulsar en cualquier parte de la fila (fuera de los botones de arriba) se abre
-  // la ficha de la app con la descripción completa y el enlace a la fuente.
-  row.addEventListener('click',()=>openDetailSheet(app));
 
   return row;
 }
@@ -645,7 +525,7 @@ function renderCatalog(){
   const list=document.getElementById('app-list');
   const filtered=applyFilters();
   const countEl=document.getElementById('results-count');
-  const hasActiveFilters=!!(selectedCategory||selectedStatus||(document.getElementById('search-input').value||'').trim());
+  const hasActiveFilters=!!(selectedCategory||(document.getElementById('search-input').value||'').trim());
   countEl.textContent=apps.length?`${filtered.length} ${filtered.length===1?'app':'apps'}${hasActiveFilters?` de ${apps.length}`:''}`:'';
   if(filtered.length===0){
     list.innerHTML=`<div class="empty">
@@ -677,6 +557,12 @@ function renderCatalog(){
   [...groups.keys()].forEach(c=>{if(!order.includes(c))order.push(c)});
   if(sortMode==='az')order=order.slice().sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'}));
   else if(sortMode==='za')order=order.slice().sort((a,b)=>b.localeCompare(a,'es',{sensitivity:'base'}));
+  else{
+    // Recientes: la categoría se ordena por la fecha de su app más nueva,
+    // así una categoría recién creada con una sola app sube arriba del todo.
+    const maxFecha=cat=>groups.get(cat).reduce((m,a)=>(a.fecha||'')>m?(a.fecha||''):m,'');
+    order=order.slice().sort((a,b)=>maxFecha(b).localeCompare(maxFecha(a)));
+  }
 
   order.forEach(cat=>{
     const items=groups.get(cat);
@@ -772,71 +658,6 @@ function siteBase(){
 function shareUrlFor(app){
   return app.slug ? `${siteBase()}share/${app.slug}.html` : app.url;
 }
-
-// --- ficha de detalle de la app (icono grande, descripción completa, ir a la fuente) ---
-let detailTarget=null;
-function openDetailSheet(app){
-  detailTarget=app;
-  document.getElementById('detail-icon-slot').innerHTML='';
-  const icon=buildIconEl(app);
-  icon.classList.remove('app-icon');
-  icon.classList.add('detail-icon');
-  document.getElementById('detail-icon-slot').appendChild(icon);
-  document.getElementById('detail-name').textContent=app.nombre;
-  document.getElementById('detail-meta').textContent=`${app.categoria||'General'}${app.fecha?` · Actualizado ${formatFecha(app.fecha)}`:''}`;
-  document.getElementById('detail-tags').innerHTML=`${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}`;
-  document.getElementById('detail-desc').textContent=app.descripcion||'Sin descripción todavía.';
-  const featWrap=document.getElementById('detail-highlights-wrap');
-  const featList=document.getElementById('detail-highlights');
-  const feats=Array.isArray(app.caracteristicas)?app.caracteristicas.filter(Boolean):[];
-  if(feats.length){
-    featList.innerHTML=feats.map(f=>`<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>${escapeHtml(f)}</span></li>`).join('');
-    featWrap.style.display='block';
-  }else{
-    featWrap.style.display='none';
-  }
-  const dl=document.getElementById('detail-download');
-  dl.href=app.url;
-  dl.textContent='Ir a la fuente';
-  openSheetEl('detail-sheet');
-}
-document.getElementById('detail-share-btn').addEventListener('click',()=>{
-  if(detailTarget)openShareSheet(detailTarget);
-});
-document.getElementById('btn-cerrar-detail').addEventListener('click',()=>closeSheetEl('detail-sheet'));
-document.getElementById('detail-sheet').addEventListener('click',e=>{if(e.target.id==='detail-sheet')closeSheetEl('detail-sheet')});
-
-// --- menú lateral (hamburguesa): Inicio, categorías y acerca de ---
-function openDrawer(){
-  renderDrawerCategories();
-  document.getElementById('drawer-overlay').classList.add('open');
-}
-function closeDrawer(){document.getElementById('drawer-overlay').classList.remove('open')}
-function renderDrawerCategories(){
-  const wrap=document.getElementById('drawer-categories');
-  const cats=effectiveCategorias();
-  wrap.innerHTML=cats.map(c=>`<button class="drawer-item ${c===selectedCategory?'active':''}" data-cat="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join('');
-  wrap.querySelectorAll('.drawer-item').forEach(el=>{
-    el.addEventListener('click',()=>{
-      selectedCategory=el.dataset.cat;
-      document.getElementById('cat-select-label').textContent=selectedCategory||'Todas las categorías';
-      closeDrawer();
-      renderCatalog();
-      window.scrollTo({top:0,behavior:'smooth'});
-    });
-  });
-}
-document.getElementById('btn-menu').addEventListener('click',openDrawer);
-document.getElementById('drawer-overlay').addEventListener('click',e=>{if(e.target.id==='drawer-overlay')closeDrawer()});
-document.getElementById('drawer-inicio').addEventListener('click',()=>{
-  clearAllFilters();
-  closeDrawer();
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-document.getElementById('drawer-about').addEventListener('click',()=>{
-  closeDrawer();
-  showToast('NovaStore — apps verificadas, alternativas y proyectos open source.');
-});
 
 let shareTarget=null;
 function openShareSheet(app){
