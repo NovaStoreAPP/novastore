@@ -197,15 +197,42 @@
   .load-panel{background:var(--card);border:1px dashed var(--border);border-radius:16px;padding:24px;text-align:center;margin-bottom:20px}
   .load-panel p{color:var(--text-secondary);font-size:13px;margin:0 0 12px}
   .btn-secondary{background:transparent;color:var(--green);border:1px solid var(--green);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
+
+  /* --- estrellas de valoración --- */
+  .stars{display:inline-flex;align-items:center;gap:1px;color:#f5a623;vertical-align:middle}
+  .stars svg{display:block}
+
+  /* --- barra de navegación inferior --- */
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+  .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--border);display:flex;z-index:20;padding-bottom:env(safe-area-inset-bottom)}
+  .nav-item{flex:1;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:9px 4px 8px;font-size:10.5px;font-weight:700;color:var(--text-secondary);cursor:pointer;font-family:inherit}
+  .nav-item:active{opacity:.7}
+  .nav-item.active{color:var(--green)}
+
+  /* --- carrusel de destacados (Inicio) --- */
+  .carousel-section{margin:0 0 20px}
+  .carousel-title{font-size:12px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--text-secondary);margin:0 0 10px;padding:0 2px}
+  .carousel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;user-select:none}
+  .carousel::-webkit-scrollbar{display:none}
+  .carousel.dragging{cursor:grabbing;scroll-snap-type:none}
+  .carousel-card{scroll-snap-align:start;flex:0 0 auto;width:220px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:14px;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;gap:8px}
+  .carousel-card-top{display:flex;align-items:center;gap:10px}
+  .carousel-card .app-icon{width:46px;height:46px;border-radius:13px;flex-shrink:0}
+  .carousel-card-name{font-weight:700;font-size:14px;margin:0 0 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .carousel-card-desc{font-size:12px;color:var(--text-secondary);line-height:1.4;margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+
+  /* --- Categorías: lista A-Z --- */
+  .cat-az-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:15px 16px;margin-bottom:10px;cursor:pointer}
+  .cat-az-row:active{background:var(--bg)}
+  .cat-az-name{font-weight:700;font-size:14.5px}
+  .cat-az-right{display:flex;align-items:center;gap:8px;color:var(--text-secondary);flex-shrink:0}
+  .cat-az-count{font-size:12px;font-weight:700;color:var(--text-secondary)}
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
-    <button class="icon-btn" id="btn-menu" aria-label="Categorías">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-    </button>
     <div class="logo">
       <div class="logo-mark">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -219,48 +246,83 @@
 </header>
 
 <main>
-  <div class="searchbar">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    <input id="search-input" placeholder="Buscar apps">
-  </div>
-
-  <div class="filter-row">
-    <div class="dropdown">
-      <button class="cat-select" id="sort-select-btn" aria-haspopup="listbox" aria-expanded="false">
-        <span id="sort-select-label">Recientes</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="cat-menu" id="sort-menu"></div>
-    </div>
-  </div>
-  <div class="active-cat-chip" id="active-cat-chip" style="display:none">
-    <span id="active-cat-label"></span>
-    <button id="active-cat-clear" aria-label="Quitar filtro de categoría">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
-    </button>
-  </div>
-
-  <details class="legend">
-    <summary>Leyenda</summary>
-    <div class="legend-items">
-      <span class="legend-item"><span class="legend-dot" style="background:var(--status-ok-text)"></span>Funcionando</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--status-regular-text)"></span>Regular</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--status-down-text)"></span>No funciona</span>
-      <span class="legend-item" id="legend-ads">Contiene publicidad</span>
-      <span class="legend-item" id="legend-sub">Requiere suscripción de pago</span>
-    </div>
-  </details>
-
-  <p class="results-count" id="results-count"></p>
-
   <div class="load-panel" id="load-panel" style="display:none">
     <p>No se pudo cargar apps.json automáticamente (esto pasa si abres el archivo con doble clic en lugar de un servidor local). Selecciónalo a mano:</p>
     <button class="btn-secondary" onclick="document.getElementById('file-input').click()">Seleccionar apps.json</button>
     <input type="file" id="file-input" accept=".json" style="display:none">
   </div>
 
+  <!-- Carrusel de destacados: solo en Inicio -->
+  <div class="carousel-section" id="carousel-section" style="display:none">
+    <p class="carousel-title">Destacados</p>
+    <div class="carousel" id="carousel"></div>
+  </div>
+
+  <!-- Buscador: solo en su propio tab, compacto y sin pantalla completa -->
+  <div class="searchbar" id="buscar-searchbar" style="display:none">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="search-input" placeholder="Buscar apps">
+  </div>
+
+  <!-- Categorías A-Z: solo en su tab, cuando no hay una categoría elegida todavía -->
+  <div id="cat-az-section" style="display:none">
+    <p class="results-count" id="cat-az-count"></p>
+    <div id="cat-az-list"></div>
+  </div>
+
+  <!-- Controles compartidos por las vistas que muestran tarjetas de apps (Inicio / Buscar / Categorías-lista / Juegos) -->
+  <div id="list-controls" style="display:none">
+    <div class="filter-row">
+      <div class="dropdown">
+        <button class="cat-select" id="sort-select-btn" aria-haspopup="listbox" aria-expanded="false">
+          <span id="sort-select-label">Recientes</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="cat-menu" id="sort-menu"></div>
+      </div>
+    </div>
+    <div class="active-cat-chip" id="active-cat-chip" style="display:none">
+      <span id="active-cat-label"></span>
+      <button id="active-cat-clear" aria-label="Quitar filtro de categoría">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+
+    <details class="legend">
+      <summary>Leyenda</summary>
+      <div class="legend-items">
+        <span class="legend-item"><span class="legend-dot" style="background:var(--status-ok-text)"></span>Funcionando</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--status-regular-text)"></span>Regular</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--status-down-text)"></span>No funciona</span>
+        <span class="legend-item" id="legend-ads">Contiene publicidad</span>
+        <span class="legend-item" id="legend-sub">Requiere suscripción de pago</span>
+      </div>
+    </details>
+
+    <p class="results-count" id="results-count"></p>
+  </div>
+
   <div id="app-list"></div>
 </main>
+
+<nav class="bottom-nav" id="bottom-nav">
+  <button class="nav-item active" data-nav="inicio" aria-label="Inicio">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5Z"/></svg>
+    <span>Inicio</span>
+  </button>
+  <button class="nav-item" data-nav="buscar" aria-label="Buscar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-3.8-3.8"/></svg>
+    <span>Buscar</span>
+  </button>
+  <button class="nav-item" data-nav="categorias" aria-label="Categorías">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg>
+    <span>Categorías</span>
+  </button>
+  <button class="nav-item" data-nav="juegos" aria-label="Juegos">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="11.5" x2="10.5" y2="11.5"/><line x1="8.75" y1="9.75" x2="8.75" y2="13.25"/><line x1="15.3" y1="12" x2="15.31" y2="12"/><line x1="17.8" y1="9.8" x2="17.81" y2="9.8"/><path d="M17.3 6H6.7A4 4 0 0 0 2.72 9.6C2.6 10.5 2 15 2 16.3A2.7 2.7 0 0 0 4.7 19c.9 0 1.35-.45 1.8-.9L7.7 16.8A2 2 0 0 1 9.1 16.2h5.8a2 2 0 0 1 1.4.6l1.2 1.3c.45.45.9.9 1.8.9a2.7 2.7 0 0 0 2.7-2.7c0-1.3-.6-5.8-.72-6.7A4 4 0 0 0 17.3 6Z"/></svg>
+    <span>Juegos</span>
+  </button>
+</nav>
 
 <div class="sheet-overlay" id="share-sheet">
   <div class="sheet">
@@ -277,14 +339,6 @@
   </div>
 </div>
 
-<div class="sheet-overlay" id="cat-sheet">
-  <div class="sheet">
-    <div class="sheet-handle"></div>
-    <h2>Categorías</h2>
-    <div id="cat-sheet-list"></div>
-  </div>
-</div>
-
 <div class="sheet-overlay" id="detail-sheet">
   <div class="sheet detail-sheet">
     <div class="sheet-handle"></div>
@@ -296,6 +350,7 @@
       <div class="detail-headtext">
         <h2 id="detail-name"></h2>
         <p class="detail-meta" id="detail-meta"></p>
+        <div id="detail-stars"></div>
         <div class="app-tags" id="detail-tags"></div>
       </div>
     </div>
@@ -332,10 +387,8 @@ function saveFilters(){
 }
 try{
   const storedFilters=JSON.parse(localStorage.getItem('novastore_filters')||'null');
-  if(storedFilters){
-    if(typeof storedFilters.category==='string')selectedCategory=storedFilters.category;
-    if(typeof storedFilters.sort==='string')sortMode=storedFilters.sort;
-  }
+  // El orden (sortMode) sí se recuerda; la categoría no, porque siempre se arranca en Inicio sin filtro.
+  if(storedFilters&&typeof storedFilters.sort==='string')sortMode=storedFilters.sort;
 }catch(e){}
 
 // --- tema claro/oscuro ---
@@ -408,6 +461,20 @@ function warnIconsHtml(app){
   if(app.suscripcion)html+=`<span class="warn-icon" title="Requiere suscripción de pago">${SUB_SVG}</span>`;
   return html;
 }
+const STAR_PATH='m12 3 2.6 5.7 6.2.6-4.7 4.2 1.4 6.2L12 16.9l-5.5 2.8 1.4-6.2-4.7-4.2 6.2-.6z';
+// Valoración de 1 a 5 estrellas puesta desde el admin (campo "valoracion"). Si la app
+// no tiene valoración (0 o vacío), no se muestra nada, para no llenar la tienda de estrellas vacías.
+function starsHtml(valoracion,size){
+  const r=Math.max(0,Math.min(5,Math.round(Number(valoracion)||0)));
+  size=size||12;
+  if(r<=0)return'';
+  let html=`<span class="stars" title="Valoración: ${r}/5">`;
+  for(let i=1;i<=5;i++){
+    html+=`<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${i<=r?'currentColor':'none'}" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="${STAR_PATH}"/></svg>`;
+  }
+  html+='</span>';
+  return html;
+}
 // La fecha se guarda como YYYY-MM-DD desde el admin; aquí se muestra como dd/mm/aaaa.
 // Una app se considera "Nueva" si su fecha está dentro de los últimos 7 días.
 function isRecent(fecha){
@@ -468,25 +535,16 @@ function buildIconEl(app){
   return buildFallbackIconEl(name,tipo);
 }
 
-// --- categorías (hoja inferior desde el botón hamburguesa) / orden ---
+// --- categorías / orden ---
 function effectiveCategorias(){
   if(categorias.length)return categorias;
   return [...new Set(apps.map(a=>a.categoria).filter(Boolean))];
 }
-function renderCatSheetList(){
-  const list=document.getElementById('cat-sheet-list');
+// La categoría "Juegos" del menú inferior es la categoría real del catálogo que
+// mejor coincide con "juego(s)" (para no depender de que se llame exactamente igual).
+function gamesCategoryName(){
   const cats=effectiveCategorias();
-  const items=['',...cats];
-  list.innerHTML=items.map(c=>`<div class="cat-menu-item ${c===selectedCategory?'active':''}" data-cat="${escapeHtml(c)}">${c?escapeHtml(c):'Todas las categorías'}</div>`).join('');
-  list.querySelectorAll('.cat-menu-item').forEach(el=>{
-    el.addEventListener('click',()=>{
-      selectedCategory=el.dataset.cat;
-      updateActiveCatChip();
-      saveFilters();
-      closeSheetEl('cat-sheet');
-      renderCatalog();
-    });
-  });
+  return cats.find(c=>/juegos?/i.test(c))||'Juegos';
 }
 function updateActiveCatChip(){
   const chip=document.getElementById('active-cat-chip');
@@ -497,17 +555,87 @@ function updateActiveCatChip(){
     chip.style.display='none';
   }
 }
-document.getElementById('btn-menu').addEventListener('click',()=>{
-  renderCatSheetList();
-  openSheetEl('cat-sheet');
-});
-document.getElementById('cat-sheet').addEventListener('click',e=>{if(e.target.id==='cat-sheet')closeSheetEl('cat-sheet')});
 document.getElementById('active-cat-clear').addEventListener('click',()=>{
   selectedCategory='';
+  navKey='categorias';
+  updateNavUI();
   updateActiveCatChip();
   saveFilters();
-  renderCatalog();
+  render();
 });
+
+// --- Categorías: listado A-Z (tab "Categorías") ---
+function renderCatAzList(){
+  const wrap=document.getElementById('cat-az-list');
+  const countEl=document.getElementById('cat-az-count');
+  const cats=effectiveCategorias().slice().sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'}));
+  countEl.textContent=cats.length?`${cats.length} categoría${cats.length===1?'':'s'}`:'';
+  if(!cats.length){
+    wrap.innerHTML=`<div class="empty">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 9h6v6H9z"/></svg>
+      <p>Todavía no hay categorías.</p>
+    </div>`;
+    return;
+  }
+  wrap.innerHTML=cats.map(c=>{
+    const count=apps.filter(a=>(a.categoria||'')===c).length;
+    return `<div class="cat-az-row" data-cat="${escapeHtml(c)}">
+      <span class="cat-az-name">${escapeHtml(c)}</span>
+      <span class="cat-az-right">
+        <span class="cat-az-count">${count}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </span>
+    </div>`;
+  }).join('');
+  wrap.querySelectorAll('.cat-az-row').forEach(el=>{
+    el.addEventListener('click',()=>{
+      selectedCategory=el.dataset.cat;
+      updateActiveCatChip();
+      saveFilters();
+      render();
+    });
+  });
+}
+
+// --- menú inferior: Inicio / Buscar / Categorías / Juegos ---
+let navKey='inicio';
+let currentView='inicio'; // 'inicio' | 'buscar' | 'categorias' (categorias también cubre "Juegos")
+function updateNavUI(){
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.nav===navKey));
+}
+function setNav(key){
+  navKey=key;
+  if(key==='inicio'){currentView='inicio';selectedCategory='';}
+  else if(key==='buscar'){currentView='buscar';}
+  else if(key==='categorias'){currentView='categorias';selectedCategory='';}
+  else if(key==='juegos'){currentView='categorias';selectedCategory=gamesCategoryName();}
+  updateNavUI();
+  updateActiveCatChip();
+  saveFilters();
+  window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
+  render();
+}
+document.querySelectorAll('.nav-item').forEach(btn=>{
+  btn.addEventListener('click',()=>setNav(btn.dataset.nav));
+});
+
+// Muestra/oculta cada bloque según la vista activa.
+function updateViewVisibility(){
+  const showChooser=currentView==='categorias'&&!selectedCategory;
+  const showList=currentView==='inicio'||currentView==='buscar'||(currentView==='categorias'&&!!selectedCategory);
+  document.getElementById('carousel-section').style.display=(currentView==='inicio')?'':'none';
+  document.getElementById('buscar-searchbar').style.display=(currentView==='buscar')?'flex':'none';
+  document.getElementById('cat-az-section').style.display=showChooser?'':'none';
+  document.getElementById('list-controls').style.display=showList?'':'none';
+  document.getElementById('app-list').style.display=showList?'':'none';
+}
+
+function render(){
+  updateViewVisibility();
+  if(currentView==='inicio')renderCarousel();
+  if(currentView==='categorias'&&!selectedCategory){renderCatAzList();return}
+  renderCatalog();
+}
 
 const SORT_OPTIONS=[
   {value:'recientes',label:'Recientes'},
@@ -523,7 +651,7 @@ function renderSortMenu(){
       document.getElementById('sort-select-label').textContent=SORT_OPTIONS.find(o=>o.value===sortMode).label;
       saveFilters();
       closeAllMenus();
-      renderCatalog();
+      render();
     });
   });
 }
@@ -547,17 +675,20 @@ document.addEventListener('click',e=>{
 });
 
 function clearAllFilters(){
+  if(selectedCategory&&currentView==='categorias')navKey='categorias';
   selectedCategory='';
+  updateNavUI();
   updateActiveCatChip();
   saveFilters();
-  document.getElementById('search-input').value='';
-  renderCatalog();
+  const searchInput=document.getElementById('search-input');
+  if(searchInput)searchInput.value='';
+  render();
 }
 
 // "Recientes" ordena de verdad por app.fecha (YYYY-MM-DD), no por el orden bruto del JSON.
 function byFechaDesc(a,b){return (b.fecha||'').localeCompare(a.fecha||'')}
 function applyFilters(){
-  const q=(document.getElementById('search-input').value||'').toLowerCase();
+  const q=currentView==='buscar'?(document.getElementById('search-input').value||'').toLowerCase():'';
   let result=apps.filter(a=>{
     const matchesQ=(a.nombre||'').toLowerCase().includes(q);
     const matchesCat=!selectedCategory||(a.categoria||'')===selectedCategory;
@@ -582,7 +713,7 @@ function buildAppRowEl(app){
   info.className='app-body';
   info.innerHTML=`
     <p class="app-name">${escapeHtml(app.nombre)}</p>
-    <p class="app-cat-row"><span class="badge-cat" style="--cat-hue:${categoryHue(app.categoria)}">${escapeHtml(app.categoria||'General')}</span></p>
+    <p class="app-cat-row"><span class="badge-cat" style="--cat-hue:${categoryHue(app.categoria)}">${escapeHtml(app.categoria||'General')}</span> ${starsHtml(app.valoracion,12)}</p>
     ${app.descripcion?`<p class="app-desc">${escapeHtml(app.descripcion)}</p>`:''}
     <div class="app-tags">${isRecent(app.fecha)?'<span class="badge badge-new">Nuevo</span>':''}${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}</div>
   `;
@@ -622,6 +753,73 @@ function buildCategoryHeaderEl(cat,count){
     <div class="category-divider"></div>
   `;
   return header;
+}
+
+// --- carrusel de destacados (arriba del todo en Inicio) ---
+// Se muestran las apps marcadas como "destacada" desde el admin; si todavía no hay
+// ninguna marcada, se rellena con las más recientes para que el carrusel no quede vacío.
+function buildCarouselCardEl(app){
+  const card=document.createElement('div');
+  card.className='carousel-card';
+  card.addEventListener('click',()=>{if(!card._dragged)openDetailSheet(app)});
+  const top=document.createElement('div');
+  top.className='carousel-card-top';
+  top.appendChild(buildIconEl(app));
+  const textWrap=document.createElement('div');
+  textWrap.style.minWidth='0';
+  textWrap.style.flex='1';
+  textWrap.innerHTML=`
+    <p class="carousel-card-name">${escapeHtml(app.nombre)}</p>
+    <span class="badge-cat" style="--cat-hue:${categoryHue(app.categoria)}">${escapeHtml(app.categoria||'General')}</span>
+  `;
+  top.appendChild(textWrap);
+  card.appendChild(top);
+  if(app.descripcion){
+    const desc=document.createElement('p');
+    desc.className='carousel-card-desc';
+    desc.textContent=app.descripcion;
+    card.appendChild(desc);
+  }
+  if(app.valoracion){
+    const starsWrap=document.createElement('div');
+    starsWrap.innerHTML=starsHtml(app.valoracion,12);
+    card.appendChild(starsWrap);
+  }
+  return card;
+}
+// Arrastre con el ratón en PC (el móvil ya desliza de forma nativa con el dedo).
+function makeCarouselDraggable(el){
+  let isDown=false,startX=0,startScroll=0;
+  el.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='touch')return;
+    isDown=true;
+    el.classList.add('dragging');
+    startX=e.clientX;
+    startScroll=el.scrollLeft;
+    el.querySelectorAll('.carousel-card').forEach(c=>c._dragged=false);
+    try{el.setPointerCapture(e.pointerId)}catch(err){}
+  });
+  el.addEventListener('pointermove',e=>{
+    if(!isDown)return;
+    const dx=e.clientX-startX;
+    if(Math.abs(dx)>4)el.querySelectorAll('.carousel-card').forEach(c=>c._dragged=true);
+    el.scrollLeft=startScroll-dx;
+  });
+  const stop=()=>{isDown=false;el.classList.remove('dragging')};
+  el.addEventListener('pointerup',stop);
+  el.addEventListener('pointerleave',stop);
+}
+let carouselDraggableReady=false;
+function renderCarousel(){
+  const section=document.getElementById('carousel-section');
+  const track=document.getElementById('carousel');
+  let featured=apps.filter(a=>a.destacada);
+  if(!featured.length)featured=apps.slice().sort(byFechaDesc).slice(0,8);
+  if(!featured.length){section.style.display='none';return}
+  section.style.display='';
+  track.innerHTML='';
+  featured.forEach(app=>track.appendChild(buildCarouselCardEl(app)));
+  if(!carouselDraggableReady){makeCarouselDraggable(track);carouselDraggableReady=true}
 }
 
 function renderCatalog(){
@@ -690,7 +888,7 @@ function loadData(parsed){
     apps=parsed.apps||[];
     categorias=parsed.categorias||[];
   }
-  renderCatalog();
+  render();
   handleDeepLink();
 }
 
@@ -702,8 +900,10 @@ function handleDeepLink(){
   if(!slug)return;
   const app=apps.find(a=>a.slug===slug);
   if(!app)return;
+  navKey='buscar';currentView='buscar';
+  updateNavUI();
   document.getElementById('search-input').value=app.nombre;
-  renderCatalog();
+  render();
   setTimeout(()=>{
     const row=document.querySelector('#app-list .app-row');
     if(row){
@@ -737,7 +937,7 @@ document.getElementById('file-input').addEventListener('change',e=>{
   reader.readAsText(file);
 });
 
-document.getElementById('search-input').addEventListener('input',renderCatalog);
+document.getElementById('search-input').addEventListener('input',render);
 
 // --- compartir app ---
 document.getElementById('share-whatsapp').querySelector('img').src=BRAND_ICONS.whatsapp;
@@ -793,6 +993,7 @@ function openDetailSheet(app){
   const metaParts=[app.categoria||'General'];
   if(app.fecha)metaParts.push(`Actualizado ${formatFecha(app.fecha)}`);
   document.getElementById('detail-meta').textContent=metaParts.join(' · ');
+  document.getElementById('detail-stars').innerHTML=starsHtml(app.valoracion,15);
 
   document.getElementById('detail-tags').innerHTML=
     `${isRecent(app.fecha)?'<span class="badge badge-new">Nuevo</span>':''}${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}`;
@@ -876,6 +1077,8 @@ document.getElementById('share-sheet').addEventListener('click',e=>{if(e.target.
 // Reflejar en la interfaz los filtros restaurados de localStorage antes de la primera carga.
 document.getElementById('sort-select-label').textContent=(SORT_OPTIONS.find(o=>o.value===sortMode)||SORT_OPTIONS[0]).label;
 updateActiveCatChip();
+updateNavUI();
+updateViewVisibility();
 
 loadFromFetch();
 </script>
