@@ -22,6 +22,36 @@
   ],
   "apps": [
     {
+      "nombre": "Idle RPG Pokémon",
+      "categoria": "Juegos",
+      "descripcion": "Idle / RPG de Pokémon. Me aventuro a decir que de los más completos con actualizaciones casi cada día. Combates , medallas , capturas , shinys, distintas regiones.. ¡De todo!",
+      "descripcionCompleta": "Más que un juego Android es un juego de navegador pero que puedes jugarlo en cualquier navegador de Android. Un Idle / RPG de Pokémon que cada día trae mejoras (muchas muchas mejoras) con sistemas únicos que no hemos visto en otros juegos.\n\nUn juego adictivo por todas las posibilidades. Un juego que te escucha y quiere saber tu opinión para darte la mejor experiencia en este estilo. Sin duda , el mejor descubrimiento de los últimos años.",
+      "caracteristicas": [
+        "Sin anuncios",
+        "Sin pagos ni suscripciones",
+        "Capturas de Pokemon",
+        "Shinys",
+        "Medallas",
+        "Liga Pokémon",
+        "Distintas regiones",
+        "Eventos",
+        "Tradeos",
+        "Mercadillo",
+        "Guardería",
+        "Casino",
+        "Premios"
+      ],
+      "tipo": "web",
+      "url": "https://auroradex.es",
+      "estado": "ok",
+      "slug": "idle-rpg-pokemon",
+      "ads": false,
+      "suscripcion": false,
+      "destacada": true,
+      "valoracion": 5,
+      "fecha": "2026-09-12"
+    },
+    {
       "nombre": "Termux",
       "categoria": "Utilidades",
       "descripcion": "Termux es una terminal Linux para Android que te permite ejecutar comandos, scripts y herramientas sin root ni PC.",
