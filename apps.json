@@ -22,6 +22,27 @@
   ],
   "apps": [
     {
+      "nombre": "Alto's Odyssey",
+      "categoria": "Juegos",
+      "descripcion": "Juego relajante para volar por dunas , desiertos , cañones.. y todo esto acompañado de un registro musical espectacular. Un juego para desconectar.",
+      "descripcionCompleta": "Una auténtica maravilla visual para deslizarse en sandboard por dunas o montañas con una sola mano. Tiene una música relajante, controles hiper sencillos, cero presión y puedes pausarlo o cerrarlo al instante si el autobús se para frente a ti",
+      "caracteristicas": [
+        "Sin anuncios",
+        "Sin suscripciones",
+        "Relajante",
+        "Casual"
+      ],
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.noodlecake.altosodyssey&hl=es",
+      "estado": "ok",
+      "slug": "alto-s-odyssey",
+      "ads": false,
+      "suscripcion": false,
+      "destacada": false,
+      "valoracion": 5,
+      "fecha": "2026-09-12"
+    },
+    {
       "nombre": "Idle RPG Pokémon",
       "categoria": "Juegos",
       "descripcion": "Idle / RPG de Pokémon. Me aventuro a decir que de los más completos con actualizaciones casi cada día. Combates , medallas , capturas , shinys, distintas regiones.. ¡De todo!",
