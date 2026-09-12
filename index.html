@@ -56,6 +56,7 @@
     --status-ok-bg:#e6f7ee;--status-ok-text:#0a8a4c;
     --status-regular-bg:#fff6e0;--status-regular-text:#a06a00;
     --status-down-bg:#fdeaea;--status-down-text:#c0392b;
+    --badge-coral-bg:#faece7;--badge-coral-text:#712b13;
   }
   [data-theme="dark"]{
     --bg:#111315;--card:#1c1f22;--border:#2b2f33;
@@ -70,6 +71,7 @@
     --status-ok-bg:#123423;--status-ok-text:#4fd88b;
     --status-regular-bg:#3a2e0f;--status-regular-text:#ffcf5c;
     --status-down-bg:#3a1717;--status-down-text:#ff8a8a;
+    --badge-coral-bg:#3a1f16;--badge-coral-text:#f0997b;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);transition:background .2s,color .2s}
@@ -150,7 +152,8 @@
   .status-regular{background:var(--status-regular-bg);color:var(--status-regular-text)}
   .status-down{background:var(--status-down-bg);color:var(--status-down-text)}
   .status-dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
-  .warn-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--status-regular-bg);color:var(--status-regular-text);font-size:11px;cursor:default}
+  .badge-ads{background:var(--status-regular-bg);color:var(--status-regular-text)}
+  .badge-pago{background:var(--badge-coral-bg);color:var(--badge-coral-text)}
   .app-actions-col{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}
   .btn-download{background:var(--green);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;transition:background .15s;white-space:nowrap}
   .btn-download:hover{background:var(--green-dark)}
@@ -525,14 +528,14 @@ function statusPillHtml(estado){
   if(estado==='down')return `<span class="status-pill status-down"><span class="status-dot"></span>No funciona</span>`;
   return `<span class="status-pill status-ok"><span class="status-dot"></span>Funcionando</span>`;
 }
-// Aviso discreto (icono + tooltip) si la app tiene publicidad o requiere suscripción de pago.
-// Iconos en línea, mismo estilo (stroke, sin relleno) que el resto del sitio — nada de emoji ni CDNs externos.
-const ADS_SVG='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>';
-const SUB_SVG='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>';
+// Aviso si la app tiene publicidad o requiere suscripción de pago, como badges
+// de texto (no iconos): más legibles de un vistazo y coherentes con el resto
+// de etiquetas de la tarjeta. Van primero en la fila de etiquetas a propósito,
+// porque es la información que más le interesa a alguien antes de instalar.
 function warnIconsHtml(app){
   let html='';
-  if(app.ads)html+=`<span class="warn-icon" title="Contiene publicidad">${ADS_SVG}</span>`;
-  if(app.suscripcion)html+=`<span class="warn-icon" title="Requiere suscripción de pago">${SUB_SVG}</span>`;
+  if(app.ads)html+=`<span class="badge badge-ads">Con anuncios</span>`;
+  if(app.suscripcion)html+=`<span class="badge badge-pago">De pago</span>`;
   return html;
 }
 const STAR_PATH='m12 3 2.6 5.7 6.2.6-4.7 4.2 1.4 6.2L12 16.9l-5.5 2.8 1.4-6.2-4.7-4.2 6.2-.6z';
@@ -815,7 +818,7 @@ function buildAppRowEl(app){
     <p class="app-name">${escapeHtml(app.nombre)}</p>
     <p class="app-cat-row"><span class="badge-cat" style="--cat-hue:${categoryHue(app.categoria)}">${escapeHtml(app.categoria||'General')}</span> ${starsHtml(app.valoracion,12)}</p>
     ${app.descripcion?`<p class="app-desc">${escapeHtml(app.descripcion)}</p>`:''}
-    <div class="app-tags">${isRecent(app.fecha)?'<span class="badge badge-new">Nuevo</span>':''}${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}</div>
+    <div class="app-tags">${warnIconsHtml(app)}${isRecent(app.fecha)?'<span class="badge badge-new">Nuevo</span>':''}${badgeFor(app.tipo)}${statusPillHtml(app.estado)}</div>
   `;
   main.appendChild(info);
   row.appendChild(main);
@@ -889,26 +892,37 @@ function buildCarouselCardEl(app){
   return card;
 }
 // Arrastre con el ratón en PC (el móvil ya desliza de forma nativa con el dedo).
+// El arrastre con ratón en PC solo se activa a partir de 4px de movimiento real.
+// Antes se capturaba el puntero en el propio pointerdown, así que un simple clic
+// (sin arrastre) también quedaba "capturado" por el carrusel y el click de la
+// tarjeta nunca llegaba a dispararse. En móvil no pasaba porque el dedo desliza
+// de forma nativa y esta función se salta por completo (pointerType==='touch').
 function makeCarouselDraggable(el){
   if(el._dragReady)return;
   el._dragReady=true;
-  let isDown=false,startX=0,startScroll=0;
+  let isDown=false,startX=0,startScroll=0,captured=false;
   el.addEventListener('pointerdown',e=>{
     if(e.pointerType==='touch')return;
     isDown=true;
-    el.classList.add('dragging');
+    captured=false;
     startX=e.clientX;
     startScroll=el.scrollLeft;
     el.querySelectorAll('.carousel-card').forEach(c=>c._dragged=false);
-    try{el.setPointerCapture(e.pointerId)}catch(err){}
   });
   el.addEventListener('pointermove',e=>{
     if(!isDown)return;
     const dx=e.clientX-startX;
-    if(Math.abs(dx)>4)el.querySelectorAll('.carousel-card').forEach(c=>c._dragged=true);
-    el.scrollLeft=startScroll-dx;
+    if(Math.abs(dx)>4){
+      if(!captured){
+        captured=true;
+        el.classList.add('dragging');
+        try{el.setPointerCapture(e.pointerId)}catch(err){}
+      }
+      el.querySelectorAll('.carousel-card').forEach(c=>c._dragged=true);
+    }
+    if(captured)el.scrollLeft=startScroll-dx;
   });
-  const stop=()=>{isDown=false;el.classList.remove('dragging')};
+  const stop=()=>{isDown=false;captured=false;el.classList.remove('dragging')};
   el.addEventListener('pointerup',stop);
   el.addEventListener('pointerleave',stop);
 }
@@ -1078,8 +1092,8 @@ document.getElementById('share-instagram').querySelector('img').src=BRAND_ICONS.
 document.getElementById('share-tiktok').querySelector('img').src=BRAND_ICONS.tiktok;
 
 // Icono + texto en la leyenda de avisos (mismo SVG que en las tarjetas)
-document.getElementById('legend-ads').innerHTML=`<span class="warn-icon">${ADS_SVG}</span> Contiene publicidad`;
-document.getElementById('legend-sub').innerHTML=`<span class="warn-icon">${SUB_SVG}</span> Requiere suscripción de pago`;
+document.getElementById('legend-ads').innerHTML=`<span class="badge badge-ads">Con anuncios</span> Contiene publicidad`;
+document.getElementById('legend-sub').innerHTML=`<span class="badge badge-pago">De pago</span> Requiere suscripción de pago`;
 
 function showToast(msg){
   const t=document.getElementById('toast');
@@ -1128,7 +1142,7 @@ function openDetailSheet(app){
   document.getElementById('detail-stars').innerHTML=starsHtml(app.valoracion,15);
 
   document.getElementById('detail-tags').innerHTML=
-    `${isRecent(app.fecha)?'<span class="badge badge-new">Nuevo</span>':''}${badgeFor(app.tipo)}${statusPillHtml(app.estado)}${warnIconsHtml(app)}`;
+    `${warnIconsHtml(app)}${isRecent(app.fecha)?'<span class="badge badge-new">Nuevo</span>':''}${badgeFor(app.tipo)}${statusPillHtml(app.estado)}`;
 
   document.getElementById('detail-cta-link').href=app.url;
 
