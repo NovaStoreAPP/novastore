@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://novastoreapp.github.io/novastore/sitemap.xml
