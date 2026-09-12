@@ -24,7 +24,7 @@
     {
       "nombre": "Termux",
       "categoria": "Utilidades",
-      "descripcion": "",
+      "descripcion": "Emulador de terminal para ejecutar entorno Linux en tu teléfono o tablet.",
       "descripcionCompleta": "Emulador de terminal y una aplicación gratuita para Android que te permite ejecutar un entorno Linux completo directamente en tu teléfono o tableta, sin necesidad de tener acceso root",
       "caracteristicas": [
         "Entorno tipo GNU/Linux: Proporciona una interfaz de línea de comandos similar a la de un ordenador con Linux.",
