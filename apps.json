@@ -1,1684 +1,1769 @@
 {
-    "categorias": [
-        "Productividad",
-        "Música Streaming",
-        "Redes",
-        "Navegadores Web",
-        "Gestión de Archivos",
-        "Launchers y personalización",
-        "Vida más fácil",
-        "Tiempo y clima",
-        "Emulación y Remote Play",
-        "Galería de fotos",
-        "Reproductores de vídeo",
-        "Teclados",
-        "Utilidades",
-        "Power User (ADB)",
-        "Streaming de audio",
-        "Cine y Televisión",
-        "Deportes",
+  "categorias": [
+    "Productividad",
+    "Música Streaming",
+    "Redes",
+    "Navegadores Web",
+    "Gestión de Archivos",
+    "Launchers y personalización",
+    "Vida más fácil",
+    "Tiempo y clima",
+    "Emulación y Remote Play",
+    "Galería de fotos",
+    "Reproductores de vídeo",
+    "Teclados",
+    "Utilidades",
+    "Power User (ADB)",
+    "Streaming de audio",
+    "Cine y Televisión",
+    "Deportes",
+    "Bloqueador de publicidad",
+    "Juegos"
+  ],
+  "apps": [
+    {
+      "nombre": "PlayUs",
+      "categoria": "Juegos",
+      "descripcion": "Juega con tus amigos a retos diarios y compite por ser el mejor. Cada día un juego nuevo.",
+      "caracteristicas": [
+        "Divertido",
+        "Cada día un reto nuevo",
+        "Varias oportunidades",
+        "Modo para probarlo antes de tomar la jugada final."
+      ],
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=club.playus&hl=es",
+      "estado": "ok",
+      "slug": "playus",
+      "ads": true,
+      "suscripcion": false,
+      "fecha": "2026-09-07",
+      "descripcionCompleta": "Juega con tus amigos a retos diarios y compite por ser el mejor. Cada día se publica un juego nuevo, tienes varios intentos para conseguir la mejor puntuación y puedes practicar antes de enviar tu resultado final.",
+      "valoracion": 5
+    },
+    {
+      "nombre": "Foroplus",
+      "categoria": "Redes",
+      "descripcion": "Aplicación no oficial de ForoCoches.",
+      "descripcionCompleta": "Aplicación no oficial de Forocoches con muchísimas mejoras.",
+      "caracteristicas": [
+        "Filtro de hilos.",
+        "Filtro de palabras",
+        "Ocultar usuarios ignorados",
+        "Ocultar post de usuarios ignorados",
+        "Navegación más cómoda",
+        "Menú personalizable",
+        "Favoritos",
+        "Notificaciones en tiempo real..",
+        "¡Y mucho más!"
+      ],
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.foroplus.app",
+      "estado": "ok",
+      "slug": "foroplus",
+      "ads": false,
+      "suscripcion": false,
+      "fecha": "2026-09-07",
+      "valoracion": 5
+    },
+    {
+      "nombre": "Meulify",
+      "categoria": "Música Streaming",
+      "descripcion": "Música streaming. Contiene anuncios para seguir reproduciendo música.",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=top.meulify.app",
+      "estado": "ok",
+      "slug": "meulify",
+      "ads": true,
+      "suscripcion": true,
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App para escuchar música en streaming con un catálogo amplio. Es gratuita, pero tendrás que aguantar algún anuncio de vez en cuando para seguir reproduciendo.",
+      "caracteristicas": [
+        "Catálogo amplio de canciones",
+        "Reproducción en streaming",
+        "Contiene anuncios",
+        "Gratuita"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Spotube",
+      "peso": "122",
+      "categoria": "Música Streaming",
+      "descripcion": "Musica streaming sin publicidad.",
+      "tipo": "github",
+      "url": "https://github.com/krtirtho/spotube",
+      "estado": "ok",
+      "slug": "spotube",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Cliente de música streaming Open Source que obtiene el audio y los metadatos de fuentes como YouTube Music y Spotify, pero sin anuncios ni necesidad de cuenta premium.",
+      "caracteristicas": [
+        "Sin publicidad",
+        "Open Source",
+        "Multiplataforma",
+        "Descarga de canciones",
+        "Letras sincronizadas"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Simpmusic",
+      "peso": "27",
+      "categoria": "Música Streaming",
+      "descripcion": "Musica streaming sin publicidad.",
+      "tipo": "web",
+      "url": "https://www.simpmusic.org/",
+      "estado": "ok",
+      "slug": "simpmusic",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Web app para escuchar música en streaming sin anuncios, con una interfaz simple pensada para reproducir rápido sin distracciones.",
+      "caracteristicas": [
+        "Sin publicidad",
+        "Interfaz simple",
+        "Acceso desde el navegador",
+        "Búsqueda rápida de canciones"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Musicall",
+      "peso": "15",
+      "categoria": "Música Streaming",
+      "descripcion": "Musica streaming sin publicidad.",
+      "banner": "",
+      "tipo": "web",
+      "url": "https://musicall.nivelapp.com/",
+      "estado": "ok",
+      "slug": "musicall",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Otra alternativa web para escuchar música en streaming de forma gratuita y sin publicidad, ideal si prefieres no instalar nada.",
+      "caracteristicas": [
+        "Sin publicidad",
+        "No requiere instalación",
+        "Gratuita",
+        "Streaming directo desde el navegador"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "OuterTune",
+      "peso": "17",
+      "categoria": "Música Streaming",
+      "descripcion": "Música en streaming sin anuncios",
+      "tipo": "github",
+      "url": "github.com/OuterTune/OuterTune/releases",
+      "icono": null,
+      "estado": "ok",
+      "slug": "outertune",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Fork mejorado de InnerTune para escuchar música y vídeos musicales sin anuncios, con soporte para letras, listas de reproducción sincronizadas y descargas offline.",
+      "caracteristicas": [
+        "Sin anuncios",
+        "Open Source",
+        "Descargas offline",
+        "Letras sincronizadas",
+        "Basado en YouTube Music"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Loopy",
+      "peso": "73",
+      "categoria": "Música Streaming",
+      "descripcion": "Musica en streaming sin anuncios.",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=app.loopy.music&hl=es",
+      "icono": null,
+      "estado": "ok",
+      "slug": "loopy",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App para escuchar música en streaming sin publicidad, sencilla de usar y centrada en la reproducción sin distracciones.",
+      "caracteristicas": [
+        "Sin anuncios",
+        "Interfaz sencilla",
+        "Streaming directo",
+        "Ligera"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Via",
+      "peso": "4",
+      "categoria": "Navegadores Web",
+      "descripcion": "Navegador muy ligero con bloqueador de publicidad. Es extremadamente rápido y no consume nada de ram.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=mark.via.gp&hl=es",
+      "estado": "ok",
+      "slug": "via",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Uno de los navegadores más ligeros que existen. Apenas ocupa espacio, arranca al instante y su bloqueador de publicidad integrado hace que la navegación sea rapidísima incluso en móviles modestos.",
+      "caracteristicas": [
+        "Extremadamente ligero",
+        "Bloqueador de publicidad integrado",
+        "Bajo consumo de RAM",
+        "Gestos personalizables",
+        "Multiventana"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Stargon",
+      "peso": "35",
+      "categoria": "Navegadores Web",
+      "descripcion": "Basado en Chromium. Bloqueador de publicidad y muy personalizable. Es el que uso diariamente.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=net.onecook.browser&hl=es",
+      "estado": "ok",
+      "slug": "stargon",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Navegador basado en Chromium con bloqueador de anuncios nativo y un montón de opciones de personalización. Es mi navegador del día a día por el equilibrio entre rendimiento y funciones.",
+      "caracteristicas": [
+        "Basado en Chromium",
+        "Bloqueador de publicidad nativo",
+        "Muy personalizable",
+        "Gestos y temas",
+        "Rápido y estable"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Brave",
+      "peso": "120",
+      "categoria": "Navegadores Web",
+      "descripcion": "El más querido por todos. Basado en Chromium y con bloqueador nativo de publicidad. Tiene reproducción de fondo para YouTube Web.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.brave.browser",
+      "estado": "ok",
+      "slug": "brave",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "El navegador favorito de la mayoría. Bloquea anuncios y rastreadores de serie sin necesidad de extensiones, y permite reproducir YouTube en segundo plano sin pagar Premium.",
+      "caracteristicas": [
+        "Bloqueador de publicidad nativo",
+        "Reproducción en segundo plano de YouTube",
+        "Basado en Chromium",
+        "Protección contra rastreadores",
+        "Modo Tor integrado"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Soul",
+      "peso": "28",
+      "categoria": "Navegadores Web",
+      "descripcion": "El más personalizable de todos indiscutiblemente. Puedes cambiarle de todo. Rápido, con bloqueador de publicidad pero sin addons.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=soul%20browser&c=apps",
+      "estado": "ok",
+      "slug": "soul",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Si buscas personalización total en un navegador, este es el tuyo. Puedes modificar prácticamente cualquier aspecto de la interfaz. Es rápido y trae bloqueador de publicidad, aunque no admite addons como Firefox.",
+      "caracteristicas": [
+        "Personalización extrema",
         "Bloqueador de publicidad",
-        "Juegos"
-    ],
-    "apps": [
-        {
-            "nombre": "PlayUs",
-            "categoria": "Juegos",
-            "descripcion": "Juega con tus amigos a retos diarios y compite por ser el mejor. Cada día un juego nuevo.",
-            "caracteristicas": [
-                "Divertido",
-                "Cada día un reto nuevo",
-                "Varias oportunidades",
-                "Modo para probarlo antes de tomar la jugada final."
-            ],
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=club.playus&hl=es",
-            "estado": "ok",
-            "slug": "playus",
-            "ads": true,
-            "suscripcion": false,
-            "fecha": "2026-09-07",
-            "descripcionCompleta": "Juega con tus amigos a retos diarios y compite por ser el mejor. Cada día se publica un juego nuevo, tienes varios intentos para conseguir la mejor puntuación y puedes practicar antes de enviar tu resultado final."
-        },
-        {
-            "nombre": "Foroplus",
-            "categoria": "Redes",
-            "descripcion": "Aplicación no oficial de ForoCoches.",
-            "descripcionCompleta": "Aplicación no oficial de Forocoches con muchísimas mejoras.",
-            "caracteristicas": [
-                "Filtro de hilos.",
-                "Filtro de palabras",
-                "Ocultar usuarios ignorados",
-                "Ocultar post de usuarios ignorados",
-                "Navegación más cómoda",
-                "Menú personalizable",
-                "Favoritos",
-                "Notificaciones en tiempo real..",
-                "¡Y mucho más!"
-            ],
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.foroplus.app",
-            "estado": "ok",
-            "slug": "foroplus",
-            "ads": false,
-            "suscripcion": false,
-            "fecha": "2026-09-07"
-        },
-        {
-            "nombre": "Meulify",
-            "categoria": "Música Streaming",
-            "descripcion": "Música streaming. Contiene anuncios para seguir reproduciendo música.",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=top.meulify.app",
-            "estado": "ok",
-            "slug": "meulify",
-            "ads": true,
-            "suscripcion": true,
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App para escuchar música en streaming con un catálogo amplio. Es gratuita, pero tendrás que aguantar algún anuncio de vez en cuando para seguir reproduciendo.",
-            "caracteristicas": [
-                "Catálogo amplio de canciones",
-                "Reproducción en streaming",
-                "Contiene anuncios",
-                "Gratuita"
-            ]
-        },
-        {
-            "nombre": "Spotube",
-            "peso": "122",
-            "categoria": "Música Streaming",
-            "descripcion": "Musica streaming sin publicidad.",
-            "tipo": "github",
-            "url": "https://github.com/krtirtho/spotube",
-            "estado": "ok",
-            "slug": "spotube",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Cliente de música streaming Open Source que obtiene el audio y los metadatos de fuentes como YouTube Music y Spotify, pero sin anuncios ni necesidad de cuenta premium.",
-            "caracteristicas": [
-                "Sin publicidad",
-                "Open Source",
-                "Multiplataforma",
-                "Descarga de canciones",
-                "Letras sincronizadas"
-            ]
-        },
-        {
-            "nombre": "Simpmusic",
-            "peso": "27",
-            "categoria": "Música Streaming",
-            "descripcion": "Musica streaming sin publicidad.",
-            "tipo": "web",
-            "url": "https://www.simpmusic.org/",
-            "estado": "ok",
-            "slug": "simpmusic",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Web app para escuchar música en streaming sin anuncios, con una interfaz simple pensada para reproducir rápido sin distracciones.",
-            "caracteristicas": [
-                "Sin publicidad",
-                "Interfaz simple",
-                "Acceso desde el navegador",
-                "Búsqueda rápida de canciones"
-            ]
-        },
-        {
-            "nombre": "Musicall",
-            "peso": "15",
-            "categoria": "Música Streaming",
-            "descripcion": "Musica streaming sin publicidad.",
-            "banner": "",
-            "tipo": "web",
-            "url": "https://musicall.nivelapp.com/",
-            "estado": "ok",
-            "slug": "musicall",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Otra alternativa web para escuchar música en streaming de forma gratuita y sin publicidad, ideal si prefieres no instalar nada.",
-            "caracteristicas": [
-                "Sin publicidad",
-                "No requiere instalación",
-                "Gratuita",
-                "Streaming directo desde el navegador"
-            ]
-        },
-        {
-            "nombre": "OuterTune",
-            "peso": "17",
-            "categoria": "Música Streaming",
-            "descripcion": "Música en streaming sin anuncios",
-            "tipo": "github",
-            "url": "github.com/OuterTune/OuterTune/releases",
-            "icono": null,
-            "estado": "ok",
-            "slug": "outertune",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Fork mejorado de InnerTune para escuchar música y vídeos musicales sin anuncios, con soporte para letras, listas de reproducción sincronizadas y descargas offline.",
-            "caracteristicas": [
-                "Sin anuncios",
-                "Open Source",
-                "Descargas offline",
-                "Letras sincronizadas",
-                "Basado en YouTube Music"
-            ]
-        },
-        {
-            "nombre": "Loopy",
-            "peso": "73",
-            "categoria": "Música Streaming",
-            "descripcion": "Musica en streaming sin anuncios.",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=app.loopy.music&hl=es",
-            "icono": null,
-            "estado": "ok",
-            "slug": "loopy",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App para escuchar música en streaming sin publicidad, sencilla de usar y centrada en la reproducción sin distracciones.",
-            "caracteristicas": [
-                "Sin anuncios",
-                "Interfaz sencilla",
-                "Streaming directo",
-                "Ligera"
-            ]
-        },
-        {
-            "nombre": "Via",
-            "peso": "4",
-            "categoria": "Navegadores Web",
-            "descripcion": "Navegador muy ligero con bloqueador de publicidad. Es extremadamente rápido y no consume nada de ram.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=mark.via.gp&hl=es",
-            "estado": "ok",
-            "slug": "via",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Uno de los navegadores más ligeros que existen. Apenas ocupa espacio, arranca al instante y su bloqueador de publicidad integrado hace que la navegación sea rapidísima incluso en móviles modestos.",
-            "caracteristicas": [
-                "Extremadamente ligero",
-                "Bloqueador de publicidad integrado",
-                "Bajo consumo de RAM",
-                "Gestos personalizables",
-                "Multiventana"
-            ]
-        },
-        {
-            "nombre": "Stargon",
-            "peso": "35",
-            "categoria": "Navegadores Web",
-            "descripcion": "Basado en Chromium. Bloqueador de publicidad y muy personalizable. Es el que uso diariamente.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=net.onecook.browser&hl=es",
-            "estado": "ok",
-            "slug": "stargon",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Navegador basado en Chromium con bloqueador de anuncios nativo y un montón de opciones de personalización. Es mi navegador del día a día por el equilibrio entre rendimiento y funciones.",
-            "caracteristicas": [
-                "Basado en Chromium",
-                "Bloqueador de publicidad nativo",
-                "Muy personalizable",
-                "Gestos y temas",
-                "Rápido y estable"
-            ]
-        },
-        {
-            "nombre": "Brave",
-            "peso": "120",
-            "categoria": "Navegadores Web",
-            "descripcion": "El más querido por todos. Basado en Chromium y con bloqueador nativo de publicidad. Tiene reproducción de fondo para YouTube Web.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.brave.browser",
-            "estado": "ok",
-            "slug": "brave",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "El navegador favorito de la mayoría. Bloquea anuncios y rastreadores de serie sin necesidad de extensiones, y permite reproducir YouTube en segundo plano sin pagar Premium.",
-            "caracteristicas": [
-                "Bloqueador de publicidad nativo",
-                "Reproducción en segundo plano de YouTube",
-                "Basado en Chromium",
-                "Protección contra rastreadores",
-                "Modo Tor integrado"
-            ]
-        },
-        {
-            "nombre": "Soul",
-            "peso": "28",
-            "categoria": "Navegadores Web",
-            "descripcion": "El más personalizable de todos indiscutiblemente. Puedes cambiarle de todo. Rápido, con bloqueador de publicidad pero sin addons.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=soul%20browser&c=apps",
-            "estado": "ok",
-            "slug": "soul",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Si buscas personalización total en un navegador, este es el tuyo. Puedes modificar prácticamente cualquier aspecto de la interfaz. Es rápido y trae bloqueador de publicidad, aunque no admite addons como Firefox.",
-            "caracteristicas": [
-                "Personalización extrema",
-                "Bloqueador de publicidad",
-                "Rápido",
-                "Sin soporte de addons",
-                "Gestos configurables"
-            ]
-        },
-        {
-            "nombre": "Samsung Browser",
-            "peso": "85",
-            "categoria": "Navegadores Web",
-            "descripcion": "Excelente navegador de Samsung. De lo poco decente que hacen en aplicaciones. Tiene bloqueador de publicidad y tiene cierta personalización.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=samsung%20browser&c=apps",
-            "estado": "ok",
-            "slug": "samsung-browser",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Navegador propio de Samsung, sorprendentemente bueno. Cuenta con bloqueador de publicidad, modo oscuro real y algo de personalización, y funciona genial incluso fuera de dispositivos Samsung.",
-            "caracteristicas": [
-                "Bloqueador de publicidad",
-                "Buen rendimiento",
-                "Modo oscuro real",
-                "Sincronización con cuenta Samsung",
-                "Funciona en cualquier Android"
-            ]
-        },
-        {
-            "nombre": "Cromite",
-            "peso": "95",
-            "categoria": "Navegadores Web",
-            "descripcion": "Alternativa a Google Chrome pero sin telemetría y con bloqueador integrado. Open Source.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/uazo/cromite/releases",
-            "estado": "ok",
-            "slug": "cromite",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Fork de Chromium centrado en la privacidad: elimina la telemetría de Google, incluye bloqueador de anuncios integrado y mantiene la misma velocidad y compatibilidad que Chrome.",
-            "caracteristicas": [
-                "Sin telemetría de Google",
-                "Bloqueador de anuncios integrado",
-                "Open Source",
-                "Compatible con extensiones de escritorio",
-                "Basado en Chromium"
-            ]
-        },
-        {
-            "nombre": "Firefox Nightly",
-            "peso": "140",
-            "categoria": "Navegadores Web",
-            "descripcion": "Firefox para desarrolladores. Puedes añadir addons, activar cifrado de webs, acceder a contenido bloqueado, puedes entrar en las opciones de about:config y soporta addons de PC.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=es",
-            "estado": "ok",
-            "slug": "firefox-nightly",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "La versión de desarrollo de Firefox para Android. Es la única que permite instalar addons de PC, activar el modo HTTPS estricto, saltarte bloqueos regionales y trastear con about:config a fondo.",
-            "caracteristicas": [
-                "Soporta addons de escritorio",
-                "Acceso a about:config",
-                "Cifrado forzado de webs",
-                "Última versión de Firefox",
-                "Muy personalizable"
-            ]
-        },
-        {
-            "nombre": "Cx File",
-            "peso": "25",
-            "categoria": "Gestión de Archivos",
-            "descripcion": "Potente y versátil. Soporta nubes y redes locales sin publicidad.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=cx%20file&c=apps",
-            "estado": "ok",
-            "slug": "cx-file",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Gestor de archivos muy completo que además de tu almacenamiento local te permite conectar servicios en la nube y unidades de red locales, todo sin publicidad.",
-            "caracteristicas": [
-                "Soporte para nubes",
-                "Conexión a redes locales",
-                "Sin publicidad",
-                "Gestión avanzada de archivos",
-                "Interfaz moderna"
-            ]
-        },
-        {
-            "nombre": "Gestor de archivos",
-            "peso": "12",
-            "categoria": "Gestión de Archivos",
-            "descripcion": "Explorador muy completo y estético para el uso diario.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.alphainventor.filemanager",
-            "estado": "ok",
-            "slug": "gestor-de-archivos",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Explorador de archivos con un diseño muy cuidado, pensado para el uso diario sin complicaciones. Tiene todo lo necesario para mover, comprimir y organizar tus archivos.",
-            "caracteristicas": [
-                "Diseño cuidado",
-                "Fácil de usar",
-                "Compresión de archivos",
-                "Gestor de aplicaciones incluido",
-                "Categorías automáticas"
-            ]
-        },
-        {
-            "nombre": "Mixplorer",
-            "peso": "18",
-            "categoria": "Gestión de Archivos",
-            "descripcion": "Considerado por muchos el mejor explorador de archivos. No le falta de nada.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Mixplorer&c=apps",
-            "estado": "ok",
-            "slug": "mixplorer",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "El explorador de archivos definitivo para muchos usuarios avanzados. Soporta prácticamente cualquier protocolo de red, archivo comprimido y tiene un editor de texto y multimedia integrado.",
-            "caracteristicas": [
-                "Soporte para múltiples protocolos",
-                "Visor y editor integrado",
-                "Gestión de archivos comprimidos",
-                "Temas personalizables",
-                "Muy completo"
-            ]
-        },
-        {
-            "nombre": "Lawnchair",
-            "peso": "22",
-            "categoria": "Launchers y personalización",
-            "descripcion": "Launcher Open Source inspirado en Pixel Launcher. Minimalista, rápido y muy recomendado como alternativa a Nova.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Lawnchair&c=apps",
-            "estado": "ok",
-            "slug": "lawnchair",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Launcher gratuito y Open Source inspirado en el launcher de los Pixel. Es minimalista, muy fluido y una de las alternativas más recomendadas desde que Nova Launcher dejó de evolucionar.",
-            "caracteristicas": [
-                "Open Source",
-                "Inspirado en Pixel Launcher",
-                "Personalización de iconos y gestos",
-                "Muy fluido",
-                "Gratuito"
-            ]
-        },
-        {
-            "nombre": "Lawnchair Github",
-            "peso": "20",
-            "categoria": "Launchers y personalización",
-            "descripcion": "Proyecto Open Source oficial de Lawnchair. Muy popular entre usuarios de ROMs y Reddit.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/LawnchairLauncher/lawnchair",
-            "estado": "ok",
-            "slug": "lawnchair-github",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Repositorio oficial de Lawnchair donde encontrarás siempre las últimas versiones y builds beta antes de que lleguen a la Play Store. Muy popular entre usuarios de ROMs personalizadas.",
-            "caracteristicas": [
-                "Últimas versiones antes que en Play Store",
-                "Builds beta",
-                "Open Source",
-                "Comunidad muy activa"
-            ]
-        },
-        {
-            "nombre": "Niagara Launcher",
-            "peso": "18",
-            "categoria": "Launchers y personalización",
-            "descripcion": "El launcher minimalista favorito de Reddit. Diseñado para usar el móvil con una mano y reducir distracciones.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Niagara%20Launcher&c=apps",
-            "estado": "ok",
-            "slug": "niagara-launcher",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Launcher minimalista pensado para reducir distracciones y facilitar el uso con una sola mano. Oculta el desorden de iconos y te muestra solo lo que realmente usas.",
-            "caracteristicas": [
-                "Diseño minimalista",
-                "Uso con una mano",
-                "Reduce distracciones",
-                "Lista de apps alfabética",
-                "Favorito de Reddit"
-            ]
-        },
-        {
-            "nombre": "Kvaesitso",
-            "peso": "15",
-            "categoria": "Launchers y personalización",
-            "descripcion": "Launcher Open Source extremadamente rápido basado en búsqueda global. Muy amado en Reddit por su diseño moderno.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/MM2-0/Kvaesitso",
-            "estado": "ok",
-            "slug": "kvaesitso",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Launcher Open Source centrado en la búsqueda: escribe lo que necesitas y aparece al instante, ya sea una app, un contacto o un cálculo. Diseño moderno y muy fluido.",
-            "caracteristicas": [
-                "Búsqueda global instantánea",
-                "Open Source",
-                "Diseño moderno",
-                "Widgets personalizables",
-                "Muy fluido"
-            ]
-        },
-        {
-            "nombre": "Smart Launcher",
-            "peso": "30",
-            "categoria": "Launchers y personalización",
-            "descripcion": "Launcher inteligente que organiza apps automáticamente. Muy recomendado tras la caída de Nova Launcher.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Smart%20Launcher&c=apps",
-            "estado": "ok",
-            "slug": "smart-launcher",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Launcher que clasifica tus aplicaciones automáticamente por categorías, ahorrándote tener que organizarlas tú mismo. Una gran alternativa desde que Nova Launcher quedó abandonado.",
-            "caracteristicas": [
-                "Organización automática por categorías",
-                "Gestos personalizables",
-                "Rápido y ligero",
-                "Buena alternativa a Nova"
-            ]
-        },
-        {
-            "nombre": "Hyperion Launcher",
-            "peso": "28",
-            "categoria": "Launchers y personalización",
-            "descripcion": "Experiencia tipo Pixel con muchísima personalización y rendimiento fluido.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Hyperion%20Launcher&c=apps",
-            "estado": "ok",
-            "slug": "hyperion-launcher",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Otro launcher inspirado en la experiencia Pixel, pero llevando la personalización mucho más lejos sin sacrificar la fluidez del sistema.",
-            "caracteristicas": [
-                "Estilo Pixel",
-                "Muy personalizable",
-                "Rendimiento fluido",
-                "Gestos y widgets"
-            ]
-        },
-        {
-            "nombre": "Microsoft Launcher",
-            "peso": "45",
-            "categoria": "Launchers y personalización",
-            "descripcion": "Muy completo y estable. Perfecto si usas Windows o herramientas de productividad.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Microsoft%20Launcher&c=apps",
-            "estado": "ok",
-            "slug": "microsoft-launcher",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Launcher de Microsoft muy pulido y estable, con integración directa con tu cuenta de Microsoft, Office y el resto de herramientas de productividad si las usas en tu día a día.",
-            "caracteristicas": [
-                "Integración con cuenta Microsoft",
-                "Muy estable",
-                "Feed de noticias personalizable",
-                "Sincronización con Windows"
-            ]
-        },
-        {
-            "nombre": "Neo Launcher",
-            "peso": "16",
-            "categoria": "Launchers y personalización",
-            "descripcion": "Launcher Open Source clásico estilo Nova pero enfocado en privacidad y rendimiento ligero.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/NeoApplications/Neo-Launcher",
-            "estado": "ok",
-            "slug": "neo-launcher",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Fork Open Source con una filosofía clásica al estilo Nova Launcher, pero centrado en la privacidad, sin telemetría y muy ligero para el sistema.",
-            "caracteristicas": [
-                "Open Source",
-                "Sin telemetría",
-                "Estilo clásico tipo Nova",
-                "Ligero",
-                "Muy personalizable"
-            ]
-        },
-        {
-            "nombre": "Total Launcher",
-            "peso": "12",
-            "categoria": "Launchers y personalización",
-            "descripcion": "El launcher más extremo para personalización total. Puedes cambiar absolutamente todo.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Total%20Launcher&c=apps",
-            "estado": "ok",
-            "slug": "total-launcher",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Pensado para quien quiere control absoluto: puedes rediseñar cada elemento de la pantalla de inicio, cajones y widgets a tu gusto sin ningún límite real.",
-            "caracteristicas": [
-                "Personalización sin límites",
-                "Editor de widgets propio",
-                "Control total del diseño",
-                "Para usuarios avanzados"
-            ]
-        },
-        {
-            "nombre": "OLauncher",
-            "peso": "5",
-            "categoria": "Launchers y personalización",
-            "descripcion": "Launcher minimalista Open Source centrado en desintoxicación digital y cero distracciones.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=OLauncher&c=apps",
-            "estado": "ok",
-            "slug": "olauncher",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Launcher extremadamente simple, en texto y sin iconos, pensado para reducir el tiempo de pantalla y ayudarte a desconectar del móvil.",
-            "caracteristicas": [
-                "Diseño minimalista en texto",
-                "Open Source",
-                "Reduce el tiempo de pantalla",
-                "Sin distracciones",
-                "Muy ligero"
-            ]
-        },
-        {
-            "nombre": "Syft",
-            "peso": "35",
-            "categoria": "Vida más fácil",
-            "descripcion": "Resúmenes de noticias por IA basados en tus temas favoritos. Pide cuenta de Google para iniciar sesión.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=syft&c=apps",
-            "estado": "ok",
-            "slug": "syft",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App que usa IA para resumirte las noticias del día según los temas que te interesan, ahorrándote tiempo de lectura. Necesita que inicies sesión con tu cuenta de Google.",
-            "caracteristicas": [
-                "Resúmenes con IA",
-                "Personalización por temas",
-                "Ahorra tiempo de lectura",
-                "Requiere cuenta de Google"
-            ]
-        },
-        {
-            "nombre": "Daylio",
-            "peso": "28",
-            "categoria": "Vida más fácil",
-            "descripcion": "Diario emocional interactivo con diseño elegante y simple. Una herramienta que lleva años ayudando a mucha gente a desahogarse.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=daylio&c=apps",
-            "estado": "ok",
-            "slug": "daylio",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Diario sin necesidad de escribir: eliges tu estado de ánimo y las actividades del día con iconos, y con el tiempo genera estadísticas y gráficas muy útiles para entenderte mejor.",
-            "caracteristicas": [
-                "Registro rápido con iconos",
-                "Estadísticas de ánimo",
-                "Diseño elegante",
-                "Recordatorios diarios",
-                "Historial a largo plazo"
-            ]
-        },
-        {
-            "nombre": "Feeder",
-            "peso": "8",
-            "categoria": "Vida más fácil",
-            "descripcion": "Lector RSS Open Source para seguir noticias, blogs y tecnología sin algoritmos invasivos.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Feeder&c=apps",
-            "estado": "ok",
-            "slug": "feeder",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Lector de RSS ligero y Open Source, ideal para seguir tus blogs y webs favoritas sin depender de algoritmos que decidan qué ves.",
-            "caracteristicas": [
-                "Open Source",
-                "Sin algoritmos",
-                "Ligero",
-                "Soporte para múltiples fuentes",
-                "Sincronización opcional"
-            ]
-        },
-        {
-            "nombre": "FeedFlow",
-            "peso": "7",
-            "categoria": "Vida más fácil",
-            "descripcion": "RSS Reader minimalista y Open Source. Ideal para leer noticias de forma limpia y rápida.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/prof18/feed-flow",
-            "estado": "ok",
-            "slug": "feedflow",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Otro lector de RSS Open Source, con un diseño minimalista pensado para leer rápido y sin distracciones visuales.",
-            "caracteristicas": [
-                "Open Source",
-                "Diseño minimalista",
-                "Multiplataforma",
-                "Organización por carpetas",
-                "Rápido"
-            ]
-        },
-        {
-            "nombre": "Joplin",
-            "peso": "42",
-            "categoria": "Vida más fácil",
-            "descripcion": "Aplicación de notas y organización Open Source. Perfecta para productividad y guardar ideas.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Joplin&c=apps",
-            "estado": "ok",
-            "slug": "joplin",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Aplicación de notas Open Source con soporte para Markdown, cifrado y sincronización con tu propia nube. Ideal si quieres tener el control total de tus datos.",
-            "caracteristicas": [
-                "Open Source",
-                "Soporte Markdown",
-                "Sincronización cifrada",
-                "Organización por libretas",
-                "Multiplataforma"
-            ]
-        },
-        {
-            "nombre": "Super Productivity",
-            "peso": "18",
-            "categoria": "Vida más fácil",
-            "descripcion": "Gestor de tareas Open Source con temporizador, estadísticas y enfoque en productividad.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Super%20Productivity&c=apps",
-            "estado": "ok",
-            "slug": "super-productivity",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Gestor de tareas pensado para gente que quiere medir de verdad su productividad: incluye temporizador tipo Pomodoro, seguimiento de tiempo por tarea y estadísticas detalladas.",
-            "caracteristicas": [
-                "Open Source",
-                "Temporizador integrado",
-                "Estadísticas de productividad",
-                "Integración con calendarios",
-                "Gestión por proyectos"
-            ]
-        },
-        {
-            "nombre": "Loop Habit Tracker",
-            "peso": "6",
-            "categoria": "Vida más fácil",
-            "descripcion": "App Open Source para crear y mantener hábitos diarios con estadísticas claras.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Loop%20Habit%20Tracker&c=apps",
-            "estado": "ok",
-            "slug": "loop-habit-tracker",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App sencilla y Open Source para hacer seguimiento de tus hábitos día a día, con gráficas claras que te muestran tu progreso y rachas.",
-            "caracteristicas": [
-                "Open Source",
-                "Seguimiento de rachas",
-                "Gráficas de progreso",
-                "Recordatorios personalizables",
-                "Sin publicidad"
-            ]
-        },
-        {
-            "nombre": "Anytype",
-            "peso": "55",
-            "categoria": "Vida más fácil",
-            "descripcion": "Alternativa moderna a Notion centrada en privacidad y organización personal offline.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Anytype&c=apps",
-            "estado": "ok",
-            "slug": "anytype",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Alternativa a Notion que guarda todos tus datos localmente y cifrados, con un sistema de bloques y bases de datos muy flexible para organizar cualquier cosa.",
-            "caracteristicas": [
-                "Alternativa a Notion",
-                "Datos cifrados y locales",
-                "Bases de datos flexibles",
-                "Funciona offline",
-                "Multiplataforma"
-            ]
-        },
-        {
-            "nombre": "Obsidian",
-            "peso": "38",
-            "categoria": "Vida más fácil",
-            "descripcion": "Sistema de notas conectado tipo \"segundo cerebro\". Muy usado para estudio y productividad.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Obsidian&c=apps",
-            "estado": "ok",
-            "slug": "obsidian",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Editor de notas en Markdown que te permite enlazar ideas entre sí para crear tu propio 'segundo cerebro'. Muy popular entre estudiantes y gente que organiza proyectos complejos.",
-            "caracteristicas": [
-                "Notas enlazadas",
-                "Soporte Markdown",
-                "Gráfico de relaciones",
-                "Plugins de la comunidad",
-                "Datos guardados localmente"
-            ]
-        },
-        {
-            "nombre": "Tasks.org",
-            "peso": "10",
-            "categoria": "Vida más fácil",
-            "descripcion": "Gestor de tareas Open Source compatible con Google Tasks, CalDAV y Nextcloud.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Tasks.org&c=apps",
-            "estado": "ok",
-            "slug": "tasks-org",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Gestor de tareas Open Source que se sincroniza con Google Tasks, CalDAV o Nextcloud, ideal si ya usas alguno de estos servicios y quieres una app más completa.",
-            "caracteristicas": [
-                "Open Source",
-                "Sincronización con Google Tasks",
-                "Compatible con CalDAV/Nextcloud",
-                "Recordatorios y subtareas",
-                "Widgets"
-            ]
-        },
-        {
-            "nombre": "Notally",
-            "peso": "5",
-            "categoria": "Vida más fácil",
-            "descripcion": "Bloc de notas minimalista y Open Source para listas rápidas, ideas y recordatorios.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Notally&c=apps",
-            "estado": "ok",
-            "slug": "notally",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Bloc de notas simple y Open Source, perfecto para apuntar ideas rápidas, listas de la compra o recordatorios sin ningún tipo de complicación.",
-            "caracteristicas": [
-                "Open Source",
-                "Interfaz minimalista",
-                "Listas y notas rápidas",
-                "Sin publicidad",
-                "Ligero"
-            ]
-        },
-        {
-            "nombre": "Weawow",
-            "peso": "22",
-            "categoria": "Tiempo y clima",
-            "descripcion": "Una de las apps del tiempo más bonitas y completas. Sin anuncios invasivos y con widgets espectaculares.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Weawow&c=apps",
-            "estado": "ok",
-            "slug": "weawow",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App del tiempo con un diseño precioso, fotos reales de otros usuarios según la ciudad y unos widgets de los más bonitos que existen. Sin publicidad invasiva.",
-            "caracteristicas": [
-                "Diseño muy cuidado",
-                "Widgets personalizables",
-                "Fotos de otros usuarios",
-                "Predicción detallada",
-                "Sin publicidad invasiva"
-            ]
-        },
-        {
-            "nombre": "Breezy Weather",
-            "peso": "18",
-            "categoria": "Tiempo y clima",
-            "descripcion": "App Open Source moderna basada en Geometric Weather. Diseño Material You y múltiples proveedores climáticos.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/breezy-weather/breezy-weather",
-            "estado": "ok",
-            "slug": "breezy-weather",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Continuación Open Source de Geometric Weather, con diseño Material You y la posibilidad de elegir entre varios proveedores de datos meteorológicos según tu zona.",
-            "caracteristicas": [
-                "Open Source",
-                "Diseño Material You",
-                "Varios proveedores meteorológicos",
-                "Widgets personalizables",
-                "Sin publicidad"
-            ]
-        },
-        {
-            "nombre": "Today Weather",
-            "peso": "30",
-            "categoria": "Tiempo y clima",
-            "descripcion": "Interfaz minimalista y elegante con datos precisos y widgets muy cuidados.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Today%20Weather&c=apps",
-            "estado": "ok",
-            "slug": "today-weather",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App del tiempo con una interfaz muy limpia y minimalista, sin perder precisión en los datos ni calidad en sus widgets.",
-            "caracteristicas": [
-                "Diseño minimalista",
-                "Widgets cuidados",
-                "Datos precisos",
-                "Ligera"
-            ]
-        },
-        {
-            "nombre": "Natural Hour",
-            "peso": "6",
-            "categoria": "Tiempo y clima",
-            "descripcion": "Aplicación Open Source centrada en ciclos solares, amaneceres, atardeceres y ritmo natural del día.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/forrestguice/NaturalHour",
-            "estado": "ok",
-            "slug": "natural-hour",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App Open Source curiosa centrada en las horas 'naturales' del día según el sol: amaneceres, atardeceres y cómo dividían el tiempo las civilizaciones antiguas.",
-            "caracteristicas": [
-                "Open Source",
-                "Horarios de sol",
-                "Cálculo de horas naturales",
-                "Sin publicidad",
-                "Curiosa y educativa"
-            ]
-        },
-        {
-            "nombre": "AccuWeather",
-            "peso": "65",
-            "categoria": "Tiempo y clima",
-            "descripcion": "Muy popular por sus predicciones precisas minuto a minuto y alertas meteorológicas.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=AccuWeather&c=apps",
-            "estado": "ok",
-            "slug": "accuweather",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Una de las apps del tiempo más usadas del mundo. Destaca por sus predicciones minuto a minuto y sus alertas meteorológicas anticipadas.",
-            "caracteristicas": [
-                "Predicción minuto a minuto",
-                "Alertas meteorológicas",
-                "Mapas de radar",
-                "Muy popular y fiable"
-            ]
-        },
-        {
-            "nombre": "Windy",
-            "peso": "40",
-            "categoria": "Tiempo y clima",
-            "descripcion": "La favorita para mapas meteorológicos avanzados, viento, lluvia y seguimiento de tormentas.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Windy.com&c=apps",
-            "estado": "ok",
-            "slug": "windy",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Referencia absoluta si te gusta el detalle meteorológico: mapas de viento, lluvia, olas y seguimiento de tormentas casi en tiempo real.",
-            "caracteristicas": [
-                "Mapas meteorológicos avanzados",
-                "Seguimiento de tormentas",
-                "Datos de viento y oleaje",
-                "Varios modelos de predicción"
-            ]
-        },
-        {
-            "nombre": "Clima",
-            "peso": "4",
-            "categoria": "Tiempo y clima",
-            "descripcion": "Cliente del tiempo Open Source con interfaz limpia y experiencia minimalista.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/amanharwara/Clima",
-            "estado": "ok",
-            "slug": "clima",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App del tiempo Open Source con una interfaz muy cuidada y minimalista, pensada para dar la información justa sin saturar la pantalla.",
-            "caracteristicas": [
-                "Open Source",
-                "Interfaz limpia",
-                "Sin publicidad",
-                "Minimalista"
-            ]
-        },
-        {
-            "nombre": "PSPlay",
-            "peso": "25",
-            "categoria": "Emulación y Remote Play",
-            "descripcion": "La mejor alternativa a Remote Play oficial de PlayStation. Menor latencia y más opciones. Es de pago pero es mejor que la app oficial de Sony.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=PSPlay&c=apps",
-            "estado": "ok",
-            "slug": "psplay",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Alternativa de pago a la app oficial de Remote Play de Sony, con menor latencia, más opciones de configuración y mejor calidad de imagen en general.",
-            "caracteristicas": [
-                "Menor latencia que la app oficial",
-                "Más opciones de configuración",
-                "Compatible con mandos",
-                "De pago",
-                "Mejor calidad de streaming"
-            ]
-        },
-        {
-            "nombre": "melonDS",
-            "peso": "18",
-            "categoria": "Emulación y Remote Play",
-            "descripcion": "Emulador de Nintendo DS Open Source con gran compatibilidad y soporte online experimental.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=melonDS&c=apps",
-            "estado": "ok",
-            "slug": "melonds",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Emulador Open Source de Nintendo DS con muy buena compatibilidad de juegos y un soporte experimental para jugar online con otros usuarios.",
-            "caracteristicas": [
-                "Open Source",
-                "Gran compatibilidad de juegos",
-                "Soporte online experimental",
-                "Mandos compatibles",
-                "Buen rendimiento"
-            ]
-        },
-        {
-            "nombre": "AetherSX2",
-            "peso": "45",
-            "categoria": "Emulación y Remote Play",
-            "descripcion": "El emulador de PlayStation 2 más popular en Android. Excelente rendimiento en móviles potentes.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=AetherSX2&c=apps",
-            "estado": "ok",
-            "slug": "aethersx2",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "El emulador de PS2 de referencia en Android, capaz de mover muchos juegos a buena velocidad en móviles con hardware potente.",
-            "caracteristicas": [
-                "Emulación de PS2",
-                "Buen rendimiento",
-                "Compatible con mandos",
-                "Configuración avanzada de gráficos"
-            ]
-        },
-        {
-            "nombre": "Ryujinx",
-            "peso": "50",
-            "categoria": "Emulación y Remote Play",
-            "descripcion": "Emulador Open Source de Nintendo Switch conocido por su compatibilidad y precisión.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/Ryujinx/release-channel-master",
-            "estado": "ok",
-            "slug": "ryujinx",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Emulador Open Source de Nintendo Switch muy respetado por su precisión técnica y su amplia compatibilidad con el catálogo de la consola.",
-            "caracteristicas": [
-                "Open Source",
-                "Gran compatibilidad de juegos",
-                "Actualizaciones frecuentes",
-                "Configuración avanzada"
-            ]
-        },
-        {
-            "nombre": "PPSSPP",
-            "peso": "30",
-            "categoria": "Emulación y Remote Play",
-            "descripcion": "Legendario emulador de PSP. Ligero, rápido y compatible con cientos de juegos.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=PPSSPP&c=apps",
-            "estado": "ok",
-            "slug": "ppsspp",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "El emulador de PSP más veterano y querido. Funciona en casi cualquier móvil, es muy ligero y tiene compatibilidad con cientos de juegos.",
-            "caracteristicas": [
-                "Ligero y rápido",
-                "Gran compatibilidad",
-                "Mejoras gráficas",
-                "Mandos compatibles",
-                "Guardado rápido"
-            ]
-        },
-        {
-            "nombre": "SkyEmu",
-            "peso": "10",
-            "categoria": "Emulación y Remote Play",
-            "descripcion": "Emulador Open Source para Game Boy Advance, Game Boy y Nintendo DS con gran rendimiento.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/SkyEmu/SkyEmu",
-            "estado": "ok",
-            "slug": "skyemu",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Emulador Open Source multiconsola centrado en Game Boy, Game Boy Advance y Nintendo DS, destacando por su rendimiento y precisión.",
-            "caracteristicas": [
-                "Open Source",
-                "Multiconsola (GB, GBA, NDS)",
-                "Gran rendimiento",
-                "Interfaz simple"
-            ]
-        },
-        {
-            "nombre": "Lemuroid",
-            "peso": "28",
-            "categoria": "Emulación y Remote Play",
-            "descripcion": "Frontend Open Source basado en Libretro con soporte para decenas de consolas retro.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Lemuroid&c=apps",
-            "estado": "ok",
-            "slug": "lemuroid",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Frontend Open Source basado en cores de Libretro que te permite emular decenas de consolas retro desde una sola app, con partidas guardadas en la nube.",
-            "caracteristicas": [
-                "Open Source",
-                "Múltiples consolas retro",
-                "Basado en Libretro",
-                "Guardado en la nube",
-                "Interfaz unificada"
-            ]
-        },
-        {
-            "nombre": "Dolphin Emulator",
-            "peso": "55",
-            "categoria": "Emulación y Remote Play",
-            "descripcion": "El emulador más famoso de GameCube y Wii. Compatible con mandos y mejoras gráficas HD.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Dolphin%20Emulator&c=apps",
-            "estado": "ok",
-            "slug": "dolphin-emulator",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "El emulador de referencia para GameCube y Wii, con soporte de mandos, mejoras gráficas en alta resolución y muy buena compatibilidad de juegos.",
-            "caracteristicas": [
-                "Emulación de GameCube y Wii",
-                "Mejoras gráficas HD",
-                "Compatible con mandos",
-                "Gran compatibilidad de juegos"
-            ]
-        },
-        {
-            "nombre": "Aves Gallery",
-            "peso": "15",
-            "categoria": "Galería de fotos",
-            "descripcion": "Considerada por todos como la reina de las aplicaciones de galería. Visor por carpetas, pinch to zoom para agrandar las fotos y buen diseño. Totalmente offline.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/deckerst/aves/releases",
-            "estado": "ok",
-            "slug": "aves-gallery",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "La reina indiscutible de las apps de galería para muchos usuarios. Organiza tus fotos por carpetas, permite hacer zoom con pellizco para ver el detalle y todo funciona completamente offline, sin conexión a internet.",
-            "caracteristicas": [
-                "Visor por carpetas",
-                "Zoom con pellizco",
-                "Totalmente offline",
-                "Sin rastreadores",
-                "Diseño cuidado"
-            ]
-        },
-        {
-            "nombre": "Fossify Gallery",
-            "peso": "12",
-            "categoria": "Galería de fotos",
-            "descripcion": "Simplicidad y velocidad sin rastreadores ni publicidad. Un diseño simple pero funcional. Totalmente offline.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/FossifyOrg/Gallery/releases",
-            "estado": "ok",
-            "slug": "fossify-gallery",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Galería sencilla y muy rápida, sin rastreadores ni publicidad. Un diseño simple pero funcional que hace exactamente lo que necesitas, todo offline.",
-            "caracteristicas": [
-                "Sin rastreadores ni publicidad",
-                "Totalmente offline",
-                "Diseño simple y funcional",
-                "Ligera y rápida"
-            ]
-        },
-        {
-            "nombre": "Lespas",
-            "peso": "14",
-            "categoria": "Galería de fotos",
-            "descripcion": "Alternativa a Google Photos sincronizada con Nextcloud.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/scubajeff/lespas/releases",
-            "estado": "ok",
-            "slug": "lespas",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Galería que funciona como alternativa a Google Photos pero sincronizando tus fotos con tu propio servidor Nextcloud, manteniendo el control total sobre tus datos.",
-            "caracteristicas": [
-                "Sincronización con Nextcloud",
-                "Alternativa a Google Photos",
-                "Control total de tus datos",
-                "Álbumes compartidos"
-            ]
-        },
-        {
-            "nombre": "mpvEx",
-            "peso": "22",
-            "categoria": "Reproductores de vídeo",
-            "descripcion": "Reproductor de vídeo compatible con todos los códecs. Open Source y Material3. Soporta gestos de audio y brillo. Gestor integrado, PiP y reproducción de fondo.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/marlboro-advance/mpvEx/releases",
-            "estado": "ok",
-            "slug": "mpvex",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Reproductor de vídeo Open Source basado en mpv, con soporte para prácticamente cualquier formato y códec. Incluye gestos para controlar volumen y brillo, un gestor de archivos integrado, modo picture-in-picture y reproducción en segundo plano.",
-            "caracteristicas": [
-                "Compatible con todos los códecs",
-                "Gestos de volumen y brillo",
-                "Picture-in-picture",
-                "Reproducción en segundo plano",
-                "Diseño Material 3"
-            ]
-        },
-        {
-            "nombre": "VLC",
-            "peso": "60",
-            "categoria": "Reproductores de vídeo",
-            "descripcion": "El clásico cono de tráfico de Windows. Reproductor de vídeo multiplataforma con soporte para una amplia gama de formatos y fuentes de contenido.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=org.videolan.vlc&hl=es",
-            "estado": "ok",
-            "slug": "vlc",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "El clásico reproductor multiplataforma que todos conocemos. Reproduce prácticamente cualquier formato de vídeo o audio, tanto de tu almacenamiento como desde redes locales o streaming.",
-            "caracteristicas": [
-                "Compatible con casi cualquier formato",
-                "Multiplataforma",
-                "Streaming de red",
-                "Ecualizador integrado",
-                "Gratuito y sin publicidad"
-            ]
-        },
-        {
-            "nombre": "HeliBoard",
-            "peso": "9",
-            "categoria": "Teclados",
-            "descripcion": "Privado, offline y con escritura gestual basada en AOSP. Muy personalizable y con muchos themes. Incluye español. Muchos lo consideran la alternativa a Gboard.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/HeliBorg/HeliBoard/releases",
-            "estado": "ok",
-            "slug": "heliboard",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Teclado privado y offline basado en AOSP, con escritura por gestos y un montón de temas para personalizarlo. Incluye español y es la alternativa a Gboard que muchos estaban buscando.",
-            "caracteristicas": [
-                "Totalmente offline",
-                "Escritura por gestos",
-                "Muchos temas",
-                "Incluye español",
-                "Sin rastreadores"
-            ]
-        },
-        {
-            "nombre": "Floriboard",
-            "peso": "12",
-            "categoria": "Teclados",
-            "descripcion": "Arquitectura moderna y flexibilidad máxima de personalización. No tiene tantas opciones como Heliboard pero es muy buen teclado. Totalmente offline y con idioma español.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/florisboard/florisboard/releases",
-            "estado": "ok",
-            "slug": "floriboard",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Teclado con una arquitectura moderna y bastante flexibilidad de personalización, aunque con menos opciones que HeliBoard. Totalmente offline y con soporte para español.",
-            "caracteristicas": [
-                "Arquitectura moderna",
-                "Totalmente offline",
-                "Incluye español",
-                "Personalizable",
-                "Sin publicidad"
-            ]
-        },
-        {
-            "nombre": "APK Extractor",
-            "peso": "6",
-            "categoria": "Utilidades",
-            "descripcion": "Extrae APKs de tus aplicaciones instaladas para poder compartirlas.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.dylan.win11.app.extractor",
-            "estado": "ok",
-            "slug": "apk-extractor",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App sencilla que te permite extraer el APK de cualquier aplicación instalada en tu móvil, para guardarla como copia de seguridad o compartirla con quien quieras.",
-            "caracteristicas": [
-                "Extracción de APKs",
-                "Copias de seguridad",
-                "Compartir apps fácilmente",
-                "Interfaz simple"
-            ]
-        },
-        {
-            "nombre": "Airpush Detector",
-            "peso": "5",
-            "categoria": "Utilidades",
-            "descripcion": "Detecta publicidad abusiva en notificaciones que nunca sabes quienes las está provocando.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=popup.ads.detector",
-            "estado": "ok",
-            "slug": "airpush-detector",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Herramienta que analiza tus apps instaladas y te dice cuáles usan librerías de publicidad abusiva, muy útil para saber qué app es la responsable de esas notificaciones molestas.",
-            "caracteristicas": [
-                "Detecta librerías de publicidad",
-                "Identifica apps molestas",
-                "Análisis de apps instaladas",
-                "Útil contra notificaciones spam"
-            ]
-        },
-        {
-            "nombre": "Uso del Disco",
-            "peso": "8",
-            "categoria": "Utilidades",
-            "descripcion": "Mapa visual del almacenamiento interno. Puedes hacer zoom para ver cuales son los archivos más \"pesados\" y borrarlos.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=uso%20del%20disco&c=apps",
-            "estado": "ok",
-            "slug": "uso-del-disco",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App que dibuja un mapa visual de tu almacenamiento interno, permitiéndote hacer zoom en las carpetas más grandes para localizar y borrar rápidamente lo que más espacio ocupa.",
-            "caracteristicas": [
-                "Mapa visual del almacenamiento",
-                "Zoom por carpetas",
-                "Localiza archivos pesados",
-                "Fácil liberación de espacio"
-            ]
-        },
-        {
-            "nombre": "CPU-Z",
-            "peso": "10",
-            "categoria": "Utilidades",
-            "descripcion": "Información técnica detallada de hardware. Tipo de procesador, ram, pantalla etc.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.cpuid.cpu_z",
-            "estado": "ok",
-            "slug": "cpu-z",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "La app de referencia para conocer al detalle el hardware de tu móvil: procesador, memoria RAM, pantalla, batería, sensores y mucho más.",
-            "caracteristicas": [
-                "Información detallada del procesador",
-                "Datos de RAM y almacenamiento",
-                "Información de pantalla y batería",
-                "Sensores del dispositivo"
-            ]
-        },
-        {
-            "nombre": "Gsam Battery",
-            "peso": "14",
-            "categoria": "Utilidades",
-            "descripcion": "Monitoreo avanzado del consumo de batería.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.gsamlabs.bbm",
-            "estado": "ok",
-            "slug": "gsam-battery",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App de monitoreo de batería muy avanzada, que te muestra con detalle qué apps consumen más energía y cómo cambia tu autonomía con el tiempo.",
-            "caracteristicas": [
-                "Monitoreo detallado de batería",
-                "Estadísticas de consumo por app",
-                "Widgets informativos",
-                "Historial de autonomía"
-            ]
-        },
-        {
-            "nombre": "Ampere",
-            "peso": "8",
-            "categoria": "Utilidades",
-            "descripcion": "Mide la velocidad real de carga de tu batería y tu cargador.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=ampere&c=apps",
-            "estado": "ok",
-            "slug": "ampere",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App sencilla que mide en tiempo real la velocidad de carga de tu batería, muy útil para comprobar si tu cargador o cable están funcionando como deberían.",
-            "caracteristicas": [
-                "Mide velocidad de carga real",
-                "Comprueba cargadores y cables",
-                "Interfaz simple",
-                "Datos en tiempo real"
-            ]
-        },
-        {
-            "nombre": "Teamviewer",
-            "peso": "120",
-            "categoria": "Utilidades",
-            "descripcion": "Control remoto entre dispositivos Android y PC o viceversa.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.teamviewer.teamviewer.market.mobile",
-            "estado": "ok",
-            "slug": "teamviewer",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App de control remoto que te permite acceder a tu PC desde el móvil o a tu móvil desde el PC, ideal para dar soporte técnico o trabajar a distancia.",
-            "caracteristicas": [
-                "Control remoto entre dispositivos",
-                "Acceso PC-móvil y viceversa",
-                "Ideal para soporte técnico",
-                "Conexión segura"
-            ]
-        },
-        {
-            "nombre": "Settle Up",
-            "peso": "18",
-            "categoria": "Utilidades",
-            "descripcion": "Gestión de gastos compartidos para grupos.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/search?q=Settle%20Up&c=apps",
-            "estado": "ok",
-            "slug": "settle-up",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App pensada para gestionar gastos compartidos entre amigos, familia o compañeros de piso, calculando automáticamente quién le debe dinero a quién.",
-            "caracteristicas": [
-                "Gestión de gastos en grupo",
-                "Cálculo automático de deudas",
-                "Sincronización entre dispositivos",
-                "Historial de pagos"
-            ]
-        },
-        {
-            "nombre": "Morphhe",
-            "peso": "16",
-            "categoria": "Utilidades",
-            "descripcion": "Aplicación que parche apps como Youtube , Youtube Music , Tiktok , Reddit , Gboard para añadir o quitarle funciones. Normalmente se usa para quitar la publicidad o convertirlas en \"premium\" al desbloquear esas funciones. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "web",
-            "url": "https://morphe.software/",
-            "estado": "ok",
-            "slug": "morphhe",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Herramienta que parchea apps populares como YouTube, YouTube Music, TikTok, Reddit o Gboard para añadirles o quitarles funciones, normalmente usada para eliminar publicidad o desbloquear características premium.",
-            "caracteristicas": [
-                "Parchea apps populares",
-                "Elimina publicidad",
-                "Desbloquea funciones premium",
-                "Verifica siempre la fuente"
-            ]
-        },
-        {
-            "nombre": "ShizuCallRecorder",
-            "peso": "4",
-            "categoria": "Power User (ADB)",
-            "descripcion": "Permite mediante Shizuku (y sin ser ROOT) grabar llamadas tanto salientes como entrantes en formato ACC y Opus. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/kitsumed/ShizuCallRecorder/releases/tag/v1.0.0",
-            "estado": "ok",
-            "slug": "shizucallrecorder",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Herramienta que, usando Shizuku (sin necesidad de Root), permite grabar tanto llamadas entrantes como salientes en formato AAC u Opus.",
-            "caracteristicas": [
-                "Grabación de llamadas sin Root",
-                "Usa Shizuku",
-                "Formato AAC u Opus",
-                "Llamadas entrantes y salientes"
-            ]
-        },
-        {
-            "nombre": "Shizuku 💎",
-            "peso": "6",
-            "categoria": "Power User (ADB)",
-            "descripcion": "Ejecuta comandos sin Root. El rey para los que no tenemos ROOT. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api",
-            "estado": "ok",
-            "slug": "shizuku",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Herramienta imprescindible para quienes no tienen Root: permite a otras apps ejecutar comandos con permisos elevados usando ADB, abriendo la puerta a muchísimas herramientas de Power User.",
-            "caracteristicas": [
-                "Permisos elevados sin Root",
-                "Usa ADB",
-                "Base para muchas apps de Power User",
-                "Gratuita y de código abierto"
-            ]
-        },
-        {
-            "nombre": "Canta",
-            "peso": "5",
-            "categoria": "Power User (ADB)",
-            "descripcion": "Desinstala bloatware sin riesgo. Usa Shizuku. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/samolego/Canta/releases",
-            "estado": "ok",
-            "slug": "canta",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App que te permite desinstalar el bloatware preinstalado de tu móvil de forma segura, usando Shizuku para tener los permisos necesarios sin arriesgarte con el Root.",
-            "caracteristicas": [
-                "Desinstala bloatware",
-                "Usa Shizuku",
-                "Sin necesidad de Root",
-                "Lista de apps del sistema"
-            ]
-        },
-        {
-            "nombre": "Hail",
-            "peso": "7",
-            "categoria": "Power User (ADB)",
-            "descripcion": "Congela apps para ahorrar recursos aunque puedes volver a descongelarlas. Usa Shizuku. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/aistra0528/Hail/releases",
-            "estado": "ok",
-            "slug": "hail",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Permite congelar apps que no usas para que dejen de consumir batería y recursos en segundo plano, pudiendo descongelarlas en cualquier momento. Funciona mediante Shizuku.",
-            "caracteristicas": [
-                "Congela apps en segundo plano",
-                "Ahorra batería y recursos",
-                "Reversible en cualquier momento",
-                "Usa Shizuku"
-            ]
-        },
-        {
-            "nombre": "HyperCeiler",
-            "peso": "10",
-            "categoria": "Power User (ADB)",
-            "descripcion": "Optimiza el sistema HyperOS y animaciones. Permite mediante Shizuku usar los gestos en launchers de terceros. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/aistra0528/HyperCeiler/releases",
-            "estado": "ok",
-            "slug": "hyperceiler",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Herramienta pensada para dispositivos con HyperOS que permite optimizar animaciones del sistema y, gracias a Shizuku, usar los gestos de navegación en launchers de terceros.",
-            "caracteristicas": [
-                "Optimiza animaciones de HyperOS",
-                "Gestos en launchers de terceros",
-                "Usa Shizuku",
-                "Personalización avanzada del sistema"
-            ]
-        },
-        {
-            "nombre": "App Ops",
-            "peso": "9",
-            "categoria": "Power User (ADB)",
-            "descripcion": "Gestión de permisos ocultos. Que no se te escape ningún permiso que no sabías que tenía tu app. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/MuntashirAkon/AppOps/releases",
-            "estado": "ok",
-            "slug": "app-ops",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Herramienta que muestra permisos ocultos del sistema que normalmente no ves en los ajustes normales de Android, para que controles exactamente qué puede hacer cada app.",
-            "caracteristicas": [
-                "Permisos ocultos del sistema",
-                "Control granular por app",
-                "Usa Shizuku",
-                "Mayor privacidad"
-            ]
-        },
-        {
-            "nombre": "Install Options",
-            "peso": "6",
-            "categoria": "Power User (ADB)",
-            "descripcion": "Instalador avanzado de APKs. Permite saltarte la versión de Android o downgradear de versión una app para instalarla. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/zacharee/InstallWithOptions",
-            "estado": "ok",
-            "slug": "install-options",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Instalador avanzado de APKs que te permite saltarte restricciones de versión de Android o instalar una versión anterior de una app (downgrade) cuando la Play Store no te lo permite.",
-            "caracteristicas": [
-                "Instalación avanzada de APKs",
-                "Permite downgrade de apps",
-                "Salta restricciones de versión",
-                "Usa Shizuku"
-            ]
-        },
-        {
-            "nombre": "Namida",
-            "peso": "35",
-            "categoria": "Streaming de audio",
-            "descripcion": "Reproductor Open Source con diseño \"Material You\". Viene muy equipado. Sin publicidad y buena alternativa a Spotify.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/namidaco/namida/releases",
-            "estado": "ok",
-            "slug": "namida",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Reproductor de música local Open Source con diseño Material You, muy completo en funciones y una gran alternativa si quieres dejar de depender de Spotify.",
-            "caracteristicas": [
-                "Open Source",
-                "Diseño Material You",
-                "Sin publicidad",
-                "Muy completo en funciones",
-                "Reproducción local"
-            ]
-        },
-        {
-            "nombre": "Kreate",
-            "peso": "28",
-            "categoria": "Streaming de audio",
-            "descripcion": "Reproductor Open Source con diseño similar a Spotify. Posibilidad de descargar canciones para escucharlas offline, sin publicidad y con buen bitrate.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/knighthat/Kreate/releases",
-            "estado": "ok",
-            "slug": "kreate",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Reproductor Open Source con una interfaz muy parecida a la de Spotify. Te permite descargar canciones para escucharlas sin conexión, sin publicidad y con buena calidad de audio.",
-            "caracteristicas": [
-                "Interfaz similar a Spotify",
-                "Descargas offline",
-                "Sin publicidad",
-                "Buen bitrate de audio",
-                "Open Source"
-            ]
-        },
-        {
-            "nombre": "Metro",
-            "peso": "32",
-            "categoria": "Streaming de audio",
-            "descripcion": "Reproductor Open Source con diseño \"Material You\". Viene muy equipado. Sin publicidad y buena alternativa a Spotify.",
-            "banner": "",
-            "tipo": "github",
-            "url": "https://github.com/MetrolistGroup/Metrolist",
-            "estado": "ok",
-            "slug": "metro",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Otro reproductor Open Source con diseño Material You y muchas funciones integradas, pensado como alternativa completa y sin publicidad a Spotify.",
-            "caracteristicas": [
-                "Open Source",
-                "Diseño Material You",
-                "Sin publicidad",
-                "Muy equipado",
-                "Buena alternativa a Spotify"
-            ]
-        },
-        {
-            "nombre": "DixMax",
-            "peso": "38",
-            "categoria": "Cine y Televisión",
-            "descripcion": "No creo que haga falta presentación. Hará unos meses renovaron el diseño haciéndolo más amigable pero conserva ese \"tinte\" de siempre. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "telegram",
-            "url": "https://t.me/dixmaxappsoficial#",
-            "estado": "ok",
-            "slug": "dixmax",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Una de las apps de cine y series más conocidas de todas. Hace unos meses renovaron el diseño para hacerlo más amigable, aunque sigue conservando esa esencia de siempre.",
-            "caracteristicas": [
-                "Amplio catálogo de películas y series",
-                "Diseño renovado",
-                "Muy conocida",
-                "Verifica siempre la fuente"
-            ]
-        },
-        {
-            "nombre": "TDTSpain",
-            "peso": "26",
-            "categoria": "Cine y Televisión",
-            "descripcion": "Tienes todos los canales de televisión en vivo (gratuitos) También incluye series 24h o películas. Mi favorita de las que hay de TV en vivo.",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.tdtespanatvchanells.espanatdtchanelsmovies",
-            "estado": "ok",
-            "slug": "tdtspain",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Mi app favorita para ver televisión en directo: incluye todos los canales gratuitos españoles además de series y películas en emisión continua las 24 horas.",
-            "caracteristicas": [
-                "Canales de TV en directo gratuitos",
-                "Series 24 horas",
-                "Películas incluidas",
-                "La favorita del creador"
-            ]
-        },
-        {
-            "nombre": "Agenda Deportes",
-            "peso": "12",
-            "categoria": "Deportes",
-            "descripcion": "La mejor que he encontrado. 2 años y cero problemas. Te mantiene al día de tus eventos deportivos. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "telegram",
-            "url": "https://t.me/agendadeportes",
-            "estado": "ok",
-            "slug": "agenda-deportes",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Llevo dos años usándola sin un solo problema. Te mantiene al día de todos tus eventos deportivos favoritos, con horarios y enlaces siempre actualizados.",
-            "caracteristicas": [
-                "Agenda de eventos deportivos",
-                "Actualizada constantemente",
-                "2 años sin problemas",
-                "Verifica siempre la fuente"
-            ]
-        },
-        {
-            "nombre": "FCTV33",
-            "peso": "10",
-            "categoria": "Deportes",
-            "descripcion": "Para estar al tanto de tus eventos deportivos favoritos. ⚠️ Verifica la fuente antes de instalar.",
-            "banner": "",
-            "tipo": "telegram",
-            "url": "https://t.me/fctv33",
-            "estado": "ok",
-            "slug": "fctv33",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "App pensada para no perderte ningún evento deportivo, con acceso a las emisiones de tus competiciones favoritas.",
-            "caracteristicas": [
-                "Sigue tus eventos deportivos favoritos",
-                "Fácil de usar",
-                "Verifica siempre la fuente"
-            ]
-        },
-        {
-            "nombre": "Adguard",
-            "peso": "65",
-            "categoria": "Bloqueador de publicidad",
-            "descripcion": "es una completa aplicación de seguridad y filtrado de contenido diseñada para bloquear publicidad, eliminar rastreadores y proteger tu dispositivo contra contenido malicioso a nivel del sistema, protegiendo tu privacidad en todo tu teléfono",
-            "banner": "",
-            "tipo": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.adguard.android.contentblocker&hl=es",
-            "estado": "ok",
-            "slug": "adguard",
-            "fecha": "2026-09-06",
-            "descripcionCompleta": "Solución de seguridad y filtrado de contenido a nivel de sistema que bloquea publicidad, elimina rastreadores y protege tu dispositivo frente a contenido malicioso, cuidando tu privacidad en todo el teléfono, no solo en el navegador.",
-            "caracteristicas": [
-                "Bloqueo de publicidad a nivel de sistema",
-                "Elimina rastreadores",
-                "Protección frente a malware",
-                "Protege toda la privacidad del móvil"
-            ]
-        }
-    ]
+        "Rápido",
+        "Sin soporte de addons",
+        "Gestos configurables"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Samsung Browser",
+      "peso": "85",
+      "categoria": "Navegadores Web",
+      "descripcion": "Excelente navegador de Samsung. De lo poco decente que hacen en aplicaciones. Tiene bloqueador de publicidad y tiene cierta personalización.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=samsung%20browser&c=apps",
+      "estado": "ok",
+      "slug": "samsung-browser",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Navegador propio de Samsung, sorprendentemente bueno. Cuenta con bloqueador de publicidad, modo oscuro real y algo de personalización, y funciona genial incluso fuera de dispositivos Samsung.",
+      "caracteristicas": [
+        "Bloqueador de publicidad",
+        "Buen rendimiento",
+        "Modo oscuro real",
+        "Sincronización con cuenta Samsung",
+        "Funciona en cualquier Android"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Cromite",
+      "peso": "95",
+      "categoria": "Navegadores Web",
+      "descripcion": "Alternativa a Google Chrome pero sin telemetría y con bloqueador integrado. Open Source.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/uazo/cromite/releases",
+      "estado": "ok",
+      "slug": "cromite",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Fork de Chromium centrado en la privacidad: elimina la telemetría de Google, incluye bloqueador de anuncios integrado y mantiene la misma velocidad y compatibilidad que Chrome.",
+      "caracteristicas": [
+        "Sin telemetría de Google",
+        "Bloqueador de anuncios integrado",
+        "Open Source",
+        "Compatible con extensiones de escritorio",
+        "Basado en Chromium"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Firefox Nightly",
+      "peso": "140",
+      "categoria": "Navegadores Web",
+      "descripcion": "Firefox para desarrolladores. Puedes añadir addons, activar cifrado de webs, acceder a contenido bloqueado, puedes entrar en las opciones de about:config y soporta addons de PC.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=es",
+      "estado": "ok",
+      "slug": "firefox-nightly",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "La versión de desarrollo de Firefox para Android. Es la única que permite instalar addons de PC, activar el modo HTTPS estricto, saltarte bloqueos regionales y trastear con about:config a fondo.",
+      "caracteristicas": [
+        "Soporta addons de escritorio",
+        "Acceso a about:config",
+        "Cifrado forzado de webs",
+        "Última versión de Firefox",
+        "Muy personalizable"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Cx File",
+      "peso": "25",
+      "categoria": "Gestión de Archivos",
+      "descripcion": "Potente y versátil. Soporta nubes y redes locales sin publicidad.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=cx%20file&c=apps",
+      "estado": "ok",
+      "slug": "cx-file",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Gestor de archivos muy completo que además de tu almacenamiento local te permite conectar servicios en la nube y unidades de red locales, todo sin publicidad.",
+      "caracteristicas": [
+        "Soporte para nubes",
+        "Conexión a redes locales",
+        "Sin publicidad",
+        "Gestión avanzada de archivos",
+        "Interfaz moderna"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Gestor de archivos",
+      "peso": "12",
+      "categoria": "Gestión de Archivos",
+      "descripcion": "Explorador muy completo y estético para el uso diario.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.alphainventor.filemanager",
+      "estado": "ok",
+      "slug": "gestor-de-archivos",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Explorador de archivos con un diseño muy cuidado, pensado para el uso diario sin complicaciones. Tiene todo lo necesario para mover, comprimir y organizar tus archivos.",
+      "caracteristicas": [
+        "Diseño cuidado",
+        "Fácil de usar",
+        "Compresión de archivos",
+        "Gestor de aplicaciones incluido",
+        "Categorías automáticas"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Mixplorer",
+      "peso": "18",
+      "categoria": "Gestión de Archivos",
+      "descripcion": "Considerado por muchos el mejor explorador de archivos. No le falta de nada.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Mixplorer&c=apps",
+      "estado": "ok",
+      "slug": "mixplorer",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "El explorador de archivos definitivo para muchos usuarios avanzados. Soporta prácticamente cualquier protocolo de red, archivo comprimido y tiene un editor de texto y multimedia integrado.",
+      "caracteristicas": [
+        "Soporte para múltiples protocolos",
+        "Visor y editor integrado",
+        "Gestión de archivos comprimidos",
+        "Temas personalizables",
+        "Muy completo"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Lawnchair",
+      "peso": "22",
+      "categoria": "Launchers y personalización",
+      "descripcion": "Launcher Open Source inspirado en Pixel Launcher. Minimalista, rápido y muy recomendado como alternativa a Nova.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Lawnchair&c=apps",
+      "estado": "ok",
+      "slug": "lawnchair",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Launcher gratuito y Open Source inspirado en el launcher de los Pixel. Es minimalista, muy fluido y una de las alternativas más recomendadas desde que Nova Launcher dejó de evolucionar.",
+      "caracteristicas": [
+        "Open Source",
+        "Inspirado en Pixel Launcher",
+        "Personalización de iconos y gestos",
+        "Muy fluido",
+        "Gratuito"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Lawnchair Github",
+      "peso": "20",
+      "categoria": "Launchers y personalización",
+      "descripcion": "Proyecto Open Source oficial de Lawnchair. Muy popular entre usuarios de ROMs y Reddit.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/LawnchairLauncher/lawnchair",
+      "estado": "ok",
+      "slug": "lawnchair-github",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Repositorio oficial de Lawnchair donde encontrarás siempre las últimas versiones y builds beta antes de que lleguen a la Play Store. Muy popular entre usuarios de ROMs personalizadas.",
+      "caracteristicas": [
+        "Últimas versiones antes que en Play Store",
+        "Builds beta",
+        "Open Source",
+        "Comunidad muy activa"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Niagara Launcher",
+      "peso": "18",
+      "categoria": "Launchers y personalización",
+      "descripcion": "El launcher minimalista favorito de Reddit. Diseñado para usar el móvil con una mano y reducir distracciones.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Niagara%20Launcher&c=apps",
+      "estado": "ok",
+      "slug": "niagara-launcher",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Launcher minimalista pensado para reducir distracciones y facilitar el uso con una sola mano. Oculta el desorden de iconos y te muestra solo lo que realmente usas.",
+      "caracteristicas": [
+        "Diseño minimalista",
+        "Uso con una mano",
+        "Reduce distracciones",
+        "Lista de apps alfabética",
+        "Favorito de Reddit"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Kvaesitso",
+      "peso": "15",
+      "categoria": "Launchers y personalización",
+      "descripcion": "Launcher Open Source extremadamente rápido basado en búsqueda global. Muy amado en Reddit por su diseño moderno.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/MM2-0/Kvaesitso",
+      "estado": "ok",
+      "slug": "kvaesitso",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Launcher Open Source centrado en la búsqueda: escribe lo que necesitas y aparece al instante, ya sea una app, un contacto o un cálculo. Diseño moderno y muy fluido.",
+      "caracteristicas": [
+        "Búsqueda global instantánea",
+        "Open Source",
+        "Diseño moderno",
+        "Widgets personalizables",
+        "Muy fluido"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Smart Launcher",
+      "peso": "30",
+      "categoria": "Launchers y personalización",
+      "descripcion": "Launcher inteligente que organiza apps automáticamente. Muy recomendado tras la caída de Nova Launcher.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Smart%20Launcher&c=apps",
+      "estado": "ok",
+      "slug": "smart-launcher",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Launcher que clasifica tus aplicaciones automáticamente por categorías, ahorrándote tener que organizarlas tú mismo. Una gran alternativa desde que Nova Launcher quedó abandonado.",
+      "caracteristicas": [
+        "Organización automática por categorías",
+        "Gestos personalizables",
+        "Rápido y ligero",
+        "Buena alternativa a Nova"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Hyperion Launcher",
+      "peso": "28",
+      "categoria": "Launchers y personalización",
+      "descripcion": "Experiencia tipo Pixel con muchísima personalización y rendimiento fluido.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Hyperion%20Launcher&c=apps",
+      "estado": "ok",
+      "slug": "hyperion-launcher",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Otro launcher inspirado en la experiencia Pixel, pero llevando la personalización mucho más lejos sin sacrificar la fluidez del sistema.",
+      "caracteristicas": [
+        "Estilo Pixel",
+        "Muy personalizable",
+        "Rendimiento fluido",
+        "Gestos y widgets"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Microsoft Launcher",
+      "peso": "45",
+      "categoria": "Launchers y personalización",
+      "descripcion": "Muy completo y estable. Perfecto si usas Windows o herramientas de productividad.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Microsoft%20Launcher&c=apps",
+      "estado": "ok",
+      "slug": "microsoft-launcher",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Launcher de Microsoft muy pulido y estable, con integración directa con tu cuenta de Microsoft, Office y el resto de herramientas de productividad si las usas en tu día a día.",
+      "caracteristicas": [
+        "Integración con cuenta Microsoft",
+        "Muy estable",
+        "Feed de noticias personalizable",
+        "Sincronización con Windows"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Neo Launcher",
+      "peso": "16",
+      "categoria": "Launchers y personalización",
+      "descripcion": "Launcher Open Source clásico estilo Nova pero enfocado en privacidad y rendimiento ligero.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/NeoApplications/Neo-Launcher",
+      "estado": "ok",
+      "slug": "neo-launcher",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Fork Open Source con una filosofía clásica al estilo Nova Launcher, pero centrado en la privacidad, sin telemetría y muy ligero para el sistema.",
+      "caracteristicas": [
+        "Open Source",
+        "Sin telemetría",
+        "Estilo clásico tipo Nova",
+        "Ligero",
+        "Muy personalizable"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Total Launcher",
+      "peso": "12",
+      "categoria": "Launchers y personalización",
+      "descripcion": "El launcher más extremo para personalización total. Puedes cambiar absolutamente todo.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Total%20Launcher&c=apps",
+      "estado": "ok",
+      "slug": "total-launcher",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Pensado para quien quiere control absoluto: puedes rediseñar cada elemento de la pantalla de inicio, cajones y widgets a tu gusto sin ningún límite real.",
+      "caracteristicas": [
+        "Personalización sin límites",
+        "Editor de widgets propio",
+        "Control total del diseño",
+        "Para usuarios avanzados"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "OLauncher",
+      "peso": "5",
+      "categoria": "Launchers y personalización",
+      "descripcion": "Launcher minimalista Open Source centrado en desintoxicación digital y cero distracciones.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=OLauncher&c=apps",
+      "estado": "ok",
+      "slug": "olauncher",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Launcher extremadamente simple, en texto y sin iconos, pensado para reducir el tiempo de pantalla y ayudarte a desconectar del móvil.",
+      "caracteristicas": [
+        "Diseño minimalista en texto",
+        "Open Source",
+        "Reduce el tiempo de pantalla",
+        "Sin distracciones",
+        "Muy ligero"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Syft",
+      "peso": "35",
+      "categoria": "Vida más fácil",
+      "descripcion": "Resúmenes de noticias por IA basados en tus temas favoritos. Pide cuenta de Google para iniciar sesión.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=syft&c=apps",
+      "estado": "ok",
+      "slug": "syft",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App que usa IA para resumirte las noticias del día según los temas que te interesan, ahorrándote tiempo de lectura. Necesita que inicies sesión con tu cuenta de Google.",
+      "caracteristicas": [
+        "Resúmenes con IA",
+        "Personalización por temas",
+        "Ahorra tiempo de lectura",
+        "Requiere cuenta de Google"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Daylio",
+      "peso": "28",
+      "categoria": "Vida más fácil",
+      "descripcion": "Diario emocional interactivo con diseño elegante y simple. Una herramienta que lleva años ayudando a mucha gente a desahogarse.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=daylio&c=apps",
+      "estado": "ok",
+      "slug": "daylio",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Diario sin necesidad de escribir: eliges tu estado de ánimo y las actividades del día con iconos, y con el tiempo genera estadísticas y gráficas muy útiles para entenderte mejor.",
+      "caracteristicas": [
+        "Registro rápido con iconos",
+        "Estadísticas de ánimo",
+        "Diseño elegante",
+        "Recordatorios diarios",
+        "Historial a largo plazo"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Feeder",
+      "peso": "8",
+      "categoria": "Vida más fácil",
+      "descripcion": "Lector RSS Open Source para seguir noticias, blogs y tecnología sin algoritmos invasivos.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Feeder&c=apps",
+      "estado": "ok",
+      "slug": "feeder",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Lector de RSS ligero y Open Source, ideal para seguir tus blogs y webs favoritas sin depender de algoritmos que decidan qué ves.",
+      "caracteristicas": [
+        "Open Source",
+        "Sin algoritmos",
+        "Ligero",
+        "Soporte para múltiples fuentes",
+        "Sincronización opcional"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "FeedFlow",
+      "peso": "7",
+      "categoria": "Vida más fácil",
+      "descripcion": "RSS Reader minimalista y Open Source. Ideal para leer noticias de forma limpia y rápida.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/prof18/feed-flow",
+      "estado": "ok",
+      "slug": "feedflow",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Otro lector de RSS Open Source, con un diseño minimalista pensado para leer rápido y sin distracciones visuales.",
+      "caracteristicas": [
+        "Open Source",
+        "Diseño minimalista",
+        "Multiplataforma",
+        "Organización por carpetas",
+        "Rápido"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Joplin",
+      "peso": "42",
+      "categoria": "Vida más fácil",
+      "descripcion": "Aplicación de notas y organización Open Source. Perfecta para productividad y guardar ideas.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Joplin&c=apps",
+      "estado": "ok",
+      "slug": "joplin",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Aplicación de notas Open Source con soporte para Markdown, cifrado y sincronización con tu propia nube. Ideal si quieres tener el control total de tus datos.",
+      "caracteristicas": [
+        "Open Source",
+        "Soporte Markdown",
+        "Sincronización cifrada",
+        "Organización por libretas",
+        "Multiplataforma"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Super Productivity",
+      "peso": "18",
+      "categoria": "Vida más fácil",
+      "descripcion": "Gestor de tareas Open Source con temporizador, estadísticas y enfoque en productividad.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Super%20Productivity&c=apps",
+      "estado": "ok",
+      "slug": "super-productivity",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Gestor de tareas pensado para gente que quiere medir de verdad su productividad: incluye temporizador tipo Pomodoro, seguimiento de tiempo por tarea y estadísticas detalladas.",
+      "caracteristicas": [
+        "Open Source",
+        "Temporizador integrado",
+        "Estadísticas de productividad",
+        "Integración con calendarios",
+        "Gestión por proyectos"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Loop Habit Tracker",
+      "peso": "6",
+      "categoria": "Vida más fácil",
+      "descripcion": "App Open Source para crear y mantener hábitos diarios con estadísticas claras.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Loop%20Habit%20Tracker&c=apps",
+      "estado": "ok",
+      "slug": "loop-habit-tracker",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App sencilla y Open Source para hacer seguimiento de tus hábitos día a día, con gráficas claras que te muestran tu progreso y rachas.",
+      "caracteristicas": [
+        "Open Source",
+        "Seguimiento de rachas",
+        "Gráficas de progreso",
+        "Recordatorios personalizables",
+        "Sin publicidad"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Anytype",
+      "peso": "55",
+      "categoria": "Vida más fácil",
+      "descripcion": "Alternativa moderna a Notion centrada en privacidad y organización personal offline.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Anytype&c=apps",
+      "estado": "ok",
+      "slug": "anytype",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Alternativa a Notion que guarda todos tus datos localmente y cifrados, con un sistema de bloques y bases de datos muy flexible para organizar cualquier cosa.",
+      "caracteristicas": [
+        "Alternativa a Notion",
+        "Datos cifrados y locales",
+        "Bases de datos flexibles",
+        "Funciona offline",
+        "Multiplataforma"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Obsidian",
+      "peso": "38",
+      "categoria": "Vida más fácil",
+      "descripcion": "Sistema de notas conectado tipo \"segundo cerebro\". Muy usado para estudio y productividad.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Obsidian&c=apps",
+      "estado": "ok",
+      "slug": "obsidian",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Editor de notas en Markdown que te permite enlazar ideas entre sí para crear tu propio 'segundo cerebro'. Muy popular entre estudiantes y gente que organiza proyectos complejos.",
+      "caracteristicas": [
+        "Notas enlazadas",
+        "Soporte Markdown",
+        "Gráfico de relaciones",
+        "Plugins de la comunidad",
+        "Datos guardados localmente"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Tasks.org",
+      "peso": "10",
+      "categoria": "Vida más fácil",
+      "descripcion": "Gestor de tareas Open Source compatible con Google Tasks, CalDAV y Nextcloud.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Tasks.org&c=apps",
+      "estado": "ok",
+      "slug": "tasks-org",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Gestor de tareas Open Source que se sincroniza con Google Tasks, CalDAV o Nextcloud, ideal si ya usas alguno de estos servicios y quieres una app más completa.",
+      "caracteristicas": [
+        "Open Source",
+        "Sincronización con Google Tasks",
+        "Compatible con CalDAV/Nextcloud",
+        "Recordatorios y subtareas",
+        "Widgets"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Notally",
+      "peso": "5",
+      "categoria": "Vida más fácil",
+      "descripcion": "Bloc de notas minimalista y Open Source para listas rápidas, ideas y recordatorios.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Notally&c=apps",
+      "estado": "ok",
+      "slug": "notally",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Bloc de notas simple y Open Source, perfecto para apuntar ideas rápidas, listas de la compra o recordatorios sin ningún tipo de complicación.",
+      "caracteristicas": [
+        "Open Source",
+        "Interfaz minimalista",
+        "Listas y notas rápidas",
+        "Sin publicidad",
+        "Ligero"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Weawow",
+      "peso": "22",
+      "categoria": "Tiempo y clima",
+      "descripcion": "Una de las apps del tiempo más bonitas y completas. Sin anuncios invasivos y con widgets espectaculares.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Weawow&c=apps",
+      "estado": "ok",
+      "slug": "weawow",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App del tiempo con un diseño precioso, fotos reales de otros usuarios según la ciudad y unos widgets de los más bonitos que existen. Sin publicidad invasiva.",
+      "caracteristicas": [
+        "Diseño muy cuidado",
+        "Widgets personalizables",
+        "Fotos de otros usuarios",
+        "Predicción detallada",
+        "Sin publicidad invasiva"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Breezy Weather",
+      "peso": "18",
+      "categoria": "Tiempo y clima",
+      "descripcion": "App Open Source moderna basada en Geometric Weather. Diseño Material You y múltiples proveedores climáticos.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/breezy-weather/breezy-weather",
+      "estado": "ok",
+      "slug": "breezy-weather",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Continuación Open Source de Geometric Weather, con diseño Material You y la posibilidad de elegir entre varios proveedores de datos meteorológicos según tu zona.",
+      "caracteristicas": [
+        "Open Source",
+        "Diseño Material You",
+        "Varios proveedores meteorológicos",
+        "Widgets personalizables",
+        "Sin publicidad"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Today Weather",
+      "peso": "30",
+      "categoria": "Tiempo y clima",
+      "descripcion": "Interfaz minimalista y elegante con datos precisos y widgets muy cuidados.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Today%20Weather&c=apps",
+      "estado": "ok",
+      "slug": "today-weather",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App del tiempo con una interfaz muy limpia y minimalista, sin perder precisión en los datos ni calidad en sus widgets.",
+      "caracteristicas": [
+        "Diseño minimalista",
+        "Widgets cuidados",
+        "Datos precisos",
+        "Ligera"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Natural Hour",
+      "peso": "6",
+      "categoria": "Tiempo y clima",
+      "descripcion": "Aplicación Open Source centrada en ciclos solares, amaneceres, atardeceres y ritmo natural del día.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/forrestguice/NaturalHour",
+      "estado": "ok",
+      "slug": "natural-hour",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App Open Source curiosa centrada en las horas 'naturales' del día según el sol: amaneceres, atardeceres y cómo dividían el tiempo las civilizaciones antiguas.",
+      "caracteristicas": [
+        "Open Source",
+        "Horarios de sol",
+        "Cálculo de horas naturales",
+        "Sin publicidad",
+        "Curiosa y educativa"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "AccuWeather",
+      "peso": "65",
+      "categoria": "Tiempo y clima",
+      "descripcion": "Muy popular por sus predicciones precisas minuto a minuto y alertas meteorológicas.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=AccuWeather&c=apps",
+      "estado": "ok",
+      "slug": "accuweather",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Una de las apps del tiempo más usadas del mundo. Destaca por sus predicciones minuto a minuto y sus alertas meteorológicas anticipadas.",
+      "caracteristicas": [
+        "Predicción minuto a minuto",
+        "Alertas meteorológicas",
+        "Mapas de radar",
+        "Muy popular y fiable"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Windy",
+      "peso": "40",
+      "categoria": "Tiempo y clima",
+      "descripcion": "La favorita para mapas meteorológicos avanzados, viento, lluvia y seguimiento de tormentas.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Windy.com&c=apps",
+      "estado": "ok",
+      "slug": "windy",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Referencia absoluta si te gusta el detalle meteorológico: mapas de viento, lluvia, olas y seguimiento de tormentas casi en tiempo real.",
+      "caracteristicas": [
+        "Mapas meteorológicos avanzados",
+        "Seguimiento de tormentas",
+        "Datos de viento y oleaje",
+        "Varios modelos de predicción"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Clima",
+      "peso": "4",
+      "categoria": "Tiempo y clima",
+      "descripcion": "Cliente del tiempo Open Source con interfaz limpia y experiencia minimalista.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/amanharwara/Clima",
+      "estado": "ok",
+      "slug": "clima",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App del tiempo Open Source con una interfaz muy cuidada y minimalista, pensada para dar la información justa sin saturar la pantalla.",
+      "caracteristicas": [
+        "Open Source",
+        "Interfaz limpia",
+        "Sin publicidad",
+        "Minimalista"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "PSPlay",
+      "peso": "25",
+      "categoria": "Emulación y Remote Play",
+      "descripcion": "La mejor alternativa a Remote Play oficial de PlayStation. Menor latencia y más opciones. Es de pago pero es mejor que la app oficial de Sony.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=PSPlay&c=apps",
+      "estado": "ok",
+      "slug": "psplay",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Alternativa de pago a la app oficial de Remote Play de Sony, con menor latencia, más opciones de configuración y mejor calidad de imagen en general.",
+      "caracteristicas": [
+        "Menor latencia que la app oficial",
+        "Más opciones de configuración",
+        "Compatible con mandos",
+        "De pago",
+        "Mejor calidad de streaming"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "melonDS",
+      "peso": "18",
+      "categoria": "Emulación y Remote Play",
+      "descripcion": "Emulador de Nintendo DS Open Source con gran compatibilidad y soporte online experimental.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=melonDS&c=apps",
+      "estado": "ok",
+      "slug": "melonds",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Emulador Open Source de Nintendo DS con muy buena compatibilidad de juegos y un soporte experimental para jugar online con otros usuarios.",
+      "caracteristicas": [
+        "Open Source",
+        "Gran compatibilidad de juegos",
+        "Soporte online experimental",
+        "Mandos compatibles",
+        "Buen rendimiento"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "AetherSX2",
+      "peso": "45",
+      "categoria": "Emulación y Remote Play",
+      "descripcion": "El emulador de PlayStation 2 más popular en Android. Excelente rendimiento en móviles potentes.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=AetherSX2&c=apps",
+      "estado": "ok",
+      "slug": "aethersx2",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "El emulador de PS2 de referencia en Android, capaz de mover muchos juegos a buena velocidad en móviles con hardware potente.",
+      "caracteristicas": [
+        "Emulación de PS2",
+        "Buen rendimiento",
+        "Compatible con mandos",
+        "Configuración avanzada de gráficos"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Ryujinx",
+      "peso": "50",
+      "categoria": "Emulación y Remote Play",
+      "descripcion": "Emulador Open Source de Nintendo Switch conocido por su compatibilidad y precisión.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/Ryujinx/release-channel-master",
+      "estado": "ok",
+      "slug": "ryujinx",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Emulador Open Source de Nintendo Switch muy respetado por su precisión técnica y su amplia compatibilidad con el catálogo de la consola.",
+      "caracteristicas": [
+        "Open Source",
+        "Gran compatibilidad de juegos",
+        "Actualizaciones frecuentes",
+        "Configuración avanzada"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "PPSSPP",
+      "peso": "30",
+      "categoria": "Emulación y Remote Play",
+      "descripcion": "Legendario emulador de PSP. Ligero, rápido y compatible con cientos de juegos.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=PPSSPP&c=apps",
+      "estado": "ok",
+      "slug": "ppsspp",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "El emulador de PSP más veterano y querido. Funciona en casi cualquier móvil, es muy ligero y tiene compatibilidad con cientos de juegos.",
+      "caracteristicas": [
+        "Ligero y rápido",
+        "Gran compatibilidad",
+        "Mejoras gráficas",
+        "Mandos compatibles",
+        "Guardado rápido"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "SkyEmu",
+      "peso": "10",
+      "categoria": "Emulación y Remote Play",
+      "descripcion": "Emulador Open Source para Game Boy Advance, Game Boy y Nintendo DS con gran rendimiento.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/SkyEmu/SkyEmu",
+      "estado": "ok",
+      "slug": "skyemu",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Emulador Open Source multiconsola centrado en Game Boy, Game Boy Advance y Nintendo DS, destacando por su rendimiento y precisión.",
+      "caracteristicas": [
+        "Open Source",
+        "Multiconsola (GB, GBA, NDS)",
+        "Gran rendimiento",
+        "Interfaz simple"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Lemuroid",
+      "peso": "28",
+      "categoria": "Emulación y Remote Play",
+      "descripcion": "Frontend Open Source basado en Libretro con soporte para decenas de consolas retro.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Lemuroid&c=apps",
+      "estado": "ok",
+      "slug": "lemuroid",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Frontend Open Source basado en cores de Libretro que te permite emular decenas de consolas retro desde una sola app, con partidas guardadas en la nube.",
+      "caracteristicas": [
+        "Open Source",
+        "Múltiples consolas retro",
+        "Basado en Libretro",
+        "Guardado en la nube",
+        "Interfaz unificada"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Dolphin Emulator",
+      "peso": "55",
+      "categoria": "Emulación y Remote Play",
+      "descripcion": "El emulador más famoso de GameCube y Wii. Compatible con mandos y mejoras gráficas HD.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Dolphin%20Emulator&c=apps",
+      "estado": "ok",
+      "slug": "dolphin-emulator",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "El emulador de referencia para GameCube y Wii, con soporte de mandos, mejoras gráficas en alta resolución y muy buena compatibilidad de juegos.",
+      "caracteristicas": [
+        "Emulación de GameCube y Wii",
+        "Mejoras gráficas HD",
+        "Compatible con mandos",
+        "Gran compatibilidad de juegos"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Aves Gallery",
+      "peso": "15",
+      "categoria": "Galería de fotos",
+      "descripcion": "Considerada por todos como la reina de las aplicaciones de galería. Visor por carpetas, pinch to zoom para agrandar las fotos y buen diseño. Totalmente offline.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/deckerst/aves/releases",
+      "estado": "ok",
+      "slug": "aves-gallery",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "La reina indiscutible de las apps de galería para muchos usuarios. Organiza tus fotos por carpetas, permite hacer zoom con pellizco para ver el detalle y todo funciona completamente offline, sin conexión a internet.",
+      "caracteristicas": [
+        "Visor por carpetas",
+        "Zoom con pellizco",
+        "Totalmente offline",
+        "Sin rastreadores",
+        "Diseño cuidado"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Fossify Gallery",
+      "peso": "12",
+      "categoria": "Galería de fotos",
+      "descripcion": "Simplicidad y velocidad sin rastreadores ni publicidad. Un diseño simple pero funcional. Totalmente offline.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/FossifyOrg/Gallery/releases",
+      "estado": "ok",
+      "slug": "fossify-gallery",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Galería sencilla y muy rápida, sin rastreadores ni publicidad. Un diseño simple pero funcional que hace exactamente lo que necesitas, todo offline.",
+      "caracteristicas": [
+        "Sin rastreadores ni publicidad",
+        "Totalmente offline",
+        "Diseño simple y funcional",
+        "Ligera y rápida"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Lespas",
+      "peso": "14",
+      "categoria": "Galería de fotos",
+      "descripcion": "Alternativa a Google Photos sincronizada con Nextcloud.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/scubajeff/lespas/releases",
+      "estado": "ok",
+      "slug": "lespas",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Galería que funciona como alternativa a Google Photos pero sincronizando tus fotos con tu propio servidor Nextcloud, manteniendo el control total sobre tus datos.",
+      "caracteristicas": [
+        "Sincronización con Nextcloud",
+        "Alternativa a Google Photos",
+        "Control total de tus datos",
+        "Álbumes compartidos"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "mpvEx",
+      "peso": "22",
+      "categoria": "Reproductores de vídeo",
+      "descripcion": "Reproductor de vídeo compatible con todos los códecs. Open Source y Material3. Soporta gestos de audio y brillo. Gestor integrado, PiP y reproducción de fondo.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/marlboro-advance/mpvEx/releases",
+      "estado": "ok",
+      "slug": "mpvex",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Reproductor de vídeo Open Source basado en mpv, con soporte para prácticamente cualquier formato y códec. Incluye gestos para controlar volumen y brillo, un gestor de archivos integrado, modo picture-in-picture y reproducción en segundo plano.",
+      "caracteristicas": [
+        "Compatible con todos los códecs",
+        "Gestos de volumen y brillo",
+        "Picture-in-picture",
+        "Reproducción en segundo plano",
+        "Diseño Material 3"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "VLC",
+      "peso": "60",
+      "categoria": "Reproductores de vídeo",
+      "descripcion": "El clásico cono de tráfico de Windows. Reproductor de vídeo multiplataforma con soporte para una amplia gama de formatos y fuentes de contenido.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=org.videolan.vlc&hl=es",
+      "estado": "ok",
+      "slug": "vlc",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "El clásico reproductor multiplataforma que todos conocemos. Reproduce prácticamente cualquier formato de vídeo o audio, tanto de tu almacenamiento como desde redes locales o streaming.",
+      "caracteristicas": [
+        "Compatible con casi cualquier formato",
+        "Multiplataforma",
+        "Streaming de red",
+        "Ecualizador integrado",
+        "Gratuito y sin publicidad"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "HeliBoard",
+      "peso": "9",
+      "categoria": "Teclados",
+      "descripcion": "Privado, offline y con escritura gestual basada en AOSP. Muy personalizable y con muchos themes. Incluye español. Muchos lo consideran la alternativa a Gboard.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/HeliBorg/HeliBoard/releases",
+      "estado": "ok",
+      "slug": "heliboard",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Teclado privado y offline basado en AOSP, con escritura por gestos y un montón de temas para personalizarlo. Incluye español y es la alternativa a Gboard que muchos estaban buscando.",
+      "caracteristicas": [
+        "Totalmente offline",
+        "Escritura por gestos",
+        "Muchos temas",
+        "Incluye español",
+        "Sin rastreadores"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Floriboard",
+      "peso": "12",
+      "categoria": "Teclados",
+      "descripcion": "Arquitectura moderna y flexibilidad máxima de personalización. No tiene tantas opciones como Heliboard pero es muy buen teclado. Totalmente offline y con idioma español.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/florisboard/florisboard/releases",
+      "estado": "ok",
+      "slug": "floriboard",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Teclado con una arquitectura moderna y bastante flexibilidad de personalización, aunque con menos opciones que HeliBoard. Totalmente offline y con soporte para español.",
+      "caracteristicas": [
+        "Arquitectura moderna",
+        "Totalmente offline",
+        "Incluye español",
+        "Personalizable",
+        "Sin publicidad"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "APK Extractor",
+      "peso": "6",
+      "categoria": "Utilidades",
+      "descripcion": "Extrae APKs de tus aplicaciones instaladas para poder compartirlas.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.dylan.win11.app.extractor",
+      "estado": "ok",
+      "slug": "apk-extractor",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App sencilla que te permite extraer el APK de cualquier aplicación instalada en tu móvil, para guardarla como copia de seguridad o compartirla con quien quieras.",
+      "caracteristicas": [
+        "Extracción de APKs",
+        "Copias de seguridad",
+        "Compartir apps fácilmente",
+        "Interfaz simple"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Airpush Detector",
+      "peso": "5",
+      "categoria": "Utilidades",
+      "descripcion": "Detecta publicidad abusiva en notificaciones que nunca sabes quienes las está provocando.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=popup.ads.detector",
+      "estado": "ok",
+      "slug": "airpush-detector",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Herramienta que analiza tus apps instaladas y te dice cuáles usan librerías de publicidad abusiva, muy útil para saber qué app es la responsable de esas notificaciones molestas.",
+      "caracteristicas": [
+        "Detecta librerías de publicidad",
+        "Identifica apps molestas",
+        "Análisis de apps instaladas",
+        "Útil contra notificaciones spam"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Uso del Disco",
+      "peso": "8",
+      "categoria": "Utilidades",
+      "descripcion": "Mapa visual del almacenamiento interno. Puedes hacer zoom para ver cuales son los archivos más \"pesados\" y borrarlos.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=uso%20del%20disco&c=apps",
+      "estado": "ok",
+      "slug": "uso-del-disco",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App que dibuja un mapa visual de tu almacenamiento interno, permitiéndote hacer zoom en las carpetas más grandes para localizar y borrar rápidamente lo que más espacio ocupa.",
+      "caracteristicas": [
+        "Mapa visual del almacenamiento",
+        "Zoom por carpetas",
+        "Localiza archivos pesados",
+        "Fácil liberación de espacio"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "CPU-Z",
+      "peso": "10",
+      "categoria": "Utilidades",
+      "descripcion": "Información técnica detallada de hardware. Tipo de procesador, ram, pantalla etc.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.cpuid.cpu_z",
+      "estado": "ok",
+      "slug": "cpu-z",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "La app de referencia para conocer al detalle el hardware de tu móvil: procesador, memoria RAM, pantalla, batería, sensores y mucho más.",
+      "caracteristicas": [
+        "Información detallada del procesador",
+        "Datos de RAM y almacenamiento",
+        "Información de pantalla y batería",
+        "Sensores del dispositivo"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Gsam Battery",
+      "peso": "14",
+      "categoria": "Utilidades",
+      "descripcion": "Monitoreo avanzado del consumo de batería.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.gsamlabs.bbm",
+      "estado": "ok",
+      "slug": "gsam-battery",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App de monitoreo de batería muy avanzada, que te muestra con detalle qué apps consumen más energía y cómo cambia tu autonomía con el tiempo.",
+      "caracteristicas": [
+        "Monitoreo detallado de batería",
+        "Estadísticas de consumo por app",
+        "Widgets informativos",
+        "Historial de autonomía"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Ampere",
+      "peso": "8",
+      "categoria": "Utilidades",
+      "descripcion": "Mide la velocidad real de carga de tu batería y tu cargador.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=ampere&c=apps",
+      "estado": "ok",
+      "slug": "ampere",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App sencilla que mide en tiempo real la velocidad de carga de tu batería, muy útil para comprobar si tu cargador o cable están funcionando como deberían.",
+      "caracteristicas": [
+        "Mide velocidad de carga real",
+        "Comprueba cargadores y cables",
+        "Interfaz simple",
+        "Datos en tiempo real"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Teamviewer",
+      "peso": "120",
+      "categoria": "Utilidades",
+      "descripcion": "Control remoto entre dispositivos Android y PC o viceversa.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.teamviewer.teamviewer.market.mobile",
+      "estado": "ok",
+      "slug": "teamviewer",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App de control remoto que te permite acceder a tu PC desde el móvil o a tu móvil desde el PC, ideal para dar soporte técnico o trabajar a distancia.",
+      "caracteristicas": [
+        "Control remoto entre dispositivos",
+        "Acceso PC-móvil y viceversa",
+        "Ideal para soporte técnico",
+        "Conexión segura"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Settle Up",
+      "peso": "18",
+      "categoria": "Utilidades",
+      "descripcion": "Gestión de gastos compartidos para grupos.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=Settle%20Up&c=apps",
+      "estado": "ok",
+      "slug": "settle-up",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App pensada para gestionar gastos compartidos entre amigos, familia o compañeros de piso, calculando automáticamente quién le debe dinero a quién.",
+      "caracteristicas": [
+        "Gestión de gastos en grupo",
+        "Cálculo automático de deudas",
+        "Sincronización entre dispositivos",
+        "Historial de pagos"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Morphhe",
+      "peso": "16",
+      "categoria": "Utilidades",
+      "descripcion": "Aplicación que parche apps como Youtube , Youtube Music , Tiktok , Reddit , Gboard para añadir o quitarle funciones. Normalmente se usa para quitar la publicidad o convertirlas en \"premium\" al desbloquear esas funciones. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "web",
+      "url": "https://morphe.software/",
+      "estado": "ok",
+      "slug": "morphhe",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Herramienta que parchea apps populares como YouTube, YouTube Music, TikTok, Reddit o Gboard para añadirles o quitarles funciones, normalmente usada para eliminar publicidad o desbloquear características premium.",
+      "caracteristicas": [
+        "Parchea apps populares",
+        "Elimina publicidad",
+        "Desbloquea funciones premium",
+        "Verifica siempre la fuente"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "ShizuCallRecorder",
+      "peso": "4",
+      "categoria": "Power User (ADB)",
+      "descripcion": "Permite mediante Shizuku (y sin ser ROOT) grabar llamadas tanto salientes como entrantes en formato ACC y Opus. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/kitsumed/ShizuCallRecorder/releases/tag/v1.0.0",
+      "estado": "ok",
+      "slug": "shizucallrecorder",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Herramienta que, usando Shizuku (sin necesidad de Root), permite grabar tanto llamadas entrantes como salientes en formato AAC u Opus.",
+      "caracteristicas": [
+        "Grabación de llamadas sin Root",
+        "Usa Shizuku",
+        "Formato AAC u Opus",
+        "Llamadas entrantes y salientes"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Shizuku 💎",
+      "peso": "6",
+      "categoria": "Power User (ADB)",
+      "descripcion": "Ejecuta comandos sin Root. El rey para los que no tenemos ROOT. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api",
+      "estado": "ok",
+      "slug": "shizuku",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Herramienta imprescindible para quienes no tienen Root: permite a otras apps ejecutar comandos con permisos elevados usando ADB, abriendo la puerta a muchísimas herramientas de Power User.",
+      "caracteristicas": [
+        "Permisos elevados sin Root",
+        "Usa ADB",
+        "Base para muchas apps de Power User",
+        "Gratuita y de código abierto"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Canta",
+      "peso": "5",
+      "categoria": "Power User (ADB)",
+      "descripcion": "Desinstala bloatware sin riesgo. Usa Shizuku. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/samolego/Canta/releases",
+      "estado": "ok",
+      "slug": "canta",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App que te permite desinstalar el bloatware preinstalado de tu móvil de forma segura, usando Shizuku para tener los permisos necesarios sin arriesgarte con el Root.",
+      "caracteristicas": [
+        "Desinstala bloatware",
+        "Usa Shizuku",
+        "Sin necesidad de Root",
+        "Lista de apps del sistema"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Hail",
+      "peso": "7",
+      "categoria": "Power User (ADB)",
+      "descripcion": "Congela apps para ahorrar recursos aunque puedes volver a descongelarlas. Usa Shizuku. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/aistra0528/Hail/releases",
+      "estado": "ok",
+      "slug": "hail",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Permite congelar apps que no usas para que dejen de consumir batería y recursos en segundo plano, pudiendo descongelarlas en cualquier momento. Funciona mediante Shizuku.",
+      "caracteristicas": [
+        "Congela apps en segundo plano",
+        "Ahorra batería y recursos",
+        "Reversible en cualquier momento",
+        "Usa Shizuku"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "HyperCeiler",
+      "peso": "10",
+      "categoria": "Power User (ADB)",
+      "descripcion": "Optimiza el sistema HyperOS y animaciones. Permite mediante Shizuku usar los gestos en launchers de terceros. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/aistra0528/HyperCeiler/releases",
+      "estado": "ok",
+      "slug": "hyperceiler",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Herramienta pensada para dispositivos con HyperOS que permite optimizar animaciones del sistema y, gracias a Shizuku, usar los gestos de navegación en launchers de terceros.",
+      "caracteristicas": [
+        "Optimiza animaciones de HyperOS",
+        "Gestos en launchers de terceros",
+        "Usa Shizuku",
+        "Personalización avanzada del sistema"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "App Ops",
+      "peso": "9",
+      "categoria": "Power User (ADB)",
+      "descripcion": "Gestión de permisos ocultos. Que no se te escape ningún permiso que no sabías que tenía tu app. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/MuntashirAkon/AppOps/releases",
+      "estado": "ok",
+      "slug": "app-ops",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Herramienta que muestra permisos ocultos del sistema que normalmente no ves en los ajustes normales de Android, para que controles exactamente qué puede hacer cada app.",
+      "caracteristicas": [
+        "Permisos ocultos del sistema",
+        "Control granular por app",
+        "Usa Shizuku",
+        "Mayor privacidad"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Install Options",
+      "peso": "6",
+      "categoria": "Power User (ADB)",
+      "descripcion": "Instalador avanzado de APKs. Permite saltarte la versión de Android o downgradear de versión una app para instalarla. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/zacharee/InstallWithOptions",
+      "estado": "ok",
+      "slug": "install-options",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Instalador avanzado de APKs que te permite saltarte restricciones de versión de Android o instalar una versión anterior de una app (downgrade) cuando la Play Store no te lo permite.",
+      "caracteristicas": [
+        "Instalación avanzada de APKs",
+        "Permite downgrade de apps",
+        "Salta restricciones de versión",
+        "Usa Shizuku"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Namida",
+      "peso": "35",
+      "categoria": "Streaming de audio",
+      "descripcion": "Reproductor Open Source con diseño \"Material You\". Viene muy equipado. Sin publicidad y buena alternativa a Spotify.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/namidaco/namida/releases",
+      "estado": "ok",
+      "slug": "namida",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Reproductor de música local Open Source con diseño Material You, muy completo en funciones y una gran alternativa si quieres dejar de depender de Spotify.",
+      "caracteristicas": [
+        "Open Source",
+        "Diseño Material You",
+        "Sin publicidad",
+        "Muy completo en funciones",
+        "Reproducción local"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Kreate",
+      "peso": "28",
+      "categoria": "Streaming de audio",
+      "descripcion": "Reproductor Open Source con diseño similar a Spotify. Posibilidad de descargar canciones para escucharlas offline, sin publicidad y con buen bitrate.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/knighthat/Kreate/releases",
+      "estado": "ok",
+      "slug": "kreate",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Reproductor Open Source con una interfaz muy parecida a la de Spotify. Te permite descargar canciones para escucharlas sin conexión, sin publicidad y con buena calidad de audio.",
+      "caracteristicas": [
+        "Interfaz similar a Spotify",
+        "Descargas offline",
+        "Sin publicidad",
+        "Buen bitrate de audio",
+        "Open Source"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Metro",
+      "peso": "32",
+      "categoria": "Streaming de audio",
+      "descripcion": "Reproductor Open Source con diseño \"Material You\". Viene muy equipado. Sin publicidad y buena alternativa a Spotify.",
+      "banner": "",
+      "tipo": "github",
+      "url": "https://github.com/MetrolistGroup/Metrolist",
+      "estado": "ok",
+      "slug": "metro",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Otro reproductor Open Source con diseño Material You y muchas funciones integradas, pensado como alternativa completa y sin publicidad a Spotify.",
+      "caracteristicas": [
+        "Open Source",
+        "Diseño Material You",
+        "Sin publicidad",
+        "Muy equipado",
+        "Buena alternativa a Spotify"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "DixMax",
+      "peso": "38",
+      "categoria": "Cine y Televisión",
+      "descripcion": "No creo que haga falta presentación. Hará unos meses renovaron el diseño haciéndolo más amigable pero conserva ese \"tinte\" de siempre. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "telegram",
+      "url": "https://t.me/dixmaxappsoficial#",
+      "estado": "ok",
+      "slug": "dixmax",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Una de las apps de cine y series más conocidas de todas. Hace unos meses renovaron el diseño para hacerlo más amigable, aunque sigue conservando esa esencia de siempre.",
+      "caracteristicas": [
+        "Amplio catálogo de películas y series",
+        "Diseño renovado",
+        "Muy conocida",
+        "Verifica siempre la fuente"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "TDTSpain",
+      "peso": "26",
+      "categoria": "Cine y Televisión",
+      "descripcion": "Tienes todos los canales de televisión en vivo (gratuitos) También incluye series 24h o películas. Mi favorita de las que hay de TV en vivo.",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.tdtespanatvchanells.espanatdtchanelsmovies",
+      "estado": "ok",
+      "slug": "tdtspain",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Mi app favorita para ver televisión en directo: incluye todos los canales gratuitos españoles además de series y películas en emisión continua las 24 horas.",
+      "caracteristicas": [
+        "Canales de TV en directo gratuitos",
+        "Series 24 horas",
+        "Películas incluidas",
+        "La favorita del creador"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Agenda Deportes",
+      "peso": "12",
+      "categoria": "Deportes",
+      "descripcion": "La mejor que he encontrado. 2 años y cero problemas. Te mantiene al día de tus eventos deportivos. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "telegram",
+      "url": "https://t.me/agendadeportes",
+      "estado": "ok",
+      "slug": "agenda-deportes",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Llevo dos años usándola sin un solo problema. Te mantiene al día de todos tus eventos deportivos favoritos, con horarios y enlaces siempre actualizados.",
+      "caracteristicas": [
+        "Agenda de eventos deportivos",
+        "Actualizada constantemente",
+        "2 años sin problemas",
+        "Verifica siempre la fuente"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "FCTV33",
+      "peso": "10",
+      "categoria": "Deportes",
+      "descripcion": "Para estar al tanto de tus eventos deportivos favoritos. ⚠️ Verifica la fuente antes de instalar.",
+      "banner": "",
+      "tipo": "telegram",
+      "url": "https://t.me/fctv33",
+      "estado": "ok",
+      "slug": "fctv33",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "App pensada para no perderte ningún evento deportivo, con acceso a las emisiones de tus competiciones favoritas.",
+      "caracteristicas": [
+        "Sigue tus eventos deportivos favoritos",
+        "Fácil de usar",
+        "Verifica siempre la fuente"
+      ],
+      "valoracion": 5
+    },
+    {
+      "nombre": "Adguard",
+      "peso": "65",
+      "categoria": "Bloqueador de publicidad",
+      "descripcion": "es una completa aplicación de seguridad y filtrado de contenido diseñada para bloquear publicidad, eliminar rastreadores y proteger tu dispositivo contra contenido malicioso a nivel del sistema, protegiendo tu privacidad en todo tu teléfono",
+      "banner": "",
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.adguard.android.contentblocker&hl=es",
+      "estado": "ok",
+      "slug": "adguard",
+      "fecha": "2026-09-06",
+      "descripcionCompleta": "Solución de seguridad y filtrado de contenido a nivel de sistema que bloquea publicidad, elimina rastreadores y protege tu dispositivo frente a contenido malicioso, cuidando tu privacidad en todo el teléfono, no solo en el navegador.",
+      "caracteristicas": [
+        "Bloqueo de publicidad a nivel de sistema",
+        "Elimina rastreadores",
+        "Protección frente a malware",
+        "Protege toda la privacidad del móvil"
+      ],
+      "valoracion": 5
+    }
+  ]
 }
