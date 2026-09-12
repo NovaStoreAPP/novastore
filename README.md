@@ -41,7 +41,8 @@ Todo el catálogo vive en un solo archivo apps.json que puedes editar a mano, y 
 
     🧩 Sin dependencias: HTML, CSS y JS puro. Un solo archivo.
 
-    ⚠️ Aviso legal
+    
+⚠️ Aviso legal
 
 NovaStore no aloja ningún archivo APK ni contenido descargable. Es únicamente un catálogo informativo que enlaza a las fuentes oficiales de cada aplicación (Google Play, GitHub, webs oficiales o canales de Telegram gestionados por sus propios desarrolladores).
 
