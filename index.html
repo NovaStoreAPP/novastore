@@ -204,8 +204,9 @@
 
   /* --- barra de navegación inferior --- */
   body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
-  .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--border);display:flex;z-index:20;padding-bottom:env(safe-area-inset-bottom)}
-  .nav-item{flex:1;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:9px 4px 8px;font-size:10.5px;font-weight:700;color:var(--text-secondary);cursor:pointer;font-family:inherit}
+  .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--border);display:flex;z-index:20;padding-bottom:env(safe-area-inset-bottom);overflow-x:auto;scrollbar-width:none}
+  .bottom-nav::-webkit-scrollbar{display:none}
+  .nav-item{flex:1 0 auto;min-width:62px;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:8px 3px 7px;font-size:10px;font-weight:700;color:var(--text-secondary);cursor:pointer;font-family:inherit;white-space:nowrap}
   .nav-item:active{opacity:.7}
   .nav-item.active{color:var(--green)}
 
@@ -227,6 +228,30 @@
   .cat-az-name{font-weight:700;font-size:14.5px}
   .cat-az-right{display:flex;align-items:center;gap:8px;color:var(--text-secondary);flex-shrink:0}
   .cat-az-count{font-size:12px;font-weight:700;color:var(--text-secondary)}
+
+  /* --- favoritos / guardados --- */
+  .btn-fav{background:var(--bg);border:1px solid var(--border);color:var(--text-secondary);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+  .btn-fav:active{background:var(--border)}
+  .btn-fav.active{color:#ff4d6d;border-color:rgba(255,77,109,.35);background:rgba(255,77,109,.1)}
+
+  /* --- skeleton / shimmer mientras carga apps.json --- */
+  @keyframes shimmer{0%{background-position:-200px 0}100%{background-position:calc(200px + 100%) 0}}
+  .skeleton{background:linear-gradient(90deg,var(--border) 25%,var(--bg) 37%,var(--border) 63%);background-size:400px 100%;animation:shimmer 1.3s ease infinite;border-radius:8px}
+  @media (prefers-reduced-motion:reduce){.skeleton{animation:none}}
+  .skeleton-row{pointer-events:none;cursor:default}
+  .skeleton-icon{width:52px;height:52px;border-radius:14px;flex-shrink:0}
+  .skeleton-line{height:11px;margin:7px 0}
+
+  /* --- banner de instalación PWA --- */
+  .install-banner{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px 14px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .install-banner-icon{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 30%,#c04cff 60%,#ff5f8f 100%);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff}
+  .install-banner-text{flex:1;min-width:0}
+  .install-banner-title{font-weight:700;font-size:13.5px;margin:0 0 2px}
+  .install-banner-sub{font-size:11.5px;color:var(--text-secondary);margin:0;line-height:1.3}
+  .install-banner-actions{display:flex;align-items:center;gap:4px;flex-shrink:0}
+  .btn-install{background:var(--green);color:#fff;border:none;padding:8px 14px;border-radius:20px;font-weight:600;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .btn-mini-ghost{background:none;border:none;color:var(--text-secondary);width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .btn-mini-ghost:active{background:var(--bg)}
 </style>
 </head>
 <body>
@@ -246,6 +271,22 @@
 </header>
 
 <main>
+  <div class="install-banner" id="install-banner" style="display:none">
+    <div class="install-banner-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 9.5 12 4l8 5.5V19a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1V9.5Z" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="install-banner-text">
+      <p class="install-banner-title">Instala NovaStore</p>
+      <p class="install-banner-sub">Añádela a tu pantalla de inicio y ábrela como una app</p>
+    </div>
+    <div class="install-banner-actions">
+      <button class="btn-mini-ghost" id="install-banner-close" aria-label="Cerrar aviso">✕</button>
+      <button class="btn-install" id="install-banner-btn">Instalar</button>
+    </div>
+  </div>
+
   <div class="load-panel" id="load-panel" style="display:none">
     <p>No se pudo cargar apps.json automáticamente (esto pasa si abres el archivo con doble clic en lugar de un servidor local). Selecciónalo a mano:</p>
     <button class="btn-secondary" onclick="document.getElementById('file-input').click()">Seleccionar apps.json</button>
@@ -307,20 +348,24 @@
 
 <nav class="bottom-nav" id="bottom-nav">
   <button class="nav-item active" data-nav="inicio" aria-label="Inicio">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5Z"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5Z"/></svg>
     <span>Inicio</span>
   </button>
   <button class="nav-item" data-nav="buscar" aria-label="Buscar">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-3.8-3.8"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-3.8-3.8"/></svg>
     <span>Buscar</span>
   </button>
   <button class="nav-item" data-nav="categorias" aria-label="Categorías">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg>
     <span>Categorías</span>
   </button>
   <button class="nav-item" data-nav="juegos" aria-label="Juegos">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="11.5" x2="10.5" y2="11.5"/><line x1="8.75" y1="9.75" x2="8.75" y2="13.25"/><line x1="15.3" y1="12" x2="15.31" y2="12"/><line x1="17.8" y1="9.8" x2="17.81" y2="9.8"/><path d="M17.3 6H6.7A4 4 0 0 0 2.72 9.6C2.6 10.5 2 15 2 16.3A2.7 2.7 0 0 0 4.7 19c.9 0 1.35-.45 1.8-.9L7.7 16.8A2 2 0 0 1 9.1 16.2h5.8a2 2 0 0 1 1.4.6l1.2 1.3c.45.45.9.9 1.8.9a2.7 2.7 0 0 0 2.7-2.7c0-1.3-.6-5.8-.72-6.7A4 4 0 0 0 17.3 6Z"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="11.5" x2="10.5" y2="11.5"/><line x1="8.75" y1="9.75" x2="8.75" y2="13.25"/><line x1="15.3" y1="12" x2="15.31" y2="12"/><line x1="17.8" y1="9.8" x2="17.81" y2="9.8"/><path d="M17.3 6H6.7A4 4 0 0 0 2.72 9.6C2.6 10.5 2 15 2 16.3A2.7 2.7 0 0 0 4.7 19c.9 0 1.35-.45 1.8-.9L7.7 16.8A2 2 0 0 1 9.1 16.2h5.8a2 2 0 0 1 1.4.6l1.2 1.3c.45.45.9.9 1.8.9a2.7 2.7 0 0 0 2.7-2.7c0-1.3-.6-5.8-.72-6.7A4 4 0 0 0 17.3 6Z"/></svg>
     <span>Juegos</span>
+  </button>
+  <button class="nav-item" data-nav="guardados" aria-label="Guardados">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.33-8.36C1.05 10.5 1.4 7.4 3.76 5.66a5.5 5.5 0 0 1 7.24.5L12 7.2l1-.99a5.5 5.5 0 0 1 7.24-.55c2.36 1.75 2.71 4.85 1.09 6.98C18.7 16.65 12 21 12 21Z"/></svg>
+    <span>Guardados</span>
   </button>
 </nav>
 
@@ -355,6 +400,9 @@
       </div>
     </div>
     <div class="detail-actions-row">
+      <button class="btn-fav" id="detail-fav-btn" aria-label="Guardar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.33-8.36C1.05 10.5 1.4 7.4 3.76 5.66a5.5 5.5 0 0 1 7.24.5L12 7.2l1-.99a5.5 5.5 0 0 1 7.24-.55c2.36 1.75 2.71 4.85 1.09 6.98C18.7 16.65 12 21 12 21Z"/></svg>
+      </button>
       <button class="btn-share" id="detail-share-btn" aria-label="Compartir">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>
       </button>
@@ -370,6 +418,11 @@
       <div class="detail-section-divider"></div>
       <ul class="detail-highlights" id="detail-highlights"></ul>
     </div>
+    <div class="detail-section" id="detail-related-section">
+      <p class="detail-section-title">También te puede interesar</p>
+      <div class="detail-section-divider"></div>
+      <div class="carousel" id="detail-related-carousel"></div>
+    </div>
   </div>
 </div>
 
@@ -380,6 +433,22 @@ let apps=[];
 let categorias=[];
 let selectedCategory='';
 let sortMode='recientes';
+let dataLoaded=false;
+
+// --- favoritos / guardados (solo en este dispositivo, vía localStorage) ---
+let favorites=new Set();
+try{favorites=new Set(JSON.parse(localStorage.getItem('novastore_favoritos')||'[]'))}catch(e){}
+function saveFavorites(){
+  try{localStorage.setItem('novastore_favoritos',JSON.stringify([...favorites]))}catch(e){}
+}
+function favKey(app){return app.slug||app.nombre}
+function isFavorite(app){return favorites.has(favKey(app))}
+function toggleFavorite(app){
+  const key=favKey(app);
+  if(favorites.has(key))favorites.delete(key);else favorites.add(key);
+  saveFavorites();
+  return favorites.has(key);
+}
 
 // Los filtros (categoría + orden) sobreviven a un refresco de página, igual que el tema.
 function saveFilters(){
@@ -609,6 +678,7 @@ function setNav(key){
   else if(key==='buscar'){currentView='buscar';}
   else if(key==='categorias'){currentView='categorias';selectedCategory='';}
   else if(key==='juegos'){currentView='categorias';selectedCategory=gamesCategoryName();}
+  else if(key==='guardados'){currentView='guardados';selectedCategory='';}
   updateNavUI();
   updateActiveCatChip();
   saveFilters();
@@ -622,11 +692,11 @@ document.querySelectorAll('.nav-item').forEach(btn=>{
 // Muestra/oculta cada bloque según la vista activa.
 function updateViewVisibility(){
   const showChooser=currentView==='categorias'&&!selectedCategory;
-  const showList=currentView==='inicio'||currentView==='buscar'||(currentView==='categorias'&&!!selectedCategory);
-  document.getElementById('carousel-section').style.display=(currentView==='inicio')?'':'none';
+  const showList=currentView==='inicio'||currentView==='buscar'||currentView==='guardados'||(currentView==='categorias'&&!!selectedCategory);
+  document.getElementById('carousel-section').style.display=(currentView==='inicio'&&dataLoaded)?'':'none';
   document.getElementById('buscar-searchbar').style.display=(currentView==='buscar')?'flex':'none';
   document.getElementById('cat-az-section').style.display=showChooser?'':'none';
-  document.getElementById('list-controls').style.display=showList?'':'none';
+  document.getElementById('list-controls').style.display=(showList&&dataLoaded)?'':'none';
   document.getElementById('app-list').style.display=showList?'':'none';
 }
 
@@ -639,6 +709,7 @@ function render(){
 
 const SORT_OPTIONS=[
   {value:'recientes',label:'Recientes'},
+  {value:'valoracion',label:'Mejor valoradas'},
   {value:'az',label:'Nombre (A-Z)'},
   {value:'za',label:'Nombre (Z-A)'}
 ];
@@ -687,19 +758,43 @@ function clearAllFilters(){
 
 // "Recientes" ordena de verdad por app.fecha (YYYY-MM-DD), no por el orden bruto del JSON.
 function byFechaDesc(a,b){return (b.fecha||'').localeCompare(a.fecha||'')}
+function byValoracionDesc(a,b){return (Number(b.valoracion)||0)-(Number(a.valoracion)||0)||byFechaDesc(a,b)}
 function applyFilters(){
   const q=currentView==='buscar'?(document.getElementById('search-input').value||'').toLowerCase():'';
-  let result=apps.filter(a=>{
+  const base=currentView==='guardados'?apps.filter(isFavorite):apps;
+  let result=base.filter(a=>{
     const matchesQ=(a.nombre||'').toLowerCase().includes(q);
     const matchesCat=!selectedCategory||(a.categoria||'')===selectedCategory;
     return matchesQ&&matchesCat;
   });
   if(sortMode==='az')result=result.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'','es',{sensitivity:'base'}));
   else if(sortMode==='za')result=result.slice().sort((a,b)=>(b.nombre||'').localeCompare(a.nombre||'','es',{sensitivity:'base'}));
+  else if(sortMode==='valoracion')result=result.slice().sort(byValoracionDesc);
   else result=result.slice().sort(byFechaDesc);
   return result;
 }
 
+const HEART_PATH='M12 21s-6.7-4.35-9.33-8.36C1.05 10.5 1.4 7.4 3.76 5.66a5.5 5.5 0 0 1 7.24.5L12 7.2l1-.99a5.5 5.5 0 0 1 7.24-.55c2.36 1.75 2.71 4.85 1.09 6.98C18.7 16.65 12 21 12 21Z';
+function buildFavBtnEl(app){
+  const btn=document.createElement('button');
+  const active=isFavorite(app);
+  btn.className='btn-fav'+(active?' active':'');
+  btn.setAttribute('aria-label',active?'Quitar de guardados':'Guardar');
+  btn.setAttribute('aria-pressed',String(active));
+  btn.innerHTML=`<svg width="18" height="18" viewBox="0 0 24 24" fill="${active?'currentColor':'none'}" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="${HEART_PATH}"/></svg>`;
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const nowActive=toggleFavorite(app);
+    btn.classList.toggle('active',nowActive);
+    btn.setAttribute('aria-label',nowActive?'Quitar de guardados':'Guardar');
+    btn.setAttribute('aria-pressed',String(nowActive));
+    btn.querySelector('svg').setAttribute('fill',nowActive?'currentColor':'none');
+    showToast(nowActive?`${app.nombre} guardada en Guardados`:`${app.nombre} quitada de Guardados`);
+    // Si estamos viendo la lista de Guardados, la app desaparece de golpe al desmarcarla.
+    if(currentView==='guardados')render();
+  });
+  return btn;
+}
 function buildAppRowEl(app){
   const row=document.createElement('div');
   row.className='app-row';
@@ -722,6 +817,7 @@ function buildAppRowEl(app){
 
   const actions=document.createElement('div');
   actions.className='app-actions-col';
+  actions.appendChild(buildFavBtnEl(app));
   const shareBtn=document.createElement('button');
   shareBtn.className='btn-share';
   shareBtn.setAttribute('aria-label','Compartir');
@@ -789,6 +885,8 @@ function buildCarouselCardEl(app){
 }
 // Arrastre con el ratón en PC (el móvil ya desliza de forma nativa con el dedo).
 function makeCarouselDraggable(el){
+  if(el._dragReady)return;
+  el._dragReady=true;
   let isDown=false,startX=0,startScroll=0;
   el.addEventListener('pointerdown',e=>{
     if(e.pointerType==='touch')return;
@@ -809,7 +907,6 @@ function makeCarouselDraggable(el){
   el.addEventListener('pointerup',stop);
   el.addEventListener('pointerleave',stop);
 }
-let carouselDraggableReady=false;
 function renderCarousel(){
   const section=document.getElementById('carousel-section');
   const track=document.getElementById('carousel');
@@ -819,20 +916,25 @@ function renderCarousel(){
   section.style.display='';
   track.innerHTML='';
   featured.forEach(app=>track.appendChild(buildCarouselCardEl(app)));
-  if(!carouselDraggableReady){makeCarouselDraggable(track);carouselDraggableReady=true}
+  makeCarouselDraggable(track);
 }
 
 function renderCatalog(){
   const list=document.getElementById('app-list');
   const filtered=applyFilters();
   const countEl=document.getElementById('results-count');
-  const hasActiveFilters=!!(selectedCategory||(document.getElementById('search-input').value||'').trim());
-  countEl.textContent=apps.length?`${filtered.length} ${filtered.length===1?'app':'apps'}${hasActiveFilters?` de ${apps.length}`:''}`:'';
+  const isGuardados=currentView==='guardados';
+  const hasActiveFilters=!isGuardados&&!!(selectedCategory||(document.getElementById('search-input').value||'').trim());
+  if(isGuardados){
+    countEl.textContent=filtered.length?`${filtered.length} app${filtered.length===1?'':'s'} guardada${filtered.length===1?'':'s'}`:'';
+  }else{
+    countEl.textContent=apps.length?`${filtered.length} ${filtered.length===1?'app':'apps'}${hasActiveFilters?` de ${apps.length}`:''}`:'';
+  }
   if(filtered.length===0){
     list.innerHTML=`<div class="empty">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 9h6v6H9z"/></svg>
-      <p>${apps.length===0?'Todavía no hay apps en apps.json.':'No hay resultados con estos filtros.'}</p>
-      ${apps.length>0&&hasActiveFilters?'<button class="btn-clear-filters" id="btn-clear-filters">Quitar filtros</button>':''}
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${isGuardados?'<path d="M12 19.5s-5.6-3.6-7.78-6.97C2.9 10.6 3.2 8.1 5.1 6.7a4.6 4.6 0 0 1 6.03.42L12 8l.87-.88a4.6 4.6 0 0 1 6.03-.42c1.9 1.4 2.2 3.9 .88 5.83C17.6 15.9 12 19.5 12 19.5Z"/>':'<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 9h6v6H9z"/>'}</svg>
+      <p>${isGuardados?'Aún no has guardado ninguna app. Toca el corazón de la que te interese para tenerla aquí a mano.':(apps.length===0?'Todavía no hay apps en apps.json.':'No hay resultados con estos filtros.')}</p>
+      ${!isGuardados&&apps.length>0&&hasActiveFilters?'<button class="btn-clear-filters" id="btn-clear-filters">Quitar filtros</button>':''}
     </div>`;
     const clearBtn=document.getElementById('btn-clear-filters');
     if(clearBtn)clearBtn.addEventListener('click',clearAllFilters);
@@ -865,7 +967,11 @@ function renderCatalog(){
   [...groups.keys()].forEach(c=>{if(!order.includes(c))order.push(c)});
   if(sortMode==='az')order=order.slice().sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'}));
   else if(sortMode==='za')order=order.slice().sort((a,b)=>b.localeCompare(a,'es',{sensitivity:'base'}));
-  else{
+  else if(sortMode==='valoracion'){
+    // Cada categoría sube según la mejor valoración que tenga alguna de sus apps.
+    const maxValoracion=cat=>groups.get(cat).reduce((m,a)=>Math.max(m,Number(a.valoracion)||0),0);
+    order=order.slice().sort((a,b)=>maxValoracion(b)-maxValoracion(a));
+  }else{
     // Recientes: la categoría se ordena por la fecha de su app más nueva,
     // así una categoría recién creada con una sola app sube arriba del todo.
     const maxFecha=cat=>groups.get(cat).reduce((m,a)=>(a.fecha||'')>m?(a.fecha||''):m,'');
@@ -880,6 +986,25 @@ function renderCatalog(){
   });
 }
 
+function renderSkeletonCards(n){
+  const list=document.getElementById('app-list');
+  list.innerHTML='';
+  for(let i=0;i<n;i++){
+    const row=document.createElement('div');
+    row.className='app-row skeleton-row';
+    row.innerHTML=`
+      <div class="app-main">
+        <div class="skeleton skeleton-icon"></div>
+        <div class="app-body" style="width:100%">
+          <div class="skeleton skeleton-line" style="width:50%"></div>
+          <div class="skeleton skeleton-line" style="width:30%;height:9px"></div>
+          <div class="skeleton skeleton-line" style="width:85%;height:9px"></div>
+        </div>
+      </div>`;
+    list.appendChild(row);
+  }
+}
+
 function loadData(parsed){
   if(Array.isArray(parsed)){
     apps=parsed;
@@ -888,6 +1013,7 @@ function loadData(parsed){
     apps=parsed.apps||[];
     categorias=parsed.categorias||[];
   }
+  dataLoaded=true;
   render();
   handleDeepLink();
 }
@@ -920,6 +1046,7 @@ async function loadFromFetch(){
     if(!res.ok)throw new Error('no ok');
     loadData(await res.json());
   }catch(e){
+    document.getElementById('app-list').innerHTML='';
     document.getElementById('load-panel').style.display='block';
   }
 }
@@ -1020,8 +1147,37 @@ function openDetailSheet(app){
     hlSection.style.display='none';
   }
 
+  updateDetailFavButton(app);
+
+  // "También te puede interesar": otras apps de la misma categoría, para seguir explorando sin cerrar la ficha.
+  const related=apps.filter(a=>a!==app&&(a.categoria||'General')===(app.categoria||'General'));
+  const relSection=document.getElementById('detail-related-section');
+  const relTrack=document.getElementById('detail-related-carousel');
+  if(related.length){
+    relSection.style.display='';
+    relTrack.innerHTML='';
+    related.slice(0,8).forEach(a=>relTrack.appendChild(buildCarouselCardEl(a)));
+    makeCarouselDraggable(relTrack);
+  }else{
+    relSection.style.display='none';
+  }
+
   openSheetEl('detail-sheet');
 }
+function updateDetailFavButton(app){
+  const btn=document.getElementById('detail-fav-btn');
+  const active=isFavorite(app);
+  btn.classList.toggle('active',active);
+  btn.setAttribute('aria-label',active?'Quitar de guardados':'Guardar');
+  btn.setAttribute('aria-pressed',String(active));
+  btn.querySelector('svg').setAttribute('fill',active?'currentColor':'none');
+}
+document.getElementById('detail-fav-btn').addEventListener('click',()=>{
+  if(!currentDetailApp)return;
+  const active=toggleFavorite(currentDetailApp);
+  updateDetailFavButton(currentDetailApp);
+  showToast(active?`${currentDetailApp.nombre} guardada en Guardados`:`${currentDetailApp.nombre} quitada de Guardados`);
+});
 document.getElementById('btn-cerrar-detail').addEventListener('click',()=>closeSheetEl('detail-sheet'));
 document.getElementById('detail-sheet').addEventListener('click',e=>{if(e.target.id==='detail-sheet')closeSheetEl('detail-sheet')});
 document.getElementById('detail-share-btn').addEventListener('click',()=>{
@@ -1074,11 +1230,46 @@ document.getElementById('share-tiktok').addEventListener('click',()=>{
 document.getElementById('btn-cerrar-share').addEventListener('click',()=>closeSheetEl('share-sheet'));
 document.getElementById('share-sheet').addEventListener('click',e=>{if(e.target.id==='share-sheet')closeSheetEl('share-sheet')});
 
+// --- banner de instalación como app (PWA) ---
+// Solo aparece si el navegador ofrece instalarla, no se ha descartado antes
+// y todavía no se está usando ya instalada (modo standalone).
+let deferredInstallPrompt=null;
+function isStandaloneApp(){
+  return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
+}
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+  let dismissed=false;
+  try{dismissed=localStorage.getItem('novastore_install_dismissed')==='1'}catch(err){}
+  if(!dismissed&&!isStandaloneApp()){
+    document.getElementById('install-banner').style.display='flex';
+  }
+});
+document.getElementById('install-banner-btn').addEventListener('click',async()=>{
+  if(!deferredInstallPrompt)return;
+  document.getElementById('install-banner').style.display='none';
+  deferredInstallPrompt.prompt();
+  try{
+    const {outcome}=await deferredInstallPrompt.userChoice;
+    if(outcome==='accepted')showToast('¡Gracias por instalar NovaStore!');
+  }catch(err){}
+  deferredInstallPrompt=null;
+});
+document.getElementById('install-banner-close').addEventListener('click',()=>{
+  document.getElementById('install-banner').style.display='none';
+  try{localStorage.setItem('novastore_install_dismissed','1')}catch(err){}
+});
+window.addEventListener('appinstalled',()=>{
+  document.getElementById('install-banner').style.display='none';
+});
+
 // Reflejar en la interfaz los filtros restaurados de localStorage antes de la primera carga.
 document.getElementById('sort-select-label').textContent=(SORT_OPTIONS.find(o=>o.value===sortMode)||SORT_OPTIONS[0]).label;
 updateActiveCatChip();
 updateNavUI();
 updateViewVisibility();
+renderSkeletonCards(5);
 
 loadFromFetch();
 </script>
