@@ -24,7 +24,7 @@
     {
       "nombre": "Termux",
       "categoria": "Utilidades",
-      "descripcion": "Termux es una terminal Linux para Android que te permite ejecutar comandos, scripts y herramientas sin root ni PC. Ideal para automatizar tareas, programar y administrar sistemas desde el móvil.",
+      "descripcion": "Termux es una terminal Linux para Android que te permite ejecutar comandos, scripts y herramientas sin root ni PC.",
       "descripcionCompleta": "Termux es un emulador de terminal y entorno Linux para Android que te permite ejecutar comandos, scripts y herramientas de línea de comandos directamente en tu dispositivo, sin necesidad de root ni de una PC. Combina la potencia de un sistema Linux con la portabilidad de tu móvil para automatizar tareas, programar y administrar sistemas sobre la marcha",
       "caracteristicas": [
         "Entorno Linux completo sin root: gestor de paquetes pkg/apt con acceso a cientos de utilidades (bash, zsh, git, python, node, vim, nano, etc.).",
