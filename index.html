@@ -76,7 +76,12 @@
   header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;transition:box-shadow .2s}
   header.scrolled{box-shadow:var(--shadow)}
   .header-inner{max-width:900px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .logo{display:flex;align-items:center;gap:10px;min-width:0}
+  .logo{display:flex;align-items:center;gap:10px;min-width:0;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;text-align:left;-webkit-tap-highlight-color:transparent}
+  .logo:active .logo-mark{transform:scale(.93)}
+  .logo-mark{transition:transform .15s}
+  @keyframes logoSpin{to{transform:rotate(360deg)}}
+  .logo-mark.spinning svg{animation:logoSpin .6s linear}
+  @media (prefers-reduced-motion:reduce){.logo-mark.spinning svg{animation:none}}
   .logo-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 30%,#c04cff 60%,#ff5f8f 100%);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;box-shadow:0 3px 10px rgba(123,92,255,.35)}
   .logo-text{font-weight:800;font-size:20px;letter-spacing:-.3px;background:linear-gradient(135deg,#4f7cff,#c04cff 60%,#ff5f8f);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
   .icon-btn{background:none;border:none;padding:9px;border-radius:50%;cursor:pointer;color:var(--text-secondary);display:flex;flex-shrink:0}
@@ -258,14 +263,14 @@
 
 <header>
   <div class="header-inner">
-    <div class="logo">
-      <div class="logo-mark">
+    <button class="logo" id="btn-refresh-home" aria-label="Volver a Inicio y actualizar catálogo" title="Volver a Inicio y actualizar">
+      <div class="logo-mark" id="logo-mark">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 9.5 12 4l8 5.5V19a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1V9.5Z" fill="#fff"/>
         </svg>
       </div>
       <div class="logo-text">NovaStore</div>
-    </div>
+    </button>
     <button class="icon-btn" id="btn-theme" aria-label="Cambiar tema"></button>
   </div>
 </header>
@@ -1263,6 +1268,25 @@ document.getElementById('install-banner-close').addEventListener('click',()=>{
 window.addEventListener('appinstalled',()=>{
   document.getElementById('install-banner').style.display='none';
 });
+
+// --- pulsar el logo: vuelve a Inicio y recarga el catálogo desde apps.json ---
+// No es un refresco de página completo (no pierdes el scroll ni el tema), solo
+// vuelve a pedir apps.json por si has publicado o cambiado algo desde el admin.
+function refreshCatalog(){
+  setNav('inicio');
+  const mark=document.getElementById('logo-mark');
+  mark.classList.add('spinning');
+  fetch('apps.json',{cache:'no-store'})
+    .then(res=>{if(!res.ok)throw new Error('no ok');return res.json();})
+    .then(data=>{
+      loadData(data);
+      document.getElementById('load-panel').style.display='none';
+      showToast('Catálogo actualizado ✓');
+    })
+    .catch(()=>showToast('No se pudo actualizar. Comprueba tu conexión.'))
+    .finally(()=>setTimeout(()=>mark.classList.remove('spinning'),500));
+}
+document.getElementById('btn-refresh-home').addEventListener('click',refreshCatalog);
 
 // Reflejar en la interfaz los filtros restaurados de localStorage antes de la primera carga.
 document.getElementById('sort-select-label').textContent=(SORT_OPTIONS.find(o=>o.value===sortMode)||SORT_OPTIONS[0]).label;
