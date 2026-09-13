@@ -46,6 +46,7 @@
 <style>
   :root{
     --green:#01875f;--green-dark:#016a4b;--bg:#f6f8f7;--card:#ffffff;
+    --brand:#7b5cff;--brand-dark:#6647e0;--brand-gradient:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);
     --border:#e3e7e5;--text:#1a1c1e;--text-secondary:#5f6368;
     --shadow:0 1px 3px rgba(16,24,22,.07);--overlay:rgba(0,0,0,.4);
     --badge-github-bg:#eef2ff;--badge-github-text:#3730a3;
@@ -61,7 +62,7 @@
   [data-theme="dark"]{
     --bg:#111315;--card:#1c1f22;--border:#2b2f33;
     --text:#f1f3f4;--text-secondary:#9aa0a6;
-    --green:#15b381;--green-dark:#0f9068;
+    --green:#15b381;--green-dark:#0f9068;--brand:#9b82ff;--brand-dark:#8267f5;
     --shadow:0 1px 3px rgba(0,0,0,.4);--overlay:rgba(0,0,0,.6);
     --badge-github-bg:#242850;--badge-github-text:#b7bdff;
     --badge-web-bg:#16324e;--badge-web-text:#8fc7ff;
@@ -155,8 +156,8 @@
   .badge-ads{background:var(--status-regular-bg);color:var(--status-regular-text)}
   .badge-pago{background:var(--badge-coral-bg);color:var(--badge-coral-text)}
   .app-actions-col{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}
-  .btn-download{background:var(--green);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;transition:background .15s;white-space:nowrap}
-  .btn-download:hover{background:var(--green-dark)}
+  .btn-download{background:var(--brand);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;transition:background .15s;white-space:nowrap}
+  .btn-download:hover{background:var(--brand-dark)}
   .btn-share{background:var(--bg);border:1px solid var(--border);color:var(--text-secondary);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
   .btn-share:active{background:var(--border)}
   @media (max-width:480px){
@@ -201,14 +202,17 @@
 
   .empty{text-align:center;padding:60px 20px;color:var(--text-secondary)}
   .empty svg{margin-bottom:12px;opacity:.5}
-  .btn-clear-filters{margin-top:16px;background:transparent;color:var(--green);border:1px solid var(--green);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
+  .btn-clear-filters{margin-top:16px;background:transparent;color:var(--brand);border:1px solid var(--brand);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
   .load-panel{background:var(--card);border:1px dashed var(--border);border-radius:16px;padding:24px;text-align:center;margin-bottom:20px}
   .load-panel p{color:var(--text-secondary);font-size:13px;margin:0 0 12px}
-  .btn-secondary{background:transparent;color:var(--green);border:1px solid var(--green);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
+  .btn-secondary{background:transparent;color:var(--brand);border:1px solid var(--brand);padding:9px 18px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
 
   /* --- estrellas de valoración --- */
   .stars{display:inline-flex;align-items:center;gap:1px;color:#f5a623;vertical-align:middle}
   .stars svg{display:block}
+  /* "Mi nota" junto a las estrellas en la ficha: dejar claro que es una valoración
+     personal y no una media de valoraciones públicas de otros usuarios. */
+  .detail-note{display:inline-block;margin-left:8px;font-size:12.5px;font-weight:700;color:var(--text-secondary);vertical-align:middle}
 
   /* --- barra de navegación inferior --- */
   body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
@@ -216,7 +220,7 @@
   .bottom-nav::-webkit-scrollbar{display:none}
   .nav-item{flex:1 0 auto;min-width:62px;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:8px 3px 7px;font-size:10px;font-weight:700;color:var(--text-secondary);cursor:pointer;font-family:inherit;white-space:nowrap}
   .nav-item:active{opacity:.7}
-  .nav-item.active{color:var(--green)}
+  .nav-item.active{color:var(--brand)}
 
   /* --- carrusel de destacados (Inicio) --- */
   .carousel-section{margin:0 0 20px}
@@ -257,9 +261,25 @@
   .install-banner-title{font-weight:700;font-size:13.5px;margin:0 0 2px}
   .install-banner-sub{font-size:11.5px;color:var(--text-secondary);margin:0;line-height:1.3}
   .install-banner-actions{display:flex;align-items:center;gap:4px;flex-shrink:0}
-  .btn-install{background:var(--green);color:#fff;border:none;padding:8px 14px;border-radius:20px;font-weight:600;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .btn-install{background:var(--brand);color:#fff;border:none;padding:8px 14px;border-radius:20px;font-weight:600;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap}
   .btn-mini-ghost{background:none;border:none;color:var(--text-secondary);width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .btn-mini-ghost:active{background:var(--bg)}
+
+  /* --- escritorio: navegación arriba en vez de barra inferior, catálogo en dos
+     columnas y ficha de detalle centrada y más ancha (en móvil no cambia nada) --- */
+  @media (min-width:900px){
+    body{display:flex;flex-direction:column;padding-bottom:0}
+    header{order:1}
+    .bottom-nav{order:2;position:static;left:auto;right:auto;bottom:auto;justify-content:center;gap:4px;border-top:none;border-bottom:1px solid var(--border);padding-bottom:0;overflow-x:visible}
+    .bottom-nav .nav-item{flex:0 0 auto;flex-direction:row;gap:7px;padding:14px 20px;font-size:13px}
+    main{order:3}
+    #app-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+    #app-list .app-row{margin-bottom:0}
+    #app-list .category-header,#app-list .empty{grid-column:1/-1}
+    .sheet-overlay{align-items:center;padding:24px}
+    .sheet{border-radius:20px;max-height:85vh}
+    .detail-sheet{max-width:640px}
+  }
 </style>
 </head>
 <body>
@@ -422,7 +442,7 @@
       <p class="detail-desc-full" id="detail-desc-full"></p>
     </div>
     <div class="detail-section" id="detail-highlights-section">
-      <p class="detail-section-title">Destacado</p>
+      <p class="detail-section-title">Por qué la recomiendo</p>
       <div class="detail-section-divider"></div>
       <ul class="detail-highlights" id="detail-highlights"></ul>
     </div>
@@ -519,9 +539,19 @@ function escapeHtml(str){
 function badgeFor(tipo){
   if(tipo==='github')return '<span class="badge badge-github">GitHub</span>';
   if(tipo==='web')return '<span class="badge badge-web">Web oficial</span>';
+  if(tipo==='play')return '<span class="badge badge-play">Play Store</span>';
   if(tipo==='telegram')return '<span class="badge badge-telegram">Telegram</span>';
   if(tipo==='external')return '<span class="badge badge-external">Enlace externo</span>';
   return '';
+}
+// Texto del botón principal de la ficha, adaptado a dónde lleva el enlace:
+// así queda claro antes de tocar si vas a salir a GitHub, a Play Store, etc.
+function ctaLabelFor(tipo){
+  if(tipo==='github')return 'Ver en GitHub';
+  if(tipo==='web')return 'Abrir web';
+  if(tipo==='play')return 'Ver en Play Store';
+  if(tipo==='telegram')return 'Abrir en Telegram';
+  return 'Ver enlace';
 }
 function statusPillHtml(estado){
   if(estado==='regular')return `<span class="status-pill status-regular"><span class="status-dot"></span>Regular</span>`;
@@ -702,7 +732,9 @@ function updateViewVisibility(){
   const showChooser=currentView==='categorias'&&!selectedCategory;
   const showList=currentView==='inicio'||currentView==='buscar'||currentView==='guardados'||(currentView==='categorias'&&!!selectedCategory);
   document.getElementById('carousel-section').style.display=(currentView==='inicio'&&dataLoaded)?'':'none';
-  document.getElementById('buscar-searchbar').style.display=(currentView==='buscar')?'flex':'none';
+  // El buscador es la herramienta principal de la tienda: se mantiene visible en cualquier
+  // vista que muestre listado de apps, no solo dentro de su propia pestaña.
+  document.getElementById('buscar-searchbar').style.display=(showList&&dataLoaded)?'flex':'none';
   document.getElementById('cat-az-section').style.display=showChooser?'':'none';
   document.getElementById('list-controls').style.display=(showList&&dataLoaded)?'':'none';
   document.getElementById('app-list').style.display=showList?'':'none';
@@ -768,7 +800,8 @@ function clearAllFilters(){
 function byFechaDesc(a,b){return (b.fecha||'').localeCompare(a.fecha||'')}
 function byValoracionDesc(a,b){return (Number(b.valoracion)||0)-(Number(a.valoracion)||0)||byFechaDesc(a,b)}
 function applyFilters(){
-  const q=currentView==='buscar'?(document.getElementById('search-input').value||'').toLowerCase():'';
+  // El buscador ahora es visible (y usable) en cualquier vista con listado, no solo en "Buscar".
+  const q=(document.getElementById('search-input').value||'').toLowerCase();
   const base=currentView==='guardados'?apps.filter(isFavorite):apps;
   let result=base.filter(a=>{
     const matchesQ=(a.nombre||'').toLowerCase().includes(q);
@@ -1053,7 +1086,7 @@ function handleDeepLink(){
     const row=document.querySelector('#app-list .app-row');
     if(row){
       row.scrollIntoView({behavior:'smooth',block:'center'});
-      row.style.outline=`2px solid var(--green)`;
+      row.style.outline=`2px solid var(--brand)`;
       row.style.outlineOffset='2px';
     }
   },50);
@@ -1136,15 +1169,21 @@ function openDetailSheet(app){
   document.getElementById('detail-name').textContent=app.nombre||'';
 
   // La fecha solo se muestra aquí, una vez, no repetida también en cada tarjeta de la lista.
+  // Se etiqueta como "Probada el" (no "Actualizado"): es la fecha en la que se revisó/publicó
+  // la app desde el admin, no una fecha técnica genérica, y así queda claro que hay una persona detrás.
   const metaParts=[app.categoria||'General'];
-  if(app.fecha)metaParts.push(`Actualizado ${formatFecha(app.fecha)}`);
+  if(app.fecha)metaParts.push(`Probada el ${formatFecha(app.fecha)}`);
   document.getElementById('detail-meta').textContent=metaParts.join(' · ');
-  document.getElementById('detail-stars').innerHTML=starsHtml(app.valoracion,15);
+  const r=Math.max(0,Math.min(5,Math.round(Number(app.valoracion)||0)));
+  document.getElementById('detail-stars').innerHTML=r>0
+    ?`${starsHtml(app.valoracion,15)}<span class="detail-note">Mi nota: ${r}/5</span>`
+    :'';
 
   document.getElementById('detail-tags').innerHTML=
     `${warnIconsHtml(app)}${isRecent(app.fecha)?'<span class="badge badge-new">Nuevo</span>':''}${badgeFor(app.tipo)}${statusPillHtml(app.estado)}`;
 
   document.getElementById('detail-cta-link').href=app.url;
+  document.getElementById('detail-cta-link').textContent=ctaLabelFor(app.tipo);
 
   // Descripción completa si existe; si no, se usa el texto corto de la lista como respaldo.
   const descFull=(app.descripcionCompleta||app.descripcion||'').trim();
