@@ -173,6 +173,7 @@
   .sheet .sheet-sub{font-size:12.5px;color:var(--text-secondary);margin:0 0 16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .detail-sheet{position:relative;max-width:520px}
   .detail-close{position:absolute;top:14px;right:14px}
+  .noticia-share-pos{right:58px;background:var(--bg);border:1px solid var(--border)}
   .detail-header{display:flex;gap:14px;margin:6px 0 18px}
   .detail-header .app-icon{width:60px;height:60px;border-radius:16px}
   .detail-headtext{flex:1;min-width:0;padding-right:30px}
@@ -289,13 +290,17 @@
   .news-thumb{aspect-ratio:16/9;position:relative;flex-shrink:0;overflow:hidden;background:var(--bg)}
   .news-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
   .news-thumb-placeholder{position:absolute;inset:0;background:linear-gradient(135deg,#4f7cff 0%,#7b5cff 40%,#c04cff 70%,#ff5f8f 100%);opacity:.18}
-  .news-app-chip{position:absolute;left:9px;top:9px;display:flex;align-items:center;gap:6px;background:rgba(20,20,24,.55);backdrop-filter:blur(4px);color:#fff;padding:4px 10px 4px 4px;border-radius:20px;font-size:11px;font-weight:700;max-width:calc(100% - 18px)}
-  .news-app-chip img{width:19px;height:19px;border-radius:6px;object-fit:cover;flex-shrink:0}
-  .news-app-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .news-cat-chip{position:absolute;right:9px;top:9px;font-size:10px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;background:rgba(255,255,255,.92);color:#333;padding:3px 9px;border-radius:20px}
+  .news-app-chip{position:absolute;left:9px;top:9px;display:inline-flex;align-items:center;line-height:1;gap:6px;background:rgba(15,15,18,.72);backdrop-filter:blur(4px);color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;max-width:calc(100% - 18px);box-shadow:0 1px 4px rgba(0,0,0,.25)}
+  .news-app-chip.has-icon{padding:4px 12px 4px 4px}
+  .news-app-chip img{width:19px;height:19px;border-radius:6px;object-fit:cover;flex-shrink:0;display:block}
+  .news-app-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.4}
+  .news-cat-chip{position:absolute;right:9px;top:9px;line-height:1;font-size:10px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;background:rgba(15,15,18,.72);color:#fff;padding:5px 10px;border-radius:20px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+  .news-cat-chip.cat-green{background:var(--green);color:#fff}
+  .news-cat-chip.cat-brand{background:var(--brand);color:#fff}
+  .news-cat-chip.cat-coral{background:var(--badge-coral-text);color:#fff}
   .news-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1;min-height:0}
-  .news-title{font-size:15.5px;font-weight:800;line-height:1.32;margin:0 0 7px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-  .news-desc{font-size:13px;color:var(--text-secondary);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .news-title{font-size:17px;font-weight:800;line-height:1.3;margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .news-desc{font-size:14px;color:var(--text-secondary);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .news-meta{font-size:11px;color:var(--text-secondary);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
 
   /* --- ficha de noticia (modal redondeado, con foto) --- */
@@ -494,6 +499,9 @@
     <div class="sheet-handle"></div>
     <button class="icon-btn detail-close" id="btn-cerrar-noticia" aria-label="Cerrar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <button class="icon-btn detail-close noticia-share-pos" id="noticia-share-btn" aria-label="Compartir">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg>
     </button>
     <div class="noticia-header">
       <img id="noticia-app-icon" src="" alt="">
@@ -759,12 +767,19 @@ function renderCatAzList(){
 }
 
 // --- menú inferior: Inicio / Buscar / Categorías / Juegos ---
+// La pestaña activa vive en la URL (#/inicio, #/noticias...), así recargar la
+// página o pegar el enlace te deja exactamente donde estabas, y cada noticia
+// tiene su propia URL para compartir (#/noticia/<id>).
 let navKey='inicio';
 let currentView='inicio'; // 'inicio' | 'buscar' | 'categorias' (categorias también cubre "Juegos")
+const NAV_KEYS=['inicio','buscar','categorias','noticias','guardados','juegos'];
 function updateNavUI(){
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.nav===navKey));
 }
-function setNav(key){
+// Aplica el estado de una pestaña sin tocar la URL (la URL ya se ha
+// actualizado, o se está actualizando, cuando esto se llama).
+function applyNavState(key){
+  if(!NAV_KEYS.includes(key))key='inicio';
   navKey=key;
   if(key==='inicio'){currentView='inicio';selectedCategory='';}
   else if(key==='buscar'){currentView='buscar';}
@@ -778,6 +793,29 @@ function setNav(key){
   window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
   render();
 }
+// Punto de entrada público: cambia la URL; el propio cambio de hash es quien
+// aplica el estado (ver handleHashRoute), para que navegar con el botón
+// "atrás" del navegador funcione exactamente igual que tocar una pestaña.
+function setNav(key){
+  const target=`#/${key}`;
+  if(location.hash===target)applyNavState(key);
+  else location.hash=target;
+}
+function isNoticiaRoute(hash){
+  return /^#\/?noticia\//.test(hash||'');
+}
+function handleHashRoute(){
+  const raw=(location.hash||'').replace(/^#\/?/,'');
+  const parts=raw.split('/').filter(Boolean);
+  if(parts[0]==='noticia'&&parts[1]){
+    applyNavState('noticias');
+    renderNoticiaSheet(decodeURIComponent(parts[1]));
+    return;
+  }
+  closeSheetEl('noticia-sheet');
+  applyNavState(parts[0]||'inicio');
+}
+window.addEventListener('hashchange',handleHashRoute);
 document.querySelectorAll('.nav-item').forEach(btn=>{
   btn.addEventListener('click',()=>setNav(btn.dataset.nav));
 });
@@ -806,6 +844,22 @@ function render(){
 
 // --- Noticias: tarjetas + ficha ---
 function appBySlug(slug){return apps.find(a=>a.slug===slug)}
+// Identificador estable de cada noticia para poder compartirla y enlazarla:
+// usa "slug" o "id" si el JSON los trae; si no, genera uno a partir del
+// título + su posición en la lista (recomendado: añadir "slug" en
+// noticias.json para que el enlace no cambie si se reordenan las noticias).
+function slugify(str){
+  return String(str||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-+|-+$)/g,'');
+}
+function noticiaKey(n,idx){
+  if(n.slug)return String(n.slug);
+  if(n.id)return String(n.id);
+  return `${slugify(n.titulo)||'noticia'}-${idx}`;
+}
+function noticiaByKey(key){
+  const idx=noticias.findIndex((n,i)=>noticiaKey(n,i)===key);
+  return idx===-1?null:noticias[idx];
+}
 function renderNoticiasGrid(){
   const grid=document.getElementById('noticias-grid');
   const count=document.getElementById('noticias-count');
@@ -816,31 +870,55 @@ function renderNoticiasGrid(){
   }
   count.textContent=`${noticias.length} noticia${noticias.length===1?'':'s'}`;
   grid.innerHTML='';
-  noticias.forEach(n=>{
+  noticias.forEach((n,idx)=>{
     const app=appBySlug(n.appSlug);
     const card=document.createElement('div');
     card.className='news-card';
     const thumbInner=n.imagen?`<img src="${escapeHtmlNews(n.imagen)}" alt="" loading="lazy" onerror="this.closest('.news-thumb').innerHTML='<div class=&quot;news-thumb-placeholder&quot;></div>'">`:`<div class="news-thumb-placeholder"></div>`;
+    const hasIcon=!!(app&&app.icono);
+    const catLabel=n.categoria||'Actualización';
     card.innerHTML=`
       <div class="news-thumb">
         ${thumbInner}
-        <div class="news-app-chip">${app?`<img src="${app.icono||''}" onerror="this.style.display='none'">`:''}<span>${escapeHtmlNews(app?app.nombre:'App')}</span></div>
-        <div class="news-cat-chip">${escapeHtmlNews(n.categoria||'Actualización')}</div>
+        <div class="news-app-chip${hasIcon?' has-icon':''}">${hasIcon?`<img src="${app.icono}" onerror="this.style.display='none'">`:''}<span>${escapeHtmlNews(app?app.nombre:'App')}</span></div>
+        <div class="news-cat-chip ${catChipClass(catLabel)}">${escapeHtmlNews(catLabel)}</div>
       </div>
       <div class="news-body">
         <p class="news-title">${escapeHtmlNews(n.titulo||'')}</p>
         <p class="news-desc">${escapeHtmlNews(n.resumen||'')}</p>
         <p class="news-meta">${escapeHtmlNews(n.fecha||'')}</p>
       </div>`;
-    card.addEventListener('click',()=>openNoticiaSheet(n));
+    card.addEventListener('click',()=>goToNoticia(noticiaKey(n,idx)));
     grid.appendChild(card);
   });
+}
+// Color de la píldora de categoría según su significado: verde para
+// actualizaciones (todo va bien), morado de marca para lanzamientos/noticias,
+// coral para ofertas/avisos, y el resto se queda con el estilo neutro oscuro.
+function catChipClass(label){
+  const l=(label||'').toLowerCase();
+  if(l.includes('actualiza'))return 'cat-green';
+  if(l.includes('nuevo')||l.includes('lanzamiento')||l.includes('noticia'))return 'cat-brand';
+  if(l.includes('oferta')||l.includes('aviso')||l.includes('alerta'))return 'cat-coral';
+  return '';
 }
 function escapeHtmlNews(str){
   return String(str??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 let currentNoticiaApp=null;
-function openNoticiaSheet(n){
+let currentNoticiaKey=null;
+// Navegar a una noticia = cambiar el hash de la URL; el propio cambio de hash
+// (evento hashchange) es quien realmente abre la ficha, así funciona igual
+// si el usuario llega pulsando la tarjeta, pegando el enlace o recargando.
+function goToNoticia(key){
+  const target=`#/noticia/${encodeURIComponent(key)}`;
+  if(location.hash===target){renderNoticiaSheet(key);}
+  else{location.hash=target;}
+}
+function renderNoticiaSheet(key){
+  const n=noticiaByKey(key);
+  if(!n){closeSheetEl('noticia-sheet');return;}
+  currentNoticiaKey=key;
   const app=appBySlug(n.appSlug);
   currentNoticiaApp=app||null;
   const icon=document.getElementById('noticia-app-icon');
@@ -854,6 +932,11 @@ function openNoticiaSheet(n){
   document.getElementById('noticia-body').innerHTML=n.cuerpoHtml||'';
   openSheetEl('noticia-sheet');
 }
+// Cerrar la ficha siempre vuelve a la ruta de la lista de noticias (en vez de
+// history.back(), que si han llegado desde un enlace compartido podría
+// sacarles del sitio entero).
+document.getElementById('btn-cerrar-noticia').addEventListener('click',()=>{location.hash='#/noticias';});
+document.getElementById('noticia-sheet').addEventListener('click',e=>{if(e.target.id==='noticia-sheet')location.hash='#/noticias'});
 // Los enlaces "@ Mencionar app" insertados desde el admin llevan data-app-slug:
 // interceptamos el clic para abrir la ficha real de esa app en vez de navegar.
 document.getElementById('noticia-body').addEventListener('click',e=>{
@@ -862,16 +945,20 @@ document.getElementById('noticia-body').addEventListener('click',e=>{
   e.preventDefault();
   const app=appBySlug(link.dataset.appSlug);
   if(!app)return;
-  closeSheetEl('noticia-sheet');
+  location.hash='#/noticias';
   openDetailSheet(app);
 });
 document.getElementById('noticia-cta').addEventListener('click',()=>{
   if(!currentNoticiaApp)return;
-  closeSheetEl('noticia-sheet');
+  location.hash='#/noticias';
   openDetailSheet(currentNoticiaApp);
 });
-document.getElementById('btn-cerrar-noticia').addEventListener('click',()=>closeSheetEl('noticia-sheet'));
-document.getElementById('noticia-sheet').addEventListener('click',e=>{if(e.target.id==='noticia-sheet')closeSheetEl('noticia-sheet')});
+document.getElementById('noticia-share-btn').addEventListener('click',()=>{
+  if(!currentNoticiaKey)return;
+  const n=noticiaByKey(currentNoticiaKey);
+  if(!n)return;
+  openShareSheet(n,'noticia',currentNoticiaKey);
+});
 
 const SORT_OPTIONS=[
   {value:'recientes',label:'Recientes'},
@@ -1240,6 +1327,10 @@ async function loadNoticias(){
     noticias=[];
   }
   if(currentView==='noticias')render();
+  // Si han llegado con un enlace directo a una noticia (#/noticia/...), las
+  // noticias aún no estaban cargadas la primera vez que se leyó la URL:
+  // reintentamos ahora que ya tenemos noticias.json.
+  if(isNoticiaRoute(location.hash))handleHashRoute();
 }
 
 document.getElementById('file-input').addEventListener('change',e=>{
@@ -1281,17 +1372,22 @@ function siteBase(){
   return location.href.split('#')[0].split('?')[0].replace(/[^/]*$/,'');
 }
 // Compartimos siempre el enlace principal de la web (con el nombre de la app
-// como parámetro, solo para que al abrirlo pueda resaltarse esa app).
+// o el hash de la noticia, para que al abrirlo se resalte/abra lo correcto).
 // Así la preview en WhatsApp/Telegram usa siempre el mismo banner de NovaStore
 // que ya está definido arriba en el <head> (og:image, og:title, og:description).
-function shareUrlFor(app){
-  return app.slug ? `${siteBase()}?app=${encodeURIComponent(app.slug)}` : siteBase();
+function shareUrlFor(item,kind='app',noticiaKeyVal=null){
+  if(kind==='noticia')return `${siteBase()}#/noticia/${encodeURIComponent(noticiaKeyVal)}`;
+  return item.slug ? `${siteBase()}?app=${encodeURIComponent(item.slug)}` : siteBase();
 }
 
 let shareTarget=null;
-function openShareSheet(app){
-  shareTarget=app;
-  document.getElementById('share-app-name').textContent=app.nombre;
+let shareKind='app';
+let shareNoticiaKey=null;
+function openShareSheet(item,kind='app',noticiaKeyVal=null){
+  shareTarget=item;
+  shareKind=kind;
+  shareNoticiaKey=noticiaKeyVal;
+  document.getElementById('share-app-name').textContent=kind==='noticia'?item.titulo:item.nombre;
   openSheetEl('share-sheet');
 }
 
@@ -1382,11 +1478,12 @@ document.getElementById('detail-share-btn').addEventListener('click',()=>{
   closeSheetEl('detail-sheet');
   openShareSheet(currentDetailApp);
 });
-async function copyLinkAndNotify(app,network){
-  const link=shareUrlFor(app);
+async function copyLinkAndNotify(item,network){
+  const link=shareUrlFor(item,shareKind,shareNoticiaKey);
+  const nombre=shareKind==='noticia'?item.titulo:item.nombre;
   try{
     await navigator.clipboard.writeText(link);
-    showToast(`Enlace copiado. Pégalo en ${network} para compartir "${app.nombre}".`);
+    showToast(`Enlace copiado. Pégalo en ${network} para compartir "${nombre}".`);
   }catch(e){
     showToast(`Copia este enlace para compartir en ${network}: ${link}`);
   }
@@ -1395,11 +1492,11 @@ async function copyLinkAndNotify(app,network){
 // includeLink=false para Telegram: ahí el enlace ya se manda aparte (parámetro
 // "url") y Telegram lo muestra solo como vista previa; si lo repetimos aquí
 // sale duplicado (una vez como preview y otra vez dentro del texto).
-function shareMessageFor(app,includeLink=true){
-  const lineas=[`Título: ${app.nombre}`];
-  lineas.push(`Descripción: ${app.descripcion||'—'}`);
-  lineas.push(`Categoría: ${app.categoria||'General'}`);
-  if(includeLink)lineas.push(`Enlace: ${shareUrlFor(app)}`);
+function shareMessageFor(item,includeLink=true){
+  const lineas=shareKind==='noticia'
+    ? [`Título: ${item.titulo}`, `Resumen: ${item.resumen||'—'}`, `Categoría: ${item.categoria||'Actualización'}`]
+    : [`Título: ${item.nombre}`, `Descripción: ${item.descripcion||'—'}`, `Categoría: ${item.categoria||'General'}`];
+  if(includeLink)lineas.push(`Enlace: ${shareUrlFor(item,shareKind,shareNoticiaKey)}`);
   return lineas.join('\n');
 }
 document.getElementById('share-whatsapp').addEventListener('click',()=>{
@@ -1411,7 +1508,7 @@ document.getElementById('share-telegram').addEventListener('click',()=>{
   if(!shareTarget)return;
   // En Telegram, "url" alimenta la vista previa (banner) y "text" es el pie de mensaje.
   // No repetimos el enlace en el texto porque Telegram ya lo pone como primera línea.
-  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrlFor(shareTarget))}&text=${encodeURIComponent(shareMessageFor(shareTarget,false))}`,'_blank','noopener');
+  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrlFor(shareTarget,shareKind,shareNoticiaKey))}&text=${encodeURIComponent(shareMessageFor(shareTarget,false))}`,'_blank','noopener');
   closeSheetEl('share-sheet');
 });
 document.getElementById('share-instagram').addEventListener('click',()=>{
@@ -1480,6 +1577,17 @@ function refreshCatalog(){
     .finally(()=>setTimeout(()=>mark.classList.remove('spinning'),500));
 }
 document.getElementById('btn-refresh-home').addEventListener('click',refreshCatalog);
+
+// Restaurar la pestaña desde la URL (recarga de página o enlace compartido)
+// antes del primer render, para no destellar "Inicio" y saltar a la vista real.
+(function(){
+  const raw=(location.hash||'').replace(/^#\/?/,'');
+  const parts=raw.split('/').filter(Boolean);
+  const key=parts[0]==='noticia'?'noticias':(NAV_KEYS.includes(parts[0])?parts[0]:'inicio');
+  navKey=key;
+  if(key==='juegos'){currentView='categorias';selectedCategory=gamesCategoryName();}
+  else{currentView=key;}
+})();
 
 // Reflejar en la interfaz los filtros restaurados de localStorage antes de la primera carga.
 document.getElementById('sort-select-label').textContent=(SORT_OPTIONS.find(o=>o.value===sortMode)||SORT_OPTIONS[0]).label;
