@@ -22,6 +22,27 @@
   ],
   "apps": [
     {
+      "nombre": "GoalSteps",
+      "categoria": "Vida más fácil",
+      "descripcion": "Toma el control de tus hábitos y tus metas. Lleva un control ya bien sea por que quieras hacer ejercicio , leer , pasarte un videojuego o lo que quieras.",
+      "descripcionCompleta": "Una app fabulosa que te mantiene constantemente motivado y organizado gracias a sus widgets donde podrás llevar el control de esos días que te quedan o llevas haciendo alguna tarea.",
+      "caracteristicas": [
+        "Sin anuncios",
+        "Multiples widgets",
+        "Recordatorios",
+        "Interfaz muy personalizable"
+      ],
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.monaalazzani.tracker&hl=es",
+      "estado": "ok",
+      "slug": "goalsteps",
+      "ads": false,
+      "suscripcion": false,
+      "destacada": false,
+      "valoracion": 5,
+      "fecha": "2026-09-26"
+    },
+    {
       "nombre": "Minimalist Phone: Launcher Detox",
       "categoria": "Productividad",
       "descripcion": "Un lanzador de pantalla de inicio minimalista diseñado para reducir el tiempo de uso del móvil y eliminar las distracciones visuales mientras trabajas.",
