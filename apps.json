@@ -22,6 +22,28 @@
   ],
   "apps": [
     {
+      "nombre": "Inoreader",
+      "categoria": "Vida más fácil",
+      "descripcion": "Lector RRSS con IA para resumenes de tus noticias.",
+      "descripcionCompleta": "Lector RRSS que te devuelve de las fuentes que añadas las noticias resumidas con IA destacando lo más importante de la noticia sin tener que ir a la página en sí.",
+      "caracteristicas": [
+        "Sin anuncios",
+        "Más limites de artículos que Syft",
+        "Sencilla de usar",
+        "Buen resumen con la IA",
+        "Sin necesidad de pagar el premium"
+      ],
+      "tipo": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.innologica.inoreader&hl=es",
+      "estado": "ok",
+      "slug": "inoreader",
+      "ads": false,
+      "suscripcion": true,
+      "destacada": true,
+      "valoracion": 5,
+      "fecha": "2026-09-26"
+    },
+    {
       "nombre": "Alto's Odyssey",
       "categoria": "Juegos",
       "descripcion": "Juego relajante para volar por dunas , desiertos , cañones.. y todo esto acompañado de un registro musical espectacular. Un juego para desconectar.",
