@@ -22,6 +22,32 @@
   ],
   "apps": [
     {
+      "nombre": "Meld",
+      "categoria": "Música Streaming",
+      "descripcion": "Combinación de Spotify y Youtube Music. Puede usar tu cuenta de Spotify.",
+      "descripcionCompleta": "Lo mejor de los dos mundos en música streaming de Spotify y Youtube Music. Personalización de Spotify con el catálogo de Youtube Music. No requiere Spotify Premium y crea listas basadas en la IA para recomendarte nuevas listas.",
+      "caracteristicas": [
+        "Sin anuncios",
+        "Sin suscripciones",
+        "Cuenta Spotify",
+        "Catalogo Youtube Music",
+        "Interfaz de Spotify",
+        "Listas personalizadas basadas en tu historial.",
+        "Transmisión FLAC en alta calidad",
+        "Distintos servidores si la canción no se reproduce",
+        "Música sin conexión"
+      ],
+      "tipo": "github",
+      "url": "https://github.com/FrancescoGrazioso/Meld",
+      "estado": "ok",
+      "slug": "meld",
+      "ads": false,
+      "suscripcion": false,
+      "destacada": true,
+      "valoracion": 5,
+      "fecha": "2026-09-26"
+    },
+    {
       "nombre": "Inoreader",
       "categoria": "Vida más fácil",
       "descripcion": "Lector RRSS con IA para resumenes de tus noticias.",
