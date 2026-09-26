@@ -1,3 +1,13 @@
 {
-  "noticias": []
+  "noticias": [
+    {
+      "appSlug": "foroplus",
+      "categoria": "Actualización",
+      "titulo": "ForoPlus se actualiza con varias novedades.",
+      "resumen": "Nuevas mejoras para la app no oficial de ForoCoches.",
+      "imagen": "https://s3-eu-west-1.amazonaws.com/tpd/logos/5ad4f4d7f223b00001b245e1/0x0.pngwtEY8s6MXDfA%3A1790459281233&ei=kT24avXiDcKD9u8PhJjbyQI&oq=Forcoches&gs_lp=EhJtb2JpbGUtZ3dzLXdpei1pbWciCUZvcmNvY2hlczIKECMYyQIYsQIYJzIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeSJIcUPcYWIAacAB4AJABAJgBpgGgAZsDqgEDMC4zuAEDyAEA-AEBmAICoAKHAsICBxAjGMkCGCfCAgUQABiABJgDAIgGAZIHAzAuMqAH2gmyBwMwLjK4B4cCwgcFMi0xLjHIBxGACAE&sclient=mobile-gws-wiz-img#sv=CAMSVxoyKhBlLTVvcHRxMWxrcVUxNkNNMg41b3B0cTFsa3FVMTZDTToOZW03WHU0bnUtT3pkMU0gBCoXCgFzEhBlLTVvcHRxMWxrcVUxNkNNGAEwAUoECAEQAhgHII7yvLIMSggQAhgBIAIoAQ",
+      "cuerpoHtml": "<a href=\"#app-foroplus\" class=\"mention-app\" data-app-slug=\"foroplus\">Foroplus</a>&nbsp;se ha actualizado con varias mejoras en estos días que os detallamos más adelante :&nbsp;<div><br></div><div><ul><li>Agrandar títulos de los hilos&nbsp;</li><li>Mejorado de citas y menciones&nbsp;</li><li>Ver post del OP&nbsp;</li><li>Descargar hilos borrados en local</li></ul></div>",
+      "fecha": "2026-09-26"
+    }
+  ]
 }
