@@ -22,6 +22,27 @@
   ],
   "apps": [
     {
+      "nombre": "Daily Dozen",
+      "categoria": "Productividad",
+      "descripcion": "Un gestor de hábitos simplificado enfocado únicamente en marcar los alimentos más saludables y ejercicios diarios que deberías incorporar. Sin registros calóricos complejos ni estrés.",
+      "descripcionCompleta": "Creada por la organización sin fines de lucro NutritionFacts.org, esta app sustituye las abrumadoras apps de dieta por una lista de verificación simple. \n\nSu enfoque de productividad personal radica en automatizar decisiones saludables diarias: te muestra casillas claras para agua, frutas, ejercicio y frutos secos, ayudándote a crear rutinas óptimas en segundos sin perder tiempo midiendo gramos o calorías.",
+      "caracteristicas": [
+        "Codigo abierto",
+        "Sin anuncios",
+        "Sencilla y minimalista",
+        "Recordatorios y seguimientos"
+      ],
+      "tipo": "github",
+      "url": "https://github.com/nutritionfactsorg/daily-dozen-android?utm_source=gemini",
+      "estado": "ok",
+      "slug": "daily-dozen",
+      "ads": false,
+      "suscripcion": false,
+      "destacada": false,
+      "valoracion": 5,
+      "fecha": "2026-09-26"
+    },
+    {
       "nombre": "Meld",
       "categoria": "Música Streaming",
       "descripcion": "Combinación de Spotify y Youtube Music. Puede usar tu cuenta de Spotify.",
