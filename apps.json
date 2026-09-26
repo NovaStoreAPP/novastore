@@ -150,10 +150,13 @@
         "Ocultar usuarios ignorados",
         "Ocultar post de usuarios ignorados",
         "Ver solo comentarios del OP.",
-        "Navegación más cómoda",
         "Menú personalizable",
         "Favoritos",
         "Notificaciones en tiempo real..",
+        "Menciones y citas mejorado",
+        "Diseño mejorado",
+        "Navegación por pestañas",
+        "Descargar hilos eliminados",
         "¡Y mucho más!"
       ],
       "tipo": "play",
@@ -164,7 +167,7 @@
       "suscripcion": false,
       "destacada": true,
       "valoracion": 5,
-      "fecha": "2026-09-12"
+      "fecha": "2026-09-26"
     },
     {
       "nombre": "Meulify",
