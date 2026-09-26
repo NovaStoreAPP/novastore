@@ -22,6 +22,26 @@
   ],
   "apps": [
     {
+      "nombre": "Minimalist Phone: Launcher Detox",
+      "categoria": "Productividad",
+      "descripcion": "Un lanzador de pantalla de inicio minimalista diseñado para reducir el tiempo de uso del móvil y eliminar las distracciones visuales mientras trabajas.",
+      "descripcionCompleta": "Este launcher transforma la interfaz colorida y adictiva de tu Android en un entorno basado en texto en blanco y negro. Incluye un bloqueador de aplicaciones integrado, temporizadores de uso para apps específicas y un filtro de notificaciones para evitar que el teléfono robe tu atención durante tus horas de máxima concentración.",
+      "caracteristicas": [
+        "Interfaz limpia para reducir el consumo de redes",
+        "Muy personalizable",
+        "Oculta notificaciones de terceros para distracciones"
+      ],
+      "tipo": "play",
+      "url": "https://www.google.com/search?q=https://play.google.com/store/apps/details%253Fid%253Dcom.qmarq.minimalistlauncher&utm_source=gemini",
+      "estado": "ok",
+      "slug": "minimalist-phone-launcher-detox",
+      "ads": false,
+      "suscripcion": true,
+      "destacada": false,
+      "valoracion": 4,
+      "fecha": "2026-09-26"
+    },
+    {
       "nombre": "Daily Dozen",
       "categoria": "Productividad",
       "descripcion": "Un gestor de hábitos simplificado enfocado únicamente en marcar los alimentos más saludables y ejercicios diarios que deberías incorporar. Sin registros calóricos complejos ni estrés.",
