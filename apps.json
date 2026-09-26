@@ -681,15 +681,8 @@
     },
     {
       "nombre": "Syft",
-      "peso": "35",
       "categoria": "Vida más fácil",
       "descripcion": "Resúmenes de noticias por IA basados en tus temas favoritos. Pide cuenta de Google para iniciar sesión.",
-      "banner": "",
-      "tipo": "play",
-      "url": "https://play.google.com/store/search?q=syft&c=apps",
-      "estado": "ok",
-      "slug": "syft",
-      "fecha": "2026-09-06",
       "descripcionCompleta": "App que usa IA para resumirte las noticias del día según los temas que te interesan, ahorrándote tiempo de lectura. Necesita que inicies sesión con tu cuenta de Google.",
       "caracteristicas": [
         "Resúmenes con IA",
@@ -697,7 +690,15 @@
         "Ahorra tiempo de lectura",
         "Requiere cuenta de Google"
       ],
-      "valoracion": 5
+      "tipo": "play",
+      "url": "https://play.google.com/store/search?q=syft&c=apps",
+      "estado": "ok",
+      "slug": "syft",
+      "ads": false,
+      "suscripcion": true,
+      "destacada": false,
+      "valoracion": 5,
+      "fecha": "2026-09-26"
     },
     {
       "nombre": "Daylio",
