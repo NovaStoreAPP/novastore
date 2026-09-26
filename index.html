@@ -279,7 +279,30 @@
     .sheet-overlay{align-items:center;padding:24px}
     .sheet{border-radius:20px;max-height:85vh}
     .detail-sheet{max-width:640px}
+    .news-grid{grid-template-columns:repeat(3,1fr)}
   }
+
+  /* --- Noticias: tarjetas de tamaño uniforme (todas la misma altura) --- */
+  .news-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:620px) and (max-width:899px){.news-grid{grid-template-columns:repeat(2,1fr)}}
+  .news-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;height:280px}
+  .news-thumb{height:126px;background-size:cover;background-position:center;background-color:var(--bg);position:relative;flex-shrink:0}
+  .news-app-chip{position:absolute;left:9px;top:9px;display:flex;align-items:center;gap:6px;background:rgba(20,20,24,.55);backdrop-filter:blur(4px);color:#fff;padding:4px 10px 4px 4px;border-radius:20px;font-size:11px;font-weight:700;max-width:calc(100% - 18px)}
+  .news-app-chip img{width:19px;height:19px;border-radius:6px;object-fit:cover;flex-shrink:0}
+  .news-app-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .news-cat-chip{position:absolute;right:9px;top:9px;font-size:10px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;background:rgba(255,255,255,.92);color:#333;padding:3px 9px;border-radius:20px}
+  .news-body{padding:13px 15px;display:flex;flex-direction:column;flex:1;min-height:0}
+  .news-title{font-size:14px;font-weight:800;line-height:1.3;margin:0 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .news-desc{font-size:12px;color:var(--text-secondary);line-height:1.45;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+  .news-meta{font-size:10.5px;color:var(--text-secondary);margin-top:9px}
+
+  /* --- ficha de noticia (modal redondeado, con foto) --- */
+  .noticia-header{display:flex;align-items:center;gap:10px;margin:4px 0 16px}
+  .noticia-header img{width:32px;height:32px;border-radius:9px;flex-shrink:0}
+  .noticia-header b{font-size:14px;display:block}
+  .noticia-header small{font-size:11px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.3px}
+  .noticia-cover{width:100%;max-height:220px;object-fit:cover;border-radius:14px;margin-bottom:18px;display:block;background:var(--bg)}
+  .noticia-cover[data-empty="1"]{display:none}
 </style>
 </head>
 <body>
@@ -372,6 +395,12 @@
   </div>
 
   <div id="app-list"></div>
+
+  <!-- Noticias: solo en su propio tab -->
+  <div id="noticias-section" style="display:none">
+    <p class="results-count" id="noticias-count"></p>
+    <div class="news-grid" id="noticias-grid"></div>
+  </div>
 </main>
 
 <nav class="bottom-nav" id="bottom-nav">
@@ -386,6 +415,10 @@
   <button class="nav-item" data-nav="categorias" aria-label="Categorías">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg>
     <span>Categorías</span>
+  </button>
+  <button class="nav-item" data-nav="noticias" aria-label="Noticias">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M4 4h13a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H8a4 4 0 0 1-4-4V4Z"/><path d="M16 4v13a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2h-4"/><line x1="8" y1="8" x2="14" y2="8"/><line x1="8" y1="12" x2="14" y2="12"/></svg>
+    <span>Noticias</span>
   </button>
   <button class="nav-item" data-nav="juegos" aria-label="Juegos">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="11.5" x2="10.5" y2="11.5"/><line x1="8.75" y1="9.75" x2="8.75" y2="13.25"/><line x1="15.3" y1="12" x2="15.31" y2="12"/><line x1="17.8" y1="9.8" x2="17.81" y2="9.8"/><path d="M17.3 6H6.7A4 4 0 0 0 2.72 9.6C2.6 10.5 2 15 2 16.3A2.7 2.7 0 0 0 4.7 19c.9 0 1.35-.45 1.8-.9L7.7 16.8A2 2 0 0 1 9.1 16.2h5.8a2 2 0 0 1 1.4.6l1.2 1.3c.45.45.9.9 1.8.9a2.7 2.7 0 0 0 2.7-2.7c0-1.3-.6-5.8-.72-6.7A4 4 0 0 0 17.3 6Z"/></svg>
@@ -454,11 +487,30 @@
   </div>
 </div>
 
+<div class="sheet-overlay" id="noticia-sheet">
+  <div class="sheet detail-sheet">
+    <div class="sheet-handle"></div>
+    <button class="icon-btn detail-close" id="btn-cerrar-noticia" aria-label="Cerrar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="noticia-header">
+      <img id="noticia-app-icon" src="" alt="">
+      <div><b id="noticia-app-name"></b><small id="noticia-cat-label"></small></div>
+    </div>
+    <img class="noticia-cover" id="noticia-cover" src="" alt="">
+    <h2 id="noticia-title" style="margin:0 0 6px;font-size:20px;font-weight:800;line-height:1.3"></h2>
+    <p class="detail-meta" id="noticia-meta"></p>
+    <div class="detail-desc-full" id="noticia-body" style="margin-top:14px"></div>
+    <button class="btn-download" id="noticia-cta" style="width:100%;margin-top:20px;text-align:center;border:none">Ver ficha de la app</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
 let apps=[];
 let categorias=[];
+let noticias=[];
 let selectedCategory='';
 let sortMode='recientes';
 let dataLoaded=false;
@@ -715,6 +767,7 @@ function setNav(key){
   if(key==='inicio'){currentView='inicio';selectedCategory='';}
   else if(key==='buscar'){currentView='buscar';}
   else if(key==='categorias'){currentView='categorias';selectedCategory='';}
+  else if(key==='noticias'){currentView='noticias';selectedCategory='';}
   else if(key==='juegos'){currentView='categorias';selectedCategory=gamesCategoryName();}
   else if(key==='guardados'){currentView='guardados';selectedCategory='';}
   updateNavUI();
@@ -738,14 +791,84 @@ function updateViewVisibility(){
   document.getElementById('cat-az-section').style.display=showChooser?'':'none';
   document.getElementById('list-controls').style.display=(showList&&dataLoaded)?'':'none';
   document.getElementById('app-list').style.display=showList?'':'none';
+  document.getElementById('noticias-section').style.display=(currentView==='noticias')?'':'none';
 }
 
 function render(){
   updateViewVisibility();
+  if(currentView==='noticias'){renderNoticiasGrid();return}
   if(currentView==='inicio')renderCarousel();
   if(currentView==='categorias'&&!selectedCategory){renderCatAzList();return}
   renderCatalog();
 }
+
+// --- Noticias: tarjetas + ficha ---
+function appBySlug(slug){return apps.find(a=>a.slug===slug)}
+function renderNoticiasGrid(){
+  const grid=document.getElementById('noticias-grid');
+  const count=document.getElementById('noticias-count');
+  if(!noticias.length){
+    count.textContent='';
+    grid.innerHTML=`<div class="empty" style="grid-column:1/-1">Todavía no hay noticias publicadas.</div>`;
+    return;
+  }
+  count.textContent=`${noticias.length} noticia${noticias.length===1?'':'s'}`;
+  grid.innerHTML='';
+  noticias.forEach(n=>{
+    const app=appBySlug(n.appSlug);
+    const card=document.createElement('div');
+    card.className='news-card';
+    const thumbStyle=n.imagen?`background-image:url('${n.imagen.replace(/'/g,"\\'")}')`:'';
+    card.innerHTML=`
+      <div class="news-thumb" style="${thumbStyle}">
+        <div class="news-app-chip">${app?`<img src="${app.icono||''}" onerror="this.style.display='none'">`:''}<span>${escapeHtmlNews(app?app.nombre:'App')}</span></div>
+        <div class="news-cat-chip">${escapeHtmlNews(n.categoria||'Actualización')}</div>
+      </div>
+      <div class="news-body">
+        <p class="news-title">${escapeHtmlNews(n.titulo||'')}</p>
+        <p class="news-desc">${escapeHtmlNews(n.resumen||'')}</p>
+        <p class="news-meta">${escapeHtmlNews(n.fecha||'')}</p>
+      </div>`;
+    card.addEventListener('click',()=>openNoticiaSheet(n));
+    grid.appendChild(card);
+  });
+}
+function escapeHtmlNews(str){
+  return String(str??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+let currentNoticiaApp=null;
+function openNoticiaSheet(n){
+  const app=appBySlug(n.appSlug);
+  currentNoticiaApp=app||null;
+  const icon=document.getElementById('noticia-app-icon');
+  if(app&&app.icono){icon.src=app.icono;icon.style.display='';}else{icon.style.display='none';}
+  document.getElementById('noticia-app-name').textContent=app?app.nombre:'App';
+  document.getElementById('noticia-cat-label').textContent=n.categoria||'Actualización';
+  document.getElementById('noticia-title').textContent=n.titulo||'';
+  document.getElementById('noticia-meta').textContent=n.fecha||'';
+  const cover=document.getElementById('noticia-cover');
+  if(n.imagen){cover.src=n.imagen;cover.dataset.empty='0';}else{cover.removeAttribute('src');cover.dataset.empty='1';}
+  document.getElementById('noticia-body').innerHTML=n.cuerpoHtml||'';
+  openSheetEl('noticia-sheet');
+}
+// Los enlaces "@ Mencionar app" insertados desde el admin llevan data-app-slug:
+// interceptamos el clic para abrir la ficha real de esa app en vez de navegar.
+document.getElementById('noticia-body').addEventListener('click',e=>{
+  const link=e.target.closest('.mention-app');
+  if(!link)return;
+  e.preventDefault();
+  const app=appBySlug(link.dataset.appSlug);
+  if(!app)return;
+  closeSheetEl('noticia-sheet');
+  openDetailSheet(app);
+});
+document.getElementById('noticia-cta').addEventListener('click',()=>{
+  if(!currentNoticiaApp)return;
+  closeSheetEl('noticia-sheet');
+  openDetailSheet(currentNoticiaApp);
+});
+document.getElementById('btn-cerrar-noticia').addEventListener('click',()=>closeSheetEl('noticia-sheet'));
+document.getElementById('noticia-sheet').addEventListener('click',e=>{if(e.target.id==='noticia-sheet')closeSheetEl('noticia-sheet')});
 
 const SORT_OPTIONS=[
   {value:'recientes',label:'Recientes'},
@@ -1101,6 +1224,19 @@ async function loadFromFetch(){
     document.getElementById('app-list').innerHTML='';
     document.getElementById('load-panel').style.display='block';
   }
+  loadNoticias();
+}
+// noticias.json es opcional: si no existe todavía (o falla), simplemente no se muestra nada roto.
+async function loadNoticias(){
+  try{
+    const res=await fetch('noticias.json',{cache:'no-store'});
+    if(!res.ok)throw new Error('no ok');
+    const data=await res.json();
+    noticias=Array.isArray(data)?data:(data.noticias||[]);
+  }catch(e){
+    noticias=[];
+  }
+  if(currentView==='noticias')render();
 }
 
 document.getElementById('file-input').addEventListener('change',e=>{
@@ -1335,6 +1471,7 @@ function refreshCatalog(){
       loadData(data);
       document.getElementById('load-panel').style.display='none';
       showToast('Catálogo actualizado ✓');
+      loadNoticias();
     })
     .catch(()=>showToast('No se pudo actualizar. Comprueba tu conexión.'))
     .finally(()=>setTimeout(()=>mark.classList.remove('spinning'),500));
