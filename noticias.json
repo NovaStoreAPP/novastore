@@ -1,6 +1,15 @@
 {
   "noticias": [
     {
+      "appSlug": "teveflipe",
+      "categoria": "Opinión",
+      "titulo": "TeveFlipe. Convierte tu Telegram en un centro multimedia.",
+      "resumen": "TeveFlipe es un reproductor multimedia nativo para Android TV y Fire TV que se conecta a tu cuenta de Telegram. Reproduce tus colecciones, vídeos personales y archivos con carátulas automáticas y navegación fluida por mando.",
+      "imagen": "https://i.postimg.cc/cJTkMFmN/Gemini-Generated-Image-x3o0jhx3o0jhx3o0.jpg",
+      "cuerpoHtml": "<div>Si hay una cosa que me encanta de Android es la cantidad de aplicaciones que nacen fruto de una necesidad silenciosa y hoy os hablo de&nbsp;<a href=\"#app-teveflipe\" class=\"mention-app\" data-app-slug=\"teveflipe\">TeveFlipe</a>. La aplicación convierte tus archivos de vídeos en un centro multimedia como si fuera Plex o Jellyfin. ¿Como funciona? Te explico :&nbsp;</div><div><br></div><div>Escaneas el código QR de inicio de sesión seguro oficial de Telegram o por código de verificación. En ajustes , seleccionas los canales que tengas de vídeos (guiño guiño) siempre en formato .mp4 que es el que admite la reproducción nativa de Telegram y a disfrutar.</div><div><br></div><div>Su uso es muy cómodo tanto en tablet , firestick , móvil etc.. Lo único que tienes que tener en cuenta con el Firestick , es que tendrás que tener almacenamiento suficiente ya que las reproducciones consumen caché (luego podrás borrarla en su propio menú de la APP) y que no tengas saturada la RAM con aplicaciones para que vaya fluido el moverte por los menú por lo demás , todo funciona de lujo en el 99% de los casos.</div><div><br></div><div>Sin duda el descubrimiento semanal para Android. Me encantan este tipo de apps donde los desarrolladores le dan una vuelta y traen un parche para cubrir algo que no teníamos y de donde casi todos tenemos contenido para aburrir que ahora nos lo ponen en bandeja clasificado con su sinopsis , actores , género , portada etc..&nbsp;</div>",
+      "fecha": "2026-09-27"
+    },
+    {
       "appSlug": "agenda-deportes",
       "categoria": "Opinión",
       "titulo": "DeporAgenda",
