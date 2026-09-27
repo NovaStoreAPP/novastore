@@ -1,6 +1,15 @@
 {
   "noticias": [
     {
+      "appSlug": "agenda-deportes",
+      "categoria": "Opinión",
+      "titulo": "DeporAgenda",
+      "resumen": "La app por excelencia ahora mismo para seguir tus partidos favoritos.",
+      "imagen": "https://i.ibb.co/XZWMdg9s/noticia-recortada.jpg",
+      "cuerpoHtml": "<div>Hoy en día , es muy difícil encontrar una aplicación para \"seguir\" tus partidos favoritos. Casi todas las que he probado vienen de dudosa procedencia que una vez analizadas siempre contenían <b>avisos en rojo</b> por VirusTotal.&nbsp;</div><div><br></div><div>Hoy quiero hablaros de @Agenda Deportes&nbsp;que ha ido cambiando de nombre , llevaré usándola al menos 3 años y sigue funcionando estupendamente. Al abrirla , solamente te saldrá un anuncio (que si tienes las DNS de adguard ni lo ves) y luego tienes (si no recuerdo mal) 4-5 servidores en distintos idiomas (incluido el español) para disfrutar de tu equipo favorito.</div><div><br></div><div>Ni en los grandes encuentros he notado ni cuelgues , ni caídas ni nada de nada (no sé como lo hace sinceramente) ya que todas pecan en esos partidos de muchísimo atraso , congelaciones o dejan de reproducir el contenido.</div><div><br></div><div>En la APP encontraréis más menú pero no centraremos en este ya que internet está plagada de páginas con mil anuncios que al final también pide tras un cierto visionado que te suscribas a un plan de pago así que imaginaros mi cara cuando descubrí esta APP.</div><div><br></div><div>Lo que hace especial esta APP es primero su soporte en tiempo real. No funciona un enlace , lo comunicas en su canal de Telegram y lo corrigen al momento. De los mejores administradores que he visto que no tiran de chulería o prepotencia. Luego el poder cambiar entre calidades o usar el modo PiP (modo ventana secundaria) por si estás usando otras en ese momento (se queda flotando).</div><div><br></div><div>Para los que la disfrutéis en Android , tenéis emuladores como MumuPlayer , LDPlayer y algunos más que instalándolo en Windows , podréis reproducir lo mismo que veis en Android pero en vuestro PC para disfrutar del contenido.</div>",
+      "fecha": "2026-09-27"
+    },
+    {
       "appSlug": "meld",
       "categoria": "Opinión",
       "titulo": "Meld , un sustituto a Spotify que rinde muy bien",
