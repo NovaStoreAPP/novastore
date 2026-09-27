@@ -22,6 +22,28 @@
   ],
   "apps": [
     {
+      "nombre": "TeveFlipe",
+      "categoria": "Cine y Televisión",
+      "descripcion": "Convierte tu Telegram en un centro multimedia.",
+      "descripcionCompleta": "TeveFlipe es un reproductor multimedia nativo para Android TV y Fire TV que se conecta a tu cuenta de Telegram. Reproduce tus colecciones, vídeos personales y archivos con carátulas automáticas y navegación fluida por mando.",
+      "caracteristicas": [
+        "Sin anuncios",
+        "Logueo fácil por QR y seguro",
+        "Convierte tus archivos en un Plex",
+        "Fácil de usar y configurar",
+        "Rápido y sin esperas"
+      ],
+      "tipo": "web",
+      "url": "https://teveflipe.web.app/",
+      "estado": "ok",
+      "slug": "teveflipe",
+      "ads": false,
+      "suscripcion": false,
+      "destacada": false,
+      "valoracion": 5,
+      "fecha": "2026-09-27"
+    },
+    {
       "nombre": "GoalSteps",
       "categoria": "Vida más fácil",
       "descripcion": "Toma el control de tus hábitos y tus metas. Lleva un control ya bien sea por que quieras hacer ejercicio , leer , pasarte un videojuego o lo que quieras.",
