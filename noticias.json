@@ -1,6 +1,15 @@
 {
   "noticias": [
     {
+      "appSlug": "meld",
+      "categoria": "Opinión",
+      "titulo": "Meld , un sustituto a Spotify que rinde muy bien",
+      "resumen": "Meld te da lo mejor de Spotify y Youtube Music para esos reacios a pagar una suscripción.",
+      "imagen": "https://tmpfiles.org/dl/wDwKpaCMmj1F/noticia-recortada.jpg",
+      "cuerpoHtml": "<div>Meld se ha convertido en la APP referente en cuanto a contenido de streaming gracias a que combina la interfaz de Spotify con el catálogo de Youtube Music. Esta app tiene desbloqueado el audio en alta calidad flac (en sus ajustes) y tiene una IA que aprende de tu historial de música para recomendarte listas personalizadas.</div><div><br></div><div>Yo soy fiel seguidor de Spotify. Aquí donde me veis lo pago religiosamente por que costumbre de tenerlo incluido en todas las plataformas donde lo uso pero también es que conocí Meld tarde cuando ya había pagado. Aún así , la he estado probando estos días ya por la curiosidad y no tiene nada que enviarle.</div><div><br></div><div>A menudo estas apps dejan de reproducir canciones por que sí pero lo bueno que tiene Meld es que si un servidor no está disponible se acoge a otro disponible para que nunca dejes de escuchar tu música favorita.</div><div><br></div><div>Si fuera poco , tienes para reproducción offline para aquellos que tengan poca cobertura o datos en un momento dado.</div><div><br></div><div>Una APP muy completa que acepta temas para que la hagas un poco más a tu gusto y con muchísimas funciones que eso ya dejo que lo descubras tú.</div>",
+      "fecha": "2026-09-27"
+    },
+    {
       "appSlug": "foroplus",
       "categoria": "Actualización",
       "titulo": "ForoPlus se actualiza con varias novedades.",
