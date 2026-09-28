@@ -1570,9 +1570,24 @@ document.getElementById('share-telegram').addEventListener('click',()=>{
   const info=isNoticia?(shareTarget.resumen||''):(shareTarget.descripcion||'');
   const link=shareUrlFor(shareTarget,shareKind,shareNoticiaKey);
   const text=[`Título: ${titulo}`,info?`Info: ${info}`:'',`Enlace: ${link}`].filter(Boolean).join('\n');
-  // url vacío: así Telegram no antepone el enlace y respeta nuestro orden
-  window.open(`https://t.me/share/url?url=&text=${encodeURIComponent(text)}`,'_blank','noopener');
   closeSheetEl('share-sheet');
+  const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  // Fallback web/escritorio: t.me exige "url" (sin él redirige a telegram.org),
+  // así que aquí el enlace irá primero y el resto del texto debajo.
+  const webFallback=()=>window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent(`Título: ${titulo}`+(info?`\nInfo: ${info}`:''))}`,'_blank','noopener');
+  if(isMobile){
+    // Abre la app directamente con nuestro texto tal cual (orden libre)
+    let left=false;
+    const onHide=()=>{if(document.hidden)left=true};
+    document.addEventListener('visibilitychange',onHide);
+    location.href=`tg://msg?text=${encodeURIComponent(text)}`;
+    setTimeout(()=>{
+      document.removeEventListener('visibilitychange',onHide);
+      if(!left&&!document.hidden)webFallback();
+    },1500);
+  }else{
+    webFallback();
+  }
 });
 document.getElementById('share-instagram').addEventListener('click',()=>{
   if(!shareTarget)return;
