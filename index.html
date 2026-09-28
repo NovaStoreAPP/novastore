@@ -167,6 +167,7 @@
 
   .sheet-overlay{position:fixed;inset:0;background:var(--overlay);z-index:30;display:none;align-items:flex-end;justify-content:center}
   .sheet-overlay.open{display:flex}
+  #share-sheet{z-index:40}
   .sheet{background:var(--card);width:100%;max-width:700px;border-radius:20px 20px 0 0;padding:18px 18px 26px;max-height:80vh;overflow-y:auto}
   .sheet-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
   .sheet h2{font-size:16px;margin:0 0 4px;font-weight:700}
@@ -1168,7 +1169,7 @@ function buildCategoryHeaderEl(cat,count){
 function buildCarouselCardEl(app){
   const card=document.createElement('div');
   card.className='carousel-card';
-  card.addEventListener('click',()=>{if(!card._dragged)openDetailSheet(app)});
+  card.addEventListener('click',()=>openDetailSheet(app));
   const top=document.createElement('div');
   top.className='carousel-card-top';
   top.appendChild(buildIconEl(app));
@@ -1203,31 +1204,32 @@ function buildCarouselCardEl(app){
 function makeCarouselDraggable(el){
   if(el._dragReady)return;
   el._dragReady=true;
-  let isDown=false,startX=0,startScroll=0,captured=false;
+  let isDown=false,startX=0,startScroll=0,moved=false;
   el.addEventListener('pointerdown',e=>{
-    if(e.pointerType==='touch')return;
-    isDown=true;
-    captured=false;
+    if(e.pointerType!=='mouse'||e.button!==0)return;
+    isDown=true;moved=false;
     startX=e.clientX;
     startScroll=el.scrollLeft;
-    el.querySelectorAll('.carousel-card').forEach(c=>c._dragged=false);
   });
-  el.addEventListener('pointermove',e=>{
+  window.addEventListener('pointermove',e=>{
     if(!isDown)return;
     const dx=e.clientX-startX;
-    if(Math.abs(dx)>4){
-      if(!captured){
-        captured=true;
-        el.classList.add('dragging');
-        try{el.setPointerCapture(e.pointerId)}catch(err){}
-      }
-      el.querySelectorAll('.carousel-card').forEach(c=>c._dragged=true);
-    }
-    if(captured)el.scrollLeft=startScroll-dx;
+    if(!moved&&Math.abs(dx)>6){moved=true;el.classList.add('dragging');}
+    if(moved)el.scrollLeft=startScroll-dx;
   });
-  const stop=()=>{isDown=false;captured=false;el.classList.remove('dragging')};
-  el.addEventListener('pointerup',stop);
-  el.addEventListener('pointerleave',stop);
+  const stop=()=>{
+    if(!isDown)return;
+    isDown=false;
+    el.classList.remove('dragging');
+    // el click posterior al arrastre se ignora; un clic normal pasa intacto
+    el._justDragged=moved;
+    setTimeout(()=>{el._justDragged=false},0);
+  };
+  window.addEventListener('pointerup',stop);
+  window.addEventListener('pointercancel',stop);
+  el.addEventListener('click',e=>{
+    if(el._justDragged){e.stopPropagation();e.preventDefault();}
+  },true);
 }
 function renderCarousel(){
   const section=document.getElementById('carousel-section');
@@ -1563,9 +1565,13 @@ document.getElementById('share-whatsapp').addEventListener('click',()=>{
 });
 document.getElementById('share-telegram').addEventListener('click',()=>{
   if(!shareTarget)return;
-  // En Telegram, "url" alimenta la vista previa (banner) y "text" es el pie de mensaje.
-  // No repetimos el enlace en el texto porque Telegram ya lo pone como primera línea.
-  window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrlFor(shareTarget,shareKind,shareNoticiaKey))}&text=${encodeURIComponent(shareMessageFor(shareTarget,false))}`,'_blank','noopener');
+  const isNoticia=shareKind==='noticia';
+  const titulo=isNoticia?shareTarget.titulo:shareTarget.nombre;
+  const info=isNoticia?(shareTarget.resumen||''):(shareTarget.descripcion||'');
+  const link=shareUrlFor(shareTarget,shareKind,shareNoticiaKey);
+  const text=[`Título: ${titulo}`,info?`Info: ${info}`:'',`Enlace: ${link}`].filter(Boolean).join('\n');
+  // url vacío: así Telegram no antepone el enlace y respeta nuestro orden
+  window.open(`https://t.me/share/url?url=&text=${encodeURIComponent(text)}`,'_blank','noopener');
   closeSheetEl('share-sheet');
 });
 document.getElementById('share-instagram').addEventListener('click',()=>{
