@@ -299,6 +299,13 @@
   .news-cat-chip.cat-brand{background:var(--brand);color:#fff}
   .news-cat-chip.cat-coral{background:var(--badge-coral-text);color:#fff}
   .news-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1;min-height:0}
+  .news-share-btn{position:absolute;right:9px;bottom:9px;background:rgba(15,15,18,.72);backdrop-filter:blur(4px);color:#fff;border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+  .news-share-btn:active{background:rgba(15,15,18,.9)}
+  .news-pagination{display:flex;justify-content:center;align-items:center;gap:6px;margin:20px 0 8px;flex-wrap:wrap}
+  .news-page-btn{min-width:34px;height:34px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:700;font-size:13px;cursor:pointer}
+  .news-page-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  .news-page-btn:disabled{opacity:.4;cursor:default}
+  .news-page-dots{color:var(--text-secondary);padding:0 2px;font-weight:700}
   .news-title{font-size:17px;font-weight:800;line-height:1.3;margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .news-desc{font-size:14px;color:var(--text-secondary);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .news-meta{font-size:11px;color:var(--text-secondary);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
@@ -407,6 +414,7 @@
   <div id="noticias-section" style="display:none">
     <p class="results-count" id="noticias-count"></p>
     <div class="news-grid" id="noticias-grid"></div>
+    <div class="news-pagination" id="noticias-pagination"></div>
   </div>
 </main>
 
@@ -813,6 +821,12 @@ function handleHashRoute(){
     return;
   }
   closeSheetEl('noticia-sheet');
+  if(parts[0]==='noticias'&&parts[1]==='pagina'&&parts[2]){
+    noticiasPage=Math.max(1,parseInt(parts[2],10)||1);
+    applyNavState('noticias');
+    return;
+  }
+  if(parts[0]==='noticias')noticiasPage=1;
   applyNavState(parts[0]||'inicio');
 }
 window.addEventListener('hashchange',handleHashRoute);
@@ -860,17 +874,27 @@ function noticiaByKey(key){
   const idx=noticias.findIndex((n,i)=>noticiaKey(n,i)===key);
   return idx===-1?null:noticias[idx];
 }
+const NOTICIAS_PAGE_SIZE=4;
+let noticiasPage=1;
 function renderNoticiasGrid(){
   const grid=document.getElementById('noticias-grid');
   const count=document.getElementById('noticias-count');
+  const pagWrap=document.getElementById('noticias-pagination');
   if(!noticias.length){
     count.textContent='';
     grid.innerHTML=`<div class="empty" style="grid-column:1/-1">Todavía no hay noticias publicadas.</div>`;
+    pagWrap.innerHTML='';
     return;
   }
+  const totalPages=Math.max(1,Math.ceil(noticias.length/NOTICIAS_PAGE_SIZE));
+  if(noticiasPage>totalPages)noticiasPage=totalPages;
+  if(noticiasPage<1)noticiasPage=1;
   count.textContent=`${noticias.length} noticia${noticias.length===1?'':'s'}`;
   grid.innerHTML='';
-  noticias.forEach((n,idx)=>{
+  const start=(noticiasPage-1)*NOTICIAS_PAGE_SIZE;
+  const pageItems=noticias.slice(start,start+NOTICIAS_PAGE_SIZE);
+  pageItems.forEach((n,pageIdx)=>{
+    const idx=start+pageIdx;
     const app=appBySlug(n.appSlug);
     const card=document.createElement('div');
     card.className='news-card';
@@ -883,14 +907,47 @@ function renderNoticiasGrid(){
         <div class="news-app-chip${hasIcon?' has-icon':''}">${hasIcon?`<img src="${app.icono}" onerror="this.style.display='none'">`:''}<span>${escapeHtmlNews(app?app.nombre:'App')}</span></div>
         <div class="news-cat-chip ${catChipClass(catLabel)}">${escapeHtmlNews(catLabel)}</div>
       </div>
-      <div class="news-body">
+      <div class="news-body" style="position:relative">
         <p class="news-title">${escapeHtmlNews(n.titulo||'')}</p>
         <p class="news-desc">${escapeHtmlNews(n.resumen||'')}</p>
         <p class="news-meta">${escapeHtmlNews(n.fecha||'')}</p>
+        <button class="news-share-btn" aria-label="Compartir"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-3.9M8.6 13.5l6.8 3.9"/></svg></button>
       </div>`;
     card.addEventListener('click',()=>goToNoticia(noticiaKey(n,idx)));
+    card.querySelector('.news-share-btn').addEventListener('click',e=>{
+      e.stopPropagation();
+      openShareSheet(n,'noticia',noticiaKey(n,idx));
+    });
     grid.appendChild(card);
   });
+  renderNoticiasPagination(totalPages);
+}
+function goToNoticiasPage(p){
+  const target=p===1?'#/noticias':`#/noticias/pagina/${p}`;
+  if(location.hash===target){noticiasPage=p;renderNoticiasGrid();window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});}
+  else location.hash=target;
+}
+function renderNoticiasPagination(totalPages){
+  const wrap=document.getElementById('noticias-pagination');
+  if(totalPages<=1){wrap.innerHTML='';return;}
+  const pages=[];
+  const add=p=>{if(!pages.includes(p))pages.push(p)};
+  add(1);add(totalPages);add(noticiasPage);add(noticiasPage-1);add(noticiasPage+1);
+  const valid=pages.filter(p=>p>=1&&p<=totalPages).sort((a,b)=>a-b);
+  let html=`<button class="news-page-btn" id="np-prev" ${noticiasPage<=1?'disabled':''} aria-label="Anterior">‹</button>`;
+  let prev=0;
+  valid.forEach(p=>{
+    if(p-prev>1)html+=`<span class="news-page-dots">…</span>`;
+    html+=`<button class="news-page-btn${p===noticiasPage?' active':''}" data-page="${p}">${p}</button>`;
+    prev=p;
+  });
+  html+=`<button class="news-page-btn" id="np-next" ${noticiasPage>=totalPages?'disabled':''} aria-label="Siguiente">›</button>`;
+  wrap.innerHTML=html;
+  wrap.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>goToNoticiasPage(Number(b.dataset.page))));
+  const prevBtn=document.getElementById('np-prev');
+  const nextBtn=document.getElementById('np-next');
+  if(prevBtn)prevBtn.addEventListener('click',()=>goToNoticiasPage(noticiasPage-1));
+  if(nextBtn)nextBtn.addEventListener('click',()=>goToNoticiasPage(noticiasPage+1));
 }
 // Color de la píldora de categoría según su significado: verde para
 // actualizaciones (todo va bien), morado de marca para lanzamientos/noticias,
